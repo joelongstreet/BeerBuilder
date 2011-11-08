@@ -1,0 +1,306 @@
+<!DOCTYPE>
+<html lang='en-US'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='' />
+		<meta name='keywords' content='' />
+		<meta name='author' content='' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0' />
+		<meta name='apple-mobile-web-app-capable' content='yes'/>
+		<title>Beer Builder</title>
+		<link rel='stylesheet' media='screen' href='_assets/css/default.css' />
+		<link rel='stylesheet' media='screen' href='_assets/css/builder/base.css' />
+	</head>
+	<body>
+	
+		<nav id='main'>
+			<div class='handle'></div>
+			<div class='wrap'>
+				<a class='active' href='#'>Build a Beer</a>
+				<a href='#'>My Recipes</a>
+				<a href='#'>All Recipes</a>
+				<a href='#'>Settings</a>
+				<a href='#'>Resources</a>
+			</div>
+		</nav>
+		<div id='nav_shadow'></div>
+
+		<section id='content'>
+			<aside id='beer_attributes'>
+				<dl>
+					<dt>Original Gravity</dt>
+					<dd id='og'></dd>
+					<dt>Final Gravity</dt>
+					<dd id='fg'></dd>
+				</dl>
+				<dl>
+					<dt>GU/BU</dt>
+					<dd id='gu_bu'></dd>
+					<dt>IBU</dt>
+					<dd id='ibu'></dd>
+				</dl>
+				<dl>
+					<dt>ABV</dt>
+					<dd id='abv'></dd>			
+					<dt>SRM</dt>
+					<dd id='srm'></dd>
+				</dl>				
+				<div id='srm_panel'><div class='color'></div><div class='highlight'></div></div>
+			</aside>
+		
+			<aside id='beer_character'>
+				<div class='wrap'>
+					<ul>
+						<li>
+							<span class='title'>Grain Character</span>
+							<span id='grain_character'></span>
+						</li>
+						<li>
+							<span class='title'>Hop Character</span>
+							<span id='hop_character'></span>
+						</li>
+						<li>
+							<span class='title'>Yeast Character</span>
+							<span id='yeast_character'></span>
+						</li>
+					</ul>
+				</div>
+				<div class='handle'></div>
+			</aside>
+		
+			<h1 id='beer_name'>Duff Beer</h1>
+	
+			<section class='steps'>
+				<section class='setup step active'>
+				
+					<div class='wrap'>
+						<div class='fields'>
+							<label>Beer Name</label>
+							<input type='text' />
+						</div>
+				
+						<div class='fields'>
+							<label>Start with Template?</label>
+							<select>
+								<option value=''>This is a Test</option>
+							</select>
+						</div>
+					</div>
+				
+					<div class='wrap'>
+						<div class='fields'>
+							<label>Final Volume</label>
+							<input id='input_volume' type='text' />
+							<input id='range_volume' type='range' min='0' max='20' step='.25' value='5' />
+						</div>
+				
+						<div class='fields'>
+							<label>Efficiency</label>
+							<input type='text' />
+							<input id='range_efficiency' type='range' min='0' max='100' step='1' value='75' />
+						</div>
+					</div>
+				</section>
+		
+				<section class='grist step'>
+					<ul class='table_heading'>
+						<li>Grain</li>
+						<li>Weight</li>
+						<li>Proportion</li>
+					</ul>
+				
+					<div class='grain_fields'></div>
+				
+					<a href='#' class='add add_grain'>Add Grain<span class='add'>+</span></a>
+				</section>
+		
+				<section class='hops step'>
+					<ul class='table_heading'>
+						<li>Hop</li>
+						<li>Weight</li>
+						<li>Time</li>
+						<li>Proportion</li>
+					</ul>
+				
+					<div class='hop_fields'></div>
+
+					<a href='#' class='add add_hop'>Add Hop<span class='add'>+</span></a>
+				</section>
+		
+				<section class='mash_and_sparge step'>
+					<div class='wrap'>
+						<div class='fields'>
+							<label>Mash Temperature</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+				
+						<div class='fields'>
+							<label>Mash Length</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+					</div>
+					
+					<div class='wrap'>
+						<div class='fields'>
+							<label>Sparge Temperature</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+				
+						<div class='fields'>
+							<label>Sparge Length</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+					</div>
+				</section>
+		
+				<section class='fermentation step'>
+					<div class='yeasts'>
+						<a href='#' class='add add_yeast'>Add More Yeast<span class='add'>+</span></a>
+						<div class='yeast'>
+							<label>Yeast:</label>
+							<select></select>
+						</div>
+					</div>
+				
+					<div class='fermentations'>
+						<div class='wrap'>
+							<div class='fields'>
+								<label>Primary Fermentation:</label>
+								<input type='text' class='primary_fermentation' />
+								<input type='range' class='primary_fermentation' />
+							</div>
+							<div class='fields'>
+								<label>Secondary Fermentation:</label>
+								<input type='text' class='secondary_fermentation' />
+								<input type='range' class='secondary_fermentation' />
+							</div>
+						</div>
+						<a href='#' class='add add_fermentation'>Add Another Fermentation<span class='add'>+</span></a>
+					</div>
+				
+					<div class='dry_hopping'>
+						<div class='fields'>
+							<label>Dry Hopped?</label>
+							<div class='custom_checkbox'></div>
+						</div>
+					
+						<div class='hop'>
+							<select></select>
+							<input type='text' class='weight' />
+							<input type='text' class='time' />
+							<input type='range' class='weight' />
+							<input type='range' class='time' />
+						</div>
+
+						<a href='#' class='add add_hop'>Add More Hops<span class='add'>+</span></a>
+					</div>
+
+				</section>
+			
+				<section class='finishing step'>
+					<div class='wrap radio_wrap'>
+						<div class='fields'>
+							<label>Bottled?</label>
+							<div class='custom_radio' data-value='bottled'><div class='on'></div></div>
+						</div>
+						<div class='fields'>
+							<label>Kegged?</label>
+							<div class='custom_radio' data-value='kegged'><div></div></div>
+						</div>
+					</div>
+					
+					<div class='wrap bottled'>
+						<div class='fields'>
+							<label>Time Aged in Bottle</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+						
+						<div class='fields'>
+							<label>Priming Sugar</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+					</div>
+					
+					<div class='wrap kegged'>
+						<!-- TODO: I don't know if these measurement are right -->
+						<div class='fields'>
+							<label>Time Aged in Keg</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+						
+						<div class='fields'>
+							<label>CO2 Levels</label>
+							<input type='text' />
+							<input type='range' />
+						</div>
+					</div>
+				</section>
+			
+				<a id='save_recipe' href='#'>Save Recipe</a>
+			</section>
+			
+			<nav id='steps'>
+				<ul>
+					<li>Prev</li>
+					<li>Setup</li>
+					<li>Grain Bill</li>
+					<li>Hop Schedule</li>
+					<li>Mash &amp; Sparge</li>
+					<li>Fermentation</li>
+					<li>Finishing</li>
+					<li>Next</li>
+				</ul>
+			</nav>
+			
+		</section>
+		
+		
+		
+		<script src='_assets/js/dependencies/zepto.js'></script>
+		<script src='_assets/js/dependencies/json2.js'></script>
+		<script src='_assets/js/dependencies/underscore.js'></script>
+		<script src='_assets/js/dependencies/backbone.js'></script>
+		<script src='_assets/js/dependencies/utilities.js'></script>
+
+		<script src='_assets/js/classes/builder/beer_style.js'></script>
+		<script src='_assets/js/classes/builder/srm_lookup.js'></script>
+		<script src='_assets/js/classes/builder/grain.js'></script>
+		<script src='_assets/js/classes/builder/hop.js'></script>
+		<script src='_assets/js/classes/builder/yeast.js'></script>
+		<script src='_assets/js/classes/builder/properties.js'></script>
+		<script src='_assets/js/classes/builder/recipe.js'></script>
+		<script src='_assets/js/classes/builder/builder.js'></script>
+
+		<script src='_assets/js/classes/app.js'></script>
+		
+		<script type='text/template' id='grains_view'>
+			<select></select>
+			
+			<input type='text' class='weight' value='0' />
+			<div class='proportion'>0%</div>
+			<input type='range' class='range' min='0' max='10' step='.1' value='0'/>
+			
+			<a class='delete' href='#'>Delete</a>
+		</script>
+		
+		<script type='text/template' id='hops_view'>
+			<select></select>
+
+			<input type='text' class='weight' value='0' />
+			<input type='text' class='time' value='0' />
+			
+			<input type='range' class='weight' min='0' max='3' step='.1' value='0' />
+			<input type='range' class='time' min='0' max='90' step='1' value='0' />
+			
+			<a class='delete' href='#'>Delete</a>
+		</script>
+
+	</body>
+</html>

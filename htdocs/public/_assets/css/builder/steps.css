@@ -1,0 +1,336 @@
+/* line 5, ../../../../../src/sass/builder/steps.sass */
+section.steps {
+  margin: 2.5% 6%;
+}
+/* line 9, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.active {
+  display: block;
+}
+/* line 12, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step {
+  display: none;
+  overflow: hidden;
+}
+/* line 16, ../../../../../src/sass/builder/steps.sass */
+section.steps a.add {
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  -o-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  padding: 12px 30px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  background-color: #7ccfeb;
+  float: right;
+}
+/* line 21, ../../../../../src/sass/mixins.sass */
+section.steps a.add span.add {
+  margin: 0px -20px 0 20px;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  font-size: 200%;
+  text-align: center;
+  vertical-align: super;
+}
+/* line 24, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.setup input, section.steps section.step.setup select {
+  width: 100%;
+}
+/* line 26, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.setup input[type=range] {
+  margin-top: 20px;
+}
+/* line 28, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.setup .wrap {
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+/* line 31, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.setup .fields {
+  width: 45%;
+}
+/* line 33, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.setup .fields:nth-child(1) {
+  float: left;
+}
+/* line 35, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.setup .fields:nth-child(2) {
+  float: right;
+}
+/* line 42, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist ul.table_heading {
+  margin-bottom: 30px;
+}
+/* line 44, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist ul.table_heading li {
+  display: inline-block;
+}
+/* line 46, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist ul.table_heading li:nth-child(1) {
+  width: 50%;
+}
+/* line 48, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist ul.table_heading li:nth-child(2) {
+  width: 30%;
+}
+/* line 50, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist ul.table_heading li:nth-child(3) {
+  width: 18%;
+  text-align: right;
+}
+/* line 53, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist .grain {
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+/* line 56, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist .grain select, section.steps section.step.grist .grain .proportion, section.steps section.step.grist .grain input[type=text] {
+  display: inline-block;
+}
+/* line 58, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist .grain select {
+  margin-right: 10%;
+  width: 40%;
+}
+/* line 61, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist .grain input[type=text] {
+  margin: 0 10% 20px 0;
+  width: 20%;
+}
+/* line 64, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist .grain .proportion {
+  width: 18%;
+  text-align: right;
+}
+/* line 67, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.grist .grain input[type=range] {
+  float: right;
+  width: 50%;
+}
+/* line 75, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops ul.table_heading {
+  margin-bottom: 30px;
+}
+/* line 77, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops ul.table_heading li {
+  display: inline-block;
+}
+/* line 79, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops ul.table_heading li:nth-child(1) {
+  width: 40%;
+}
+/* line 81, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops ul.table_heading li:nth-child(2) {
+  width: 20%;
+}
+/* line 83, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops ul.table_heading li:nth-child(3) {
+  width: 20%;
+}
+/* line 85, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops ul.table_heading li:nth-child(4) {
+  width: 10%;
+}
+/* line 87, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop {
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+/* line 90, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop select, section.steps section.step.hops .hop input[type=text] {
+  display: inline-block;
+}
+/* line 92, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop select {
+  margin-right: 3%;
+  width: 37%;
+}
+/* line 95, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop input[type=range] {
+  margin-top: 20px;
+}
+/* line 97, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop input[type=text].weight {
+  margin-right: 10%;
+  width: 10%;
+}
+/* line 100, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop input[type=text].time {
+  margin-right: 5%;
+  width: 15%;
+}
+/* line 103, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop input[type=range].weight {
+  float: left;
+  width: 50%;
+}
+/* line 106, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.hops .hop input[type=range].time {
+  float: right;
+  width: 40%;
+}
+/* line 114, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.mash_and_sparge input, section.steps section.step.mash_and_sparge select {
+  width: 100%;
+}
+/* line 116, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.mash_and_sparge input[type=range] {
+  margin-top: 20px;
+}
+/* line 118, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.mash_and_sparge .wrap {
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+/* line 121, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.mash_and_sparge .fields {
+  width: 45%;
+}
+/* line 123, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.mash_and_sparge .fields:nth-child(1) {
+  float: left;
+}
+/* line 125, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.mash_and_sparge .fields:nth-child(2) {
+  float: right;
+}
+/* line 132, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation input[type=range] {
+  margin-top: 20px;
+}
+/* line 134, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .yeasts {
+  margin-bottom: 50px;
+}
+/* line 136, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .yeasts a {
+  float: right;
+}
+/* line 138, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .fermentations {
+  margin-bottom: 50px;
+}
+/* line 140, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .fermentations .wrap {
+  overflow: hidden;
+}
+/* line 142, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .fermentations .wrap .fields {
+  float: left;
+  width: 45%;
+}
+/* line 145, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .fermentations .wrap .fields input {
+  width: 100%;
+}
+/* line 147, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .fermentations .wrap .fields:nth-child(even) {
+  float: right;
+}
+/* line 149, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .fermentations a {
+  float: right;
+}
+/* line 151, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping {
+  overflow: hidden;
+  width: 100%;
+}
+/* line 154, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .fields {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+/* line 157, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .fields label {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 160, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop {
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+/* line 163, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop input[type=text], section.steps section.step.fermentation .dry_hopping .hop select {
+  display: inline-block;
+}
+/* line 165, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop input[type=range] {
+  margin-top: 20px;
+}
+/* line 167, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop select {
+  margin-right: 3%;
+  width: 37%;
+}
+/* line 170, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop input[type=text].weight {
+  width: 10%;
+  margin-right: 10%;
+}
+/* line 173, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop input[type=text].time {
+  margin-right: 5%;
+  width: 15%;
+}
+/* line 176, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop input[type=range].weight {
+  float: left;
+  width: 50%;
+}
+/* line 179, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping .hop input[type=range].time {
+  float: right;
+  width: 40%;
+}
+/* line 182, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.fermentation .dry_hopping a {
+  float: right;
+}
+/* line 189, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing .wrap {
+  margin: 0 auto;
+  width: 50%;
+  overflow: hidden;
+}
+/* line 194, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing .wrap.radio_wrap .fields {
+  float: left;
+  width: 40%;
+}
+/* line 197, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing .wrap.radio_wrap .fields:nth-child(2) {
+  float: right;
+}
+/* line 199, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing .fields {
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+/* line 202, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing input {
+  width: 100%;
+}
+/* line 204, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing input[type=range] {
+  margin-top: 20px;
+}
+/* line 206, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing label {
+  display: inline-block;
+}
+/* line 208, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing div.custom_radio {
+  display: inline-block;
+}
+/* line 210, ../../../../../src/sass/builder/steps.sass */
+section.steps section.step.finishing div.kegged {
+  display: none;
+}

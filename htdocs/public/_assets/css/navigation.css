@@ -1,0 +1,115 @@
+/* line 5, ../../../../src/sass/navigation.sass */
+#nav_shadow {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 0.7s all ease-out;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* line 16, ../../../../src/sass/navigation.sass */
+#nav_shadow.on {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* line 20, ../../../../src/sass/navigation.sass */
+nav#main.open {
+  -webkit-transform: translateX(0%);
+}
+
+/* line 23, ../../../../src/sass/navigation.sass */
+nav#main {
+  -webkit-transform: translateX(-97%);
+  -webkit-transition: 0.7s all ease-out;
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -khtml-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #c8c8c8));
+  background-image: -webkit-linear-gradient(#ffffff, #c8c8c8);
+  background-image: -moz-linear-gradient(#ffffff, #c8c8c8);
+  background-image: -o-linear-gradient(#ffffff, #c8c8c8);
+  background-image: -ms-linear-gradient(#ffffff, #c8c8c8);
+  background-image: linear-gradient(#ffffff, #c8c8c8);
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
+  z-index: 3;
+  position: absolute;
+  height: 380px;
+  width: 200px;
+  background-color: white;
+  top: 25%;
+}
+/* line 35, ../../../../src/sass/navigation.sass */
+nav#main .handle {
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -khtml-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
+  position: absolute;
+  right: -12px;
+  top: 40%;
+  width: 12px;
+  height: 60px;
+  background: url(../img/handle.png) repeat;
+}
+/* line 44, ../../../../src/sass/navigation.sass */
+nav#main .wrap {
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
+  margin-top: 3%;
+  width: 97%;
+  height: 97%;
+  background: #313237 url(../img/carbon_fiber_20.png);
+}
+/* line 50, ../../../../src/sass/navigation.sass */
+nav#main .wrap a.active {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a5b0c0), color-stop(100%, #7b8ba2));
+  background-image: -webkit-linear-gradient(#a5b0c0, #7b8ba2);
+  background-image: -moz-linear-gradient(#a5b0c0, #7b8ba2);
+  background-image: -o-linear-gradient(#a5b0c0, #7b8ba2);
+  background-image: -ms-linear-gradient(#a5b0c0, #7b8ba2);
+  background-image: linear-gradient(#a5b0c0, #7b8ba2);
+}
+/* line 52, ../../../../src/sass/navigation.sass */
+nav#main .wrap a {
+  -moz-border-radius: 0 100px 100px 0;
+  -webkit-border-radius: 0 100px 100px 0;
+  -o-border-radius: 0 100px 100px 0;
+  -ms-border-radius: 0 100px 100px 0;
+  -khtml-border-radius: 0 100px 100px 0;
+  border-radius: 0 100px 100px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
+  -o-box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #35393e), color-stop(100%, #25272a));
+  background-image: -webkit-linear-gradient(#35393e, #25272a);
+  background-image: -moz-linear-gradient(#35393e, #25272a);
+  background-image: -o-linear-gradient(#35393e, #25272a);
+  background-image: -ms-linear-gradient(#35393e, #25272a);
+  background-image: linear-gradient(#35393e, #25272a);
+  display: inline-block;
+  margin-top: 10%;
+  padding: 9%;
+  width: 75%;
+}
