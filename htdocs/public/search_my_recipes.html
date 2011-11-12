@@ -1,0 +1,126 @@
+<!DOCTYPE>
+<html lang='en-US'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='' />
+		<meta name='keywords' content='' />
+		<meta name='author' content='' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0' />
+		<meta name='apple-mobile-web-app-capable' content='yes'/>
+		<title>Beer Builder</title>
+		<link rel='stylesheet' media='screen' href='_assets/css/default.css' />
+		<link rel='stylesheet' media='screen' href='_assets/css/builder/base.css' />
+	</head>
+	<body class='search'>
+	
+		<nav id='main'>
+			<div class='handle'></div>
+			<div class='wrap'>
+				<a class='active' href='#'>Build a Beer</a>
+				<a href='#'>My Recipes</a>
+				<a href='#'>All Recipes</a>
+				<a href='#'>Settings</a>
+				<a href='#'>Resources</a>
+			</div>
+		</nav>
+		<div id='nav_shadow'></div>
+
+		<section id='content'>
+			<div class='search_wrap'>
+				<input type='search' placeholder='Search'/>
+			</div>
+			
+			<div id='results'>
+				<ul id='table_head'>
+					<li>Date Brewed</li>
+					<li>Name</li>
+					<li>My Rating</li>
+				</ul>
+				<div class='border'></div>
+				<ul id='recipe_list'>
+					<li>
+						<h3 class='date'>05/30/2011</h3>
+						<h3 class='name'>Fat Sally's Breakfast</h3>
+						<div class='rating'>
+							<div class='star on'></div>
+							<div class='star on'></div>
+							<div class='star on'></div>
+							<div class='star'></div>
+							<div class='star'></div>
+						</div>
+					</li>
+					<li>
+						<h3 class='date'>05/30/2011</h3>
+						<h3 class='name'>Fat Sally's Breakfast</h3>
+						<div class='rating'>
+							<div class='star on'></div>
+							<div class='star on'></div>
+							<div class='star on'></div>
+							<div class='star'></div>
+							<div class='star'></div>
+						</div>
+					</li>
+					<li>
+						<h3 class='date'>05/30/2011</h3>
+						<h3 class='name'>Fat Sally's Breakfast</h3>
+						<div class='rating'>
+							<div class='star on'></div>
+							<div class='star on'></div>
+							<div class='star on'></div>
+							<div class='star'></div>
+							<div class='star'></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<script src='_assets/js/dependencies/zepto.js'></script>
+		<script src='_assets/js/dependencies/json2.js'></script>
+		<script src='_assets/js/dependencies/underscore.js'></script>
+		<script src='_assets/js/dependencies/backbone.js'></script>
+		<script src='_assets/js/dependencies/utilities.js'></script>
+
+		<script src='_assets/js/classes/builder/beer_style.js'></script>
+		<script src='_assets/js/classes/builder/srm_lookup.js'></script>
+		<script src='_assets/js/classes/builder/grain.js'></script>
+		<script src='_assets/js/classes/builder/hop.js'></script>
+		<script src='_assets/js/classes/builder/yeast.js'></script>
+		<script src='_assets/js/classes/builder/properties.js'></script>
+		<script src='_assets/js/classes/builder/recipe.js'></script>
+		<script src='_assets/js/classes/builder/builder.js'></script>
+
+		<script src='_assets/js/classes/app.js'></script>
+		
+		<script type='text/template' id='grains_view'>
+			<select></select>
+			<div class='input_wrapper'>
+				<input type='text' class='weight' value='0' />
+			</div>
+			<div class='proportion'>0%</div>
+			<a class='delete' href='#'>Delete</a>
+			<div class='range_wrapper'>
+				<input type='range' class='range' min='0' max='10' step='.1' value='0'/>
+			</div>
+		</script>
+		
+		<script type='text/template' id='hops_view'>
+			<select></select>
+			<div class='weight_wrapper'>
+				<input type='text' class='weight' value='0' />
+			</div>
+			<div class='time_wrapper'>
+				<input type='text' class='time' value='0' />
+			</div>
+			<div class='proportion'>0%</div>
+			<a class='delete' href='#'>Delete</a>
+			<div class='weight_range_wrapper'>
+				<input type='range' class='weight' min='0' max='3' step='.1' value='0' />
+			</div>
+			<div class='time_range_wrapper'>
+				<input type='range' class='time' min='0' max='90' step='1' value='0' />
+			</div>
+		</script>
+
+	</body>
+</html>

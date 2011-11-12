@@ -1,3 +1,19 @@
+/* line 37, ../../../../src/sass/mixins.sass */
+.border {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
+  height: 4px;
+}
+
 /* line 5, ../../../../src/sass/navigation.sass */
 #nav_shadow {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);

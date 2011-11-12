@@ -1,127 +1,146 @@
 @import compass/css3
 @import compass/utilities
 @import mixins
+@import susy
 
-//TODO - look at making 2.75% a var
-//TODO - look at moving opacity .25 to a var?
+$total-cols             : 16
+$col-width              : 3em
+$gutter-width           : .5em
+$side-gutter-width      : 2em
+$show-grid-backgrounds  : true
+
 //TODO - look at compass transitions
 
-a#save_recipe
-	+button('green', false)
-	display: block
-	margin: auto
-	width: 25%
-	text-align: center
-	font-size: 200%
+body.builder
 
-h1#beer_name
-	+opacity(.5)
-	margin-top: 30px
-	font-size: 300%
-	font-weight: bold
-	text-align: center
-	text-shadow: 1px 1px 3px rgba(0,0,0,.8)
-
-aside#beer_attributes
-	position: relative
-	padding-top: 2.75%
-	margin-bottom: 2.75%
-	height: 64px
-	#srm_panel
-		+border-radius(5px 0 0 5px)
-		+box-shadow(rgba(0,0,0,.2) 0 0 2px 2px)
-		+background-image(linear-gradient(rgba(255,255,255,1), rgba(180,180,180,1)))
-		position: absolute
-		top: 0
-		right: 0
-		margin-top: 20%
-		width: 15%
-		background-color: #fff
-		height: 80%
-		overflow: hidden
-		div
-			+border-radius(5px 0 0 5px)
-			position: absolute
-			left: 0
-			top: 0
-			width: 60%
-			height: 100%
-			background-color: white
-			border-right: 1px solid #fff
-		div.highlight
-			+background-image(linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,0)))
-	
-	dl:first-child
-		margin-left: 6%
-	dl
-		display: inline-block
-		width: 25%
-		dt
-			+opacity(.5)
-			display: inline-block
-			margin-bottom: 3%
-			width: 70%
-		dd
-			display: inline-block
-			width: 20%
-
-aside#beer_character.closed
-	height: 40px
-	.wrap
-		height: 35%
-			
-aside#beer_character
-	-webkit-transition: .5s all ease-out
-	margin-left: 6%
-	height: 130px
-	.handle
-		+border-radius(0 0 5px 5px)
-		+box-shadow(rgba(0,0,0,.3) 0 2px 1px 1px)
+	a#save_recipe
+		+button('green', false)
+		display: block
+		width: 150px
 		margin: auto
-		width: 60px
-		height: 12px
-		background: url(../../img/handle.png) repeat
-	.wrap
-		-webkit-transition: .5s all ease-out
-		+border-radius(5px 0 0 5px)
-		+box-shadow(rgba(0,0,0,.4) 0 0 3px 3px inset, rgba(255,255,255,.15) 0 0 6px 3px)
-		height: 100%
-		background: $gray url(../../img/carbon_fiber_20.png) repeat
-		overflow: hidden
-		li
-			display: block
-			margin: 2% 0 0 2%
-			span.title
-				+opacity(.25)
-				width: 20%
-				display: inline-block
-	
-nav#steps
-	+border-radius(4px)
-	+single-box-shadow(rgba(0,0,0,.25), 0, 0, 4px, 4px)
-	+background-image(linear-gradient(rgba(255,255,255,1), rgba(180,180,180,1)))
-	position: absolute
-	bottom: 2.75%
-	left: 2.75%
-	width: 90%
-	font-size: 80%
-	li
-		+single-box-shadow(rgba(0,0,0,.25), 1px, 0, 1px, 1px)
-		display: inline-block
-		width: 14%
-		padding: 20px 0
 		text-align: center
-		color: $gray
-		vertical-align: top
-	li:first-child, li:last-child
-		width: 5%
-		text-indent: -999%
-		-webkit-background-size: 40% auto
-	li:first-child
-		background: url(../../img/shape_arrow_left.png) no-repeat center center
-	li:last-child
-		+single-box-shadow('none')
-		float: right
-		background: url(../../img/shape_arrow_right.png) no-repeat center center
+		font-size: 130%
+
+	h1#beer_name
+		+opacity(.5)
+		margin: 30px 0
+		height: 70px
+		font-size: 300%
+		font-weight: bold
+		text-align: center
+		text-shadow: 1px 1px 3px rgba(0,0,0,.8)
+
+	aside#beer_attributes
+		position: relative
+		overflow: hidden
+		padding-top: 25px
+		margin-bottom: 25px
+	
+		.wrap
+			@include full
+			overflow: hidden
+		dl
+			@include columns(4, 16)
+			dt
+				@include columns(2, 4)
+				+opacity(.5)
+				margin-bottom: 5%
+				font-size: 90%
+			dd
+				@include columns(2, 4)
+				margin-right: 0
+				text-align: right
+		dl:nth-child(2), dl:nth-child(3)
+			@include columns(3, 16)
+			@include prefix(1, 16)
+			
+				
+		#srm_panel
+			@include columns(2, 16)
+			+border-radius(5px)
+			+box-shadow(rgba(0,0,0,.2) 0 0 2px 2px)
+			+background-image(linear-gradient(rgba(255,255,255,1), rgba(180,180,180,1)))
+			float: right
+			position: relative
+			margin-right: 0
+			height: 70px
+			overflow: hidden
+			div
+				+border-radius(5px)
+				position: absolute
+				left: 5%
+				top: 5.5%
+				width: 90%
+				height: 90%
+				background-color: white
+			div.highlight
+				+background-image(linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,0)))
+
+	aside#beer_character.closed
+		height: 40px
+		.wrap
+			height: 35%
+			
+	aside#beer_character	
+		-webkit-transition: .5s all ease-out
+		@include alpha
+		z-index: 2
+		position: relative
+		height: 130px
+		.handle
+			-webkit-transform: translateX(-20px)
+			+border-radius(0 0 5px 5px)
+			+box-shadow(rgba(0,0,0,.3) 0 2px 1px 1px)
+			margin: auto
+			width: 60px
+			height: 12px
+			background: url(../../img/handle.png) repeat
+		.wrap
+			-webkit-transition: .5s all ease-out
+			+border-radius(5px 0 0 5px)
+			+box-shadow(rgba(0,0,0,.4) 0 0 3px 3px inset, rgba(255,255,255,.15) 0 0 6px 3px)
+			height: 100%
+			background: $gray url(../../img/carbon_fiber_20.png) repeat
+			overflow: hidden
+			li:first-child
+				margin-top: 15px
+			li
+				@include columns(14, 15)
+				@include prefix(.25)
+				float: none
+				display: block
+				margin-bottom: 15px
+				span.title
+					@include columns(3.25, 15)
+					+opacity(.25)
+					display: inline-block
+					float: none
+	
+	nav#steps
+		@include full
+		+border-radius(4px)
+		+single-box-shadow(rgba(0,0,0,.25), 0, 0, 4px, 4px)
+		+background-image(linear-gradient(rgba(255,255,255,1), rgba(180,180,180,1)))
+		height: 55px
+		overflow: hidden
+		font-size: 80%
+		li
+			+single-box-shadow(rgba(0,0,0,.25), 1px, 0, 1px, 1px)
+			display: inline-block
+			width: 14%
+			padding: 20px 0
+			text-align: center
+			color: $gray
+			vertical-align: top
+		li:first-child, li:last-child
+			width: 5%
+			text-indent: -999%
+			-webkit-background-size: 40% auto
+		li:first-child
+			background: url(../../img/shape_arrow_left.png) no-repeat center center
+		li:last-child
+			+single-box-shadow('none')
+			float: right
+			background: url(../../img/shape_arrow_right.png) no-repeat center center
 
 @import builder/steps

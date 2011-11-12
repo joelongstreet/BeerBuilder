@@ -22,4 +22,6 @@ $(function(){
 	
 	var my_app = new app();
 	
+	console.log($('#content').width());
+	
 });

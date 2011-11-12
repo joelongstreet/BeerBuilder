@@ -1,3 +1,6 @@
+@import compass/css3
+@import compass/utilities
+
 $orange:			rgba(255,204,097,1)
 $green:				rgba(184,216,114,1)
 $blue:				rgba(124,207,235,1)
@@ -19,8 +22,9 @@ $light_gray:	#4c5058
 		background-color: $blue
 	//TODO - this isn't really working out. go back and fix it
 	span.add
-		margin: 0px -20px 0 20px
 		display: inline-block
+		float: right
+		margin: -15px -20px 0 20px
 		width: 25px
 		height: 25px
 		font-size: 200%
@@ -29,3 +33,9 @@ $light_gray:	#4c5058
 
 @mixin radial_brushed_metal
 	background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 6%, hsla(0,0%,100%, .1) 7.5%),	 -webkit-repeating-linear-gradient(left, hsla(0,0%, 0%,0) 0%, hsla(0,0%, 0%,0) 4%, hsla(0,0%, 0%,.03) 4.5%), -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%), -webkit-linear-gradient(-90deg, hsl(0,0%,78%) 0%, hsl(0,0%,90%) 47%, hsl(0,0%,78%) 53%, hsl(0,0%,70%)100%)
+
+.border
+	+border-radius(5px 0 0 5px)
+	+box-shadow(rgba(0,0,0,.4) 0 0 3px 3px inset, rgba(255,255,255,.2) 0 1px 1px 1px)
+	background: $gray url(../../img/carbon_fiber_20.png) repeat
+	height: 4px

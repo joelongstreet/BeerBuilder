@@ -2,9 +2,16 @@
 @import compass/css3
 @import compass/utilities
 @import mixins
+@import susy
+
+$total-cols             : 16
+$col-width              : 3em
+$gutter-width           : .5em
+$side-gutter-width      : 2em
+$show-grid-backgrounds  : true
 
 body
-	+single-box-shadow(rgba(0,0,0,.85), 0, 0, 150px, 50px, inset)
+	/*+single-box-shadow(rgba(0,0,0,.85), 0, 0, 150px, 50px, inset)*/
 	font-family: HelveticaNeue-CondensedBold, HelveiticaNeue, Helvetica, Arial, Verdana, sans-serif
 	font-size: 130%
 	color: #fff
@@ -15,14 +22,18 @@ body
 
 
 section#content
+	@include susy-grid-background
+	@include container
 	z-index: 1
 	position: relative
 	height: 100%
-	width: 100%
+	background-color: rgba(255,0,0,.1)
 
 a
 	color: inherit
 	text-decoration: none
-	
+
 @import navigation
 @import form_fields
+@import search
+@import recipe_detail

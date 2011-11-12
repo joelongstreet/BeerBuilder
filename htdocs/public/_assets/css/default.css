@@ -63,12 +63,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 6, ../../../../src/sass/default.sass */
+/* line 37, ../../../../src/sass/mixins.sass */
+.border {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
+  height: 4px;
+}
+
+/* line 13, ../../../../src/sass/default.sass */
 body {
-  -moz-box-shadow: inset 0 0 150px 50px rgba(0, 0, 0, 0.85);
-  -webkit-box-shadow: inset 0 0 150px 50px rgba(0, 0, 0, 0.85);
-  -o-box-shadow: inset 0 0 150px 50px rgba(0, 0, 0, 0.85);
-  box-shadow: inset 0 0 150px 50px rgba(0, 0, 0, 0.85);
+  /*+single-box-shadow(rgba(0,0,0,.85), 0, 0, 150px, 50px, inset) */
   font-family: HelveticaNeue-CondensedBold, HelveiticaNeue, Helvetica, Arial, Verdana, sans-serif;
   font-size: 130%;
   color: white;
@@ -78,18 +91,51 @@ body {
   background: #4c5058 url(../img/bg_grid_05.png) repeat;
 }
 
-/* line 17, ../../../../src/sass/default.sass */
+/* line 24, ../../../../src/sass/default.sass */
 section#content {
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(3.361%, rgba(0, 0, 0, 0)), color-stop(3.361%, rgba(100, 100, 225, 0.25)), color-stop(8.403%, rgba(100, 100, 225, 0.25)), color-stop(8.403%, rgba(0, 0, 0, 0)), color-stop(9.244%, rgba(0, 0, 0, 0)), color-stop(9.244%, rgba(100, 100, 225, 0.25)), color-stop(14.286%, rgba(100, 100, 225, 0.25)), color-stop(14.286%, rgba(0, 0, 0, 0)), color-stop(15.126%, rgba(0, 0, 0, 0)), color-stop(15.126%, rgba(100, 100, 225, 0.25)), color-stop(20.168%, rgba(100, 100, 225, 0.25)), color-stop(20.168%, rgba(0, 0, 0, 0)), color-stop(21.008%, rgba(0, 0, 0, 0)), color-stop(21.008%, rgba(100, 100, 225, 0.25)), color-stop(26.05%, rgba(100, 100, 225, 0.25)), color-stop(26.05%, rgba(0, 0, 0, 0)), color-stop(26.891%, rgba(0, 0, 0, 0)), color-stop(26.891%, rgba(100, 100, 225, 0.25)), color-stop(31.933%, rgba(100, 100, 225, 0.25)), color-stop(31.933%, rgba(0, 0, 0, 0)), color-stop(32.773%, rgba(0, 0, 0, 0)), color-stop(32.773%, rgba(100, 100, 225, 0.25)), color-stop(37.815%, rgba(100, 100, 225, 0.25)), color-stop(37.815%, rgba(0, 0, 0, 0)), color-stop(38.655%, rgba(0, 0, 0, 0)), color-stop(38.655%, rgba(100, 100, 225, 0.25)), color-stop(43.697%, rgba(100, 100, 225, 0.25)), color-stop(43.697%, rgba(0, 0, 0, 0)), color-stop(44.538%, rgba(0, 0, 0, 0)), color-stop(44.538%, rgba(100, 100, 225, 0.25)), color-stop(49.58%, rgba(100, 100, 225, 0.25)), color-stop(49.58%, rgba(0, 0, 0, 0)), color-stop(50.42%, rgba(0, 0, 0, 0)), color-stop(50.42%, rgba(100, 100, 225, 0.25)), color-stop(55.462%, rgba(100, 100, 225, 0.25)), color-stop(55.462%, rgba(0, 0, 0, 0)), color-stop(56.303%, rgba(0, 0, 0, 0)), color-stop(56.303%, rgba(100, 100, 225, 0.25)), color-stop(61.345%, rgba(100, 100, 225, 0.25)), color-stop(61.345%, rgba(0, 0, 0, 0)), color-stop(62.185%, rgba(0, 0, 0, 0)), color-stop(62.185%, rgba(100, 100, 225, 0.25)), color-stop(67.227%, rgba(100, 100, 225, 0.25)), color-stop(67.227%, rgba(0, 0, 0, 0)), color-stop(68.067%, rgba(0, 0, 0, 0)), color-stop(68.067%, rgba(100, 100, 225, 0.25)), color-stop(73.109%, rgba(100, 100, 225, 0.25)), color-stop(73.109%, rgba(0, 0, 0, 0)), color-stop(73.95%, rgba(0, 0, 0, 0)), color-stop(73.95%, rgba(100, 100, 225, 0.25)), color-stop(78.992%, rgba(100, 100, 225, 0.25)), color-stop(78.992%, rgba(0, 0, 0, 0)), color-stop(79.832%, rgba(0, 0, 0, 0)), color-stop(79.832%, rgba(100, 100, 225, 0.25)), color-stop(84.874%, rgba(100, 100, 225, 0.25)), color-stop(84.874%, rgba(0, 0, 0, 0)), color-stop(85.714%, rgba(0, 0, 0, 0)), color-stop(85.714%, rgba(100, 100, 225, 0.25)), color-stop(90.756%, rgba(100, 100, 225, 0.25)), color-stop(90.756%, rgba(0, 0, 0, 0)), color-stop(91.597%, rgba(0, 0, 0, 0)), color-stop(91.597%, rgba(100, 100, 225, 0.25)), color-stop(96.639%, rgba(100, 100, 225, 0.25)), color-stop(96.639%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 3.361%, rgba(100, 100, 225, 0.25) 3.361%, rgba(100, 100, 225, 0.25) 8.403%, rgba(0, 0, 0, 0) 8.403%, rgba(0, 0, 0, 0) 9.244%, rgba(100, 100, 225, 0.25) 9.244%, rgba(100, 100, 225, 0.25) 14.286%, rgba(0, 0, 0, 0) 14.286%, rgba(0, 0, 0, 0) 15.126%, rgba(100, 100, 225, 0.25) 15.126%, rgba(100, 100, 225, 0.25) 20.168%, rgba(0, 0, 0, 0) 20.168%, rgba(0, 0, 0, 0) 21.008%, rgba(100, 100, 225, 0.25) 21.008%, rgba(100, 100, 225, 0.25) 26.05%, rgba(0, 0, 0, 0) 26.05%, rgba(0, 0, 0, 0) 26.891%, rgba(100, 100, 225, 0.25) 26.891%, rgba(100, 100, 225, 0.25) 31.933%, rgba(0, 0, 0, 0) 31.933%, rgba(0, 0, 0, 0) 32.773%, rgba(100, 100, 225, 0.25) 32.773%, rgba(100, 100, 225, 0.25) 37.815%, rgba(0, 0, 0, 0) 37.815%, rgba(0, 0, 0, 0) 38.655%, rgba(100, 100, 225, 0.25) 38.655%, rgba(100, 100, 225, 0.25) 43.697%, rgba(0, 0, 0, 0) 43.697%, rgba(0, 0, 0, 0) 44.538%, rgba(100, 100, 225, 0.25) 44.538%, rgba(100, 100, 225, 0.25) 49.58%, rgba(0, 0, 0, 0) 49.58%, rgba(0, 0, 0, 0) 50.42%, rgba(100, 100, 225, 0.25) 50.42%, rgba(100, 100, 225, 0.25) 55.462%, rgba(0, 0, 0, 0) 55.462%, rgba(0, 0, 0, 0) 56.303%, rgba(100, 100, 225, 0.25) 56.303%, rgba(100, 100, 225, 0.25) 61.345%, rgba(0, 0, 0, 0) 61.345%, rgba(0, 0, 0, 0) 62.185%, rgba(100, 100, 225, 0.25) 62.185%, rgba(100, 100, 225, 0.25) 67.227%, rgba(0, 0, 0, 0) 67.227%, rgba(0, 0, 0, 0) 68.067%, rgba(100, 100, 225, 0.25) 68.067%, rgba(100, 100, 225, 0.25) 73.109%, rgba(0, 0, 0, 0) 73.109%, rgba(0, 0, 0, 0) 73.95%, rgba(100, 100, 225, 0.25) 73.95%, rgba(100, 100, 225, 0.25) 78.992%, rgba(0, 0, 0, 0) 78.992%, rgba(0, 0, 0, 0) 79.832%, rgba(100, 100, 225, 0.25) 79.832%, rgba(100, 100, 225, 0.25) 84.874%, rgba(0, 0, 0, 0) 84.874%, rgba(0, 0, 0, 0) 85.714%, rgba(100, 100, 225, 0.25) 85.714%, rgba(100, 100, 225, 0.25) 90.756%, rgba(0, 0, 0, 0) 90.756%, rgba(0, 0, 0, 0) 91.597%, rgba(100, 100, 225, 0.25) 91.597%, rgba(100, 100, 225, 0.25) 96.639%, rgba(0, 0, 0, 0) 96.639%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 3.361%, rgba(100, 100, 225, 0.25) 3.361%, rgba(100, 100, 225, 0.25) 8.403%, rgba(0, 0, 0, 0) 8.403%, rgba(0, 0, 0, 0) 9.244%, rgba(100, 100, 225, 0.25) 9.244%, rgba(100, 100, 225, 0.25) 14.286%, rgba(0, 0, 0, 0) 14.286%, rgba(0, 0, 0, 0) 15.126%, rgba(100, 100, 225, 0.25) 15.126%, rgba(100, 100, 225, 0.25) 20.168%, rgba(0, 0, 0, 0) 20.168%, rgba(0, 0, 0, 0) 21.008%, rgba(100, 100, 225, 0.25) 21.008%, rgba(100, 100, 225, 0.25) 26.05%, rgba(0, 0, 0, 0) 26.05%, rgba(0, 0, 0, 0) 26.891%, rgba(100, 100, 225, 0.25) 26.891%, rgba(100, 100, 225, 0.25) 31.933%, rgba(0, 0, 0, 0) 31.933%, rgba(0, 0, 0, 0) 32.773%, rgba(100, 100, 225, 0.25) 32.773%, rgba(100, 100, 225, 0.25) 37.815%, rgba(0, 0, 0, 0) 37.815%, rgba(0, 0, 0, 0) 38.655%, rgba(100, 100, 225, 0.25) 38.655%, rgba(100, 100, 225, 0.25) 43.697%, rgba(0, 0, 0, 0) 43.697%, rgba(0, 0, 0, 0) 44.538%, rgba(100, 100, 225, 0.25) 44.538%, rgba(100, 100, 225, 0.25) 49.58%, rgba(0, 0, 0, 0) 49.58%, rgba(0, 0, 0, 0) 50.42%, rgba(100, 100, 225, 0.25) 50.42%, rgba(100, 100, 225, 0.25) 55.462%, rgba(0, 0, 0, 0) 55.462%, rgba(0, 0, 0, 0) 56.303%, rgba(100, 100, 225, 0.25) 56.303%, rgba(100, 100, 225, 0.25) 61.345%, rgba(0, 0, 0, 0) 61.345%, rgba(0, 0, 0, 0) 62.185%, rgba(100, 100, 225, 0.25) 62.185%, rgba(100, 100, 225, 0.25) 67.227%, rgba(0, 0, 0, 0) 67.227%, rgba(0, 0, 0, 0) 68.067%, rgba(100, 100, 225, 0.25) 68.067%, rgba(100, 100, 225, 0.25) 73.109%, rgba(0, 0, 0, 0) 73.109%, rgba(0, 0, 0, 0) 73.95%, rgba(100, 100, 225, 0.25) 73.95%, rgba(100, 100, 225, 0.25) 78.992%, rgba(0, 0, 0, 0) 78.992%, rgba(0, 0, 0, 0) 79.832%, rgba(100, 100, 225, 0.25) 79.832%, rgba(100, 100, 225, 0.25) 84.874%, rgba(0, 0, 0, 0) 84.874%, rgba(0, 0, 0, 0) 85.714%, rgba(100, 100, 225, 0.25) 85.714%, rgba(100, 100, 225, 0.25) 90.756%, rgba(0, 0, 0, 0) 90.756%, rgba(0, 0, 0, 0) 91.597%, rgba(100, 100, 225, 0.25) 91.597%, rgba(100, 100, 225, 0.25) 96.639%, rgba(0, 0, 0, 0) 96.639%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 3.361%, rgba(100, 100, 225, 0.25) 3.361%, rgba(100, 100, 225, 0.25) 8.403%, rgba(0, 0, 0, 0) 8.403%, rgba(0, 0, 0, 0) 9.244%, rgba(100, 100, 225, 0.25) 9.244%, rgba(100, 100, 225, 0.25) 14.286%, rgba(0, 0, 0, 0) 14.286%, rgba(0, 0, 0, 0) 15.126%, rgba(100, 100, 225, 0.25) 15.126%, rgba(100, 100, 225, 0.25) 20.168%, rgba(0, 0, 0, 0) 20.168%, rgba(0, 0, 0, 0) 21.008%, rgba(100, 100, 225, 0.25) 21.008%, rgba(100, 100, 225, 0.25) 26.05%, rgba(0, 0, 0, 0) 26.05%, rgba(0, 0, 0, 0) 26.891%, rgba(100, 100, 225, 0.25) 26.891%, rgba(100, 100, 225, 0.25) 31.933%, rgba(0, 0, 0, 0) 31.933%, rgba(0, 0, 0, 0) 32.773%, rgba(100, 100, 225, 0.25) 32.773%, rgba(100, 100, 225, 0.25) 37.815%, rgba(0, 0, 0, 0) 37.815%, rgba(0, 0, 0, 0) 38.655%, rgba(100, 100, 225, 0.25) 38.655%, rgba(100, 100, 225, 0.25) 43.697%, rgba(0, 0, 0, 0) 43.697%, rgba(0, 0, 0, 0) 44.538%, rgba(100, 100, 225, 0.25) 44.538%, rgba(100, 100, 225, 0.25) 49.58%, rgba(0, 0, 0, 0) 49.58%, rgba(0, 0, 0, 0) 50.42%, rgba(100, 100, 225, 0.25) 50.42%, rgba(100, 100, 225, 0.25) 55.462%, rgba(0, 0, 0, 0) 55.462%, rgba(0, 0, 0, 0) 56.303%, rgba(100, 100, 225, 0.25) 56.303%, rgba(100, 100, 225, 0.25) 61.345%, rgba(0, 0, 0, 0) 61.345%, rgba(0, 0, 0, 0) 62.185%, rgba(100, 100, 225, 0.25) 62.185%, rgba(100, 100, 225, 0.25) 67.227%, rgba(0, 0, 0, 0) 67.227%, rgba(0, 0, 0, 0) 68.067%, rgba(100, 100, 225, 0.25) 68.067%, rgba(100, 100, 225, 0.25) 73.109%, rgba(0, 0, 0, 0) 73.109%, rgba(0, 0, 0, 0) 73.95%, rgba(100, 100, 225, 0.25) 73.95%, rgba(100, 100, 225, 0.25) 78.992%, rgba(0, 0, 0, 0) 78.992%, rgba(0, 0, 0, 0) 79.832%, rgba(100, 100, 225, 0.25) 79.832%, rgba(100, 100, 225, 0.25) 84.874%, rgba(0, 0, 0, 0) 84.874%, rgba(0, 0, 0, 0) 85.714%, rgba(100, 100, 225, 0.25) 85.714%, rgba(100, 100, 225, 0.25) 90.756%, rgba(0, 0, 0, 0) 90.756%, rgba(0, 0, 0, 0) 91.597%, rgba(100, 100, 225, 0.25) 91.597%, rgba(100, 100, 225, 0.25) 96.639%, rgba(0, 0, 0, 0) 96.639%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0) 3.361%, rgba(100, 100, 225, 0.25) 3.361%, rgba(100, 100, 225, 0.25) 8.403%, rgba(0, 0, 0, 0) 8.403%, rgba(0, 0, 0, 0) 9.244%, rgba(100, 100, 225, 0.25) 9.244%, rgba(100, 100, 225, 0.25) 14.286%, rgba(0, 0, 0, 0) 14.286%, rgba(0, 0, 0, 0) 15.126%, rgba(100, 100, 225, 0.25) 15.126%, rgba(100, 100, 225, 0.25) 20.168%, rgba(0, 0, 0, 0) 20.168%, rgba(0, 0, 0, 0) 21.008%, rgba(100, 100, 225, 0.25) 21.008%, rgba(100, 100, 225, 0.25) 26.05%, rgba(0, 0, 0, 0) 26.05%, rgba(0, 0, 0, 0) 26.891%, rgba(100, 100, 225, 0.25) 26.891%, rgba(100, 100, 225, 0.25) 31.933%, rgba(0, 0, 0, 0) 31.933%, rgba(0, 0, 0, 0) 32.773%, rgba(100, 100, 225, 0.25) 32.773%, rgba(100, 100, 225, 0.25) 37.815%, rgba(0, 0, 0, 0) 37.815%, rgba(0, 0, 0, 0) 38.655%, rgba(100, 100, 225, 0.25) 38.655%, rgba(100, 100, 225, 0.25) 43.697%, rgba(0, 0, 0, 0) 43.697%, rgba(0, 0, 0, 0) 44.538%, rgba(100, 100, 225, 0.25) 44.538%, rgba(100, 100, 225, 0.25) 49.58%, rgba(0, 0, 0, 0) 49.58%, rgba(0, 0, 0, 0) 50.42%, rgba(100, 100, 225, 0.25) 50.42%, rgba(100, 100, 225, 0.25) 55.462%, rgba(0, 0, 0, 0) 55.462%, rgba(0, 0, 0, 0) 56.303%, rgba(100, 100, 225, 0.25) 56.303%, rgba(100, 100, 225, 0.25) 61.345%, rgba(0, 0, 0, 0) 61.345%, rgba(0, 0, 0, 0) 62.185%, rgba(100, 100, 225, 0.25) 62.185%, rgba(100, 100, 225, 0.25) 67.227%, rgba(0, 0, 0, 0) 67.227%, rgba(0, 0, 0, 0) 68.067%, rgba(100, 100, 225, 0.25) 68.067%, rgba(100, 100, 225, 0.25) 73.109%, rgba(0, 0, 0, 0) 73.109%, rgba(0, 0, 0, 0) 73.95%, rgba(100, 100, 225, 0.25) 73.95%, rgba(100, 100, 225, 0.25) 78.992%, rgba(0, 0, 0, 0) 78.992%, rgba(0, 0, 0, 0) 79.832%, rgba(100, 100, 225, 0.25) 79.832%, rgba(100, 100, 225, 0.25) 84.874%, rgba(0, 0, 0, 0) 84.874%, rgba(0, 0, 0, 0) 85.714%, rgba(100, 100, 225, 0.25) 85.714%, rgba(100, 100, 225, 0.25) 90.756%, rgba(0, 0, 0, 0) 90.756%, rgba(0, 0, 0, 0) 91.597%, rgba(100, 100, 225, 0.25) 91.597%, rgba(100, 100, 225, 0.25) 96.639%, rgba(0, 0, 0, 0) 96.639%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(left, rgba(0, 0, 0, 0) 3.361%, rgba(100, 100, 225, 0.25) 3.361%, rgba(100, 100, 225, 0.25) 8.403%, rgba(0, 0, 0, 0) 8.403%, rgba(0, 0, 0, 0) 9.244%, rgba(100, 100, 225, 0.25) 9.244%, rgba(100, 100, 225, 0.25) 14.286%, rgba(0, 0, 0, 0) 14.286%, rgba(0, 0, 0, 0) 15.126%, rgba(100, 100, 225, 0.25) 15.126%, rgba(100, 100, 225, 0.25) 20.168%, rgba(0, 0, 0, 0) 20.168%, rgba(0, 0, 0, 0) 21.008%, rgba(100, 100, 225, 0.25) 21.008%, rgba(100, 100, 225, 0.25) 26.05%, rgba(0, 0, 0, 0) 26.05%, rgba(0, 0, 0, 0) 26.891%, rgba(100, 100, 225, 0.25) 26.891%, rgba(100, 100, 225, 0.25) 31.933%, rgba(0, 0, 0, 0) 31.933%, rgba(0, 0, 0, 0) 32.773%, rgba(100, 100, 225, 0.25) 32.773%, rgba(100, 100, 225, 0.25) 37.815%, rgba(0, 0, 0, 0) 37.815%, rgba(0, 0, 0, 0) 38.655%, rgba(100, 100, 225, 0.25) 38.655%, rgba(100, 100, 225, 0.25) 43.697%, rgba(0, 0, 0, 0) 43.697%, rgba(0, 0, 0, 0) 44.538%, rgba(100, 100, 225, 0.25) 44.538%, rgba(100, 100, 225, 0.25) 49.58%, rgba(0, 0, 0, 0) 49.58%, rgba(0, 0, 0, 0) 50.42%, rgba(100, 100, 225, 0.25) 50.42%, rgba(100, 100, 225, 0.25) 55.462%, rgba(0, 0, 0, 0) 55.462%, rgba(0, 0, 0, 0) 56.303%, rgba(100, 100, 225, 0.25) 56.303%, rgba(100, 100, 225, 0.25) 61.345%, rgba(0, 0, 0, 0) 61.345%, rgba(0, 0, 0, 0) 62.185%, rgba(100, 100, 225, 0.25) 62.185%, rgba(100, 100, 225, 0.25) 67.227%, rgba(0, 0, 0, 0) 67.227%, rgba(0, 0, 0, 0) 68.067%, rgba(100, 100, 225, 0.25) 68.067%, rgba(100, 100, 225, 0.25) 73.109%, rgba(0, 0, 0, 0) 73.109%, rgba(0, 0, 0, 0) 73.95%, rgba(100, 100, 225, 0.25) 73.95%, rgba(100, 100, 225, 0.25) 78.992%, rgba(0, 0, 0, 0) 78.992%, rgba(0, 0, 0, 0) 79.832%, rgba(100, 100, 225, 0.25) 79.832%, rgba(100, 100, 225, 0.25) 84.874%, rgba(0, 0, 0, 0) 84.874%, rgba(0, 0, 0, 0) 85.714%, rgba(100, 100, 225, 0.25) 85.714%, rgba(100, 100, 225, 0.25) 90.756%, rgba(0, 0, 0, 0) 90.756%, rgba(0, 0, 0, 0) 91.597%, rgba(100, 100, 225, 0.25) 91.597%, rgba(100, 100, 225, 0.25) 96.639%, rgba(0, 0, 0, 0) 96.639%, rgba(0, 0, 0, 0) 100%);
+  background-position: left top;
+  *zoom: 1;
+  margin: auto;
+  width: 59.5em;
+  max-width: 100%;
   z-index: 1;
   position: relative;
   height: 100%;
-  width: 100%;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+/* line 38, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+section#content:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-/* line 23, ../../../../src/sass/default.sass */
+/* line 32, ../../../../src/sass/default.sass */
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* line 37, ../../../../src/sass/mixins.sass */
+.border {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
+  height: 4px;
 }
 
 /* line 5, ../../../../src/sass/navigation.sass */
@@ -208,6 +254,22 @@ nav#main .wrap a {
   width: 75%;
 }
 
+/* line 37, ../../../../src/sass/mixins.sass */
+.border {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
+  height: 4px;
+}
+
 /* line 5, ../../../../src/sass/form_fields.sass */
 label {
   display: block;
@@ -220,21 +282,28 @@ input, textarea, select {
   -webkit-box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.15);
   -o-box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-appearance: none;
   display: block;
-  width: 310px;
+  width: 100%;
   font-family: HelveticaNeue-CondensedBold, HelveiticaNeue, Helvetica, Arial, Verdana, sans-serif;
   font-size: 100%;
   color: white;
   background-color: #313237;
 }
 
-/* line 18, ../../../../src/sass/form_fields.sass */
+/* line 20, ../../../../src/sass/form_fields.sass */
 input[type=text] {
   padding: 8px;
   border: none;
 }
 
-/* line 22, ../../../../src/sass/form_fields.sass */
+/* line 24, ../../../../src/sass/form_fields.sass */
 input[type=range] {
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
@@ -255,35 +324,44 @@ input[type=range] {
   -webkit-appearance: none;
   overflow: visible;
   padding-bottom: 7px;
-  height: 14px;
+  height: 12px;
   border: 1px solid #313237;
 }
 
-/* line 32, ../../../../src/sass/form_fields.sass */
+/* line 34, ../../../../src/sass/form_fields.sass */
 input[type=range]::-webkit-slider-thumb {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -webkit-background-size: auto 100%;
+  margin-top: 7px;
+  width: 35px;
+  height: 35px;
+  background: url(../img/range_handle.png) no-repeat center center;
+}
+
+/* line 43, ../../../../src/sass/form_fields.sass */
+input[type=range]::-webkit-slider-range {
+  background-color: green;
+}
+
+/* line 46, ../../../../src/sass/form_fields.sass */
+input[type=search] {
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
   -o-border-radius: 100px;
   -ms-border-radius: 100px;
   -khtml-border-radius: 100px;
   border-radius: 100px;
-  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  background-image: -webkit-repeating-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.1) 7.5%), -webkit-repeating-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 4%, rgba(0, 0, 0, 0.03) 4.5%), -webkit-repeating-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1.2%, rgba(255, 255, 255, 0.15) 2.2%), -webkit-linear-gradient(-90deg, #c7c7c7 0%, #e6e6e6 47%, #c7c7c7 53%, #b3b3b3 100%);
-  -webkit-appearance: none;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #313237;
+  padding: 7px 10px;
+  border: none;
+  background: #313237 url(../img/search.png) no-repeat right center;
+  -webkit-background-size: auto 60%;
 }
 
-/* line 42, ../../../../src/sass/form_fields.sass */
-input[type=range]::-webkit-slider-range {
-  background-color: green;
-}
-
-/* line 45, ../../../../src/sass/form_fields.sass */
+/* line 53, ../../../../src/sass/form_fields.sass */
 select {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -297,7 +375,7 @@ select {
   padding: 8px;
 }
 
-/* line 52, ../../../../src/sass/form_fields.sass */
+/* line 60, ../../../../src/sass/form_fields.sass */
 .custom_checkbox, .custom_radio {
   -moz-box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -309,7 +387,7 @@ select {
   height: 40px;
 }
 
-/* line 59, ../../../../src/sass/form_fields.sass */
+/* line 67, ../../../../src/sass/form_fields.sass */
 .custom_radio {
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
@@ -318,20 +396,358 @@ select {
   -khtml-border-radius: 100px;
   border-radius: 100px;
 }
-/* line 61, ../../../../src/sass/form_fields.sass */
+/* line 69, ../../../../src/sass/form_fields.sass */
 .custom_radio .on {
+  -webkit-background-size: auto 100%;
+  background: url(../img/range_handle.png) no-repeat center center;
+  width: 35px;
+  height: 35px;
+  margin: 2.75px auto;
+}
+
+/* line 76, ../../../../src/sass/form_fields.sass */
+*:focus {
+  outline: none;
+}
+
+/* line 37, ../../../../src/sass/mixins.sass */
+.border {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
+  height: 4px;
+}
+
+/* line 14, ../../../../src/sass/search.sass */
+body.search .search_wrap {
+  padding-left: 25.225%;
+  display: inline;
+  float: left;
+  width: 49.55%;
+  margin-right: 0.901%;
+  margin: 50px 0;
+}
+/* line 19, ../../../../src/sass/search.sass */
+body.search #results {
+  margin-left: 3.361%;
+  padding-left: 6.306%;
+  display: inline;
+  float: left;
+  width: 87.387%;
+  margin-right: 0.901%;
+}
+/* line 24, ../../../../src/sass/search.sass */
+body.search #results .border {
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-right: 0.962%;
+  display: block;
+  float: none;
+  margin-right: 0;
+  margin-bottom: 25px;
+}
+/* line 31, ../../../../src/sass/search.sass */
+body.search #results ul#table_head {
+  display: block;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+/* line 35, ../../../../src/sass/search.sass */
+body.search #results ul#table_head li:nth-child(1) {
+  display: inline;
+  float: left;
+  width: 19.231%;
+  margin-right: 0.962%;
+}
+/* line 37, ../../../../src/sass/search.sass */
+body.search #results ul#table_head li:nth-child(2) {
+  display: inline;
+  float: left;
+  width: 52.885%;
+  margin-right: 0.962%;
+}
+/* line 39, ../../../../src/sass/search.sass */
+body.search #results ul#table_head li:nth-child(3) {
+  display: inline;
+  float: left;
+  width: 25.962%;
+  margin-right: 0.962%;
+  margin-right: 0;
+  text-align: right;
+}
+/* line 45, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list li {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+/* line 49, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list h3.date {
+  display: inline;
+  float: left;
+  width: 19.231%;
+  margin-right: 0.962%;
+}
+/* line 51, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list h3.name {
+  display: inline;
+  float: left;
+  width: 52.885%;
+  margin-right: 0.962%;
+}
+/* line 53, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list .rating {
+  display: inline;
+  float: left;
+  width: 25.962%;
+  margin-right: 0.962%;
+}
+
+/* line 37, ../../../../src/sass/mixins.sass */
+.border {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
+  height: 4px;
+}
+
+/* line 14, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail #recipe {
+  margin-left: 3.361%;
+  padding-left: 6.306%;
+  display: inline;
+  float: left;
+  width: 87.387%;
+  margin-right: 0.901%;
+  margin-top: 25px;
+}
+/* line 22, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail hgroup.name_date {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+/* line 25, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail hgroup.name_date h1 {
+  float: left;
+  font-size: 225%;
+}
+/* line 28, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail hgroup.name_date h2.date {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  float: right;
+  margin-top: 15px;
+  font-size: 125%;
+}
+/* line 38, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail .border {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  margin-bottom: 15px;
+}
+/* line 41, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail .border:nth-child(1) {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 44, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail h3 {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  margin-bottom: 15px;
+  font-size: 175%;
+  text-align: center;
+}
+/* line 49, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail h4 {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  margin-bottom: 20px;
+  font-size: 150%;
+}
+/* line 58, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes {
+  position: relative;
+  margin-bottom: 15px;
+}
+/* line 59, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes #srm_panel {
+  display: inline;
+  float: left;
+  width: 11.712%;
+  margin-right: 0.901%;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 2px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 2px 2px;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 0 2px 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 2px 2px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #b4b4b4));
+  background-image: -webkit-linear-gradient(#ffffff, #b4b4b4);
+  background-image: -moz-linear-gradient(#ffffff, #b4b4b4);
+  background-image: -o-linear-gradient(#ffffff, #b4b4b4);
+  background-image: -ms-linear-gradient(#ffffff, #b4b4b4);
+  background-image: linear-gradient(#ffffff, #b4b4b4);
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20% 0 0 0;
+  height: 75%;
+  overflow: hidden;
+}
+/* line 70, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes #srm_panel div {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  position: absolute;
+  left: 5%;
+  top: 5.5%;
+  width: 90%;
+  height: 90%;
+  background-color: white;
+}
+/* line 78, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes #srm_panel div.highlight {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.6)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+}
+/* line 83, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes .wrap {
+  overflow: hidden;
+}
+/* line 85, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes dl {
+  display: inline;
+  float: left;
+  width: 25.962%;
+  margin-right: 0.962%;
+}
+/* line 87, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes dl dt {
+  display: inline;
+  float: left;
+  width: 65%;
+  margin-right: 5%;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  margin-bottom: 15px;
+}
+/* line 91, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_attributes dl dd {
+  display: inline;
+  float: left;
+  width: 30%;
+  margin-right: 5%;
+  margin-right: 0;
+  text-align: right;
+}
+/* line 100, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_character, body.recipe_detail div#notes {
+  margin-bottom: 15px;
+}
+/* line 102, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_character li, body.recipe_detail div#notes li {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+/* line 105, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_character li .title, body.recipe_detail div#notes li .title {
+  display: inline;
+  float: left;
+  width: 19.231%;
+  margin-right: 0.962%;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+/* line 108, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail aside#beer_character li p, body.recipe_detail div#notes li p {
+  display: inline;
+  float: left;
+  width: 79.808%;
+  margin-right: 0.962%;
+  margin-right: 0;
+}
+/* line 117, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail footer a.duplicate {
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
   -o-border-radius: 100px;
   -ms-border-radius: 100px;
   -khtml-border-radius: 100px;
   border-radius: 100px;
-  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-  background-image: -webkit-repeating-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.1) 7.5%), -webkit-repeating-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 4%, rgba(0, 0, 0, 0.03) 4.5%), -webkit-repeating-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1.2%, rgba(255, 255, 255, 0.15) 2.2%), -webkit-linear-gradient(-90deg, #c7c7c7 0%, #e6e6e6 47%, #c7c7c7 53%, #b3b3b3 100%);
-  width: 30px;
-  height: 30px;
-  margin: 5px auto;
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  -o-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  padding: 12px 30px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  background-color: #b8d872;
+}
+/* line 24, ../../../../src/sass/mixins.sass */
+body.recipe_detail footer a.duplicate span.add {
+  display: inline-block;
+  float: right;
+  margin: -15px -20px 0 20px;
+  width: 25px;
+  height: 25px;
+  font-size: 200%;
+  text-align: center;
+  vertical-align: super;
+}
+/* line 119, ../../../../src/sass/recipe_detail.sass */
+body.recipe_detail footer a.edit {
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  -o-box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 6px;
+  padding: 12px 30px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  background-color: #7ccfeb;
+}
+/* line 24, ../../../../src/sass/mixins.sass */
+body.recipe_detail footer a.edit span.add {
+  display: inline-block;
+  float: right;
+  margin: -15px -20px 0 20px;
+  width: 25px;
+  height: 25px;
+  font-size: 200%;
+  text-align: center;
+  vertical-align: super;
 }

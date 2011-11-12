@@ -1,0 +1,102 @@
+/* line 37, ../../../../src/sass/mixins.sass */
+.border {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
+  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
+  height: 4px;
+}
+
+/* line 14, ../../../../src/sass/search.sass */
+body.search .search_wrap {
+  padding-left: 25.225%;
+  display: inline;
+  float: left;
+  width: 49.55%;
+  margin-right: 0.901%;
+  margin: 50px 0;
+}
+/* line 19, ../../../../src/sass/search.sass */
+body.search #results {
+  margin-left: 3.361%;
+  padding-left: 6.306%;
+  display: inline;
+  float: left;
+  width: 87.387%;
+  margin-right: 0.901%;
+}
+/* line 24, ../../../../src/sass/search.sass */
+body.search #results .border {
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-right: 0.962%;
+  display: block;
+  float: none;
+  margin-right: 0;
+  margin-bottom: 25px;
+}
+/* line 31, ../../../../src/sass/search.sass */
+body.search #results ul#table_head {
+  display: block;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+/* line 35, ../../../../src/sass/search.sass */
+body.search #results ul#table_head li:nth-child(1) {
+  display: inline;
+  float: left;
+  width: 19.231%;
+  margin-right: 0.962%;
+}
+/* line 37, ../../../../src/sass/search.sass */
+body.search #results ul#table_head li:nth-child(2) {
+  display: inline;
+  float: left;
+  width: 52.885%;
+  margin-right: 0.962%;
+}
+/* line 39, ../../../../src/sass/search.sass */
+body.search #results ul#table_head li:nth-child(3) {
+  display: inline;
+  float: left;
+  width: 25.962%;
+  margin-right: 0.962%;
+  margin-right: 0;
+  text-align: right;
+}
+/* line 45, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list li {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+/* line 49, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list h3.date {
+  display: inline;
+  float: left;
+  width: 19.231%;
+  margin-right: 0.962%;
+}
+/* line 51, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list h3.name {
+  display: inline;
+  float: left;
+  width: 52.885%;
+  margin-right: 0.962%;
+}
+/* line 53, ../../../../src/sass/search.sass */
+body.search #results ul#recipe_list .rating {
+  display: inline;
+  float: left;
+  width: 25.962%;
+  margin-right: 0.962%;
+}

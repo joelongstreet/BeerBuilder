@@ -1,0 +1,169 @@
+<!DOCTYPE>
+<html lang='en-US'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='' />
+		<meta name='keywords' content='' />
+		<meta name='author' content='' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0' />
+		<meta name='apple-mobile-web-app-capable' content='yes'/>
+		<title>Beer Builder</title>
+		<link rel='stylesheet' media='screen' href='_assets/css/default.css' />
+		<link rel='stylesheet' media='screen' href='_assets/css/builder/base.css' />
+	</head>
+	<body class='recipe_detail'>
+	
+		<nav id='main'>
+			<div class='handle'></div>
+			<div class='wrap'>
+				<a class='active' href='#'>Build a Beer</a>
+				<a href='#'>My Recipes</a>
+				<a href='#'>All Recipes</a>
+				<a href='#'>Settings</a>
+				<a href='#'>Resources</a>
+			</div>
+		</nav>
+		<div id='nav_shadow'></div>
+
+		<section id='content'>
+			<div id='recipe'>
+				<hgroup class='name_date'>
+					<h1>Fat Sally's Breakfast</h1>
+					<h2 class='date'>05/30/2011</h2>
+				</hgroup>
+
+				<div class='border'></div>
+
+				<h3 class='beer_style'><span class='major'>Stout</span> : </span class='minor'>Sweet Stout</span></h3>
+				
+				<div class='border'></div>
+				
+				<aside id='beer_attributes'>
+					<h4>Beer Attributes</h4>
+					<div class='wrap'>
+						<dl>
+							<dt>Original Gravity</dt>
+							<dd id='og'>1.0832</dd>
+							<dt>Final Gravity</dt>
+							<dd id='fg'>1.0116</dd>
+						</dl>
+						<dl>
+							<dt>GU/BU</dt>
+							<dd id='gu_bu'>0.0832</dd>
+							<dt>IBU</dt>
+							<dd id='ibu'>38</dd>
+						</dl>
+						<dl>
+							<dt>ABV</dt>
+							<dd id='abv'>14%</dd>			
+							<dt>SRM</dt>
+							<dd id='srm'>22</dd>
+						</dl>				
+						<div id='srm_panel'><div class='color'></div><div class='highlight'></div></div>
+					</div>
+				</aside>
+				
+				<div class='border'></div>
+		
+				<aside id='beer_character'>
+					<h4>Beer Character</h4>
+					<div class='wrap'>
+						<ul>
+							<li>
+								<span class='title'>Grain Character</span>
+								<p id='grain_character'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed malesuada eros.</p>
+							</li>
+							<li>
+								<span class='title'>Hop Character</span>
+								<p id='hop_character'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed malesuada eros.</p>
+							</li>
+							<li>
+								<span class='title'>Yeast Character</span>
+								<p id='yeast_character'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed malesuada eros.</p>
+							</li>
+						</ul>
+					</div>
+					<div class='handle'></div>
+				</aside>
+				
+				<div class='border'></div>
+				
+				<div id='notes'>
+					<h4>Notes</h4>
+					<ul>
+						<li>
+							<h5 class='title'>Grain Bill</h5>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed malesuada eros. Vestibulum id interdum diam. Aliquam erat ante, porta sed volutpat ac, hendrerit eget est.</p>
+						</li>
+						<li>
+							<h5 class='title'>Grain Bill</h5>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed malesuada eros. Vestibulum id interdum diam. Aliquam erat ante, porta sed volutpat ac, hendrerit eget est.</p>
+						</li>
+					</ul>
+				</div>
+				
+				<div class='border'></div>
+				
+				<footer>
+					<a class='duplicate' href='#'>Duplicate</a>
+					<div class='stars'>
+						<div class='star on'></div>
+						<div class='star on'></div>
+						<div class='star on'></div>
+						<div class='star'></div>
+						<div class='star'></div>
+					</div>
+					<a class='edit' href='#'>Edit</a>
+				</footer>
+			</div>
+		</section>
+
+		<script src='_assets/js/dependencies/zepto.js'></script>
+		<script src='_assets/js/dependencies/json2.js'></script>
+		<script src='_assets/js/dependencies/underscore.js'></script>
+		<script src='_assets/js/dependencies/backbone.js'></script>
+		<script src='_assets/js/dependencies/utilities.js'></script>
+
+		<script src='_assets/js/classes/builder/beer_style.js'></script>
+		<script src='_assets/js/classes/builder/srm_lookup.js'></script>
+		<script src='_assets/js/classes/builder/grain.js'></script>
+		<script src='_assets/js/classes/builder/hop.js'></script>
+		<script src='_assets/js/classes/builder/yeast.js'></script>
+		<script src='_assets/js/classes/builder/properties.js'></script>
+		<script src='_assets/js/classes/builder/recipe.js'></script>
+		<script src='_assets/js/classes/builder/builder.js'></script>
+
+		<script src='_assets/js/classes/app.js'></script>
+		
+		<script type='text/template' id='grains_view'>
+			<select></select>
+			<div class='input_wrapper'>
+				<input type='text' class='weight' value='0' />
+			</div>
+			<div class='proportion'>0%</div>
+			<a class='delete' href='#'>Delete</a>
+			<div class='range_wrapper'>
+				<input type='range' class='range' min='0' max='10' step='.1' value='0'/>
+			</div>
+		</script>
+		
+		<script type='text/template' id='hops_view'>
+			<select></select>
+			<div class='weight_wrapper'>
+				<input type='text' class='weight' value='0' />
+			</div>
+			<div class='time_wrapper'>
+				<input type='text' class='time' value='0' />
+			</div>
+			<div class='proportion'>0%</div>
+			<a class='delete' href='#'>Delete</a>
+			<div class='weight_range_wrapper'>
+				<input type='range' class='weight' min='0' max='3' step='.1' value='0' />
+			</div>
+			<div class='time_range_wrapper'>
+				<input type='range' class='time' min='0' max='90' step='1' value='0' />
+			</div>
+		</script>
+
+	</body>
+</html>

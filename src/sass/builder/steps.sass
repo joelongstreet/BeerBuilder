@@ -1,213 +1,272 @@
 @import compass/css3
 @import compass/utilities
 @import mixins
+@import susy
 
-section.steps
-	margin: 2.5% 6%
-	
-	//--------------------------//
-	section.step.active
-		display: block
-	
-	section.step
-		display: none
+$total-cols             : 16
+$col-width              : 3em
+$gutter-width           : .5em
+$side-gutter-width      : 2em
+$show-grid-backgrounds  : true
+
+body.builder
+
+	section.steps
+		@include full
+		position: relative
 		overflow: hidden
+		height: 595px
+
+		//--------------------------//
+		section.step.active
+			+opacity(1)
+			z-index: 2
 	
-	a.add
-		+button('blue', true)
-		float: right
-	//--------------------------//
-	
-	
-	//--------------------------//
-	section.step.setup
-		input, select
-			width: 100%
-		input[type=range]
-			margin-top: 20px
-		.wrap
-			margin-bottom: 50px
+		section.step
+			@include prefix(1, 16)
+			@include columns(15, 16)
+			+single-transition(all .25s ease-out)
+			+opacity(0)
+			position: absolute
+			top: 0
+			z-index: 1
+			height: 100%
 			overflow: hidden
-		.fields
-			width: 45%
-		.fields:nth-child(1)
-			float: left
-		.fields:nth-child(2)
-			float: right
-	//--------------------------//
-	
-	
-	//--------------------------//
-	section.step.grist
-		ul.table_heading
-			margin-bottom: 30px
-			li
-				display: inline-block
-			li:nth-child(1)
-				width: 50%
-			li:nth-child(2)
-				width: 30%
-			li:nth-child(3)
-				width: 18%
-				text-align: right
-		.grain
-			overflow: hidden
-			margin-bottom: 50px
-			select, .proportion, input[type=text]
-				display: inline-block
-			select
-				margin-right: 10%
-				width: 40%
-			input[type=text]
-				margin: 0 10% 20px 0
-				width: 20%
-			.proportion
-				width: 18%
-				text-align: right
-			input[type=range]
-				float: right
-				width: 50%
-	//--------------------------//
-	
-	
-	//--------------------------//	
-	section.step.hops
-		ul.table_heading
-			margin-bottom: 30px
-			li
-				display: inline-block
-			li:nth-child(1)
-				width: 40%
-			li:nth-child(2)
-				width: 20%
-			li:nth-child(3)
-				width: 20%
-			li:nth-child(4)
-				width: 10%
-		.hop
-			overflow: hidden
-			margin-bottom: 50px
-			select, input[type=text]
-				display: inline-block
-			select
-				margin-right: 3%
-				width: 37%
-			input[type=range]
-				margin-top: 20px
-			input[type=text].weight
-				margin-right: 10%
-				width: 10%
-			input[type=text].time
-				margin-right: 5%
-				width: 15%
-			input[type=range].weight
-				float: left
-				width: 50%
-			input[type=range].time
-				float: right
-				width: 40%
-	//--------------------------//
-	
-	
-	//--------------------------//
-	section.step.mash_and_sparge
-		input, select
-			width: 100%
-		input[type=range]
-			margin-top: 20px
-		.wrap
-			margin-bottom: 50px
-			overflow: hidden
-		.fields
-			width: 45%
-		.fields:nth-child(1)
-			float: left
-		.fields:nth-child(2)
-			float: right
-	//--------------------------//
-	
-	
-	//--------------------------//
-	section.step.fermentation
-		input[type=range]
-			margin-top: 20px
-		.yeasts
-			margin-bottom: 50px
-			a
-				float: right
-		.fermentations
-			margin-bottom: 50px
-			.wrap
-				overflow: hidden
-				.fields
-					float: left
-					width: 45%
-					input
-						width: 100%
-				.fields:nth-child(even)
-					float: right
-			a
-				float: right
-		.dry_hopping
-			overflow: hidden
-			width: 100%
-			.fields
+			ul.table_heading
+				@include columns(15, 15)
+				display: block
+				float: none
 				overflow: hidden
 				margin-bottom: 30px
-				label
+				li
 					display: inline-block
-					margin-right: 10px
+		a.add
+			+button('blue', true)
+			float: right
+		.delete
+			@include columns(1, 15)
+			margin-right: 0
+			padding: 10px 0
+			-webkit-background-size: auto 100%
+			background: url(../../img/delete.png) no-repeat center center
+			text-indent: -999%
+		//--------------------------//
+	
+	
+		//--------------------------//
+		section.step.setup
+			.fields
+				@include columns(6, 15)
+				margin-bottom: 50px
+			input, select
+				width: 100%
+			input[type=range]
+				margin-top: 20px
+			.wrap
+				margin-bottom: 50px
+				overflow: hidden
+			.fields:nth-child(even)
+				@include suffix(1, 15)
+				float: right
+				margin-right: 0 !important
+		//--------------------------//
+	
+	
+		//--------------------------//
+		section.step.grist
+			ul.table_heading
+				li:nth-child(1)
+					@include columns(7, 15)
+				li:nth-child(2)
+					@include columns(5, 15)
+				li:nth-child(3)
+					@include columns(3, 15)
+					margin-right: 0
+			.grain
+				overflow: hidden
+				margin-bottom: 50px
+				select
+					@include columns(6, 15)
+				.input_wrapper
+					@include prefix(1, 15)
+					@include columns(5, 15)
+				input[type=text]
+					@include columns(4, 5)
+				.proportion
+					@include columns(2, 15)
+					padding-top: 10px
+				.range_wrapper
+					@include prefix(7, 15)
+					@include columns(8, 15)
+				input[type=range]
+					margin-top: 20px
+					width: 100%
+		//--------------------------//
+	
+	
+		//--------------------------//	
+		section.step.hops
+			ul.table_heading
+				li:nth-child(1)
+					@include columns(6, 15)
+				li:nth-child(2)
+					@include columns(2, 15)
+				li:nth-child(3)
+					@include prefix(1, 15)
+					@include columns(3, 15)
+				li:nth-child(4)
+					@include columns(3, 15)
+					margin-right: 0
 			.hop
 				overflow: hidden
 				margin-bottom: 50px
-				input[type=text], select
-					display: inline-block
+				.proportion
+					@include columns(2, 15)
+					padding-top: 10px
+				select
+					@include columns(6, 15)
 				input[type=range]
 					margin-top: 20px
-				select
-					margin-right: 3%
-					width: 37%
-				input[type=text].weight
-					width: 10%
-					margin-right: 10%
-				input[type=text].time
-					margin-right: 5%
-					width: 15%
-				input[type=range].weight
-					float: left
-					width: 50%
-				input[type=range].time
-					float: right
-					width: 40%
-			a
-				float: right
-	//--------------------------//
+				.weight_wrapper
+					@include columns(2, 15)
+				.weight_range_wrapper
+					@include columns(8, 15)
+				.time_range_wrapper
+					@include columns(6, 15)
+				.time_wrapper
+					@include columns(3, 15)
+					@include prefix(1, 15)
+					input[type=text].time
+						@include columns(3, 3)
+				.time_range_wrapper
+					@include columns(6, 15)
+					@include prefix(1, 15)
+					margin-right: 0
+		//--------------------------//
 	
 	
-	//--------------------------//
-	section.step.finishing
-		.wrap
-			margin: 0 auto
-			width: 50%
-			overflow: hidden
-		.wrap.radio_wrap
+		//--------------------------//
+		section.step.mash_and_sparge
 			.fields
-				float: left
-				width: 40%
-			.fields:nth-child(2)
+				@include columns(6, 15)
+				margin-bottom: 50px
+			input, select
+				width: 100%
+			input[type=range]
+				margin-top: 20px
+			.wrap
+				margin-bottom: 50px
+				overflow: hidden
+			.fields:nth-child(even)
+				@include suffix(1, 15)
 				float: right
-		.fields
-			margin-bottom: 50px
-			overflow: hidden
-		input
-			width: 100%
-		input[type=range]
-			margin-top: 20px
-		label
-			display: inline-block
-		div.custom_radio
-			display: inline-block
-		div.kegged
-			display: none
-	//--------------------------//
+				margin-right: 0 !important
+		//--------------------------//
+	
+	
+		//--------------------------//
+		section.step.fermentation
+			input[type=range]
+				margin-top: 20px
+			.yeasts
+				overflow: hidden
+				margin-bottom: 30px
+				select
+					@include columns(7, 15)
+				a
+					margin-top: 25px
+					float: right
+			.fermentations
+				overflow: hidden
+				.fields
+					@include columns(7, 15)
+				.fields:nth-child(even)
+					float: right
+					margin-right: 0
+				a
+					float: right
+					margin-top: 25px
+			.dry_hopping
+				overflow: hidden
+				.fields
+					@include columns(4, 15)
+					float: none
+					display: block
+					overflow: hidden
+					margin-bottom: 20px
+					label
+						@include columns(2, 4)
+					div
+						@include columns(1, 4)
+				/*TODO - this is all a copy from the hop section, do it right */
+				ul.table_heading
+					li:nth-child(1)
+						@include columns(6, 15)
+					li:nth-child(2)
+						@include columns(2, 15)
+					li:nth-child(3)
+						@include prefix(1, 15)
+						@include columns(3, 15)
+					li:nth-child(4)
+						@include columns(3, 15)
+						margin-right: 0
+				.hop
+					overflow: hidden
+					margin-bottom: 50px
+					.proportion
+						@include columns(2, 15)
+						padding-top: 10px
+					select
+						@include columns(6, 15)
+					input[type=range]
+						margin-top: 20px
+					.weight_wrapper
+						@include columns(2, 15)
+					.weight_range_wrapper
+						@include columns(8, 15)
+					.time_range_wrapper
+						@include columns(6, 15)
+					.time_wrapper
+						@include columns(3, 15)
+						@include prefix(1, 15)
+						input[type=text].time
+							@include columns(3, 3)
+					.time_range_wrapper
+						@include columns(6, 15)
+						@include prefix(1, 15)
+						margin-right: 0
+				a
+					float: right
+		//--------------------------//
+	
+	
+		//--------------------------//
+		section.step.finishing
+			.fields
+				margin-bottom: 50px
+				overflow: hidden
+			input[type=range]
+				margin-top: 20px
+			.wrap.radio_wrap
+				overflow: hidden
+				.fields
+					@include prefix(3, 15)
+					@include columns(4, 15)
+					label
+						@include columns(2, 4)
+						margin-top: 10px
+				.fields:last-child
+					@include prefix(1, 15)
+			.wrap.bottled
+				.fields
+					@include columns(8, 15)
+					@include prefix(3, 15)
+					display: block
+					float: none
+			.wrap.kegged
+				display: none
+		
+			div.custom_radio
+				display: inline-block
+		//--------------------------//
 	

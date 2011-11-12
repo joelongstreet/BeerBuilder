@@ -10,7 +10,7 @@ var Builder = function(){
 	//--- Step 1 : Setup ---//
 	//--- ---//
 
-	
+
 	//--- Step 2 : Grist ---//
 	$(all_sections[1]).find('.add_grain')[0].addEventListener('click', function(){
 
