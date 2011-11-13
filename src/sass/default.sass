@@ -1,3 +1,5 @@
+/*TODO my sass organization is totally screwed up. this needs to be fixed */
+
 @import compass/reset
 @import compass/css3
 @import compass/utilities
@@ -11,6 +13,7 @@ $side-gutter-width      : 2em
 $show-grid-backgrounds  : true
 
 body
+	/*TODO this shadow makes iOS run sooooo slow. Not sure why, but might grab an image if it's faster*/
 	/*+single-box-shadow(rgba(0,0,0,.85), 0, 0, 150px, 50px, inset)*/
 	font-family: HelveticaNeue-CondensedBold, HelveiticaNeue, Helvetica, Arial, Verdana, sans-serif
 	font-size: 130%
@@ -23,11 +26,11 @@ body
 
 section#content
 	@include susy-grid-background
+	background-color: rgba(255,0,0,.1)
 	@include container
 	z-index: 1
 	position: relative
 	height: 100%
-	background-color: rgba(255,0,0,.1)
 
 a
 	color: inherit

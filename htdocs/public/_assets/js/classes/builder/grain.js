@@ -83,6 +83,7 @@ var GrainItemView = Backbone.View.extend({
 	},
 	
 	remove_me: function(){
+		event.preventDefault();
 		$(this.el).remove();
 		builder.new_recipe.grain_bill.remove(this.model);
 	},

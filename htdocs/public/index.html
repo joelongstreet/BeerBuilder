@@ -69,34 +69,39 @@
 				</div>
 				<div class='handle'></div>
 			</aside>
-			
+
 			<h1 id='beer_name'>Duff Beer</h1>
-	
+
 			<section class='steps'>
 				<section class='setup step active'>
 					<div class='fields'>
 						<label>Beer Name</label>
-						<input type='text' />
+						<input id='beer_name_input' type='text' />
 					</div>
 			
 					<div class='fields'>
 						<label>Start with Template?</label>
 						<select>
-							<option value=''>This is a Test</option>
+							<!-- TODO: pull in all beer styles -->
+							<option selected value='0'>No Thanks</option>
 						</select>
 					</div>
 
 					<div class='fields'>
 						<label>Final Volume</label>
-						<input id='input_volume' type='text' />
+						<input id='input_volume' type='text' value='5' class='has_range' />
 						<input id='range_volume' type='range' min='0' max='20' step='.25' value='5' />
 					</div>
 
 					<div class='fields'>
 						<label>Efficiency</label>
-						<input type='text' />
+						<input type='text' value='75' class='has_range' />
 						<input id='range_efficiency' type='range' min='0' max='100' step='1' value='75' />
 					</div>
+					
+					<div class='fields'>
+						<label>Date Brewed</label>
+						<input type='date' />
 				</section>
 		
 				<section class='grist step'>
@@ -127,26 +132,26 @@
 				<section class='mash_and_sparge step'>
 					<div class='fields'>
 						<label>Mash Temperature</label>
-						<input type='text' />
-						<input type='range' />
+						<input type='text' value='135' />
+						<input type='range' min='0' max='200' step='1' value='135' />
 					</div>
 			
 					<div class='fields'>
 						<label>Mash Length</label>
-						<input type='text' />
-						<input type='range' />
+						<input type='text' value='60' />
+						<input type='range' min='0' max='120' step='1' value='60' />
 					</div>
 				
 					<div class='fields'>
 						<label>Sparge Temperature</label>
-						<input type='text' />
-						<input type='range' />
+						<input type='text' value='165' />
+						<input type='range' min='0' max='200' step='1' value='165' />
 					</div>
 			
 					<div class='fields'>
 						<label>Sparge Length</label>
-						<input type='text' />
-						<input type='range' />
+						<input type='text' value='90' />
+						<input type='range' min='0' max='120' step='1' value='90' />
 					</div>
 				</section>
 		
@@ -163,13 +168,13 @@
 					<div class='fermentations'>
 						<div class='fields'>
 							<label>Primary Fermentation:</label>
-							<input type='text' class='primary_fermentation' />
-							<input type='range' class='primary_fermentation' />
+							<input type='text' value='7' />
+							<input type='range' min='0' max='21' step='1' value='7' />
 						</div>
 						<div class='fields'>
 							<label>Secondary Fermentation:</label>
-							<input type='text' class='secondary_fermentation' />
-							<input type='range' class='secondary_fermentation' />
+							<input type='text' value='14' />
+							<input type='range' min='0' max='28' step='1' value='14' />
 						</div>
 						<a href='#' class='add add_fermentation'>Add Another Fermentation<span class='add'>+</span></a>
 					</div>
@@ -177,17 +182,20 @@
 					<div class='dry_hopping'>
 						<div class='fields'>
 							<label>Dry Hopped?</label>
-							<div class='custom_checkbox'></div>
+							<div><input type='checkbox' /></div>
+							<!--<div id='is_dry_hopped' class='custom_checkbox'></div>-->
 						</div>
 						
-						<ul class='table_heading'>
+						<!--<ul class='table_heading'>
 							<li>Hop</li>
 							<li>Weight</li>
 							<li>Time</li>
 							<li>Proportion</li>
-						</ul>
-
-						<div class='hop_fields'>
+						</ul>-->
+						
+						<!-- TODO this needs to be called from the hop template -->
+						
+						<!--<div class='hop_fields'>
 							<div class='hop'>
 								<select></select>
 								<div class='weight_wrapper'>
@@ -208,6 +216,7 @@
 						</div>
 
 						<a href='#' class='add add_hop'>Add More Hops<span class='add'>+</span></a>
+						-->
 					</div>
 
 				</section>
@@ -216,40 +225,41 @@
 					<div class='wrap radio_wrap'>
 						<div class='fields'>
 							<label>Bottled?</label>
-							<div class='custom_radio' data-value='bottled'><div class='on'></div></div>
+							<input checked='checked' name='bottled_kegged' type='radio' />
 						</div>
 						<div class='fields'>
 							<label>Kegged?</label>
-							<div class='custom_radio' data-value='kegged'><div></div></div>
+							<input name='bottled_kegged' type='radio' />
 						</div>
 					</div>
 					
 					<div class='wrap bottled'>
 						<div class='fields'>
 							<label>Time Aged in Bottle</label>
-							<input type='text' />
-							<input type='range' />
+							<input type='text' value='21' />
+							<input type='range' min='0' max='50' step='1' value='21' />
 						</div>
 						
 						<div class='fields'>
 							<label>Priming Sugar</label>
-							<input type='text' />
-							<input type='range' />
+							<input type='text' value='6' />
+							<input type='range' min='0' max='10' step='1' value='6' />
 						</div>
 					</div>
 					
 					<div class='wrap kegged'>
-						<!-- TODO: I don't know if these measurement are right -->
-						<div class='fields'>
-							<label>Time Aged in Keg</label>
-							<input type='text' />
-							<input type='range' />
-						</div>
 						
 						<div class='fields'>
+							<label>Time Aged in Keg</label>
+							<input type='text' value='21' />
+							<input type='range' min='0' max='50' step='1' value='21' />
+						</div>
+						
+						<!-- TODO: I don't what these levels should look like -->
+						<div class='fields'>
 							<label>CO2 Levels</label>
-							<input type='text' />
-							<input type='range' />
+							<input type='text' value='50' />
+							<input type='range' min='0' max='100' step='1' value='50' />
 						</div>
 					</div>
 				</section>

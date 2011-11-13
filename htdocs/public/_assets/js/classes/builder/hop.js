@@ -88,6 +88,7 @@ var HopItemView = Backbone.View.extend({
 	},
 	
 	remove_me : function(){
+		event.preventDefault();
 		$(this.el).remove();
 		builder.new_recipe.hop_schedule.remove(this.model);
 	},

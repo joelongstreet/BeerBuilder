@@ -251,12 +251,14 @@ body.builder
 				overflow: hidden
 				.fields
 					@include prefix(3, 15)
-					@include columns(4, 15)
+					@include columns(3, 15)
 					label
 						@include columns(2, 4)
 						margin-top: 10px
+					input
+						float: right
 				.fields:last-child
-					@include prefix(1, 15)
+					@include prefix(2, 15)
 			.wrap.bottled
 				.fields
 					@include columns(8, 15)

@@ -523,7 +523,7 @@ body.builder section.steps section.step.finishing .wrap.radio_wrap .fields {
   padding-left: 20.192%;
   display: inline;
   float: left;
-  width: 25.962%;
+  width: 19.231%;
   margin-right: 0.962%;
 }
 /* line 255, ../../../../../src/sass/builder/steps.sass */
@@ -535,10 +535,14 @@ body.builder section.steps section.step.finishing .wrap.radio_wrap .fields label
   margin-top: 10px;
 }
 /* line 258, ../../../../../src/sass/builder/steps.sass */
-body.builder section.steps section.step.finishing .wrap.radio_wrap .fields:last-child {
-  padding-left: 6.731%;
+body.builder section.steps section.step.finishing .wrap.radio_wrap .fields input {
+  float: right;
 }
-/* line 261, ../../../../../src/sass/builder/steps.sass */
+/* line 260, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.finishing .wrap.radio_wrap .fields:last-child {
+  padding-left: 13.462%;
+}
+/* line 263, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .fields {
   display: inline;
   float: left;
@@ -548,11 +552,11 @@ body.builder section.steps section.step.finishing .wrap.bottled .fields {
   display: block;
   float: none;
 }
-/* line 266, ../../../../../src/sass/builder/steps.sass */
+/* line 268, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.kegged {
   display: none;
 }
-/* line 269, ../../../../../src/sass/builder/steps.sass */
+/* line 271, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing div.custom_radio {
   display: inline-block;
 }

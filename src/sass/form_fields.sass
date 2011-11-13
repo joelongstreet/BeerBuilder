@@ -14,12 +14,12 @@ input, textarea, select
 	width: 100%
 	font-family: HelveticaNeue-CondensedBold, HelveiticaNeue, Helvetica, Arial, Verdana, sans-serif
 	font-size: 100%
-	color: #fff	
+	color: #fff
+	border: none
 	background-color: $gray
 	
 input[type=text]
 	padding: 8px
-	border: none
 
 input[type=range]
 	+border-radius(100px)
@@ -46,32 +46,33 @@ input[type=range]::-webkit-slider-range
 input[type=search]
 	+border-radius(100px)
 	padding: 7px 10px
-	border: none
 	background: $gray url(../img/search.png) no-repeat right center
 	-webkit-background-size: auto 60%
+	
+input[type=checkbox]
+	width: 40px
+	height: 40px
+
+input[type=checkbox]:checked
+	background: $gray url(../img/checkmark.png) no-repeat center center
+
+input[type=radio]
+	+border-radius(100px)
+	width: 40px
+	height: 40px
+
+input[type=radio]:checked
+	-webkit-background-size: 90% auto
+	background: $gray url(../img/range_handle.png) no-repeat center center
+	
+input[type=date]
+	padding: 8px
 	
 select
 	+border-radius(0)
 	-webkit-appearance: none
 	background: $gray url(../img/shape_arrow_down.png) no-repeat right 15px
-	border: none
 	padding: 8px
-
-.custom_checkbox, .custom_radio
-	+single-box-shadow(rgba(0,0,0,.15), 0, 0, 1px, 2px, inset)
-	display: inline-block
-	background-color: $gray
-	width: 40px
-	height: 40px
-
-.custom_radio
-	+border-radius(100px)
-	.on
-		-webkit-background-size: auto 100%
-		background: url(../img/range_handle.png) no-repeat center center
-		width: 35px
-		height: 35px
-		margin: 2.75px auto
 
 *:focus
 	outline: none
