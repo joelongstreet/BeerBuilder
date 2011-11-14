@@ -74,19 +74,29 @@
 
 			<section class='steps'>
 				<section class='setup step active'>
+					
 					<div class='fields'>
 						<label>Beer Name</label>
 						<input id='beer_name_input' type='text' />
 					</div>
-			
+					
 					<div class='fields'>
-						<label>Start with Template?</label>
-						<select>
-							<!-- TODO: pull in all beer styles -->
-							<option selected value='0'>No Thanks</option>
-						</select>
+						<label>Date Brewed</label>
+						<input type='date' />
 					</div>
 
+					<div class='style_fields'>
+						<div class='fields' id='style_definition'>
+							<label>Define a Style?</label>
+						</div>
+					
+						<div class='or'>OR</div>
+					
+						<div class='fields' id='template_definition'>
+							<label>Start with Template?</label>
+						</div>
+					</div>
+					
 					<div class='fields'>
 						<label>Final Volume</label>
 						<input id='input_volume' type='text' value='5' class='has_range' />
@@ -98,10 +108,7 @@
 						<input type='text' value='75' class='has_range' />
 						<input id='range_efficiency' type='range' min='0' max='100' step='1' value='75' />
 					</div>
-					
-					<div class='fields'>
-						<label>Date Brewed</label>
-						<input type='date' />
+
 				</section>
 		
 				<section class='grist step'>
@@ -166,17 +173,37 @@
 					</div>
 				
 					<div class='fermentations'>
-						<div class='fields'>
-							<label>Primary Fermentation:</label>
-							<input type='text' value='7' />
-							<input type='range' min='0' max='21' step='1' value='7' />
+						<div class='wrap'>
+							<div class='fields'>
+								<label>Primary Fermentation Length:</label>
+								<input type='text' value='7' />
+							</div>
+							<div class='fields'>
+								<label>Date Moved to Primary</label><br />
+								<input type='date' />
+							</div>
 						</div>
-						<div class='fields'>
-							<label>Secondary Fermentation:</label>
-							<input type='text' value='14' />
-							<input type='range' min='0' max='28' step='1' value='14' />
+						
+						<div class='wrap'>
+							<div class='fields'>
+								<label>Secondary Fermentation Length:</label>
+								<input type='text' value='14' />
+							</div>
+							<div class='fields'>
+								<label>Date Moved to Secondary</label><br />
+								<input type='date' />
+							</div>
 						</div>
-						<a href='#' class='add add_fermentation'>Add Another Fermentation<span class='add'>+</span></a>
+						
+						<div class='range_wrap'>
+							<input id='primary_fermentation_range' type='range' min='0' max='21' step='1' value='7' />
+						</div>
+						
+						<div class='range_wrap'>
+							<input id='secondary_fermentation_range' type='range' min='0' max='28' step='1' value='14' />
+						</div>
+						<!-- TODO: allow ability to add more than two fermentations? -->
+						<!-- <a href='#' class='add add_fermentation'>Add Another Fermentation<span class='add'>+</span></a> -->
 					</div>
 				
 					<div class='dry_hopping'>
@@ -234,9 +261,17 @@
 					</div>
 					
 					<div class='wrap bottled'>
-						<div class='fields'>
-							<label>Time Aged in Bottle</label>
-							<input type='text' value='21' />
+						<div class='bottle_wrap'>
+							<div class='fields'>
+								<label>Time Aged in Bottle</label>
+								<input type='text' value='21' />
+							</div>
+							<div class='fields'>
+								<label>Date Moved to Bottle</label>
+								<input type='date' >
+							</div>
+						</div>
+						<div class='range_wrap'>
 							<input type='range' min='0' max='50' step='1' value='21' />
 						</div>
 						

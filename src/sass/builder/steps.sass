@@ -45,9 +45,9 @@ body.builder
 			float: right
 		.delete
 			@include columns(1, 15)
+			-webkit-background-size: auto 100%
 			margin-right: 0
 			padding: 10px 0
-			-webkit-background-size: auto 100%
 			background: url(../../img/delete.png) no-repeat center center
 			text-indent: -999%
 		//--------------------------//
@@ -69,6 +69,15 @@ body.builder
 				@include suffix(1, 15)
 				float: right
 				margin-right: 0 !important
+			.style_fields
+				overflow: hidden
+				width: 100%
+				.or
+					@include columns(2, 15)
+					+opacity(.5)
+					padding-top: 35px
+					font-size: 175%
+					text-align: center
 		//--------------------------//
 	
 	
@@ -99,7 +108,7 @@ body.builder
 					@include prefix(7, 15)
 					@include columns(8, 15)
 				input[type=range]
-					margin-top: 20px
+					margin: 20px 0 10px 0
 					width: 100%
 		//--------------------------//
 	
@@ -142,6 +151,8 @@ body.builder
 					@include columns(6, 15)
 					@include prefix(1, 15)
 					margin-right: 0
+				input[type=range]
+					margin-bottom: 10px
 		//--------------------------//
 	
 	
@@ -178,9 +189,20 @@ body.builder
 					float: right
 			.fermentations
 				overflow: hidden
-				.fields
+				.wrap
 					@include columns(7, 15)
-				.fields:nth-child(even)
+					.fields
+						@include columns(3, 7)
+					.fields:nth-child(even)
+						@include columns(4, 7)
+						margin-right: 0
+				.wrap:nth-child(even)
+					float: right
+					margin-right: 0
+				.range_wrap
+					@include columns(7, 15)
+					margin-bottom: 50px
+				.range_wrap:nth-child(even)
 					float: right
 					margin-right: 0
 				a
@@ -196,6 +218,7 @@ body.builder
 					margin-bottom: 20px
 					label
 						@include columns(2, 4)
+						margin-top: 12px
 					div
 						@include columns(1, 4)
 				/*TODO - this is all a copy from the hop section, do it right */
@@ -243,14 +266,19 @@ body.builder
 		//--------------------------//
 		section.step.finishing
 			.fields
-				margin-bottom: 50px
+				@include prefix(3, 15)
 				overflow: hidden
 			input[type=range]
-				margin-top: 20px
+				margin: 20px 0 10px 0
+			.range_wrap
+				@include prefix(3, 15)
+				@include columns(8, 15)
+				margin-bottom: 50px
+				
 			.wrap.radio_wrap
 				overflow: hidden
+				margin-bottom: 50px
 				.fields
-					@include prefix(3, 15)
 					@include columns(3, 15)
 					label
 						@include columns(2, 4)
@@ -259,12 +287,20 @@ body.builder
 						float: right
 				.fields:last-child
 					@include prefix(2, 15)
+					
 			.wrap.bottled
 				.fields
 					@include columns(8, 15)
-					@include prefix(3, 15)
-					display: block
-					float: none
+				.bottle_wrap
+					overflow: hidden
+					.fields
+						@include columns(4, 15)
+						@include prefix(3, 15)
+					.fields:nth-child(even)
+						@include columns(4, 15)
+						@include prefix(0, 15)
+						margin-right: 0
+						
 			.wrap.kegged
 				display: none
 		

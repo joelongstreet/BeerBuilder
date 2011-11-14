@@ -155,6 +155,33 @@ var Recipe = Backbone.Model.extend({
 		fgu == 0 ? fgu = 1 : fgu = (fgu - 1)*1000
 		
 		this.set({ 'gu_bu' : Math.round(fgu/ibu*1000)/1000 });
+		
+		if(this.proto){ this.compare_to_bjcp(); }
+
+	},
+	
+	compare_to_bjcp : function(){
+		//TODO - I wonder if all this "getting" will make it run slow. Change this if it's running slow
+		if(this.get('og') > this.proto.get('og_hi') || this.get('og') < this.proto.get('og_lo')){
+			$('#og').addClass('issue');
+		}
+		if(this.get('fg') > this.proto.get('fg_hi') || this.get('fg') < this.proto.get('fg_lo')){
+			$('#fg').addClass('issue');
+		}
+		/* TODO - neeed to go through and define gubu hi's and lo's in beer_style.json
+		if(this.get('gubu') > this.proto.get('gubu_hi') || this.get('gubu') < this.proto.get('gubu_lo')){
+			$('#gubu').addClass('issue');
+		}*/
+		if(this.get('ibu') > this.proto.get('ibu_hi') || this.get('ibu') < this.proto.get('ibu_lo')){
+			$('#ibu').addClass('issue');
+		}
+		if(this.get('abv') > this.proto.get('abv_hi') || this.get('abv') < this.proto.get('abv_lo')){
+			$('#abv').addClass('issue');
+		}
+		if(this.get('srm') > this.proto.get('srm_hi') || this.get('srm') < this.proto.get('srm_lo')){
+			$('#srm').addClass('issue');
+			$('#srm_panel').addClass('issue');
+		}
 	}
 		
 });

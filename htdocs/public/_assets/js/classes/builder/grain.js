@@ -113,7 +113,6 @@ var GrainItemView = Backbone.View.extend({
 		var rounded_proportion = Math.round(this.model.get('proportion')*100) + '%';
 		$(this.el).find('.proportion').text(rounded_proportion);
 	}
-	
 
 });
 

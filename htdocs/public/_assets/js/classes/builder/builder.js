@@ -152,10 +152,16 @@ var Builder = function(){
 	var all_grains = new Grains();
 	var all_hops 	= new Hops();
 	var all_yeasts	= new Yeasts();
+	var all_styles = new BeerStyles();
 	
 	all_grains.fetch();
 	all_hops.fetch();
 	all_yeasts.fetch();
+	all_styles.fetch({
+		success : function(data){
+			all_styles.build_options();
+		}
+	});
 	
 	this.new_recipe = new Recipe();
 	//-----------------------------------------//
