@@ -1,0 +1,9 @@
+----- CSS -----
+* Publishes to public/_assets/css
+* SASS - gem install sass - http://sass-lang.com/
+* Compass - gem install compass - http://compass-style.org/
+* Suzy - gem install compass-susy-plugin - http://susy.oddbird.net/
+
+----- Imagery -----
+* Image source (.psd) are not in repository. Can be requested if you contact me.
+
