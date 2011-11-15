@@ -69,16 +69,15 @@ body.builder aside#beer_attributes .wrap {
   clear: both;
   margin-left: 3.361%;
   margin-right: 3.361%;
-  overflow: hidden;
 }
-/* line 42, ../../../../../src/sass/builder/base.sass */
+/* line 41, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_attributes dl {
   display: inline;
   float: left;
   width: 24.324%;
   margin-right: 0.901%;
 }
-/* line 44, ../../../../../src/sass/builder/base.sass */
+/* line 43, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_attributes dl dt {
   display: inline;
   float: left;
@@ -89,7 +88,7 @@ body.builder aside#beer_attributes dl dt {
   margin-bottom: 5%;
   font-size: 90%;
 }
-/* line 49, ../../../../../src/sass/builder/base.sass */
+/* line 48, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_attributes dl dd {
   display: inline;
   float: left;
@@ -98,7 +97,11 @@ body.builder aside#beer_attributes dl dd {
   margin-right: 0;
   text-align: right;
 }
-/* line 53, ../../../../../src/sass/builder/base.sass */
+/* line 52, ../../../../../src/sass/builder/base.sass */
+body.builder aside#beer_attributes dl dd.issue {
+  background-color: rgba(255, 0, 0, 0.15);
+}
+/* line 54, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_attributes dl:nth-child(2), body.builder aside#beer_attributes dl:nth-child(3) {
   display: inline;
   float: left;
@@ -106,7 +109,7 @@ body.builder aside#beer_attributes dl:nth-child(2), body.builder aside#beer_attr
   margin-right: 0.901%;
   padding-left: 6.306%;
 }
-/* line 58, ../../../../../src/sass/builder/base.sass */
+/* line 59, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_attributes #srm_panel {
   display: inline;
   float: left;
@@ -134,7 +137,7 @@ body.builder aside#beer_attributes #srm_panel {
   height: 70px;
   overflow: hidden;
 }
-/* line 68, ../../../../../src/sass/builder/base.sass */
+/* line 69, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_attributes #srm_panel div {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -142,6 +145,10 @@ body.builder aside#beer_attributes #srm_panel div {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 1px 1px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 1px 1px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 1px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 1px 1px inset;
   position: absolute;
   left: 5%;
   top: 5.5%;
@@ -149,7 +156,7 @@ body.builder aside#beer_attributes #srm_panel div {
   height: 90%;
   background-color: white;
 }
-/* line 76, ../../../../../src/sass/builder/base.sass */
+/* line 78, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_attributes #srm_panel div.highlight {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.6)), color-stop(100%, rgba(255, 255, 255, 0)));
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
@@ -158,15 +165,22 @@ body.builder aside#beer_attributes #srm_panel div.highlight {
   background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
   background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
 }
-/* line 79, ../../../../../src/sass/builder/base.sass */
+/* line 80, ../../../../../src/sass/builder/base.sass */
+body.builder aside#beer_attributes #srm_panel.issue {
+  -moz-box-shadow: rgba(255, 0, 0, 0.5) 0 0 2px 2px;
+  -webkit-box-shadow: rgba(255, 0, 0, 0.5) 0 0 2px 2px;
+  -o-box-shadow: rgba(255, 0, 0, 0.5) 0 0 2px 2px;
+  box-shadow: rgba(255, 0, 0, 0.5) 0 0 2px 2px;
+}
+/* line 83, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character.closed {
   height: 40px;
 }
-/* line 81, ../../../../../src/sass/builder/base.sass */
+/* line 85, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character.closed .wrap {
   height: 35%;
 }
-/* line 84, ../../../../../src/sass/builder/base.sass */
+/* line 88, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character {
   -webkit-transition: 0.5s all ease-out;
   margin-left: 3.361%;
@@ -174,7 +188,7 @@ body.builder aside#beer_character {
   position: relative;
   height: 130px;
 }
-/* line 90, ../../../../../src/sass/builder/base.sass */
+/* line 94, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .handle {
   -webkit-transform: translateX(-20px);
   -moz-border-radius: 0 0 5px 5px;
@@ -192,7 +206,7 @@ body.builder aside#beer_character .handle {
   height: 12px;
   background: url(../../img/handle.png) repeat;
 }
-/* line 98, ../../../../../src/sass/builder/base.sass */
+/* line 102, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap {
   -webkit-transition: 0.5s all ease-out;
   -moz-border-radius: 5px 0 0 5px;
@@ -209,11 +223,11 @@ body.builder aside#beer_character .wrap {
   background: #313237 url(../../img/carbon_fiber_20.png) repeat;
   overflow: hidden;
 }
-/* line 105, ../../../../../src/sass/builder/base.sass */
+/* line 109, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap li:first-child {
   margin-top: 15px;
 }
-/* line 107, ../../../../../src/sass/builder/base.sass */
+/* line 111, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap li {
   display: inline;
   float: left;
@@ -224,7 +238,7 @@ body.builder aside#beer_character .wrap li {
   display: block;
   margin-bottom: 15px;
 }
-/* line 113, ../../../../../src/sass/builder/base.sass */
+/* line 117, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap li span.title {
   display: inline;
   float: left;
@@ -235,7 +249,7 @@ body.builder aside#beer_character .wrap li span.title {
   display: inline-block;
   float: none;
 }
-/* line 119, ../../../../../src/sass/builder/base.sass */
+/* line 123, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps {
   clear: both;
   margin-left: 3.361%;
@@ -260,7 +274,11 @@ body.builder nav#steps {
   overflow: hidden;
   font-size: 80%;
 }
-/* line 127, ../../../../../src/sass/builder/base.sass */
+/* line 131, ../../../../../src/sass/builder/base.sass */
+body.builder nav#steps li.active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+/* line 133, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li {
   -moz-box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.25);
@@ -273,17 +291,17 @@ body.builder nav#steps li {
   color: #313237;
   vertical-align: top;
 }
-/* line 135, ../../../../../src/sass/builder/base.sass */
+/* line 141, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li:first-child, body.builder nav#steps li:last-child {
   width: 5%;
   text-indent: -999%;
   -webkit-background-size: 40% auto;
 }
-/* line 139, ../../../../../src/sass/builder/base.sass */
+/* line 145, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li:first-child {
   background: url(../../img/shape_arrow_left.png) no-repeat center center;
 }
-/* line 141, ../../../../../src/sass/builder/base.sass */
+/* line 147, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li:last-child {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -316,7 +334,7 @@ body.builder section.steps {
   margin-right: 3.361%;
   position: relative;
   overflow: hidden;
-  height: 595px;
+  height: 400px;
 }
 /* line 21, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.active {
@@ -672,33 +690,37 @@ body.builder section.steps section.step.fermentation .fermentations {
   overflow: hidden;
 }
 /* line 192, ../../../../../src/sass/builder/steps.sass */
-body.builder section.steps section.step.fermentation .fermentations .wrap {
+body.builder section.steps section.step.fermentation .fermentations .fermentation {
   display: inline;
   float: left;
   width: 46.154%;
   margin-right: 0.962%;
 }
 /* line 194, ../../../../../src/sass/builder/steps.sass */
-body.builder section.steps section.step.fermentation .fermentations .wrap .fields {
+body.builder section.steps section.step.fermentation .fermentations .fermentation .wrap {
+  overflow: hidden;
+}
+/* line 196, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.fermentation .fermentations .fermentation .fields {
   display: inline;
   float: left;
   width: 41.667%;
   margin-right: 2.083%;
 }
-/* line 196, ../../../../../src/sass/builder/steps.sass */
-body.builder section.steps section.step.fermentation .fermentations .wrap .fields:nth-child(even) {
+/* line 198, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.fermentation .fermentations .fermentation .fields:nth-child(even) {
   display: inline;
   float: left;
   width: 56.25%;
   margin-right: 2.083%;
   margin-right: 0;
 }
-/* line 199, ../../../../../src/sass/builder/steps.sass */
+/* line 201, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations .wrap:nth-child(even) {
   float: right;
   margin-right: 0;
 }
-/* line 202, ../../../../../src/sass/builder/steps.sass */
+/* line 204, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations .range_wrap {
   display: inline;
   float: left;
@@ -706,22 +728,22 @@ body.builder section.steps section.step.fermentation .fermentations .range_wrap 
   margin-right: 0.962%;
   margin-bottom: 50px;
 }
-/* line 205, ../../../../../src/sass/builder/steps.sass */
+/* line 207, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations .range_wrap:nth-child(even) {
   float: right;
   margin-right: 0;
 }
-/* line 208, ../../../../../src/sass/builder/steps.sass */
+/* line 210, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations a {
   float: right;
   margin-top: 25px;
 }
-/* line 211, ../../../../../src/sass/builder/steps.sass */
+/* line 213, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping {
   overflow: hidden;
   /*TODO - this is all a copy from the hop section, do it right */
 }
-/* line 213, ../../../../../src/sass/builder/steps.sass */
+/* line 215, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .fields {
   display: inline;
   float: left;
@@ -732,7 +754,7 @@ body.builder section.steps section.step.fermentation .dry_hopping .fields {
   overflow: hidden;
   margin-bottom: 20px;
 }
-/* line 219, ../../../../../src/sass/builder/steps.sass */
+/* line 221, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .fields label {
   display: inline;
   float: left;
@@ -740,28 +762,28 @@ body.builder section.steps section.step.fermentation .dry_hopping .fields label 
   margin-right: 3.704%;
   margin-top: 12px;
 }
-/* line 222, ../../../../../src/sass/builder/steps.sass */
+/* line 224, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .fields div {
   display: inline;
   float: left;
   width: 22.222%;
   margin-right: 3.704%;
 }
-/* line 226, ../../../../../src/sass/builder/steps.sass */
+/* line 228, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(1) {
   display: inline;
   float: left;
   width: 39.423%;
   margin-right: 0.962%;
 }
-/* line 228, ../../../../../src/sass/builder/steps.sass */
+/* line 230, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(2) {
   display: inline;
   float: left;
   width: 12.5%;
   margin-right: 0.962%;
 }
-/* line 230, ../../../../../src/sass/builder/steps.sass */
+/* line 232, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(3) {
   padding-left: 6.731%;
   display: inline;
@@ -769,7 +791,7 @@ body.builder section.steps section.step.fermentation .dry_hopping ul.table_headi
   width: 19.231%;
   margin-right: 0.962%;
 }
-/* line 233, ../../../../../src/sass/builder/steps.sass */
+/* line 235, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(4) {
   display: inline;
   float: left;
@@ -777,12 +799,12 @@ body.builder section.steps section.step.fermentation .dry_hopping ul.table_headi
   margin-right: 0.962%;
   margin-right: 0;
 }
-/* line 236, ../../../../../src/sass/builder/steps.sass */
+/* line 238, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop {
   overflow: hidden;
   margin-bottom: 50px;
 }
-/* line 239, ../../../../../src/sass/builder/steps.sass */
+/* line 241, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .proportion {
   display: inline;
   float: left;
@@ -790,39 +812,39 @@ body.builder section.steps section.step.fermentation .dry_hopping .hop .proporti
   margin-right: 0.962%;
   padding-top: 10px;
 }
-/* line 242, ../../../../../src/sass/builder/steps.sass */
+/* line 244, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop select {
   display: inline;
   float: left;
   width: 39.423%;
   margin-right: 0.962%;
 }
-/* line 244, ../../../../../src/sass/builder/steps.sass */
+/* line 246, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop input[type=range] {
   margin-top: 20px;
 }
-/* line 246, ../../../../../src/sass/builder/steps.sass */
+/* line 248, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .weight_wrapper {
   display: inline;
   float: left;
   width: 12.5%;
   margin-right: 0.962%;
 }
-/* line 248, ../../../../../src/sass/builder/steps.sass */
+/* line 250, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .weight_range_wrapper {
   display: inline;
   float: left;
   width: 52.885%;
   margin-right: 0.962%;
 }
-/* line 250, ../../../../../src/sass/builder/steps.sass */
+/* line 252, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_range_wrapper {
   display: inline;
   float: left;
   width: 39.423%;
   margin-right: 0.962%;
 }
-/* line 252, ../../../../../src/sass/builder/steps.sass */
+/* line 254, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_wrapper {
   display: inline;
   float: left;
@@ -830,14 +852,14 @@ body.builder section.steps section.step.fermentation .dry_hopping .hop .time_wra
   margin-right: 0.962%;
   padding-left: 6.731%;
 }
-/* line 255, ../../../../../src/sass/builder/steps.sass */
+/* line 257, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_wrapper input[type=text].time {
   display: inline;
   float: left;
   width: 100%;
   margin-right: 5%;
 }
-/* line 257, ../../../../../src/sass/builder/steps.sass */
+/* line 259, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_range_wrapper {
   display: inline;
   float: left;
@@ -846,20 +868,20 @@ body.builder section.steps section.step.fermentation .dry_hopping .hop .time_ran
   padding-left: 6.731%;
   margin-right: 0;
 }
-/* line 261, ../../../../../src/sass/builder/steps.sass */
+/* line 263, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping a {
   float: right;
 }
-/* line 268, ../../../../../src/sass/builder/steps.sass */
+/* line 270, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .fields {
   padding-left: 20.192%;
   overflow: hidden;
 }
-/* line 271, ../../../../../src/sass/builder/steps.sass */
+/* line 273, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing input[type=range] {
   margin: 20px 0 10px 0;
 }
-/* line 273, ../../../../../src/sass/builder/steps.sass */
+/* line 275, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .range_wrap {
   padding-left: 20.192%;
   display: inline;
@@ -868,19 +890,19 @@ body.builder section.steps section.step.finishing .range_wrap {
   margin-right: 0.962%;
   margin-bottom: 50px;
 }
-/* line 278, ../../../../../src/sass/builder/steps.sass */
+/* line 280, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap {
   overflow: hidden;
   margin-bottom: 50px;
 }
-/* line 281, ../../../../../src/sass/builder/steps.sass */
+/* line 283, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields {
   display: inline;
   float: left;
   width: 19.231%;
   margin-right: 0.962%;
 }
-/* line 283, ../../../../../src/sass/builder/steps.sass */
+/* line 285, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields label {
   display: inline;
   float: left;
@@ -888,26 +910,26 @@ body.builder section.steps section.step.finishing .wrap.radio_wrap .fields label
   margin-right: 3.704%;
   margin-top: 10px;
 }
-/* line 286, ../../../../../src/sass/builder/steps.sass */
+/* line 288, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields input {
   float: right;
 }
-/* line 288, ../../../../../src/sass/builder/steps.sass */
+/* line 290, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields:last-child {
   padding-left: 13.462%;
 }
-/* line 292, ../../../../../src/sass/builder/steps.sass */
+/* line 294, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .fields {
   display: inline;
   float: left;
   width: 52.885%;
   margin-right: 0.962%;
 }
-/* line 294, ../../../../../src/sass/builder/steps.sass */
+/* line 296, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap {
   overflow: hidden;
 }
-/* line 296, ../../../../../src/sass/builder/steps.sass */
+/* line 298, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fields {
   display: inline;
   float: left;
@@ -915,7 +937,7 @@ body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fi
   margin-right: 0.962%;
   padding-left: 20.192%;
 }
-/* line 299, ../../../../../src/sass/builder/steps.sass */
+/* line 301, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fields:nth-child(even) {
   display: inline;
   float: left;
@@ -924,11 +946,11 @@ body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fi
   padding-left: 0%;
   margin-right: 0;
 }
-/* line 304, ../../../../../src/sass/builder/steps.sass */
+/* line 306, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.kegged {
   display: none;
 }
-/* line 307, ../../../../../src/sass/builder/steps.sass */
+/* line 309, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing div.custom_radio {
   display: inline-block;
 }

@@ -38,7 +38,6 @@ body.builder
 	
 		.wrap
 			@include full
-			overflow: hidden
 		dl
 			@include columns(4, 16)
 			dt
@@ -50,6 +49,8 @@ body.builder
 				@include columns(2, 4)
 				margin-right: 0
 				text-align: right
+			dd.issue
+				background-color: rgba(255,0,0,0.15)
 		dl:nth-child(2), dl:nth-child(3)
 			@include columns(3, 16)
 			@include prefix(1, 16)
@@ -67,6 +68,7 @@ body.builder
 			overflow: hidden
 			div
 				+border-radius(5px)
+				+box-shadow(rgba(0,0,0,.4) 0 0 1px 1px inset)
 				position: absolute
 				left: 5%
 				top: 5.5%
@@ -75,6 +77,8 @@ body.builder
 				background-color: white
 			div.highlight
 				+background-image(linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,0)))
+		#srm_panel.issue
+			+box-shadow(rgba(255,0,0,.5) 0 0 2px 2px)
 
 	aside#beer_character.closed
 		height: 40px
@@ -124,6 +128,8 @@ body.builder
 		height: 55px
 		overflow: hidden
 		font-size: 80%
+		li.active
+			background-color: rgba(0,0,0,.15)
 		li
 			+single-box-shadow(rgba(0,0,0,.25), 1px, 0, 1px, 1px)
 			display: inline-block

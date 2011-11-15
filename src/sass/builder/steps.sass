@@ -15,7 +15,7 @@ body.builder
 		@include full
 		position: relative
 		overflow: hidden
-		height: 595px
+		height: 400px
 
 		//--------------------------//
 		section.step.active
@@ -189,8 +189,10 @@ body.builder
 					float: right
 			.fermentations
 				overflow: hidden
-				.wrap
+				.fermentation
 					@include columns(7, 15)
+					.wrap
+						overflow: hidden
 					.fields
 						@include columns(3, 7)
 					.fields:nth-child(even)

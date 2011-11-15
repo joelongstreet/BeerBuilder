@@ -173,34 +173,40 @@
 					</div>
 				
 					<div class='fermentations'>
-						<div class='wrap'>
-							<div class='fields'>
-								<label>Primary Fermentation Length:</label>
-								<input type='text' value='7' />
+						<div class='fermentation'>
+							<div class='wrap'>
+								<div class='fields'>
+									<label>Primary Fermentation Length:</label>
+									<input data-ferm='1' type='text' value='7' />
+								</div>
+								<div class='fields'>
+									<label>Date Moved to Primary</label><br />
+									<input data-ferm='1' type='date' />
+								</div>
 							</div>
-							<div class='fields'>
-								<label>Date Moved to Primary</label><br />
-								<input type='date' />
-							</div>
+							<input data-ferm='1' type='range' min='0' max='21' step='1' value='7' />
 						</div>
 						
-						<div class='wrap'>
-							<div class='fields'>
-								<label>Secondary Fermentation Length:</label>
-								<input type='text' value='14' />
+						<div class='fermentation'>
+							<div class='wrap'>
+								<div class='fields'>
+									<label>Secondary Fermentation Length:</label>
+									<input data-ferm='2' type='text' value='14' />
+								</div>
+								<div class='fields'>
+									<label>Date Moved to Secondary</label><br />
+									<input data-ferm='2' type='date' />
+								</div>
 							</div>
-							<div class='fields'>
-								<label>Date Moved to Secondary</label><br />
-								<input type='date' />
-							</div>
+							<input data-ferm='2' type='range' min='0' max='28' step='1' value='14' />
 						</div>
 						
 						<div class='range_wrap'>
-							<input id='primary_fermentation_range' type='range' min='0' max='21' step='1' value='7' />
+							
 						</div>
 						
 						<div class='range_wrap'>
-							<input id='secondary_fermentation_range' type='range' min='0' max='28' step='1' value='14' />
+							
 						</div>
 						<!-- TODO: allow ability to add more than two fermentations? -->
 						<!-- <a href='#' class='add add_fermentation'>Add Another Fermentation<span class='add'>+</span></a> -->
@@ -304,7 +310,7 @@
 			<nav id='steps'>
 				<ul>
 					<li>Prev</li>
-					<li>Setup</li>
+					<li class='active'>Setup</li>
 					<li>Grain Bill</li>
 					<li>Hop Schedule</li>
 					<li>Mash &amp; Sparge</li>

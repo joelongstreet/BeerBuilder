@@ -2,13 +2,39 @@ var Builder = function(){
 	
 	//TODO - builder should be a model. remove all references to the
 	//global window.builder object
+	
+	//-----------------------------------------//
+	
+	var self 			= this;
+	var all_grains		= new Grains();
+	var all_hops		= new Hops();
+	var all_yeasts		= new Yeasts();
+	var all_styles		= new BeerStyles();
+	this.new_recipe	= new Recipe();
+	
+	all_grains.fetch();
+	all_hops.fetch();
+	all_yeasts.fetch();
+	all_styles.fetch({
+		success : function(data){
+			all_styles.build_options();
+		}
+	});
+	//-----------------------------------------//
+	
+	
 
 	//-----------------------------------------//
 	var all_sections = $('section#content').find('section.steps').find('section.step');
 	
 	
 	//--- Step 1 : Setup ---//
-	$('#beer_name_input')[0].addEventListener('keyup', function(){
+	//TODO - this is gross. check out step 5: fermentation
+	var the_date = new Date();
+	var todays_date = the_date.getFullYear() + '-' + the_date.getMonth() + '-' + the_date.getDate();
+	this.new_recipe.set({'date_brewed' : todays_date });
+	$(all_sections[0]).find('input[type=date]').val(todays_date);
+	$(all_sections[0]).find('#beer_name_input')[0].addEventListener('keyup', function(){
 		$('h1#beer_name').text($(this).val());
 	});
 	$(all_sections[0]).find('input[type=range]').each(function(){
@@ -20,6 +46,15 @@ var Builder = function(){
 		$(this)[0].addEventListener('keyup', function(){
 			$(this).next().val($(this).val());
 		});
+	});
+	//TODO - durr, is this the best way to do this?
+	$(all_sections[0]).find('input[type=date]')[0].addEventListener('mouseup', function(){
+		var current_date = $(this).val();
+		self.new_recipe.set({'date_brewed' : current_date });
+	});
+	$(all_sections[0]).find('input[type=date]')[0].addEventListener('keyup', function(){
+		var current_date = $(this).val();
+		self.new_recipe.set({'date_brewed' : current_date });
 	});
 	//--- ---//
 
@@ -66,19 +101,53 @@ var Builder = function(){
 		});
 	});
 	//--- ---//
-	
-	
+
 	//--- Step 5 : Fermentation ---//
-	$(all_sections[4]).find('input[type=range]').each(function(){
-		$(this)[0].addEventListener('change', function(){
-			$(this).prev().val($(this).val());
+	$(all_sections[4]).find('.fermentation').each(function(i){
+		
+		var $fermentation = $(this);
+		var $range			= $fermentation.find('input[type=range]');
+		var $text			= $fermentation.find('input[type=text]');
+		var $date			= $fermentation.find('input[type=date]');
+		
+		$range[0].addEventListener('change', function(){
+			$text.val($(this).val());
 		});
-	});
-	$(all_sections[4]).find('input').each(function(){
-		$(this)[0].addEventListener('keyup', function(){
-			$(this).next().val($(this).val());
+		$text[0].addEventListener('keyup', function(){
+			$range.val($(this).val());
+			calc_date();
 		});
+		
+		$range[0].addEventListener('mouseup', calc_date);
+		$date[0].addEventListener('mouseup', calc_days);
+		$date[0].addEventListener('keyup', calc_days);
+		
+		function calc_days(){
+			var days = subtract_from_date(get_date_from(), $date.val())
+			if(days != NaN){
+				$text.val(days);
+				$range.val(days)
+			}
+		}
+		
+		function calc_date(){
+			var days_to_add	= $text.val();
+			var new_date		= add_to_date(get_date_from(), days_to_add);
+			$date.val(new_date);
+		}
+		
+		function get_date_from(){
+			var date_from = 0;
+			if(i == 0){
+				date_from = self.new_recipe.get('date_brewed');
+			} else{
+				date_from = $fermentation.prev().find('input[type=date]').val();
+			}
+
+			return date_from;
+		}
 	});
+	
 	//--- ---//
 	
 	
@@ -135,7 +204,9 @@ var Builder = function(){
 					}
 
 					nav_self.$steps.removeClass('active');
+					nav_self.$nav.removeClass('active');
 					nav_self.$steps.eq(nav_self.current_page - 1).addClass('active');
+					nav_self.$nav.eq(nav_self.current_page).addClass('active');
 				}
 
 			});
@@ -146,25 +217,10 @@ var Builder = function(){
 
 	
 	//-----------------------------------------//
-	var self 		= this;
 	var nav			= new Navigation();
-	
-	var all_grains = new Grains();
-	var all_hops 	= new Hops();
-	var all_yeasts	= new Yeasts();
-	var all_styles = new BeerStyles();
-	
-	all_grains.fetch();
-	all_hops.fetch();
-	all_yeasts.fetch();
-	all_styles.fetch({
-		success : function(data){
-			all_styles.build_options();
-		}
-	});
-	
-	this.new_recipe = new Recipe();
 	//-----------------------------------------//
+	
+	
 };
 
 

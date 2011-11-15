@@ -34,10 +34,12 @@ var TemplateSelector = Backbone.View.extend({
 	},
 	
 	change_template : function(){
-		var response = confirm('If you choose a template, your current recipe will be lost. Continue?')
+		var response = confirm('If you choose a template, your current recipe will be lost. Continue?');
 		if(response){
 			var this_val = $(this.el).find('select').val();
 			$('#style_definition').find('select').val(this_val);
+			builder.new_recipe.proto = this.collection[this_val];
+			builder.new_recipe.compare_to_bjcp();
 			//TODO - apply prototype recipe
 		} else{
 			$(this.el).find('select').val(999);
@@ -68,6 +70,6 @@ var StyleSelector = Backbone.View.extend({
 	change_style : function(){
 		var this_val = $(this.el).find('select').val();
 		builder.new_recipe.proto = this.collection[this_val];
-		//TODO - notify the builder.new_recipe object of the selected style
+		builder.new_recipe.compare_to_bjcp();
 	}
 });

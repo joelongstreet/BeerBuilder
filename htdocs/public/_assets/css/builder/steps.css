@@ -21,7 +21,7 @@ body.builder section.steps {
   margin-right: 3.361%;
   position: relative;
   overflow: hidden;
-  height: 595px;
+  height: 400px;
 }
 /* line 21, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.active {
@@ -377,33 +377,37 @@ body.builder section.steps section.step.fermentation .fermentations {
   overflow: hidden;
 }
 /* line 192, ../../../../../src/sass/builder/steps.sass */
-body.builder section.steps section.step.fermentation .fermentations .wrap {
+body.builder section.steps section.step.fermentation .fermentations .fermentation {
   display: inline;
   float: left;
   width: 46.154%;
   margin-right: 0.962%;
 }
 /* line 194, ../../../../../src/sass/builder/steps.sass */
-body.builder section.steps section.step.fermentation .fermentations .wrap .fields {
+body.builder section.steps section.step.fermentation .fermentations .fermentation .wrap {
+  overflow: hidden;
+}
+/* line 196, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.fermentation .fermentations .fermentation .fields {
   display: inline;
   float: left;
   width: 41.667%;
   margin-right: 2.083%;
 }
-/* line 196, ../../../../../src/sass/builder/steps.sass */
-body.builder section.steps section.step.fermentation .fermentations .wrap .fields:nth-child(even) {
+/* line 198, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.fermentation .fermentations .fermentation .fields:nth-child(even) {
   display: inline;
   float: left;
   width: 56.25%;
   margin-right: 2.083%;
   margin-right: 0;
 }
-/* line 199, ../../../../../src/sass/builder/steps.sass */
+/* line 201, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations .wrap:nth-child(even) {
   float: right;
   margin-right: 0;
 }
-/* line 202, ../../../../../src/sass/builder/steps.sass */
+/* line 204, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations .range_wrap {
   display: inline;
   float: left;
@@ -411,22 +415,22 @@ body.builder section.steps section.step.fermentation .fermentations .range_wrap 
   margin-right: 0.962%;
   margin-bottom: 50px;
 }
-/* line 205, ../../../../../src/sass/builder/steps.sass */
+/* line 207, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations .range_wrap:nth-child(even) {
   float: right;
   margin-right: 0;
 }
-/* line 208, ../../../../../src/sass/builder/steps.sass */
+/* line 210, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .fermentations a {
   float: right;
   margin-top: 25px;
 }
-/* line 211, ../../../../../src/sass/builder/steps.sass */
+/* line 213, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping {
   overflow: hidden;
   /*TODO - this is all a copy from the hop section, do it right */
 }
-/* line 213, ../../../../../src/sass/builder/steps.sass */
+/* line 215, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .fields {
   display: inline;
   float: left;
@@ -437,7 +441,7 @@ body.builder section.steps section.step.fermentation .dry_hopping .fields {
   overflow: hidden;
   margin-bottom: 20px;
 }
-/* line 219, ../../../../../src/sass/builder/steps.sass */
+/* line 221, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .fields label {
   display: inline;
   float: left;
@@ -445,28 +449,28 @@ body.builder section.steps section.step.fermentation .dry_hopping .fields label 
   margin-right: 3.704%;
   margin-top: 12px;
 }
-/* line 222, ../../../../../src/sass/builder/steps.sass */
+/* line 224, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .fields div {
   display: inline;
   float: left;
   width: 22.222%;
   margin-right: 3.704%;
 }
-/* line 226, ../../../../../src/sass/builder/steps.sass */
+/* line 228, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(1) {
   display: inline;
   float: left;
   width: 39.423%;
   margin-right: 0.962%;
 }
-/* line 228, ../../../../../src/sass/builder/steps.sass */
+/* line 230, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(2) {
   display: inline;
   float: left;
   width: 12.5%;
   margin-right: 0.962%;
 }
-/* line 230, ../../../../../src/sass/builder/steps.sass */
+/* line 232, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(3) {
   padding-left: 6.731%;
   display: inline;
@@ -474,7 +478,7 @@ body.builder section.steps section.step.fermentation .dry_hopping ul.table_headi
   width: 19.231%;
   margin-right: 0.962%;
 }
-/* line 233, ../../../../../src/sass/builder/steps.sass */
+/* line 235, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping ul.table_heading li:nth-child(4) {
   display: inline;
   float: left;
@@ -482,12 +486,12 @@ body.builder section.steps section.step.fermentation .dry_hopping ul.table_headi
   margin-right: 0.962%;
   margin-right: 0;
 }
-/* line 236, ../../../../../src/sass/builder/steps.sass */
+/* line 238, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop {
   overflow: hidden;
   margin-bottom: 50px;
 }
-/* line 239, ../../../../../src/sass/builder/steps.sass */
+/* line 241, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .proportion {
   display: inline;
   float: left;
@@ -495,39 +499,39 @@ body.builder section.steps section.step.fermentation .dry_hopping .hop .proporti
   margin-right: 0.962%;
   padding-top: 10px;
 }
-/* line 242, ../../../../../src/sass/builder/steps.sass */
+/* line 244, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop select {
   display: inline;
   float: left;
   width: 39.423%;
   margin-right: 0.962%;
 }
-/* line 244, ../../../../../src/sass/builder/steps.sass */
+/* line 246, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop input[type=range] {
   margin-top: 20px;
 }
-/* line 246, ../../../../../src/sass/builder/steps.sass */
+/* line 248, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .weight_wrapper {
   display: inline;
   float: left;
   width: 12.5%;
   margin-right: 0.962%;
 }
-/* line 248, ../../../../../src/sass/builder/steps.sass */
+/* line 250, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .weight_range_wrapper {
   display: inline;
   float: left;
   width: 52.885%;
   margin-right: 0.962%;
 }
-/* line 250, ../../../../../src/sass/builder/steps.sass */
+/* line 252, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_range_wrapper {
   display: inline;
   float: left;
   width: 39.423%;
   margin-right: 0.962%;
 }
-/* line 252, ../../../../../src/sass/builder/steps.sass */
+/* line 254, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_wrapper {
   display: inline;
   float: left;
@@ -535,14 +539,14 @@ body.builder section.steps section.step.fermentation .dry_hopping .hop .time_wra
   margin-right: 0.962%;
   padding-left: 6.731%;
 }
-/* line 255, ../../../../../src/sass/builder/steps.sass */
+/* line 257, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_wrapper input[type=text].time {
   display: inline;
   float: left;
   width: 100%;
   margin-right: 5%;
 }
-/* line 257, ../../../../../src/sass/builder/steps.sass */
+/* line 259, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping .hop .time_range_wrapper {
   display: inline;
   float: left;
@@ -551,20 +555,20 @@ body.builder section.steps section.step.fermentation .dry_hopping .hop .time_ran
   padding-left: 6.731%;
   margin-right: 0;
 }
-/* line 261, ../../../../../src/sass/builder/steps.sass */
+/* line 263, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.fermentation .dry_hopping a {
   float: right;
 }
-/* line 268, ../../../../../src/sass/builder/steps.sass */
+/* line 270, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .fields {
   padding-left: 20.192%;
   overflow: hidden;
 }
-/* line 271, ../../../../../src/sass/builder/steps.sass */
+/* line 273, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing input[type=range] {
   margin: 20px 0 10px 0;
 }
-/* line 273, ../../../../../src/sass/builder/steps.sass */
+/* line 275, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .range_wrap {
   padding-left: 20.192%;
   display: inline;
@@ -573,19 +577,19 @@ body.builder section.steps section.step.finishing .range_wrap {
   margin-right: 0.962%;
   margin-bottom: 50px;
 }
-/* line 278, ../../../../../src/sass/builder/steps.sass */
+/* line 280, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap {
   overflow: hidden;
   margin-bottom: 50px;
 }
-/* line 281, ../../../../../src/sass/builder/steps.sass */
+/* line 283, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields {
   display: inline;
   float: left;
   width: 19.231%;
   margin-right: 0.962%;
 }
-/* line 283, ../../../../../src/sass/builder/steps.sass */
+/* line 285, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields label {
   display: inline;
   float: left;
@@ -593,26 +597,26 @@ body.builder section.steps section.step.finishing .wrap.radio_wrap .fields label
   margin-right: 3.704%;
   margin-top: 10px;
 }
-/* line 286, ../../../../../src/sass/builder/steps.sass */
+/* line 288, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields input {
   float: right;
 }
-/* line 288, ../../../../../src/sass/builder/steps.sass */
+/* line 290, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields:last-child {
   padding-left: 13.462%;
 }
-/* line 292, ../../../../../src/sass/builder/steps.sass */
+/* line 294, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .fields {
   display: inline;
   float: left;
   width: 52.885%;
   margin-right: 0.962%;
 }
-/* line 294, ../../../../../src/sass/builder/steps.sass */
+/* line 296, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap {
   overflow: hidden;
 }
-/* line 296, ../../../../../src/sass/builder/steps.sass */
+/* line 298, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fields {
   display: inline;
   float: left;
@@ -620,7 +624,7 @@ body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fi
   margin-right: 0.962%;
   padding-left: 20.192%;
 }
-/* line 299, ../../../../../src/sass/builder/steps.sass */
+/* line 301, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fields:nth-child(even) {
   display: inline;
   float: left;
@@ -629,11 +633,11 @@ body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fi
   padding-left: 0%;
   margin-right: 0;
 }
-/* line 304, ../../../../../src/sass/builder/steps.sass */
+/* line 306, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.kegged {
   display: none;
 }
-/* line 307, ../../../../../src/sass/builder/steps.sass */
+/* line 309, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing div.custom_radio {
   display: inline-block;
 }

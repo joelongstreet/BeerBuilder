@@ -162,11 +162,16 @@ var Recipe = Backbone.Model.extend({
 	
 	compare_to_bjcp : function(){
 		//TODO - I wonder if all this "getting" will make it run slow. Change this if it's running slow
+		//TODO - this seems wrong to me. gotta be a better way to do this.
 		if(this.get('og') > this.proto.get('og_hi') || this.get('og') < this.proto.get('og_lo')){
 			$('#og').addClass('issue');
+		} else{
+			$('#og').removeClass('issue');
 		}
 		if(this.get('fg') > this.proto.get('fg_hi') || this.get('fg') < this.proto.get('fg_lo')){
 			$('#fg').addClass('issue');
+		} else{
+			$('#fg').removeClass('issue');
 		}
 		/* TODO - neeed to go through and define gubu hi's and lo's in beer_style.json
 		if(this.get('gubu') > this.proto.get('gubu_hi') || this.get('gubu') < this.proto.get('gubu_lo')){
@@ -174,13 +179,20 @@ var Recipe = Backbone.Model.extend({
 		}*/
 		if(this.get('ibu') > this.proto.get('ibu_hi') || this.get('ibu') < this.proto.get('ibu_lo')){
 			$('#ibu').addClass('issue');
+		} else{
+			$('#ibu').removeClass('issue');
 		}
 		if(this.get('abv') > this.proto.get('abv_hi') || this.get('abv') < this.proto.get('abv_lo')){
 			$('#abv').addClass('issue');
+		} else{
+			$('#abv').removeClass('issue');
 		}
 		if(this.get('srm') > this.proto.get('srm_hi') || this.get('srm') < this.proto.get('srm_lo')){
 			$('#srm').addClass('issue');
 			$('#srm_panel').addClass('issue');
+		} else {
+			$('#srm').removeClass('issue');
+			$('#srm_panel').removeClass('issue');
 		}
 	}
 		
