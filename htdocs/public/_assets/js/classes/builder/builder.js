@@ -104,8 +104,19 @@ var Builder = function(){
 
 	//--- Step 5 : Fermentation ---//
 	$(all_sections[4]).find('.fermentation').each(function(i){
+		var dom_element = $(this);
+		init_fermentation(dom_element, i);
+	});
+	$(all_sections[4]).find('.add_fermentation')[0].addEventListener('click', function(){
+		var duplicate 	= $(this).prev().html();
+		var index		= $(all_sections[4]).find('.fermentation').length();
 		
-		var $fermentation = $(this);
+		init_fermentation(duplicate, index);
+	});
+	
+	
+	function init_fermentation(dom_element, i){
+		var $fermentation = dom_element;
 		var $range			= $fermentation.find('input[type=range]');
 		var $text			= $fermentation.find('input[type=text]');
 		var $date			= $fermentation.find('input[type=date]');
@@ -146,7 +157,7 @@ var Builder = function(){
 
 			return date_from;
 		}
-	});
+	}
 	
 	//--- ---//
 	

@@ -79,6 +79,7 @@ function add_to_date(orig_date, increase_by){
 function subtract_from_date(orig_date, new_date){
 	//TODO - this seems like i made it too complicated...
 	//expects two dates in the form of YYYY-MM-DD
+	//returns the days between those two dates
 	var o_date = {
 		year		: parseInt(orig_date.substring(0, 4)),
 		month		: parseInt(orig_date.substring(5, 7)),

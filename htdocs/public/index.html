@@ -173,43 +173,36 @@
 					</div>
 				
 					<div class='fermentations'>
-						<div class='fermentation'>
+						
+						<!--<div class='fermentation'>
 							<div class='wrap'>
 								<div class='fields'>
 									<label>Primary Fermentation Length:</label>
-									<input data-ferm='1' type='text' value='7' />
+									<input type='text' value='7' />
 								</div>
 								<div class='fields'>
 									<label>Date Moved to Primary</label><br />
-									<input data-ferm='1' type='date' />
+									<input type='date' />
 								</div>
 							</div>
-							<input data-ferm='1' type='range' min='0' max='21' step='1' value='7' />
+							<input type='range' min='0' max='21' step='1' value='7' />
 						</div>
-						
 						<div class='fermentation'>
 							<div class='wrap'>
 								<div class='fields'>
 									<label>Secondary Fermentation Length:</label>
-									<input data-ferm='2' type='text' value='14' />
+									<input type='text' value='14' />
 								</div>
 								<div class='fields'>
 									<label>Date Moved to Secondary</label><br />
-									<input data-ferm='2' type='date' />
+									<input type='date' />
 								</div>
 							</div>
-							<input data-ferm='2' type='range' min='0' max='28' step='1' value='14' />
-						</div>
+							<input type='range' min='0' max='28' step='1' value='14' />
+						</div>-->
 						
-						<div class='range_wrap'>
-							
-						</div>
-						
-						<div class='range_wrap'>
-							
-						</div>
 						<!-- TODO: allow ability to add more than two fermentations? -->
-						<!-- <a href='#' class='add add_fermentation'>Add Another Fermentation<span class='add'>+</span></a> -->
+						<a href='#' class='add add_fermentation'>Add Another Fermentation<span class='add'>+</span></a>
 					</div>
 				
 					<div class='dry_hopping'>
@@ -338,6 +331,20 @@
 		<script src='_assets/js/classes/builder/builder.js'></script>
 
 		<script src='_assets/js/classes/app.js'></script>
+		
+		<script type='text/template' id='fermentations_view'>
+			<div class='wrap'>
+				<div class='fields'>
+					<label>Days in {{label_days}} fermentation</label>
+					<input type='text' value={{days}} />
+				</div>
+				<div class='fields'>
+					<label>Date Moved to {{label_date}}</label><br />
+					<input type='date' value={{date}} />
+				</div>
+			</div>
+			<input type='range' min='0' max={{max}} step='1' value={{days}} />
+		</script>
 		
 		<script type='text/template' id='grains_view'>
 			<select></select>
