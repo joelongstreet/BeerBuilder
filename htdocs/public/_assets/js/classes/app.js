@@ -22,7 +22,7 @@ $(function(){
 	
 	var my_app = new app();
 	
-	$('body')[0].addEventListener('touchstart', function(){
+	$('body')[0].addEventListener('touchmove', function(){
 		event.preventDefault();
 	}, false);
 	

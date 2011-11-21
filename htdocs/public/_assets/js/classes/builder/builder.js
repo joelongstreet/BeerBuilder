@@ -203,7 +203,6 @@ var Builder = function(){
 		this.$nav.each(function(){
 			$(this)[0].addEventListener('click', function(){
 				var index = nav_self.$nav.index($(this));
-				
 				if(index == nav_self.current_page){
 					return false;
 				} else {
