@@ -22,6 +22,8 @@ $(function(){
 	
 	var my_app = new app();
 	
-	
+	$('body')[0].addEventListener('touchstart', function(){
+		event.preventDefault();
+	}, false);
 	
 });

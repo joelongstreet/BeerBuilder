@@ -35,16 +35,15 @@ body.builder
 		overflow: hidden
 		padding-top: 25px
 		margin-bottom: 25px
-	
 		.wrap
 			@include full
 		dl
 			@include columns(4, 16)
+			white-space: nowrap
 			dt
 				@include columns(2, 4)
 				+opacity(.5)
 				margin-bottom: 5%
-				font-size: 90%
 			dd
 				@include columns(2, 4)
 				margin-right: 0
@@ -127,7 +126,8 @@ body.builder
 		+background-image(linear-gradient(rgba(255,255,255,1), rgba(180,180,180,1)))
 		height: 55px
 		overflow: hidden
-		font-size: 80%
+		font-size: 75%
+		white-space: nowrap
 		li.active
 			background-color: rgba(0,0,0,.15)
 		li

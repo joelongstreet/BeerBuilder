@@ -193,11 +193,12 @@ var Builder = function(){
 		var nav_self		= this;
 		
 		this.$nav 			= $('nav#steps ul li');
-		this.last_page 	= this.$nav.length - 2;
-		this.current_page = 1;
-		
 		this.$section		= $('section.steps');
 		this.$steps			= this.$section.children('section.step');
+		
+		this.last_page 	= this.$nav.length - 2;
+		this.current_page = 1;
+		this.the_next_page		= 0;
 		
 		this.$nav.each(function(){
 			$(this)[0].addEventListener('click', function(){
@@ -207,31 +208,66 @@ var Builder = function(){
 					return false;
 				} else {
 					if(index == 0){
-						if(nav_self.current_page > 1) nav_self.current_page--;
+						nav_self.go_to_prev_page();
 					} else if(index == nav_self.$nav.length - 1){
-						if(nav_self.current_page < nav_self.last_page) nav_self.current_page++;
+						nav_self.go_to_next_page();
 					} else{
-						nav_self.current_page = index;
+						nav_self.next_page = index;
+						nav_self.change_pages();
 					}
-
-					nav_self.$steps.removeClass('active');
-					nav_self.$nav.removeClass('active');
-					nav_self.$steps.eq(nav_self.current_page - 1).addClass('active');
-					nav_self.$nav.eq(nav_self.current_page).addClass('active');
 				}
-
 			});
 		});
+		
+		this.go_to_next_page = function(){
+			if(this.current_page < this.last_page){
+				this.next_page = this.current_page + 1;
+				this.change_pages();
+			}
+		};
+		
+		this.go_to_prev_page = function(){
+			if(this.current_page > 1){
+				this.next_page = this.current_page - 1;
+				this.change_pages();
+			}
+			
+		};
+		
+		this.change_pages = function(){
+			if(this.next_page > this.current_page){
+				this.$steps.eq(this.next_page - 1).addClass('right');
+				this.$steps.eq(this.current_page - 1).addClass('left');
+			} else{
+				this.$steps.eq(this.next_page - 1).addClass('left');
+				this.$steps.eq(this.current_page - 1).addClass('right');
+			}
+			
+			this.$steps.eq(this.next_page - 1).removeClass('right');
+			this.$steps.eq(this.next_page - 1).removeClass('left');
+			
+			//this shows it
+			this.$steps.eq(this.next_page - 1).addClass('active');
+			this.$nav.eq(nav_self.next_page).addClass('active');
+			
+			//this hides it
+			this.$steps.eq(this.current_page - 1).removeClass('active');
+			this.$nav.eq(nav_self.current_page).removeClass('active');
+			
+			this.current_page = this.next_page;
+		};
 	};
 	//-----------------------------------------//
 
 
 	
 	//-----------------------------------------//
-	var nav			= new Navigation();
+	var nav = new Navigation();
+	$('body').swipeLeft(function(){ nav.go_to_next_page(); });
+	$('body').swipeRight(function(){ nav.go_to_prev_page(); });
 	//-----------------------------------------//
-	
-	
+
+
 };
 
 

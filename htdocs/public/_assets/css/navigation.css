@@ -1,131 +1,109 @@
-/* line 37, ../../../../src/sass/mixins.sass */
-.border {
-  -moz-border-radius: 5px 0 0 5px;
-  -webkit-border-radius: 5px 0 0 5px;
-  -o-border-radius: 5px 0 0 5px;
-  -ms-border-radius: 5px 0 0 5px;
-  -khtml-border-radius: 5px 0 0 5px;
-  border-radius: 5px 0 0 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0 0 3px 3px inset, rgba(255, 255, 255, 0.2) 0 1px 1px 1px;
-  background: #313237 url(../../img/carbon_fiber_20.png) repeat;
-  height: 4px;
-}
+/*
+Syntax error: Undefined mixin 'prefix'.
+        on line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass, in `prefix'
+        from line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass
 
-/* line 5, ../../../../src/sass/navigation.sass */
-#nav_shadow {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-  -webkit-transition: 0.7s all ease-out;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* line 16, ../../../../src/sass/navigation.sass */
-#nav_shadow.on {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-  z-index: 2;
-}
-
-/* line 20, ../../../../src/sass/navigation.sass */
-nav#main.open {
-  -webkit-transform: translateX(0%);
-}
-
-/* line 23, ../../../../src/sass/navigation.sass */
-nav#main {
-  -webkit-transform: translateX(-97%);
-  -webkit-transition: 0.7s all ease-out;
-  -moz-border-radius: 0 5px 5px 0;
-  -webkit-border-radius: 0 5px 5px 0;
-  -o-border-radius: 0 5px 5px 0;
-  -ms-border-radius: 0 5px 5px 0;
-  -khtml-border-radius: 0 5px 5px 0;
-  border-radius: 0 5px 5px 0;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #c8c8c8));
-  background-image: -webkit-linear-gradient(#ffffff, #c8c8c8);
-  background-image: -moz-linear-gradient(#ffffff, #c8c8c8);
-  background-image: -o-linear-gradient(#ffffff, #c8c8c8);
-  background-image: -ms-linear-gradient(#ffffff, #c8c8c8);
-  background-image: linear-gradient(#ffffff, #c8c8c8);
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px 3px;
-  z-index: 3;
-  position: absolute;
-  height: 380px;
-  width: 200px;
-  background-color: white;
-  top: 25%;
-}
-/* line 35, ../../../../src/sass/navigation.sass */
-nav#main .handle {
-  -moz-border-radius: 0 5px 5px 0;
-  -webkit-border-radius: 0 5px 5px 0;
-  -o-border-radius: 0 5px 5px 0;
-  -ms-border-radius: 0 5px 5px 0;
-  -khtml-border-radius: 0 5px 5px 0;
-  border-radius: 0 5px 5px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
-  box-shadow: rgba(0, 0, 0, 0.3) 2px 0 1px 1px;
-  position: absolute;
-  right: -12px;
-  top: 40%;
-  width: 12px;
-  height: 60px;
-  background: url(../img/handle.png) repeat;
-}
-/* line 44, ../../../../src/sass/navigation.sass */
-nav#main .wrap {
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
-  margin-top: 3%;
-  width: 97%;
-  height: 97%;
-  background: #313237 url(../img/carbon_fiber_20.png);
-}
-/* line 50, ../../../../src/sass/navigation.sass */
-nav#main .wrap a.active {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a5b0c0), color-stop(100%, #7b8ba2));
-  background-image: -webkit-linear-gradient(#a5b0c0, #7b8ba2);
-  background-image: -moz-linear-gradient(#a5b0c0, #7b8ba2);
-  background-image: -o-linear-gradient(#a5b0c0, #7b8ba2);
-  background-image: -ms-linear-gradient(#a5b0c0, #7b8ba2);
-  background-image: linear-gradient(#a5b0c0, #7b8ba2);
-}
-/* line 52, ../../../../src/sass/navigation.sass */
-nav#main .wrap a {
-  -moz-border-radius: 0 100px 100px 0;
-  -webkit-border-radius: 0 100px 100px 0;
-  -o-border-radius: 0 100px 100px 0;
-  -ms-border-radius: 0 100px 100px 0;
-  -khtml-border-radius: 0 100px 100px 0;
-  border-radius: 0 100px 100px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 6px, rgba(0, 0, 0, 0.25) 0 0 5px 5px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #35393e), color-stop(100%, #25272a));
-  background-image: -webkit-linear-gradient(#35393e, #25272a);
-  background-image: -moz-linear-gradient(#35393e, #25272a);
-  background-image: -o-linear-gradient(#35393e, #25272a);
-  background-image: -ms-linear-gradient(#35393e, #25272a);
-  background-image: linear-gradient(#35393e, #25272a);
-  display: inline-block;
-  margin-top: 10%;
-  padding: 9%;
-  width: 75%;
-}
+Backtrace:
+/Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass:70:in `prefix'
+/Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass:70
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:169:in `visit_mixin'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:230:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:230:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:230:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/root_node.rb:20:in `render'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/engine.rb:291:in `_render'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/engine.rb:239:in `render'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/util.rb:298:in `silence_sass_warnings'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/engine.rb:239:in `render'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:136:in `compile'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:122:in `timed'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:135:in `compile'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/logger.rb:45:in `red'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:134:in `compile'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:114:in `compile_if_required'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:99:in `run'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:97:in `each'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:97:in `run'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:122:in `timed'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/compiler.rb:96:in `run'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/commands/watch_project.rb:142:in `recompile'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `to_proc'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:73:in `call'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:73:in `run_callback'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:55:in `callback_action'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:35:in `update'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/state/directory.rb:39:in `modified'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/state/directory.rb:37:in `each'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/state/directory.rb:37:in `modified'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/state/directory.rb:18:in `refresh'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/fsevents.rb:15:in `add_handler'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/fsevents.rb:14:in `each'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/fsevents.rb:14:in `add_handler'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/rubycocoa/fsevents.rb:107:in `call'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/rubycocoa/fsevents.rb:107:in `initialize'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/fsevents.rb:27:in `call'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/fsevents.rb:27:in `CFRunLoopRun'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/backends/fsevents.rb:27:in `run'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm/monitor.rb:26:in `run'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.7/lib/fssm.rb:20:in `monitor'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/commands/watch_project.rb:86:in `perform'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/commands/base.rb:18:in `execute'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/commands/project_base.rb:19:in `execute'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/bin/compass:25
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/bin/compass:39:in `call'
+/Library/Ruby/Gems/1.8/gems/compass-0.11.5/bin/compass:39
+/usr/bin/compass:19:in `load'
+/usr/bin/compass:19
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'prefix'.\A         on line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass, in `prefix'\A         from line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass"; }
