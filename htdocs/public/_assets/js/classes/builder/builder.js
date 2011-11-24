@@ -190,28 +190,30 @@ var Builder = function(){
 	//-----------------------------------------//
 	var Navigation = function(){
 		
-		var nav_self		= this;
+		var nav_self			= this;
 		
-		this.$nav 			= $('nav#steps ul li');
-		this.$section		= $('section.steps');
-		this.$steps			= this.$section.children('section.step');
+		var $nav 				= $('nav#steps ul li');
+		var $section			= $('section.steps');
+		var $steps				= $section.children('section.step');
 		
-		this.last_page 	= this.$nav.length - 2;
-		this.current_page = 1;
-		this.the_next_page		= 0;
+		var last_page 			= $nav.length - 2;
+		var current_page 		= 1;
+		var next_page			= 0;
+
+		$steps.eq(current_page-1).addClass('animate');
 		
-		this.$nav.each(function(){
+		$nav.each(function(){
 			$(this)[0].addEventListener('click', function(){
-				var index = nav_self.$nav.index($(this));
-				if(index == nav_self.current_page){
+				var index = $nav.index($(this));
+				if(index == current_page){
 					return false;
 				} else {
 					if(index == 0){
 						nav_self.go_to_prev_page();
-					} else if(index == nav_self.$nav.length - 1){
+					} else if(index == $nav.length - 1){
 						nav_self.go_to_next_page();
 					} else{
-						nav_self.next_page = index;
+						next_page = index;
 						nav_self.change_pages();
 					}
 				}
@@ -219,41 +221,53 @@ var Builder = function(){
 		});
 		
 		this.go_to_next_page = function(){
-			if(this.current_page < this.last_page){
-				this.next_page = this.current_page + 1;
-				this.change_pages();
+			if(current_page < last_page){
+				next_page = current_page + 1;
+				nav_self.change_pages();
 			}
 		};
 		
 		this.go_to_prev_page = function(){
-			if(this.current_page > 1){
-				this.next_page = this.current_page - 1;
-				this.change_pages();
+			if(current_page > 1){
+				next_page = current_page - 1;
+				nav_self.change_pages();
 			}
 			
 		};
 		
 		this.change_pages = function(){
-			if(this.next_page > this.current_page){
-				this.$steps.eq(this.next_page - 1).addClass('right');
-				this.$steps.eq(this.current_page - 1).addClass('left');
+			
+			//TODO - Jesus, Mary, and Joseph. What have I done here...
+			var next = next_page - 1;
+			var curr = current_page - 1;
+
+			if(next > curr){
+				$steps.eq(next).addClass('right');
+				$steps.eq(curr).addClass('left');
 			} else{
-				this.$steps.eq(this.next_page - 1).addClass('left');
-				this.$steps.eq(this.current_page - 1).addClass('right');
+				$steps.eq(next).addClass('left');
+				$steps.eq(curr).addClass('right');
 			}
+
+			setTimeout(function(){
+				$steps.eq(next).addClass('animate');
+				$steps.eq(curr).addClass('animate');
+			});
+
+			setTimeout(function(){
+				$steps.eq(next).removeClass('left right');
+				$steps.eq(next).addClass('active');
+			});
 			
-			this.$steps.eq(this.next_page - 1).removeClass('right');
-			this.$steps.eq(this.next_page - 1).removeClass('left');
+			setTimeout(function(){
+				$steps.eq(curr).removeClass('right left active animate');
+			}, 1000);
+			//say 5 hail mary's for this portion of the code
 			
-			//this shows it
-			this.$steps.eq(this.next_page - 1).addClass('active');
-			this.$nav.eq(nav_self.next_page).addClass('active');
+			$nav.eq(next_page).addClass('active');
+			$nav.eq(current_page).removeClass('active');
 			
-			//this hides it
-			this.$steps.eq(this.current_page - 1).removeClass('active');
-			this.$nav.eq(nav_self.current_page).removeClass('active');
-			
-			this.current_page = this.next_page;
+			current_page = next_page;
 		};
 	};
 	//-----------------------------------------//
@@ -262,12 +276,9 @@ var Builder = function(){
 	
 	//-----------------------------------------//
 	var nav = new Navigation();
-	$('body').swipeLeft(function(){ nav.go_to_next_page(); });
-	$('body').swipeRight(function(){ nav.go_to_prev_page(); });
+	$('section.steps').swipeLeft(function(){ nav.go_to_next_page(); });
+	$('section.steps').swipeRight(function(){ nav.go_to_prev_page(); });
 	//-----------------------------------------//
 
 
 };
-
-
-$(function(){ window.builder = new Builder(); });

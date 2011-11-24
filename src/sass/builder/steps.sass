@@ -22,15 +22,16 @@ body.builder
 			z-index: 2
 			-webkit-transform: translateX(0%)
 
+		section.step.animate
+			+single-transition(all .15s ease-out)
 		section.step.left
 			-webkit-transform: translateX(-100%)
 		section.step.right
 			-webkit-transform: translateX(100%)
-			
+
 		section.step
 			@include prefix(1, 16)
 			@include columns(15, 16)
-			+single-transition(all .15s ease-out)
 			-webkit-transform: translateX(100%)
 			position: absolute
 			top: 0
