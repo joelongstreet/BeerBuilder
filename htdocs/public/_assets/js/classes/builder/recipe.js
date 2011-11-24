@@ -19,6 +19,7 @@ var Recipe = Backbone.Model.extend({
 		
 		this.grain_bill	= new GrainBill();
 		this.hop_schedule = new HopSchedule();
+		this.yeasts			= new YeastCollection();
 		this.properties	= new Properties();
 		
 		var $beer_attrs_wrap = $('#beer_attributes');
@@ -62,8 +63,8 @@ var Recipe = Backbone.Model.extend({
 		this.bind('change:fg', function(){ $beer_attr.fg.text(this.get('fg')); });
 		this.bind('change:ibu', function(){ $beer_attr.ibu.text(this.get('ibu')); });
 		this.bind('change:abv', function(){ $beer_attr.abv.text(this.get('abv')); });
-		this.bind('change:srm', function(){ 
-			$beer_attr.srm.text(this.get('srm'));
+		this.bind('change:srm', function(){ $beer_attr.srm.text(this.get('srm')); });
+		this.bind('change:srm_rgb', function(){
 			$beer_attr.srm_rgb.css({
 				'background-color' : 'rgb(' + this.get('srm_rgb') + ')'
 			});
@@ -71,7 +72,6 @@ var Recipe = Backbone.Model.extend({
 	},
 	
 	calc_gravity : function(){
-		
 		var self = this;
 		
 		var new_gravity_units 	= 0;
@@ -89,23 +89,22 @@ var Recipe = Backbone.Model.extend({
 			
 			var mcu	= parseInt(grain.get('weight') * grain.get('lovibond_avg'));
 			new_srm += mcu;
-			
 			new_weight += parseInt(grain.get('weight'));
+			if(!(new_weight)) new_weight = 0;
 		});
 		
 		//color calculations
-		if(new_weight != 0){
-			new_srm = new_srm/volume;
-			new_srm = 1.4922*(Math.pow(new_srm, .6859));
-			new_srm = Math.round(new_srm*10)/10;
-			if(new_srm > 40) {
-				new_srm_rgb = "0,0,0";
-			} else {
-				//srm_lookup is a global variable within the utilities.js file
-				new_srm_rgb = srm_lookup.getItem(new_srm);
-				if(new_srm_rgb == undefined){
-					new_srm_rgb = "255,255,255";
-				}
+		
+		new_srm = new_srm/volume;
+		new_srm = 1.4922*(Math.pow(new_srm, .6859));
+		new_srm = Math.round(new_srm*10)/10;
+		if(new_srm > 40) {
+			new_srm_rgb = "0,0,0";
+		} else {
+			//srm_lookup is a global variable within the utilities.js file
+			new_srm_rgb = srm_lookup.getItem(new_srm);
+			if(new_srm_rgb == undefined){
+				new_srm_rgb = "255,255,255";
 			}
 		}
 		
@@ -134,7 +133,7 @@ var Recipe = Backbone.Model.extend({
 		if(!(new_srm_rgb)) new_srm_rgb = 0;
 		if(!(new_fg)) new_fg = 0;
 		if(!(new_abv)) new_abv = 0;
-
+		
 		this.set({
 			'og' 			: new_og,
 			'srm'			: new_srm,
@@ -246,6 +245,19 @@ var Recipe = Backbone.Model.extend({
 		var self = this;
 		
 		this.$beer_char.hop.text();
+
+		_.each(self.hop_schedule.models, function(hop_item){
+			new_text += (hop_item.get('character') + ', ');
+		});
+		
+		this.$beer_char.hop.text(new_text);
+	},
+	
+	modify_yeast_character : function(){
+		var new_text = '';
+		var self = this;
+		
+		this.$beer_char.yeast.text();
 
 		_.each(self.hop_schedule.models, function(hop_item){
 			new_text += (hop_item.get('character') + ', ');

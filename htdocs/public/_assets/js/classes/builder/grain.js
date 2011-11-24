@@ -7,6 +7,10 @@ var Grains = Backbone.Collection.extend({
 
 var Recipe_Grain = Backbone.Model.extend({
 
+	defaults : {
+		weight : 0
+	},
+
 	initialize : function(obj){
 		var grain = _.first(obj.grain_list.models);
 
