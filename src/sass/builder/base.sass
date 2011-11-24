@@ -79,13 +79,15 @@ body.builder
 		#srm_panel.issue
 			+box-shadow(rgba(255,0,0,.5) 0 0 2px 2px)
 
-	aside#beer_character.closed
-		height: 40px
-		.wrap
-			height: 35%
-			
-	aside#beer_character	
+
+	aside#beer_character.animate
 		-webkit-transition: .5s all ease-out
+
+	aside#beer_character
+		.wrap.animate
+			-webkit-transition: .5s all ease-out
+			
+	aside#beer_character
 		@include alpha
 		z-index: 2
 		position: relative
@@ -99,7 +101,6 @@ body.builder
 			height: 12px
 			background: url(../../img/handle.png) repeat
 		.wrap
-			-webkit-transition: .5s all ease-out
 			+border-radius(5px 0 0 5px)
 			+box-shadow(rgba(0,0,0,.4) 0 0 3px 3px inset, rgba(255,255,255,.15) 0 0 6px 3px)
 			height: 100%

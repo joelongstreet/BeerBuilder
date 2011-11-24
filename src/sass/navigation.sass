@@ -4,7 +4,6 @@
 
 #nav_shadow
 	+opacity(0)
-	-webkit-transition: .7s all ease-out
 	z-index: 0
 	top: 0
 	left: 0
@@ -13,12 +12,12 @@
 	height: 100%
 	background-color: rgba(0,0,0,.7)
 
+#nav_shadow.animate
+	-webkit-transition: .7s all ease-out
+
 #nav_shadow.on
 	+opacity(1)
 	z-index: 2
-
-nav#main.open
-	-webkit-transform: translateX(0%)
 
 nav#main.animate
 	-webkit-transition: .2s all ease-out

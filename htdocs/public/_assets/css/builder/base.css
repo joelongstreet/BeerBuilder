@@ -172,23 +172,22 @@ body.builder aside#beer_attributes #srm_panel.issue {
   -o-box-shadow: rgba(255, 0, 0, 0.5) 0 0 2px 2px;
   box-shadow: rgba(255, 0, 0, 0.5) 0 0 2px 2px;
 }
-/* line 82, ../../../../../src/sass/builder/base.sass */
-body.builder aside#beer_character.closed {
-  height: 40px;
-}
-/* line 84, ../../../../../src/sass/builder/base.sass */
-body.builder aside#beer_character.closed .wrap {
-  height: 35%;
+/* line 83, ../../../../../src/sass/builder/base.sass */
+body.builder aside#beer_character.animate {
+  -webkit-transition: 0.5s all ease-out;
 }
 /* line 87, ../../../../../src/sass/builder/base.sass */
-body.builder aside#beer_character {
+body.builder aside#beer_character .wrap.animate {
   -webkit-transition: 0.5s all ease-out;
+}
+/* line 90, ../../../../../src/sass/builder/base.sass */
+body.builder aside#beer_character {
   margin-left: 3.361%;
   z-index: 2;
   position: relative;
   height: 130px;
 }
-/* line 93, ../../../../../src/sass/builder/base.sass */
+/* line 95, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .handle {
   -webkit-transform: translateX(-20px);
   -moz-border-radius: 0 0 5px 5px;
@@ -206,9 +205,8 @@ body.builder aside#beer_character .handle {
   height: 12px;
   background: url(../../img/handle.png) repeat;
 }
-/* line 101, ../../../../../src/sass/builder/base.sass */
+/* line 103, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap {
-  -webkit-transition: 0.5s all ease-out;
   -moz-border-radius: 5px 0 0 5px;
   -webkit-border-radius: 5px 0 0 5px;
   -o-border-radius: 5px 0 0 5px;
@@ -223,11 +221,11 @@ body.builder aside#beer_character .wrap {
   background: #313237 url(../../img/carbon_fiber_20.png) repeat;
   overflow: hidden;
 }
-/* line 108, ../../../../../src/sass/builder/base.sass */
+/* line 109, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap li:first-child {
   margin-top: 15px;
 }
-/* line 110, ../../../../../src/sass/builder/base.sass */
+/* line 111, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap li {
   display: inline;
   float: left;
@@ -238,7 +236,7 @@ body.builder aside#beer_character .wrap li {
   display: block;
   margin-bottom: 15px;
 }
-/* line 116, ../../../../../src/sass/builder/base.sass */
+/* line 117, ../../../../../src/sass/builder/base.sass */
 body.builder aside#beer_character .wrap li span.title {
   display: inline;
   float: left;
@@ -249,7 +247,7 @@ body.builder aside#beer_character .wrap li span.title {
   display: inline-block;
   float: none;
 }
-/* line 122, ../../../../../src/sass/builder/base.sass */
+/* line 123, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps {
   clear: both;
   margin-left: 3.361%;
@@ -275,11 +273,11 @@ body.builder nav#steps {
   font-size: 75%;
   white-space: nowrap;
 }
-/* line 131, ../../../../../src/sass/builder/base.sass */
+/* line 132, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li.active {
   background-color: rgba(0, 0, 0, 0.15);
 }
-/* line 133, ../../../../../src/sass/builder/base.sass */
+/* line 134, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li {
   -moz-box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.25);
@@ -292,17 +290,17 @@ body.builder nav#steps li {
   color: #313237;
   vertical-align: top;
 }
-/* line 141, ../../../../../src/sass/builder/base.sass */
+/* line 142, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li:first-child, body.builder nav#steps li:last-child {
   width: 5%;
   text-indent: -999%;
   -webkit-background-size: 40% auto;
 }
-/* line 145, ../../../../../src/sass/builder/base.sass */
+/* line 146, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li:first-child {
   background: url(../../img/shape_arrow_left.png) no-repeat center center;
 }
-/* line 147, ../../../../../src/sass/builder/base.sass */
+/* line 148, ../../../../../src/sass/builder/base.sass */
 body.builder nav#steps li:last-child {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;

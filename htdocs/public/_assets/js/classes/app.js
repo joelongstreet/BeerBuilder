@@ -23,21 +23,36 @@ var app = function(){
 
 			if(touch_percent < 0 && touch_percent > -97){
 				var translate_string = 'translateX(' + touch_percent + '%' + ')';
-				$nav.css({ '-webkit-transform' : translate_string });	
+				$nav.css({ '-webkit-transform' : translate_string });
+
+				//TODO - I wonder if this is going to be really slow?
+				//maybe do this on interval or something? 
+				var shadow_opacity	= 1 - (Math.abs(touch_percent))/100;
+				$shadow.css({ 'opacity' : shadow_opacity });
 			}
 		});
 		
 		$handle.bind('touchend', function(e){
 			$nav.addClass('animate');
+			$shadow.addClass('animate');
+			
 			if(touch_percent > -50) {
-				setTimeout(function(){ $nav.css({ '-webkit-transform' : 'translateX(0%)' }); });
+				setTimeout(function(){ 
+					$nav.css({ '-webkit-transform' : 'translateX(0%)' });
+					$shadow.css({ 'opacity' : '1' });
+				});
 				is_open = 1;
 			} else {
-				setTimeout(function(){ $nav.css({ '-webkit-transform' : 'translateX(-97%)' }); });
+				setTimeout(function(){ 
+					$nav.css({ '-webkit-transform' : 'translateX(-97%)' }); });
+					$shadow.css({ 'opacity' : '0' });
 				is_open = 0;
 			}
 			
-			setTimeout(function(){ $nav.removeClass('animate'); }, 300);
+			setTimeout(function(){ 
+				$nav.removeClass('animate'); 
+				$shadow.removeClass('animate'); 
+			}, 300);
 		});
 	};
 	

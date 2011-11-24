@@ -136,7 +136,6 @@ a {
 #nav_shadow {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
-  -webkit-transition: 0.7s all ease-out;
   z-index: 0;
   top: 0;
   left: 0;
@@ -146,24 +145,24 @@ a {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* line 16, ../../../../src/sass/navigation.sass */
+/* line 15, ../../../../src/sass/navigation.sass */
+#nav_shadow.animate {
+  -webkit-transition: 0.7s all ease-out;
+}
+
+/* line 18, ../../../../src/sass/navigation.sass */
 #nav_shadow.on {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   z-index: 2;
 }
 
-/* line 20, ../../../../src/sass/navigation.sass */
-nav#main.open {
-  -webkit-transform: translateX(0%);
-}
-
-/* line 23, ../../../../src/sass/navigation.sass */
+/* line 22, ../../../../src/sass/navigation.sass */
 nav#main.animate {
   -webkit-transition: 0.2s all ease-out;
 }
 
-/* line 26, ../../../../src/sass/navigation.sass */
+/* line 25, ../../../../src/sass/navigation.sass */
 nav#main {
   -webkit-transform: translateX(-97%);
   -moz-border-radius: 0 5px 5px 0;
@@ -189,7 +188,7 @@ nav#main {
   background-color: white;
   top: 25%;
 }
-/* line 37, ../../../../src/sass/navigation.sass */
+/* line 36, ../../../../src/sass/navigation.sass */
 nav#main .handle {
   -moz-border-radius: 0 5px 5px 0;
   -webkit-border-radius: 0 5px 5px 0;
@@ -208,7 +207,7 @@ nav#main .handle {
   height: 60px;
   background: url(../img/handle.png) repeat;
 }
-/* line 46, ../../../../src/sass/navigation.sass */
+/* line 45, ../../../../src/sass/navigation.sass */
 nav#main .wrap {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px 2px inset;
@@ -219,7 +218,7 @@ nav#main .wrap {
   height: 97%;
   background: #313237 url(../img/carbon_fiber_20.png);
 }
-/* line 52, ../../../../src/sass/navigation.sass */
+/* line 51, ../../../../src/sass/navigation.sass */
 nav#main .wrap a.active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a5b0c0), color-stop(100%, #7b8ba2));
   background-image: -webkit-linear-gradient(#a5b0c0, #7b8ba2);
@@ -228,7 +227,7 @@ nav#main .wrap a.active {
   background-image: -ms-linear-gradient(#a5b0c0, #7b8ba2);
   background-image: linear-gradient(#a5b0c0, #7b8ba2);
 }
-/* line 54, ../../../../src/sass/navigation.sass */
+/* line 53, ../../../../src/sass/navigation.sass */
 nav#main .wrap a {
   -moz-border-radius: 0 100px 100px 0;
   -webkit-border-radius: 0 100px 100px 0;
@@ -252,7 +251,7 @@ nav#main .wrap a {
   width: 75%;
 }
 
-/* line 64, ../../../../src/sass/navigation.sass */
+/* line 63, ../../../../src/sass/navigation.sass */
 body.browser nav#main {
   -webkit-transform: translateX(0%);
   position: static;
@@ -261,7 +260,7 @@ body.browser nav#main {
   height: 55px;
   background: none;
 }
-/* line 71, ../../../../src/sass/navigation.sass */
+/* line 70, ../../../../src/sass/navigation.sass */
 body.browser nav#main .wrap {
   padding-left: 6.306%;
   display: inline;
@@ -282,7 +281,7 @@ body.browser nav#main .wrap {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 79, ../../../../src/sass/navigation.sass */
+/* line 78, ../../../../src/sass/navigation.sass */
 body.browser nav#main .wrap a {
   display: inline;
   float: left;
@@ -291,7 +290,7 @@ body.browser nav#main .wrap a {
   margin-top: 0;
   padding: 0;
 }
-/* line 83, ../../../../src/sass/navigation.sass */
+/* line 82, ../../../../src/sass/navigation.sass */
 body.browser nav#main .handle {
   display: none;
 }

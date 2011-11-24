@@ -180,9 +180,66 @@ var Builder = function(){
 	
 	
 	//-----------------------------------------//
-	$('#beer_character').find('.handle').bind('click', function(){
-		$('#beer_character').toggleClass('closed');
-	});
+	var BeerCharacterSlider = function(){
+		var $content 		= $('#beer_character');
+		var $content_h		= parseInt($content.css('height'));
+		var $wrap			= $content.find('.wrap');
+		var $handle			= $content.find('.handle');
+
+		var touch_start	= 0;
+		var touch_percent	= 0;
+		var is_open			= 1;
+		var min_percent	= 25;
+		
+		$handle.bind('touchstart', function(e){
+			touch_start = e.pageY;
+			if(is_open == 0){
+				$content.addClass('animate');
+				setTimeout(function(){
+					$content.css({ 'height' : $content_h });
+				});
+			}
+		});
+		
+		$handle.bind('touchmove', function(e){
+			e.preventDefault();
+			if(is_open == 1){
+				touch_percent = 100 - (((touch_start - e.pageY)/$content_h)*100);
+			} else{
+				touch_percent = (((e.pageY - touch_start)/$content_h)*100) + min_percent;
+			}
+
+			if(touch_percent > min_percent && touch_percent < 100){
+				var new_height = touch_percent + '%';
+				$wrap.css({ 'height' : new_height });
+			}
+		});
+
+		$handle.bind('touchend', function(e){
+			$content.addClass('animate');
+			$wrap.addClass('animate');
+
+			if(touch_percent > 50) {
+				setTimeout(function(){
+					$content.css({ 'height' : $content_h });
+					$wrap.css({ 'height' : '100%' });
+					is_open = 1;
+				});
+			} else {
+				setTimeout(function(){ 
+					var min = min_percent + '%';
+					$content.css({ 'height' : '30px' });
+					$wrap.css({ 'height' : min });
+					is_open = 0;
+				});
+			}
+
+			setTimeout(function(){ 
+				$content.removeClass('animate');
+				$wrap.removeClass('animate');
+			}, 300);
+		});
+	};
 	//-----------------------------------------//
 
 	
@@ -276,6 +333,7 @@ var Builder = function(){
 	
 	//-----------------------------------------//
 	var nav = new Navigation();
+	var bcs = new BeerCharacterSlider();
 	$('section.steps').swipeLeft(function(){ nav.go_to_next_page(); });
 	$('section.steps').swipeRight(function(){ nav.go_to_prev_page(); });
 	//-----------------------------------------//
