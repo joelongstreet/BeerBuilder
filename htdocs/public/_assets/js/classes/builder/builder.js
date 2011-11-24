@@ -1,10 +1,9 @@
-var Builder = function(){	
+var Builder = function(){
 	
 	//TODO - builder should be a model. remove all references to the
 	//global window.builder object
 	
 	//-----------------------------------------//
-	
 	var self 			= this;
 	var all_grains		= new Grains();
 	var all_hops		= new Hops();
@@ -68,7 +67,7 @@ var Builder = function(){
 		});
 		
 		self.new_recipe.grain_bill.add(new_grain);
-		
+
 		e.preventDefault();
 	});
 	//--- ---//

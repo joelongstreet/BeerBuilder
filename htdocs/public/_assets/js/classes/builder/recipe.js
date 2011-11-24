@@ -31,6 +31,29 @@ var Recipe = Backbone.Model.extend({
 			srm		: $beer_attrs_wrap.find('#srm'),
 			srm_rgb	: $beer_attrs_wrap.find('#srm_panel').children('div')
 		};
+
+		var $beer_char_wrap = $('#beer_character');
+		this.$beer_char = {
+			grain		: $beer_char_wrap.find('#grain_character'),
+			hop		: $beer_char_wrap.find('#hop_character'),
+			yeast		: $beer_char_wrap.find('#yeast_character')
+		};
+		this.grain_bill.bind('add', function(){
+			self.calc_gravity();
+			self.modify_grain_character();
+		});
+		this.grain_bill.bind('remove', function(){
+			self.calc_gravity();
+			self.modify_grain_character();
+		});
+		this.hop_schedule.bind('add', function(){
+			self.calc_bitterness();
+			self.modify_hop_character();
+		});
+		this.hop_schedule.bind('remove', function(){
+			self.calc_bitterness();
+			self.modify_hop_character();
+		});
 		
 		//TODO this looks wierd, but i really only want to write to the dom if I have to.
 		//there might be a better way to do this, I'm not entirely sure yet
@@ -105,6 +128,12 @@ var Recipe = Backbone.Model.extend({
 		
 		new_abv = 131*(new_og - new_fg);
 		new_abv = Math.round(new_abv*100)/100;
+		
+		if(!(new_og)) new_og = 0;
+		if(!(new_srm)) new_srm = 0;
+		if(!(new_srm_rgb)) new_srm_rgb = 0;
+		if(!(new_fg)) new_fg = 0;
+		if(!(new_abv)) new_abv = 0;
 
 		this.set({
 			'og' 			: new_og,
@@ -141,6 +170,7 @@ var Recipe = Backbone.Model.extend({
 		new_ibu = new_ibu/volume
 		new_ibu = Math.round(new_ibu);
 		
+		if(!(new_ibu)) new_ibu = 0;
 		this.set({ 'ibu' : new_ibu });
 
 		this.calc_gu_bu();
@@ -154,10 +184,12 @@ var Recipe = Backbone.Model.extend({
 		
 		fgu == 0 ? fgu = 1 : fgu = (fgu - 1)*1000
 		
-		this.set({ 'gu_bu' : Math.round(fgu/ibu*1000)/1000 });
+		var new_gu_bu = Math.round(fgu/ibu*1000)/1000;
+		if(!(new_gu_bu)) new_gu_bu = 0;
+
+		this.set({ 'gu_bu' :  new_gu_bu });
 		
 		if(this.proto){ this.compare_to_bjcp(); }
-
 	},
 	
 	compare_to_bjcp : function(){
@@ -194,6 +226,31 @@ var Recipe = Backbone.Model.extend({
 			$('#srm').removeClass('issue');
 			$('#srm_panel').removeClass('issue');
 		}
-	}
+	},
+	
+	modify_grain_character : function(){
+		var new_text = '';
+		var self = this;
 		
+		this.$beer_char.grain.text();
+
+		_.each(self.grain_bill.models, function(grain_item){
+			new_text += (grain_item.get('character') + ', ');
+		});
+		
+		this.$beer_char.grain.text(new_text);
+	},
+	
+	modify_hop_character : function(){
+		var new_text = '';
+		var self = this;
+		
+		this.$beer_char.hop.text();
+
+		_.each(self.hop_schedule.models, function(hop_item){
+			new_text += (hop_item.get('character') + ', ');
+		});
+		
+		this.$beer_char.hop.text(new_text);
+	}
 });

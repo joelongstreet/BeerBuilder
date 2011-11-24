@@ -6,15 +6,14 @@ var Hops = Backbone.Collection.extend({
 });
 
 var Recipe_Hop = Backbone.Model.extend({
-	defaults: {
-		time 		: 0,
-		weight	: 0,
-		aa			: 0
-	},
 	
 	initialize : function(obj){
 		var hop = _.first(obj.hop_list.models);
-		this.reset_values(hop);
+		
+		this.set({
+			'aa' 			: (hop.get('aa_lo') + hop.get('aa_hi'))/2,
+			'character' : hop.get('characteristics')
+		});
 		
 		this.bind('change:time', function(){ 
 			builder.new_recipe.calc_bitterness();
@@ -25,16 +24,8 @@ var Recipe_Hop = Backbone.Model.extend({
 		
 		this.view = new HopItemView({ collection : obj.hop_list, model : this });
 		this.get('parent_view').find('.hop_fields').append(this.view.render().el);
-	},
-	
-	reset_values : function(hop){
-		this.set({
-			'aa' 			: (hop.get('aa_lo') + hop.get('aa_hi'))/2,
-			'character' : hop.get('characteristics')
-		});
-		builder.new_recipe.calc_bitterness();
 	}
-	
+
 });
 
 var HopSchedule = Backbone.Collection.extend({
@@ -50,7 +41,6 @@ var HopItemView = Backbone.View.extend({
 	className: 'hop',
 	
 	events: {
-		'all'											: 'update_all',
 		'change input[type=text].weight'		: 'change_input_weight',
 		'change input[type=text].time'		: 'change_input_time',
 		'change input[type=range].weight'	: 'change_range_weight',
@@ -126,15 +116,17 @@ var HopItemView = Backbone.View.extend({
 	change_hop : function(){
 		var new_val 	= $(this.el).find('select').val();
 		var new_model	= this.collection.models[new_val];
-
-		this.model.reset_values(new_model);
-	},
-	
-	update_all : function(){
 		
+		this.model.set({
+			'aa' 			: (new_model.get('aa_lo') + new_model.get('aa_hi'))/2,
+			'character' : new_model.get('characteristics')
+		});
+
+		//TODO - these really shouldn't be slapped down here
+		builder.new_recipe.calc_bitterness();
+		builder.new_recipe.modify_hop_character();
 	}
-	
-	
+
 });
 
 var HopOptionView = Backbone.View.extend({
@@ -147,9 +139,8 @@ var HopOptionView = Backbone.View.extend({
 	
 	render: function(){
 		var template = '<option value="' + this.uid +'">' + this.name + ' - ' + this.aa + '</option>';
-		
 		this.el = template;
 		return this;
 	}
-	
+
 });

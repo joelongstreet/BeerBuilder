@@ -7,14 +7,15 @@ var Grains = Backbone.Collection.extend({
 
 var Recipe_Grain = Backbone.Model.extend({
 
-	defaults : {
-		weight : 0,
-		proportion : 0
-	},
-
 	initialize : function(obj){
-		var grain = _.first(obj.grain_list.models);		
-		this.reset_values(grain);
+		var grain = _.first(obj.grain_list.models);
+
+		this.set({
+			'lovibond_avg' 	: (grain.get('lovibond_hi') + grain.get('lovibond_lo'))/2,
+			'character' 		: grain.get('characteristics'),
+			'gu_average'		: (grain.get('gu_hi') + grain.get('gu_lo'))/2,
+			'name'				: grain.get('name')
+		});
 
 		this.bind('change:weight', function(){
 			builder.new_recipe.calc_gravity();
@@ -22,16 +23,6 @@ var Recipe_Grain = Backbone.Model.extend({
 		
 		this.view = new GrainItemView({ collection : obj.grain_list, model : this });
 		this.get('parent_view').find('.grain_fields').append(this.view.render().el);
-	},
-	
-	reset_values : function(grain){
-		this.set({
-			'lovibond_avg' 	: (grain.get('lovibond_hi') + grain.get('lovibond_lo'))/2,
-			'character' 		: grain.get('characteristics'),
-			'gu_average'		: (grain.get('gu_hi') + grain.get('gu_lo'))/2,
-			'name'				: grain.get('name')
-		});
-		builder.new_recipe.calc_gravity();
 	}
 
 });
@@ -106,7 +97,16 @@ var GrainItemView = Backbone.View.extend({
 		var new_val 	= $(this.el).find('select').val();
 		var new_model	= this.collection.models[new_val];
 		
-		this.model.reset_values(new_model);
+		this.model.set({
+			'lovibond_avg' 	: (new_model.get('lovibond_hi') + new_model.get('lovibond_lo'))/2,
+			'character' 		: new_model.get('characteristics'),
+			'gu_average'		: (new_model.get('gu_hi') + new_model.get('gu_lo'))/2,
+			'name'				: new_model.get('name')
+		});
+		
+		//TODO - these really shouldn't be slapped down here
+		builder.new_recipe.calc_gravity();
+		builder.new_recipe.modify_grain_character();
 	},
 	
 	change_proportion: function(){
