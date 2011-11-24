@@ -1,11 +1,11 @@
 /*
 Syntax error: Undefined mixin 'prefix'.
-        on line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass, in `prefix'
-        from line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass
+        on line 72 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass, in `prefix'
+        from line 72 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass
 
 Backtrace:
-/Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass:70:in `prefix'
-/Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass:70
+/Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass:72:in `prefix'
+/Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass:72
 /Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.1/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
@@ -106,4 +106,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'prefix'.\A         on line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass, in `prefix'\A         from line 70 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass"; }
+  content: "Syntax error: Undefined mixin 'prefix'.\A         on line 72 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass, in `prefix'\A         from line 72 of /Users/jlongstreet/Sites/beer_builder/src/sass/navigation.sass"; }

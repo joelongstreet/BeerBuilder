@@ -19,10 +19,12 @@
 
 nav#main.open
 	-webkit-transform: translateX(0%)
-		
+
+nav#main.animate
+	-webkit-transition: .2s all ease-out
+
 nav#main
 	-webkit-transform: translateX(-97%)
-	-webkit-transition: .7s all ease-out
 	+border-radius(0 5px 5px 0)
 	+background-image(linear-gradient(rgba(255,255,255,1), rgba(200,200,200,1)))
 	+box-shadow(rgba(0,0,0,.5) 0 0 3px 3px)
