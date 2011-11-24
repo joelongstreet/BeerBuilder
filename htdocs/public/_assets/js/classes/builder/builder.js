@@ -28,24 +28,28 @@ var Builder = function(){
 	
 	
 	//--- Step 1 : Setup ---//
+	
 	//TODO - this is gross. check out step 5: fermentation
 	var the_date = new Date();
 	var todays_date = the_date.getFullYear() + '-' + the_date.getMonth() + '-' + the_date.getDate();
 	this.new_recipe.set({'date_brewed' : todays_date });
 	$(all_sections[0]).find('input[type=date]').val(todays_date);
-	$(all_sections[0]).find('#beer_name_input')[0].addEventListener('keyup', function(){
-		$('h1#beer_name').text($(this).val());
-	});
+	//END
+
+	$(all_sections[0]).find('#beer_name_input')[0].addEventListener('keyup', function(){ $('h1#beer_name').text($(this).val()); });
+	
+	$(all_sections[0]).find('#input_efficiency')[0].addEventListener('change', update_efficiency);
+	$(all_sections[0]).find('#range_efficiency')[0].addEventListener('change', update_efficiency);
+	$(all_sections[0]).find('#input_volume')[0].addEventListener('change', update_volume);
+	$(all_sections[0]).find('#range_volume')[0].addEventListener('change', update_volume);
+	
 	$(all_sections[0]).find('input[type=range]').each(function(){
-		$(this)[0].addEventListener('change', function(){
-			$(this).prev().val($(this).val());
-		});
+		$(this)[0].addEventListener('change', function(){ $(this).prev().val($(this).val()); });
 	});
 	$(all_sections[0]).find('input.has_range').each(function(){
-		$(this)[0].addEventListener('keyup', function(){
-			$(this).next().val($(this).val());
-		});
+		$(this)[0].addEventListener('keyup', function(){ $(this).next().val($(this).val()); });
 	});
+
 	//TODO - durr, is this the best way to do this?
 	$(all_sections[0]).find('input[type=date]')[0].addEventListener('mouseup', function(){
 		var current_date = $(this).val();
@@ -55,6 +59,16 @@ var Builder = function(){
 		var current_date = $(this).val();
 		self.new_recipe.set({'date_brewed' : current_date });
 	});
+	
+	function update_efficiency(){
+		var new_val = $('#input_efficiency').val();
+		self.new_recipe.set({ 'efficiency' : new_val });
+	}
+
+	function update_volume(){
+		var new_val = $('#input_volume').val();
+		self.new_recipe.set({ 'final_volume' : new_val });
+	}
 	//--- ---//
 
 

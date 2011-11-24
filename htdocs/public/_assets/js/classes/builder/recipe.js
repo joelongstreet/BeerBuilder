@@ -56,6 +56,15 @@ var Recipe = Backbone.Model.extend({
 			self.modify_hop_character();
 		});
 		
+		this.bind('change:final_volume', function(){
+			self.calc_gravity();
+			self.calc_bitterness();
+		});
+		this.bind('change:efficiency', function(){
+			self.calc_gravity();
+			self.calc_bitterness();
+		});
+		
 		//TODO this looks wierd, but i really only want to write to the dom if I have to.
 		//there might be a better way to do this, I'm not entirely sure yet
 		this.bind('change:gu_bu', function(){ $beer_attr.gu_bu.text(this.get('gu_bu')); });
@@ -265,4 +274,5 @@ var Recipe = Backbone.Model.extend({
 		
 		this.$beer_char.hop.text(new_text);
 	}
+
 });
