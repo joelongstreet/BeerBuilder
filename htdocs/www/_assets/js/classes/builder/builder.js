@@ -73,8 +73,8 @@ var Builder = function(){
 
 
 	//--- Step 2 : Grist ---//
-	$(all_sections[1]).find('.add_grain')[0].addEventListener('click', function(e){
-
+	$(all_sections[1]).find('.add_grain')[0].addEventListener(eventer.click, function(e){
+		
 		var new_grain = new Recipe_Grain({
 			'grain_list' 	: all_grains,
 			'parent_view'	: $(all_sections[1])
@@ -88,7 +88,7 @@ var Builder = function(){
 
 
 	//--- Step 3 : Hops ---//
-	$(all_sections[2]).find('.add_hop')[0].addEventListener('click', function(e){
+	$(all_sections[2]).find('.add_hop')[0].addEventListener(eventer.click, function(e){
 
 		var new_hop = new Recipe_Hop({
 			'hop_list' 		: all_hops,
@@ -120,7 +120,7 @@ var Builder = function(){
 		var dom_element = $(this);
 		init_fermentation(dom_element, i);
 	});
-	$(all_sections[4]).find('.add_fermentation')[0].addEventListener('click', function(){
+	$(all_sections[4]).find('.add_fermentation')[0].addEventListener(eventer.click, function(){
 		var duplicate 	= $(this).prev().html();
 		var index		= $(all_sections[4]).find('.fermentation').length();
 		
@@ -236,6 +236,7 @@ var Builder = function(){
 				setTimeout(function(){
 					$content.css({ 'height' : $content_h });
 					$wrap.css({ 'height' : '100%' });
+					$('body').removeClass('character_closed');
 					is_open = 1;
 				});
 			} else {
@@ -243,6 +244,7 @@ var Builder = function(){
 					var min = min_percent + '%';
 					$content.css({ 'height' : '30px' });
 					$wrap.css({ 'height' : min });
+					$('body').addClass('character_closed');
 					is_open = 0;
 				});
 			}
@@ -273,7 +275,7 @@ var Builder = function(){
 		$steps.eq(current_page-1).addClass('animate');
 		
 		$nav.each(function(){
-			$(this)[0].addEventListener('click', function(){
+			$(this)[0].addEventListener(eventer.click, function(){
 				var index = $nav.index($(this));
 				if(index == current_page){
 					return false;
@@ -347,8 +349,12 @@ var Builder = function(){
 	//-----------------------------------------//
 	var nav = new Navigation();
 	var bcs = new BeerCharacterSlider();
-	$('section.steps').swipeLeft(function(){ nav.go_to_next_page(); });
-	$('section.steps').swipeRight(function(){ nav.go_to_prev_page(); });
+	$('section.steps').swipeLeft(function(e){
+		if(!(e.target.getAttribute('type') == 'range')) nav.go_to_next_page();
+	});
+	$('section.steps').swipeRight(function(e){
+		if(!(e.target.getAttribute('type') == 'range')) nav.go_to_prev_page();
+	});
 	//-----------------------------------------//
 
 

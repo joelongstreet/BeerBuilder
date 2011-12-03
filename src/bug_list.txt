@@ -1,4 +1,3 @@
-* When moving ranges, if you go quickly left or right, it's going to switch pages
 * Range inputs don't accept a step parameter
 * the whole date thing isn't quite working correctly
 * Text Input's with associated ranges freak out when you enter in a decimal

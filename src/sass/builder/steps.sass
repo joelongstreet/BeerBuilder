@@ -9,6 +9,17 @@ $gutter-width           : .5em
 $side-gutter-width      : 2em
 $show-grid-backgrounds  : true
 
+body.builder.ios
+	section.steps
+		+single-transition(all .15s ease-out)
+		height: 465px
+		overflow-y: scroll
+		
+body.builder.character_closed
+	section.steps
+		height: 565px
+		
+
 body.builder
 
 	section.steps
@@ -16,7 +27,7 @@ body.builder
 		position: relative
 		overflow: hidden
 		margin-bottom: 20px
-		height: 450px
+		min-height: 465px
 
 		//--------------------------//
 		section.step.active
@@ -37,7 +48,7 @@ body.builder
 			position: absolute
 			top: 0
 			z-index: 1
-			height: 100%
+			min-height: 100%
 			overflow: hidden
 			ul.table_heading
 				@include columns(15, 15)
@@ -49,6 +60,7 @@ body.builder
 					display: inline-block
 		a.add
 			+button('blue', true)
+			margin-right: 6px
 			float: right
 		.delete
 			@include columns(1, 15)
@@ -90,6 +102,7 @@ body.builder
 	
 		//--------------------------//
 		section.step.grist
+			height: 1200px
 			ul.table_heading
 				li:nth-child(1)
 					@include columns(7, 15)
