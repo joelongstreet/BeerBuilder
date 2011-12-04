@@ -1,4 +1,3 @@
 * Range inputs don't accept a step parameter
-* the whole date thing isn't quite working correctly
 * Text Input's with associated ranges freak out when you enter in a decimal
 	- proportions also totally freak out

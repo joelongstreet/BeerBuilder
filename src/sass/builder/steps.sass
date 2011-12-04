@@ -311,6 +311,7 @@ body.builder
 					@include prefix(2, 15)
 					
 			.wrap.bottled
+				display: none
 				.fields
 					@include columns(8, 15)
 				.bottle_wrap
@@ -325,6 +326,14 @@ body.builder
 						
 			.wrap.kegged
 				display: none
+				.fields
+					@include columns(8, 15)
+					margin-bottom: 40px
+				
+			.wrap.kegged.show
+				display: block
+			.wrap.bottled.show
+				display: block
 		
 			div.custom_radio
 				display: inline-block

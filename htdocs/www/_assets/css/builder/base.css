@@ -963,18 +963,22 @@ body.builder section.steps section.step.finishing .wrap.radio_wrap .fields input
 body.builder section.steps section.step.finishing .wrap.radio_wrap .fields:last-child {
   padding-left: 13.462%;
 }
-/* line 314, ../../../../../src/sass/builder/steps.sass */
+/* line 313, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.finishing .wrap.bottled {
+  display: none;
+}
+/* line 315, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .fields {
   display: inline;
   float: left;
   width: 52.885%;
   margin-right: 0.962%;
 }
-/* line 316, ../../../../../src/sass/builder/steps.sass */
+/* line 317, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap {
   overflow: hidden;
 }
-/* line 318, ../../../../../src/sass/builder/steps.sass */
+/* line 319, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fields {
   display: inline;
   float: left;
@@ -982,7 +986,7 @@ body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fi
   margin-right: 0.962%;
   padding-left: 20.192%;
 }
-/* line 321, ../../../../../src/sass/builder/steps.sass */
+/* line 322, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fields:nth-child(even) {
   display: inline;
   float: left;
@@ -991,11 +995,27 @@ body.builder section.steps section.step.finishing .wrap.bottled .bottle_wrap .fi
   padding-left: 0%;
   margin-right: 0;
 }
-/* line 326, ../../../../../src/sass/builder/steps.sass */
+/* line 327, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing .wrap.kegged {
   display: none;
 }
 /* line 329, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.finishing .wrap.kegged .fields {
+  display: inline;
+  float: left;
+  width: 52.885%;
+  margin-right: 0.962%;
+  margin-bottom: 40px;
+}
+/* line 333, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.finishing .wrap.kegged.show {
+  display: block;
+}
+/* line 335, ../../../../../src/sass/builder/steps.sass */
+body.builder section.steps section.step.finishing .wrap.bottled.show {
+  display: block;
+}
+/* line 338, ../../../../../src/sass/builder/steps.sass */
 body.builder section.steps section.step.finishing div.custom_radio {
   display: inline-block;
 }

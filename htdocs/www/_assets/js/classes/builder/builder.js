@@ -176,6 +176,17 @@ var Builder = function(){
 	
 	
 	//--- Step 6 : Finishing ---//
+	$(all_sections[5]).find('input[type=radio]').each(function(){
+		$(this)[0].addEventListener('change', function(){
+			if($(this).val() == 'bottled'){
+				$(all_sections[5]).find('.wrap.bottled').addClass('show');
+				$(all_sections[5]).find('.wrap.kegged').removeClass('show');
+			} else{
+				$(all_sections[5]).find('.wrap.bottled').removeClass('show');
+				$(all_sections[5]).find('.wrap.kegged').addClass('show');
+			}
+		});
+	});
 	$(all_sections[5]).find('input[type=range]').each(function(){
 		$(this)[0].addEventListener('change', function(){
 			$(this).prev().val($(this).val());
