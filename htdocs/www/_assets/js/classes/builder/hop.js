@@ -86,10 +86,10 @@ var HopItemView = Backbone.View.extend({
 	//TODO - i would think there might be a better way to do this...?
 	
 	change_range_weight : function(){
-		var range_input = $(this.el).find('input[type=range].weight');
+		var range_val = parseFloat($(this.el).find('input[type=range].weight').val()).toFixed(2);
 		var text_input = $(this.el).find('input[type=text].weight');
-		text_input.val(range_input.val());
-		this.model.set({weight: range_input.val()});
+		text_input.val(range_val);
+		this.model.set({weight: range_val});
 	},
 	
 	change_range_time : function(){
@@ -101,9 +101,9 @@ var HopItemView = Backbone.View.extend({
 	
 	change_input_weight : function(){
 		var range_input = $(this.el).find('input[type=range].weight');
-		var text_input = $(this.el).find('input[type=text].weight');
-		range_input.val(text_input.val());
-		this.model.set({weight: text_input.val()});
+		var text_val = parseFloat($(this.el).find('input[type=text].weight').val()).toFixed(2);
+		range_input.val(text_val);
+		this.model.set({weight: text_val});
 	},
 	
 	change_input_time : function(){
@@ -138,7 +138,7 @@ var HopOptionView = Backbone.View.extend({
 	},
 	
 	render: function(){
-		var template = '<option value="' + this.uid +'">' + this.name + ' - ' + this.aa + '</option>';
+		var template = '<option value="' + this.uid +'">' + this.name + ' - ' + this.aa + '<span style="color:red;">something</span></option>';
 		this.el = template;
 		return this;
 	}

@@ -1,3 +1,0 @@
-* Range inputs don't accept a step parameter
-* Text Input's with associated ranges freak out when you enter in a decimal
-	- proportions also totally freak out

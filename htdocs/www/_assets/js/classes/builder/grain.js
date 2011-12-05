@@ -84,14 +84,14 @@ var GrainItemView = Backbone.View.extend({
 	},
 	
 	change_range: function(){
-		var range_value = $(this.el).find('input[type=range]').val();
+		var range_value = parseFloat($(this.el).find('input[type=range]').val()).toFixed(2);
 		$(this.el).find('input[type=text]').val(range_value);
 
 		this.model.set({weight: range_value});
 	},
 	
 	change_weight: function(){
-		var text_value = $(this.el).find('input[type=text]').val();
+		var text_value = parseFloat($(this.el).find('input[type=text]').val()).toFixed(2);
 		$(this.el).find('input[type=range]').val(text_value);
 
 		this.model.set({weight: text_value});
