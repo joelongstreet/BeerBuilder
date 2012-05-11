@@ -16,6 +16,12 @@
 
   BB.character = new BB.Character();
 
+  BB.ingredients = {
+    grains: [],
+    hops: [],
+    yeasts: []
+  };
+
   BB.base_windows = {
     setup: new BB.RecipeBase(),
     grain: new BB.Grains(),

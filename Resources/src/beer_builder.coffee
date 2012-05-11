@@ -12,6 +12,10 @@ BB.PADDED_H				= BB.HEIGHT - BB.WIDTH*.05
 ## Build Classes ##
 BB.stats 				= new BB.Stats()
 BB.character 			= new BB.Character()
+BB.ingredients 			=
+	grains 				: []
+	hops 				: []
+	yeasts 				: []
 ## -------------------- ##
 
 

@@ -10,7 +10,14 @@ Ti.include('data/yeasts.js');
 /*** ---------- ***/
 
 
+/*** Modules and Plugins ***/
+Ti.include('vendor/hash.js');
+/*** ---------- ***/
+
+
 /*** Class Includes ***/
+Ti.include('lib/utilities.js');
+Ti.include('lib/modal_picker.js');
 Ti.include('lib/stats.js');
 Ti.include('lib/character.js');
 Ti.include('lib/recipe_base.js');

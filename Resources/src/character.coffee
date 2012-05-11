@@ -22,12 +22,12 @@ class BB.Character
 
 	build_text_view : (label_text) ->
 
-		view 	= Ti.UI.createView
+		view 				= Ti.UI.createView
 			backgroundColor : 'red'
-			width 	: BB.PADDED_W
-			left 	: BB.PADDING_W
-			top 	: BB.PADDING_H
-			height 	: BB.HEIGHT*.15
+			width 		: BB.PADDED_W
+			left 		: BB.PADDING_W
+			top 		: BB.PADDING_H
+			height 		: BB.HEIGHT*.15
 
 		label 	= Ti.UI.createLabel
 			width 	: BB.PADDED_W/5
