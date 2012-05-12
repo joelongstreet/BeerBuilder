@@ -19,6 +19,7 @@
       this.efficiency = .75;
       this.volume = 5;
       this.final_volume = 5;
+      this.hop_weight = 0;
     }
 
     Stats.prototype.calculate_gravity = function() {
@@ -78,13 +79,21 @@
     };
 
     Stats.prototype.calculate_bitterness = function() {
-      var aau, hop, utilization, _i, _len, _ref;
+      var aau, hop, proportion, utilization, _i, _j, _len, _len2, _ref, _ref2;
+      this.hop_weight = 0;
       _ref = BB.ingredients.hops;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         hop = _ref[_i];
         utilization = -1 * (.0041 * Math.pow(hop.time, 2)) + (.6261 * hop.time) + 1.5779;
         aau = hop.weight * utilization * .7489 * hop.aa;
         this.ibu += aau;
+        this.hop_weight += hop.weight;
+      }
+      _ref2 = BB.ingredients.hops;
+      for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
+        hop = _ref2[_j];
+        proportion = hop.weight / this.hop_weight;
+        hop.update_proportion(proportion);
       }
       this.ibu = Math.round(this.ibu / this.final_volume);
       return this.calculate_gu_bu();

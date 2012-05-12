@@ -13,6 +13,7 @@ class BB.Stats
 		@efficiency 	= .75
 		@volume 		= 5
 		@final_volume 	= 5
+		@hop_weight 	= 0
 
 	calculate_gravity : =>
 
@@ -78,13 +79,21 @@ class BB.Stats
 
 	calculate_bitterness : =>
 
+		@hop_weight = 0
+
 		for hop in BB.ingredients.hops
-			#This is almost certainly wrong, at least not that accurate
-			#i think i need to compare to a table, not a formula .... maybe?
-			#uh, what. who farted? 
+			#This is almost certainly wrong, at least not that accurate i think i need to compare to a table, not a formula .... maybe? uh, what. who farted? 
 			utilization = -1*(.0041 * Math.pow(hop.time, 2)) + (.6261 * hop.time) + 1.5779
 			aau = hop.weight * utilization * .7489 * hop.aa
 			@ibu += aau
+
+			#Build Weight
+			@hop_weight += hop.weight
+
+		#Update the Proportion of the Ingredient Please
+		for hop in BB.ingredients.hops
+			proportion = hop.weight/@hop_weight
+			hop.update_proportion(proportion)
 
 		@ibu = Math.round @ibu/@final_volume
 		@calculate_gu_bu()

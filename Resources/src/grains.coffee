@@ -71,7 +71,7 @@ class BB.Grains
 			for item in BB.GRAINS
 				row_data.push item.name
 
-			modal = new BB.utilities.modal_picker
+			modal 			= new BB.utilities.modal_picker
 				textField 	: grain_type
 				value 		: grain_type.getText()
 				data 		: row_data
@@ -92,9 +92,9 @@ class BB.Grains
 class Grain
 	
 	constructor : (properties, percent_text) ->
-		@properties = properties
-		@weight = 0
-		@percent_text = percent_text
+		@properties 	= properties
+		@weight 		= 0
+		@percent_text 	= percent_text
 
 	update_proportion : (proportion) ->
 		if proportion == 1 then proportion = '100%'
