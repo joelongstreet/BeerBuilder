@@ -15,6 +15,76 @@ class BB.Stats
 		@final_volume 	= 5
 		@hop_weight 	= 0
 
+	build_screen : ->
+
+		wrapper 			= Ti.UI.createView
+			backgroundColor	: '#000'
+			opacity			: 0.7
+			height 			: BB.HEIGHT*.1
+			width 			: BB.WIDTH
+			top 			: 0
+
+		@og_text 			= Ti.UI.createLabel
+			width 			: BB.WIDTH
+			text 			: 'OG : 0'
+			left 			: BB.PADDING_W
+			top 			: BB.PADDING_H
+			color 			: '#ffffff'
+			height 			: BB.HEIGHT*.05
+
+		@fg_text 			= Ti.UI.createLabel
+			width 			: BB.WIDTH
+			text 			: 'FG : 0'
+			left 			: BB.PADDING_W
+			bottom 			: BB.PADDING_H
+			color 			: '#ffffff'
+			height 			: BB.HEIGHT*.05
+
+		@gubu_text 			= Ti.UI.createLabel
+			width 			: BB.WIDTH
+			text 			: 'GUBU : 0'
+			left 			: BB.PADDED_W*.425
+			top 			: BB.PADDING_H
+			color 			: '#ffffff'
+			height 			: BB.HEIGHT*.05
+
+		@ibu_text 			= Ti.UI.createLabel
+			width 			: BB.WIDTH
+			text 			: 'IBU\'S : 0'
+			left 			: BB.PADDED_W*.425
+			bottom 			: BB.PADDING_H
+			color 			: '#ffffff'
+			height 			: BB.HEIGHT*.05
+
+		@abv_text 			= Ti.UI.createLabel
+			width 			: BB.WIDTH
+			text 			: 'ABV : 0'
+			right 			: BB.PADDING_W
+			top 			: 0
+			color 			: '#ffffff'
+			textAlign		: 'right'
+			height 			: BB.HEIGHT*.05
+
+		@srm_text 			= Ti.UI.createLabel
+			width 			: BB.WIDTH
+			text 			: 'SRM : 0'
+			right 			: BB.PADDING_W
+			top				: BB.PADDING_H
+			color 			: '#ffffff'
+			textAlign		: 'right'
+			height 			: BB.HEIGHT*.05
+
+		wrapper.add @og_text
+		wrapper.add @fg_text
+		wrapper.add @gubu_text
+		wrapper.add @ibu_text
+		wrapper.add @srm_text
+		wrapper.add @abv_text
+
+		return wrapper
+
+		
+
 	calculate_gravity : =>
 
 		@gravity_units 	= 0
@@ -61,6 +131,10 @@ class BB.Stats
 		@abv 		= 0 unless @abv
 		###
 
+		@og_text.setText "OG : #{@og}"
+		@fg_text.setText "FG : #{@fg}"
+		@abv_text.setText "ABV : #{@abv}"
+
 		@calculate_color()
 		@calculate_gu_bu()
 
@@ -76,6 +150,8 @@ class BB.Stats
 			if @srm_rgb == undefined
 				srm_rgb = '255,255,255'
 
+		@srm_text.setText "SRM : #{@srm}"
+
 
 	calculate_bitterness : =>
 
@@ -83,8 +159,9 @@ class BB.Stats
 
 		for hop in BB.ingredients.hops
 			#This is almost certainly wrong, at least not that accurate i think i need to compare to a table, not a formula .... maybe? uh, what. who farted? 
+			aa = (hop.properties.aa_lo + hop.properties.aa_hi)/2
 			utilization = -1*(.0041 * Math.pow(hop.time, 2)) + (.6261 * hop.time) + 1.5779
-			aau = hop.weight * utilization * .7489 * hop.aa
+			aau = hop.weight * utilization * .7489 * aa
 			@ibu += aau
 
 			#Build Weight
@@ -96,6 +173,8 @@ class BB.Stats
 			hop.update_proportion(proportion)
 
 		@ibu = Math.round @ibu/@final_volume
+
+		@ibu_text.setText "IBU\'S : #{@ibu}"
 		@calculate_gu_bu()
 
 

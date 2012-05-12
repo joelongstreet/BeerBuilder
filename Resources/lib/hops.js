@@ -9,12 +9,14 @@
       var button,
         _this = this;
       this.window = Ti.UI.createWindow({
-        title: 'Hops'
+        title: 'Hops',
+        navBarHidden: true
       });
       this.table = Ti.UI.createTableView({
-        height: BB.HEIGHT - BB.HEIGHT * .1,
+        height: BB.HEIGHT - BB.HEIGHT * .2,
         width: BB.WIDTH,
-        rowHeight: BB.HEIGHT * .2
+        rowHeight: BB.HEIGHT * .2,
+        top: BB.HEIGHT * .1
       });
       button = Ti.UI.createButton({
         right: BB.PADDING_W,
@@ -26,6 +28,7 @@
       });
       this.window.add(this.table);
       this.window.add(button);
+      this.window.add(BB.views.stats);
       this.create_row();
       return this.window;
     }
@@ -58,12 +61,14 @@
       hop_type = Ti.UI.createLabel({
         top: BB.PADDING_H,
         left: BB.PADDING_W,
+        width: BB.PADDED_W,
         text: BB.HOPS[0].name
       });
       slider.addEventListener('change', function(e) {
         var new_value;
         new_value = Math.round(e.value * 10) / 10;
         hop.weight = new_value;
+        hop.time = 30;
         if (new_value.toString().length === 1) {
           new_value = new_value.toString() + '.0';
         }

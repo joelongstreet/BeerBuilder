@@ -19,6 +19,12 @@ BB.ingredients 			=
 ## -------------------- ##
 
 
+## Build Global Views ##
+BB.views 				=
+	stats 				: BB.stats.build_screen()
+## -------------------- ##
+
+
 ## Build Windows ##
 BB.base_windows			=
 	setup 				: new BB.RecipeBase()

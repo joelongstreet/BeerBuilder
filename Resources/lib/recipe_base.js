@@ -5,7 +5,8 @@
     function RecipeBase() {
       var temp_win;
       temp_win = Ti.UI.createWindow({
-        title: 'Setup'
+        title: 'Setup',
+        navBarHidden: true
       });
       return temp_win;
     }

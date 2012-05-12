@@ -2,6 +2,7 @@ class BB.Mash
 
 	constructor : ->
 		temp_win	= Ti.UI.createWindow(
-			title : 'Grains'
+			title : 'Mash'
+			navBarHidden: true
 		)
 		return temp_win

@@ -9,12 +9,14 @@
       var button,
         _this = this;
       this.window = Ti.UI.createWindow({
-        title: 'Grains'
+        title: 'Grains',
+        navBarHidden: true
       });
       this.table = Ti.UI.createTableView({
-        height: BB.HEIGHT - BB.HEIGHT * .1,
+        height: BB.HEIGHT - BB.HEIGHT * .2,
         width: BB.WIDTH,
-        rowHeight: BB.HEIGHT * .2
+        rowHeight: BB.HEIGHT * .2,
+        top: BB.HEIGHT * .1
       });
       button = Ti.UI.createButton({
         right: BB.PADDING_W,
@@ -26,6 +28,7 @@
       });
       this.window.add(this.table);
       this.window.add(button);
+      this.window.add(BB.views.stats);
       this.create_row();
       return this.window;
     }

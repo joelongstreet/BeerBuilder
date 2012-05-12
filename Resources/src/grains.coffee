@@ -4,11 +4,13 @@ class BB.Grains
 
 		@window			= Ti.UI.createWindow
 			title 		: 'Grains'
+			navBarHidden: true
 
 		@table 			= Ti.UI.createTableView
-			height 		: BB.HEIGHT - BB.HEIGHT * .1
+			height 		: BB.HEIGHT - BB.HEIGHT * .2
 			width 		: BB.WIDTH
 			rowHeight 	: BB.HEIGHT*.2
+			top 		: BB.HEIGHT*.1
 
 		button 			= Ti.UI.createButton
 			right 		: BB.PADDING_W
@@ -20,6 +22,7 @@ class BB.Grains
 
 		@window.add @table
 		@window.add button
+		@window.add BB.views.stats
 
 		@create_row()
 

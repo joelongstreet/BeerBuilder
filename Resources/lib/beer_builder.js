@@ -22,6 +22,10 @@
     yeasts: []
   };
 
+  BB.views = {
+    stats: BB.stats.build_screen()
+  };
+
   BB.base_windows = {
     setup: new BB.RecipeBase(),
     grain: new BB.Grains(),
