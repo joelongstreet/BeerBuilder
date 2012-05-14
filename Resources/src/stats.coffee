@@ -13,6 +13,7 @@ class BB.Stats
 		@efficiency 	= .75
 		@volume 		= 5
 		@final_volume 	= 5
+		@attenuation	= 75
 		@hop_weight 	= 0
 
 	build_screen : ->
@@ -94,13 +95,15 @@ class BB.Stats
 		for grain in BB.ingredients.grains
 
 			#Build Gravity Units
-			grain_gravity_units = parseInt grain.weight * grain.gu_average
+			gu_average = (grain.properties.gu_lo + grain.properties.gu_hi)/2
+			grain_gravity_units = parseInt grain.weight * gu_average
 			if grain.extract != 1
 				grain_gravity_units = grain_gravity_units * @efficiency
 			@gravity_units += grain_gravity_units
 
 			#Build Color
-			grain_mcu = parseInt grain.weight * grain.lovibond_avg
+			lovibond_avg = (grain.properties.lovibond_lo + grain.properties.lovibond_hi)/2
+			grain_mcu = parseInt grain.weight * lovibond_avg
 			@srm += grain_mcu
 
 			#Build Weight
@@ -114,26 +117,13 @@ class BB.Stats
 		@ogu 		= @gravity_units/@volume
 		@fgu 		= (@gravity_units * (@attenuation/100))/@volume
 		@og 	 	= 1 + @ogu/1000
-		@og 		= Math.round(@og*10000)/10000
 		@fg 		= 1 + @fgu/1000
 		@fg 		= 1 + (@og - @fg)
-		@fg 		= Math.round(@fg*10000)/10000
 		@abv 		= 131*(@og - @fg)
-		@abv 		= Math.round(@abv*100)/100
 
-		#If a property doesn't exist yet...
-		#I think i could get rid of this...
-		###
-		@og 		= 0 unless @og
-		@srm 		= 0 unless @srm
-		@srm_rgb 	= 0 unless @srm_rgb
-		@fg 		= 0 unless @fg
-		@abv 		= 0 unless @abv
-		###
-
-		@og_text.setText "OG : #{@og}"
-		@fg_text.setText "FG : #{@fg}"
-		@abv_text.setText "ABV : #{@abv}"
+		@og_text.setText @og.format({decimals:10000, prefix : 'OG: '})
+		@fg_text.setText @fg.format({decimals:10000, prefix : 'FG: '})
+		@abv_text.setText @abv.format({decimals:100, prefix : 'ABV: '})
 
 		@calculate_color()
 		@calculate_gu_bu()
@@ -141,7 +131,7 @@ class BB.Stats
 
 	calculate_color : ->
 		@srm = @srm/@volume
-		@srm = 1.4922*(Math.pow(@srm, .6859));
+		@srm = 1.4922*(Math.pow(@srm, .6859))
 		@srm = Math.round(@srm*10)/10
 
 		if @srm > 40 then @srm_rgb = '0,0,0'
@@ -150,7 +140,7 @@ class BB.Stats
 			if @srm_rgb == undefined
 				srm_rgb = '255,255,255'
 
-		@srm_text.setText "SRM : #{@srm}"
+		@srm_text.setText @srm.format({prefix : 'SRM: ', decimals : 10 })
 
 
 	calculate_bitterness : =>
@@ -174,18 +164,20 @@ class BB.Stats
 
 		@ibu = Math.round @ibu/@final_volume
 
-		@ibu_text.setText "IBU\'S : #{@ibu}"
+		ibu_text = @ibu.format
+			prefix 		: 'IBU\'s: '
+			decimals 	: 1
+
+		@ibu_text.setText ibu_text
 		@calculate_gu_bu()
 
 
 	calculate_gu_bu : =>
 		if @ibu == 0 then ibu = 1
-
-		#if @fgu ==0 then @fgu = 1
-		#else @fgu = 1000 * @fgu -1
-
-		#@gu_bu = Math.round(@fgu/@ibu*1000)/1000
+		else @fgu = 1000 * @fgu -1
+		@gu_bu = Math.round(@fgu/@ibu*1000)/1000
 
 		if @is_prototype then @compare_to_bjcp()
 
 	compare_to_bjcp : =>
+		false

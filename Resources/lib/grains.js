@@ -64,14 +64,13 @@
         text: BB.GRAINS[0].name
       });
       slider.addEventListener('change', function(e) {
-        var new_value;
-        new_value = Math.round(e.value * 10) / 10;
-        grain.weight = new_value;
-        if (new_value.toString().length === 1) {
-          new_value = new_value.toString() + '.0';
-        }
-        new_value += 'lbs';
-        weight_text.setText(new_value);
+        var grain_text;
+        grain.weight = e.value;
+        grain_text = grain.weight.format({
+          suffix: 'lbs',
+          decimals: 10
+        });
+        weight_text.setText(grain_text);
         return BB.stats.calculate_gravity();
       });
       grain_type.addEventListener('click', function(e) {

@@ -19,6 +19,7 @@
       this.efficiency = .75;
       this.volume = 5;
       this.final_volume = 5;
+      this.attenuation = 75;
       this.hop_weight = 0;
     }
 
@@ -91,19 +92,21 @@
     };
 
     Stats.prototype.calculate_gravity = function() {
-      var grain, grain_gravity_units, grain_mcu, proportion, _i, _j, _len, _len2, _ref, _ref2;
+      var grain, grain_gravity_units, grain_mcu, gu_average, lovibond_avg, proportion, _i, _j, _len, _len2, _ref, _ref2;
       this.gravity_units = 0;
       this.srm = 0;
       this.weight = 0;
       _ref = BB.ingredients.grains;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         grain = _ref[_i];
-        grain_gravity_units = parseInt(grain.weight * grain.gu_average);
+        gu_average = (grain.properties.gu_lo + grain.properties.gu_hi) / 2;
+        grain_gravity_units = parseInt(grain.weight * gu_average);
         if (grain.extract !== 1) {
           grain_gravity_units = grain_gravity_units * this.efficiency;
         }
         this.gravity_units += grain_gravity_units;
-        grain_mcu = parseInt(grain.weight * grain.lovibond_avg);
+        lovibond_avg = (grain.properties.lovibond_lo + grain.properties.lovibond_hi) / 2;
+        grain_mcu = parseInt(grain.weight * lovibond_avg);
         this.srm += grain_mcu;
         this.weight += grain.weight;
       }
@@ -116,22 +119,21 @@
       this.ogu = this.gravity_units / this.volume;
       this.fgu = (this.gravity_units * (this.attenuation / 100)) / this.volume;
       this.og = 1 + this.ogu / 1000;
-      this.og = Math.round(this.og * 10000) / 10000;
       this.fg = 1 + this.fgu / 1000;
       this.fg = 1 + (this.og - this.fg);
-      this.fg = Math.round(this.fg * 10000) / 10000;
       this.abv = 131 * (this.og - this.fg);
-      this.abv = Math.round(this.abv * 100) / 100;
-      /*
-      		@og 		= 0 unless @og
-      		@srm 		= 0 unless @srm
-      		@srm_rgb 	= 0 unless @srm_rgb
-      		@fg 		= 0 unless @fg
-      		@abv 		= 0 unless @abv
-      */
-      this.og_text.setText("OG : " + this.og);
-      this.fg_text.setText("FG : " + this.fg);
-      this.abv_text.setText("ABV : " + this.abv);
+      this.og_text.setText(this.og.format({
+        decimals: 10000,
+        prefix: 'OG: '
+      }));
+      this.fg_text.setText(this.fg.format({
+        decimals: 10000,
+        prefix: 'FG: '
+      }));
+      this.abv_text.setText(this.abv.format({
+        decimals: 100,
+        prefix: 'ABV: '
+      }));
       this.calculate_color();
       return this.calculate_gu_bu();
     };
@@ -147,11 +149,14 @@
         this.srm_rgb = BB.utilities.srm_lookup.getItem(this.srm);
         if (this.srm_rgb === void 0) srm_rgb = '255,255,255';
       }
-      return this.srm_text.setText("SRM : " + this.srm);
+      return this.srm_text.setText(this.srm.format({
+        prefix: 'SRM: ',
+        decimals: 10
+      }));
     };
 
     Stats.prototype.calculate_bitterness = function() {
-      var aa, aau, hop, proportion, utilization, _i, _j, _len, _len2, _ref, _ref2;
+      var aa, aau, hop, ibu_text, proportion, utilization, _i, _j, _len, _len2, _ref, _ref2;
       this.hop_weight = 0;
       _ref = BB.ingredients.hops;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -169,17 +174,28 @@
         hop.update_proportion(proportion);
       }
       this.ibu = Math.round(this.ibu / this.final_volume);
-      this.ibu_text.setText("IBU\'S : " + this.ibu);
+      ibu_text = this.ibu.format({
+        prefix: 'IBU\'s: ',
+        decimals: 1
+      });
+      this.ibu_text.setText(ibu_text);
       return this.calculate_gu_bu();
     };
 
     Stats.prototype.calculate_gu_bu = function() {
       var ibu;
-      if (this.ibu === 0) ibu = 1;
+      if (this.ibu === 0) {
+        ibu = 1;
+      } else {
+        this.fgu = 1000 * this.fgu(-1);
+      }
+      this.gu_bu = Math.round(this.fgu / this.ibu * 1000) / 1000;
       if (this.is_prototype) return this.compare_to_bjcp();
     };
 
-    Stats.prototype.compare_to_bjcp = function() {};
+    Stats.prototype.compare_to_bjcp = function() {
+      return false;
+    };
 
     return Stats;
 

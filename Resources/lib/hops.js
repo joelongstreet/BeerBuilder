@@ -65,15 +65,14 @@
         text: BB.HOPS[0].name
       });
       slider.addEventListener('change', function(e) {
-        var new_value;
-        new_value = Math.round(e.value * 10) / 10;
-        hop.weight = new_value;
+        var hop_text;
+        hop.weight = e.value;
         hop.time = 30;
-        if (new_value.toString().length === 1) {
-          new_value = new_value.toString() + '.0';
-        }
-        new_value += ' oz';
-        weight_text.setText(new_value);
+        hop_text = hop.weight.format({
+          suffix: 'oz',
+          decimals: 10
+        });
+        weight_text.setText(hop_text);
         return BB.stats.calculate_bitterness();
       });
       hop_type.addEventListener('click', function(e) {

@@ -59,12 +59,12 @@ class BB.Grains
 			text 		: BB.GRAINS[0].name
 
 		slider.addEventListener 'change', (e) =>
-			new_value 		= Math.round(e.value*10)/10
-			grain.weight 	= new_value
-			if new_value.toString().length == 1
-				new_value = new_value.toString() + '.0'
-			new_value += 'lbs'
-			weight_text.setText new_value
+			grain.weight 	= e.value
+			grain_text 		= grain.weight.format
+				suffix 		: 'lbs'
+				decimals 	: 10
+
+			weight_text.setText grain_text
 			BB.stats.calculate_gravity()
 
 		grain_type.addEventListener 'click', (e) =>
