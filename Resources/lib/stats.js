@@ -101,9 +101,7 @@
         grain = _ref[_i];
         gu_average = (grain.properties.gu_lo + grain.properties.gu_hi) / 2;
         grain_gravity_units = parseInt(grain.weight * gu_average);
-        if (grain.extract !== 1) {
-          grain_gravity_units = grain_gravity_units * this.efficiency;
-        }
+        if (grain.properties.extract !== 1) grain_gravity_units *= this.efficiency;
         this.gravity_units += grain_gravity_units;
         lovibond_avg = (grain.properties.lovibond_lo + grain.properties.lovibond_hi) / 2;
         grain_mcu = parseInt(grain.weight * lovibond_avg);
@@ -183,13 +181,12 @@
     };
 
     Stats.prototype.calculate_gu_bu = function() {
-      var ibu;
-      if (this.ibu === 0) {
-        ibu = 1;
-      } else {
-        this.fgu = 1000 * this.fgu(-1);
-      }
-      this.gu_bu = Math.round(this.fgu / this.ibu * 1000) / 1000;
+      if (this.ibu === 0) this.ibu = 1;
+      this.gubu = Math.round(this.fgu / this.ibu * 1000) / 1000;
+      this.gubu_text.setText(this.gubu.format({
+        decimals: 1000,
+        prefix: 'GUBU: '
+      }));
       if (this.is_prototype) return this.compare_to_bjcp();
     };
 

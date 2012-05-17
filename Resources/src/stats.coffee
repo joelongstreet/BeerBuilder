@@ -97,8 +97,8 @@ class BB.Stats
 			#Build Gravity Units
 			gu_average = (grain.properties.gu_lo + grain.properties.gu_hi)/2
 			grain_gravity_units = parseInt grain.weight * gu_average
-			if grain.extract != 1
-				grain_gravity_units = grain_gravity_units * @efficiency
+			if grain.properties.extract != 1
+				grain_gravity_units *= @efficiency
 			@gravity_units += grain_gravity_units
 
 			#Build Color
@@ -173,9 +173,10 @@ class BB.Stats
 
 
 	calculate_gu_bu : =>
-		if @ibu == 0 then ibu = 1
-		else @fgu = 1000 * @fgu -1
-		@gu_bu = Math.round(@fgu/@ibu*1000)/1000
+		if @ibu == 0 then @ibu = 1
+		#else @fgu = 1000 * @fgu - 1
+		@gubu = Math.round(@fgu/@ibu*1000)/1000
+		@gubu_text.setText @gubu.format({decimals:1000, prefix : 'GUBU: '})
 
 		if @is_prototype then @compare_to_bjcp()
 
