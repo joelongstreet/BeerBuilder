@@ -5,10 +5,10 @@
   BB.Grains = (function() {
 
     function Grains() {
-      this.update_grain_text = __bind(this.update_grain_text, this);
+      this.update_grain = __bind(this.update_grain, this);
       this.update_grain_weight = __bind(this.update_grain_weight, this);
       this.create_row = __bind(this.create_row, this);
-      var button,
+      var button, item, _i, _len, _ref,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Grains',
@@ -31,19 +31,19 @@
       this.window.add(this.table);
       this.window.add(button);
       this.window.add(BB.views.stats);
-      this.create_row();
-      return this.window;
-    }
-
-    Grains.prototype.create_row = function() {
-      var item, row, _i, _len, _ref,
-        _this = this;
       this.row_data = [];
       _ref = BB.GRAINS;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
         this.row_data.push(item.name);
       }
+      this.create_row();
+      return this.window;
+    }
+
+    Grains.prototype.create_row = function() {
+      var row,
+        _this = this;
       row = Ti.UI.createTableViewRow();
       this.percent_text = Ti.UI.createLabel({
         right: BB.PADDING_W,
@@ -71,7 +71,7 @@
             type: 'picker',
             data: _this.row_data,
             value: _this.grain_text.getText(),
-            callback: _this.update_grain_text
+            callback: _this.update_grain
           }, {
             type: 'range',
             min: 0,
@@ -101,9 +101,9 @@
       return BB.stats.calculate_gravity();
     };
 
-    Grains.prototype.update_grain_text = function(row_selected) {
+    Grains.prototype.update_grain = function(row_selected) {
       this.grain_text.setText(BB.GRAINS[row_selected].name);
-      this.grain.properies = BB.GRAINS[row_selected];
+      this.grain.properties = BB.GRAINS[row_selected];
       return BB.stats.calculate_gravity();
     };
 

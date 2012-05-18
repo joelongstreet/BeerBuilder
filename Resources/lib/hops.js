@@ -5,8 +5,11 @@
   BB.Hops = (function() {
 
     function Hops() {
+      this.update_hop = __bind(this.update_hop, this);
+      this.update_hop_weight = __bind(this.update_hop_weight, this);
+      this.update_hop_time = __bind(this.update_hop_time, this);
       this.create_row = __bind(this.create_row, this);
-      var button,
+      var button, item, _i, _len, _ref,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Hops',
@@ -30,75 +33,105 @@
       this.window.add(button);
       this.window.add(BB.views.stats);
       this.create_row();
+      this.row_data = [];
+      _ref = BB.HOPS;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        item = _ref[_i];
+        this.row_data.push(item.name);
+      }
       return this.window;
     }
 
     Hops.prototype.create_row = function() {
-      var hop, hop_type, percent_text, row, slider, weight_text,
+      var row,
         _this = this;
       row = Ti.UI.createTableViewRow();
-      slider = Ti.UI.createSlider({
-        bottom: BB.PADDING_H,
-        left: BB.PADDING_W,
-        width: BB.WIDTH * .7,
-        min: 0,
-        max: 3
-      });
-      percent_text = Ti.UI.createLabel({
+      this.percent_text = Ti.UI.createLabel({
         right: BB.PADDING_W,
         top: BB.PADDING_H,
         width: BB.PADDED_W,
         text: '0%',
         textAlign: 'right'
       });
-      weight_text = Ti.UI.createLabel({
+      this.weight_text = Ti.UI.createLabel({
         right: BB.PADDING_W,
         bottom: BB.PADDING_H,
         width: BB.PADDED_W,
         text: '0 oz',
         textAlign: 'right'
       });
-      hop_type = Ti.UI.createLabel({
+      this.time_text = Ti.UI.createLabel({
+        right: BB.PADDING_W,
+        bottom: BB.PADDING_H,
+        width: BB.PADDED_W,
+        text: '0 min',
+        textAlign: 'right'
+      });
+      this.hop_text = Ti.UI.createLabel({
         top: BB.PADDING_H,
         left: BB.PADDING_W,
         width: BB.PADDED_W,
         text: BB.HOPS[0].name
       });
-      slider.addEventListener('change', function(e) {
-        var hop_text;
-        hop.weight = e.value;
-        hop.time = 30;
-        hop_text = hop.weight.format({
-          suffix: 'oz',
-          decimals: 10
-        });
-        weight_text.setText(hop_text);
-        return BB.stats.calculate_bitterness();
-      });
-      hop_type.addEventListener('click', function(e) {
-        var item, modal, row_data, _i, _len, _ref;
-        row_data = [];
-        _ref = BB.HOPS;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          item = _ref[_i];
-          row_data.push(item.name);
-        }
-        modal = new BB.utilities.modal_picker({
-          textField: hop_type,
-          value: hop_type.getText(),
-          data: row_data
-        });
+      row.addEventListener('click', function(e) {
+        var modal;
+        modal = new BB.utilities.modal_picker([
+          {
+            type: 'picker',
+            data: _this.row_data,
+            value: _this.hop_text.getText(),
+            callback: _this.update_hop
+          }, {
+            type: 'range',
+            min: 0,
+            max: 3,
+            value: _this.weight_text.getText(),
+            callback: _this.update_hop_weight
+          }, {
+            type: 'range',
+            min: 0,
+            max: 90,
+            value: _this.time_text.getText(),
+            callback: _this.update_hop_time
+          }
+        ]);
         return modal.open({
           animated: true
         });
       });
-      row.add(hop_type);
-      row.add(slider);
-      row.add(percent_text);
-      row.add(weight_text);
+      row.add(this.hop_text);
+      row.add(this.percent_text);
+      row.add(this.weight_text);
+      row.add(this.time_text);
       this.table.appendRow(row);
-      hop = new Hop(BB.HOPS[0], percent_text);
-      return BB.ingredients.hops.push(hop);
+      this.hop = new Hop(BB.HOPS[0], this.percent_text);
+      return BB.ingredients.hops.push(this.hop);
+    };
+
+    Hops.prototype.update_hop_time = function(range_value) {
+      Ti.API.info('time update');
+      this.hop.time = range_value;
+      this.time_text.setText(this.hop.weight.format({
+        suffix: 'min',
+        decimals: 1
+      }));
+      return BB.stats.calculate_bitterness();
+    };
+
+    Hops.prototype.update_hop_weight = function(range_value) {
+      Ti.API.info('weight update');
+      this.hop.weight = range_value;
+      this.weight_text.setText(this.hop.weight.format({
+        suffix: 'oz',
+        decimals: 100
+      }));
+      return BB.stats.calculate_bitterness();
+    };
+
+    Hops.prototype.update_hop = function(row_selected) {
+      this.hop_text.setText(BB.HOPS[row_selected].name);
+      this.hop.properties = BB.HOPS[row_selected];
+      return BB.stats.calculate_bitterness();
     };
 
     return Hops;
@@ -109,8 +142,9 @@
 
     function Hop(properties, percent_text) {
       this.properties = properties;
-      this.weight = 0;
       this.percent_text = percent_text;
+      this.weight = 0;
+      this.time = 0;
     }
 
     Hop.prototype.update_proportion = function(proportion) {

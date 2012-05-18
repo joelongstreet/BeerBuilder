@@ -1,7 +1,7 @@
 (function() {
 
   BB.utilities.modal_picker = function(items) {
-    var date_to_string, done, item, overlay, picker, picker_callback, row, rows, slider, slider_callback, string_to_date, win, _i, _j, _len, _len2, _ref;
+    var callbacks, date_to_string, done, item, overlay, picker, row, rows, slider, string_to_date, win, _i, _j, _len, _len2, _ref;
     win = Ti.UI.createWindow({
       backgroundColor: 'transparent',
       height: BB.HEIGHT,
@@ -27,8 +27,10 @@
     });
     win.add(overlay);
     win.add(done);
+    callbacks = [];
     for (_i = 0, _len = items.length; _i < _len; _i++) {
       item = items[_i];
+      callbacks.push(item.callback);
       if (item.type === 'picker' || item.type === 'date-picker') {
         picker = Ti.UI.createPicker({
           type: Ti.UI.PICKER_TYPE_PLAIN,
@@ -49,23 +51,23 @@
           }
           picker.add(rows);
           if (item.value) picker.value = item.picker_value;
-          picker_callback = item.callback;
-          picker.addEventListener('change', function(e) {
-            return picker_callback(e.rowIndex);
-          });
         }
+        picker.callback = item.callback;
+        picker.addEventListener('change', function(e) {
+          return this.callback(e.rowIndex);
+        });
         win.add(picker);
       } else if (item.type === 'range') {
         slider = Ti.UI.createSlider({
-          bottom: BB.PADDING_H,
+          bottom: BB.HEIGHT * .5 + BB.HEIGHT * .1 * _i,
           left: BB.PADDING_W,
           width: BB.WIDTH * .7,
           min: item.min,
           max: item.max
         });
-        slider_callback = item.callback;
+        slider.callback = item.callback;
         slider.addEventListener('change', function(e) {
-          return slider_callback(e.value);
+          return this.callback(e.value);
         });
         win.add(slider);
       }

@@ -24,15 +24,15 @@ class BB.Grains
 		@window.add button
 		@window.add BB.views.stats
 
+		@row_data 	= []
+		for item in BB.GRAINS
+			@row_data.push item.name
+
 		@create_row()
 
 		return @window
 
 	create_row : =>
-
-		@row_data 	= []
-		for item in BB.GRAINS
-			@row_data.push item.name
 
 		row 			= Ti.UI.createTableViewRow()
 
@@ -61,14 +61,13 @@ class BB.Grains
 				type 		: 'picker'
 				data 		: @row_data
 				value 		: @grain_text.getText()
-				callback 	: @update_grain_text
+				callback 	: @update_grain
 			,
 				type 		: 'range'
 				min 		: 0
 				max			: 10
 				value 		: @weight_text.getText()
 				callback 	: @update_grain_weight
-
 			]
 
 			modal.open animated : true
@@ -89,10 +88,9 @@ class BB.Grains
 			decimals 	: 10
 		BB.stats.calculate_gravity()
 
-
-	update_grain_text : (row_selected) =>
+	update_grain : (row_selected) =>
 		@grain_text.setText BB.GRAINS[row_selected].name
-		@grain.properies = BB.GRAINS[row_selected]
+		@grain.properties = BB.GRAINS[row_selected]
 		BB.stats.calculate_gravity()
 
 

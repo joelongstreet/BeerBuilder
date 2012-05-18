@@ -25,8 +25,12 @@ BB.utilities.modal_picker = (items) ->
 	win.add 		overlay
 	win.add 		done
 
+	callbacks 			= []
+
 
 	for item in items
+
+		callbacks.push item.callback
 
 		if item.type is 'picker' || item.type is 'date-picker'
 		
@@ -46,24 +50,26 @@ BB.utilities.modal_picker = (items) ->
 
 				if item.value then picker.value = item.picker_value
 
-				picker_callback = item.callback
-				picker.addEventListener 'change', (e) ->
-					picker_callback(e.rowIndex)
+			#THIS IS SUPER FUCKING CONFUSING
+			picker.callback = item.callback
+			picker.addEventListener 'change', (e) ->
+				@callback(e.rowIndex)
 
 			win.add picker
 
 		else if item.type == 'range'
 
 			slider 			= Ti.UI.createSlider
-				bottom 		: BB.PADDING_H
+				bottom 		: BB.HEIGHT*.5 + BB.HEIGHT*.1*_i
 				left 		: BB.PADDING_W
 				width 		: BB.WIDTH*.7
 				min 		: item.min
 				max 		: item.max
 
-			slider_callback = item.callback
+			#THIS IS SUPER FUCKING CONFUSING
+			slider.callback = item.callback
 			slider.addEventListener 'change', (e) ->
-				slider_callback(e.value)
+				@callback(e.value)
 
 			win.add slider
 
