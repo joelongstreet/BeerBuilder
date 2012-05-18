@@ -28,7 +28,7 @@
       wrapper = Ti.UI.createView({
         backgroundColor: '#000',
         opacity: 0.7,
-        height: BB.HEIGHT * .1,
+        height: BB.HEIGHT * .2,
         width: BB.WIDTH,
         top: 0
       });
@@ -184,7 +184,7 @@
       if (this.ibu === 0) this.ibu = 1;
       this.gubu = Math.round(this.fgu / this.ibu * 1000) / 1000;
       this.gubu_text.setText(this.gubu.format({
-        decimals: 1000,
+        decimals: 100,
         prefix: 'GUBU: '
       }));
       if (this.is_prototype) return this.compare_to_bjcp();

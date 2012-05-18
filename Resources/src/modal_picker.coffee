@@ -1,4 +1,4 @@
-BB.utilities.modal_picker = (options) ->
+BB.utilities.modal_picker = (items) ->
 
 	win 				= Ti.UI.createWindow
 		backgroundColor	: 'transparent'
@@ -6,69 +6,67 @@ BB.utilities.modal_picker = (options) ->
 		width 			: BB.WIDTH
 
 	overlay 			= Ti.UI.createView
-		backgroundColor	: '#000'
+		backgroundColor	: 'green'
 		opacity			: 0.7
-		height 			: BB.HEIGHT
+		height 			: BB.HEIGHT*.8
+		top 			: BB.HEIGHT*.2
 		width 			: BB.WIDTH
-	
-	picker 				= Ti.UI.createPicker
-		type 			: Ti.UI.PICKER_TYPE_PLAIN
-		height 			: BB.HEIGHT/2
-		bottom 			: 0
-		selectionIndicator : true
-
-	rows = []
-	for item in options.data
-		rows.push Ti.UI.createPickerRow({ title : item })
-	picker.add rows
-
-	if picker.getType() == Ti.UI.PICKER_TYPE_DATE
-		picker.value = @string_to_date options.value
-	#picker.value = options.value
-
-	picker.addEventListener 'change', (e) ->
-		Ti.API.info picker.getSelectedRow(0).title
-		return false
-	
-	cancel 				= Ti.UI.createButton
-		title 			:'Cancel'
-		height			: BB.HEIGHT*.07
-		width 			: 80
-		left 			: 10
-		style 			: Ti.UI.iPhone.SystemButtonStyle.BORDERED
 	 
 	done 				=  Ti.UI.createButton
-		title			:'Done'
+		title			:'X'
 		height			: BB.HEIGHT*.07
-		width			: 80
+		bottom 			: BB.HEIGHT*.7
+		width			: 50
 		right			: 10
-		style 			: Ti.UI.iPhone.SystemButtonStyle.BORDERED
+		style 			: 1
 
-	cancel.addEventListener 'click', ->
-		win.close()
+	done.addEventListener 'click', -> win.close()
 
-	done.addEventListener 'click', ->
-		if picker.getType() == Ti.UI.PICKER_TYPE_DATE
-			options.textField.setText @date_to_string picker.value
-		else 
-			options.textField.setText picker.getSelectedRow(0).title
-
-		win.close()
-	 
-	spacer 				= Ti.UI.createButton
-		systemButton 	: Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
-	 
-	toolbar 			= Ti.UI.createView
-		backgroundColor	: '#bbb'
-		height			: BB.HEIGHT*.1
-		top 			: BB.HEIGHT*.45
-
-	toolbar.add 	cancel
-	toolbar.add 	done
-	
 	win.add 		overlay
-	win.add 		toolbar
-	win.add 		picker
+	win.add 		done
+
+
+	for item in items
+
+		if item.type is 'picker' || item.type is 'date-picker'
+		
+			picker 				= Ti.UI.createPicker
+				type 			: Ti.UI.PICKER_TYPE_PLAIN
+				height 			: BB.HEIGHT*.5
+				bottom 			: 0
+				selectionIndicator : true
+
+			if item.type == 'date' then item.value = @string_to_date item.value
+
+			else
+				rows = []
+				for row in item.data
+					rows.push Ti.UI.createPickerRow({ title : row })
+				picker.add rows
+
+				if item.value then picker.value = item.picker_value
+
+				picker_callback = item.callback
+				picker.addEventListener 'change', (e) ->
+					picker_callback(e.rowIndex)
+
+			win.add picker
+
+		else if item.type == 'range'
+
+			slider 			= Ti.UI.createSlider
+				bottom 		: BB.PADDING_H
+				left 		: BB.PADDING_W
+				width 		: BB.WIDTH*.7
+				min 		: item.min
+				max 		: item.max
+
+			slider_callback = item.callback
+			slider.addEventListener 'change', (e) ->
+				slider_callback(e.value)
+
+			win.add slider
+
 	
 	return win
 
