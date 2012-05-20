@@ -99,11 +99,9 @@ class BB.Hops
 
 	update_hop_time : (range_value) =>
 		@hop.time = range_value
-		new_val = @hop.weight.format
+		@time_text.setText @hop.time.format
 			suffix 		: 'min'
-			decimals 	: 10
-
-		@time_text.setText new_val
+			decimals 	: 1
 		BB.stats.calculate_bitterness()
 
 	update_hop_weight : (range_value) =>

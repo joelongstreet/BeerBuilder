@@ -111,13 +111,11 @@
     };
 
     Hops.prototype.update_hop_time = function(range_value) {
-      var new_val;
       this.hop.time = range_value;
-      new_val = this.hop.weight.format({
+      this.time_text.setText(this.hop.time.format({
         suffix: 'min',
-        decimals: 10
-      });
-      this.time_text.setText(new_val);
+        decimals: 1
+      }));
       return BB.stats.calculate_bitterness();
     };
 
