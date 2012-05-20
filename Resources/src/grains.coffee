@@ -7,10 +7,10 @@ class BB.Grains
 			navBarHidden: true
 
 		@table 			= Ti.UI.createTableView
-			height 		: BB.HEIGHT - BB.HEIGHT * .2
+			height 		: BB.HEIGHT*.65
 			width 		: BB.WIDTH
-			rowHeight 	: BB.HEIGHT*.2
-			top 		: BB.HEIGHT*.1
+			rowHeight 	: BB.HEIGHT*.1
+			top 		: BB.HEIGHT*.2
 
 		button 			= Ti.UI.createButton
 			right 		: BB.PADDING_W
@@ -24,6 +24,10 @@ class BB.Grains
 		@window.add button
 		@window.add BB.views.stats
 
+		@row_data 	= []
+		for item in BB.GRAINS
+			@row_data.push item.name
+
 		@create_row()
 
 		return @window
@@ -32,64 +36,62 @@ class BB.Grains
 
 		row 			= Ti.UI.createTableViewRow()
 
-		slider 			= Ti.UI.createSlider
-			bottom 		: BB.PADDING_H
-			left 		: BB.PADDING_W
-			width 		: BB.WIDTH*.7
-			min 		: 0
-			max 		: 10
-
-		percent_text 	= Ti.UI.createLabel
+		@percent_text 	= Ti.UI.createLabel
 			right 		: BB.PADDING_W
 			top 		: BB.PADDING_H
 			width 		: BB.PADDED_W
 			text 		: '0%'
 			textAlign 	: 'right'
 
-		weight_text 	= Ti.UI.createLabel
+		@weight_text 	= Ti.UI.createLabel
 			right 		: BB.PADDING_W
 			bottom 		: BB.PADDING_H
 			width 		: BB.PADDED_W
 			text 		: '0lbs'
 			textAlign 	: 'right'
 
-		grain_type 		= Ti.UI.createLabel
+		@grain_text 	= Ti.UI.createLabel
 			top 		: BB.PADDING_H
 			left 		: BB.PADDING_W
 			text 		: BB.GRAINS[0].name
 
-		slider.addEventListener 'change', (e) =>
-			grain.weight 	= e.value
-			grain_text 		= grain.weight.format
-				suffix 		: 'lbs'
-				decimals 	: 10
+		row.addEventListener 'click', (e) =>
 
-			weight_text.setText grain_text
-			BB.stats.calculate_gravity()
-
-		grain_type.addEventListener 'click', (e) =>
-
-			row_data 	= []
-			
-			for item in BB.GRAINS
-				row_data.push item.name
-
-			modal 			= new BB.utilities.modal_picker
-				textField 	: grain_type
-				value 		: grain_type.getText()
-				data 		: row_data
+			modal 			= new BB.utilities.modal_picker [
+				type 		: 'picker'
+				data 		: @row_data
+				value 		: @grain_text.getText()
+				callback 	: @update_grain
+			,
+				type 		: 'range'
+				min 		: 0
+				max			: 10
+				value 		: @weight_text.getText()
+				callback 	: @update_grain_weight
+			]
 
 			modal.open animated : true
 
-		row.add grain_type
-		row.add slider
-		row.add percent_text
-		row.add weight_text
+		row.add @grain_text
+		row.add @percent_text
+		row.add @weight_text
 
 		@table.appendRow row
 
-		grain = new Grain BB.GRAINS[0], percent_text
-		BB.ingredients.grains.push grain
+		@grain = new Grain BB.GRAINS[0], @percent_text
+		BB.ingredients.grains.push @grain
+
+	update_grain_weight : (range_value) =>
+		@grain.weight = range_value
+		@weight_text.setText @grain.weight.format
+			suffix 		: 'lbs'
+			decimals 	: 10
+		BB.stats.calculate_gravity()
+
+	update_grain : (row_selected) =>
+		@grain_text.setText BB.GRAINS[row_selected].name
+		@grain.properties = BB.GRAINS[row_selected]
+		BB.stats.calculate_gravity()
 
 
 class Grain
