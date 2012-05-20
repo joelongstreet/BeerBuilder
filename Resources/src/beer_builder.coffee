@@ -4,10 +4,6 @@ BB.temp_tab 			= Ti.UI.createTab
 	title 				: 'Test'
 BB.temp_tabs 			= Ti.UI.createTabGroup()
 BB.temp_tabs.addTab BB.temp_tab
-BB.temp  				=
-	icon 				: '/img/fixer.png'
-	title 				: 'Fixer'
-	tab_group 			: BB.temp_tabs
 BB.temp2  				=
 	icon 				: '/img/efficiency.png'
 	title 				: 'Efficiency'
@@ -30,7 +26,7 @@ BB.temp5  				=
 ## Build Menu ##
 BB.menu 				= new BB.Menu [
 	BB.recipe,
-	BB.temp,
+	BB.fixer,
 	BB.temp2,
 	BB.temp3,
 	BB.temp4,
