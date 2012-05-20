@@ -1,5 +1,6 @@
 var BB = {}
 
+Ti.include('lib/constants.js');
 
 /*** Data Files ***/
 Ti.include('data/beer_styles.js');

@@ -1,18 +1,5 @@
 (function() {
 
-  BB.Temp = (function() {
-
-    function Temp() {
-      this.window = Ti.UI.createWindow({
-        title: 'Temp'
-      });
-      return this.window;
-    }
-
-    return Temp;
-
-  })();
-
   BB.Menu = (function() {
 
     function Menu(tab_groups) {

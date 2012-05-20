@@ -5,33 +5,66 @@ class BB.RecipeSetup
 			title 		: 'Setup'
 			backgroundColor : '#fff'
 
-		Ti.API.info Ti.Platform.displayCaps.platformWidth
-		Ti.API.info BB.WIDTH
-		Ti.API.info JSON.stringify BB
-
 		title 			= Ti.UI.createTextField
-			hintText 	: 'Beer Title'
+			hintText 	: 'Your Next Great Beer'
 			top 		: BB.PADDING_H
-			height 		: BB.HEIGHT*.1
-			width 		: BB.WIDTH/2
+			width 		: BB.WIDTH - BB.PADDING_W*2
 			left 		: BB.PADDING_W
 			borderStyle : Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+			font 		: {fontSize : 22}
 
 		date 			= Ti.UI.createTextField
-			hintText 	: new Date().getTime()
+			hintText 	: 'Date Brewed'
 			top 		: BB.PADDING_H*3
+			width 		: BB.WIDTH/2
+			right 		: BB.PADDING_W
+			borderStyle : Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 
-		efficiency 		= Ti.UI.createTextField
-			hintText 	: '0 - 100'
+		efficiency_s	= Ti.UI.createSlider
+			min 		: 0
+			max 		: 100
+			width 		: BB.WIDTH - BB.PADDING_W*2
+			left 		: BB.PADDING_W
+			top 		: BB.PADDING_H*7
+			value 		: 75
+		efficiency_l	= Ti.UI.createLabel
 			top 		: BB.PADDING_H*6
+			right 		: BB.PADDING_W
+			text 		: 'Efficiency: 75%'
+		efficiency_s.addEventListener 'change', (e) ->
+			#BB.recipe.stats.efficiency = e.value
+			#BB.recipe.stats.calculate_gravity()
+			#BB.recipe.stats.calculate_bitterness()
+			efficiency_l.setText e.value.format
+				prefix 		: 'Efficiency: '
+				suffix 		: '%'
+				decimals 	: 1
 
-		volume 			= Ti.UI.createTextField
-			hintText 	: '0 - 100'
+		volume_s		= Ti.UI.createSlider
+			min 		: 0
+			max 		: 20
+			width 		: BB.WIDTH - BB.PADDING_W*2
+			left 		: BB.PADDING_W
+			top 		: BB.PADDING_H*10
+			value 		: 5
+		volume_l		= Ti.UI.createLabel
 			top 		: BB.PADDING_H*9
+			right 		: BB.PADDING_W
+			text 		: 'Volume: 5 Gallons'
+		volume_s.addEventListener 'change', (e) ->
+			#BB.recipe.stats.volume = e.value
+			#BB.recipe.stats.calculate_gravity()
+			#BB.recipe.stats.calculate_bitterness()
+			volume_l.setText e.value.format
+				prefix 		: 'Volume: '
+				suffix 		: ' Gallons'
+				decimals 	: 1
 
 		@window.add title
-		#@window.add date
-		#@window.add efficiency
-		#@window.add volume
+		@window.add date
+		@window.add efficiency_s
+		@window.add efficiency_l
+		@window.add volume_s
+		@window.add volume_l
 
 		return @window

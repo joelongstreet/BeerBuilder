@@ -1,9 +1,3 @@
-class BB.Temp
-	constructor : ->
-		@window			= Ti.UI.createWindow
-			title 		: 'Temp'
-		return @window
-
 class BB.Menu
 	constructor : (tab_groups) ->
 		@window			= Ti.UI.createWindow
