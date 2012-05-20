@@ -16,10 +16,10 @@
         navBarHidden: true
       });
       this.table = Ti.UI.createTableView({
-        height: BB.HEIGHT - BB.HEIGHT * .2,
+        height: BB.HEIGHT * .65,
         width: BB.WIDTH,
-        rowHeight: BB.HEIGHT * .2,
-        top: BB.HEIGHT * .1
+        rowHeight: BB.HEIGHT * .1,
+        top: BB.HEIGHT * .2
       });
       button = Ti.UI.createButton({
         right: BB.PADDING_W,
@@ -54,7 +54,7 @@
         textAlign: 'right'
       });
       this.weight_text = Ti.UI.createLabel({
-        right: BB.PADDING_W,
+        right: BB.PADDING_W * 5,
         bottom: BB.PADDING_H,
         width: BB.PADDED_W,
         text: '0 oz',
@@ -83,12 +83,14 @@
             callback: _this.update_hop
           }, {
             type: 'range',
+            label: 'Weight',
             min: 0,
             max: 3,
             value: _this.weight_text.getText(),
             callback: _this.update_hop_weight
           }, {
             type: 'range',
+            label: 'Time',
             min: 0,
             max: 90,
             value: _this.time_text.getText(),
@@ -109,17 +111,17 @@
     };
 
     Hops.prototype.update_hop_time = function(range_value) {
-      Ti.API.info('time update');
+      var new_val;
       this.hop.time = range_value;
-      this.time_text.setText(this.hop.weight.format({
+      new_val = this.hop.weight.format({
         suffix: 'min',
-        decimals: 1
-      }));
+        decimals: 10
+      });
+      this.time_text.setText(new_val);
       return BB.stats.calculate_bitterness();
     };
 
     Hops.prototype.update_hop_weight = function(range_value) {
-      Ti.API.info('weight update');
       this.hop.weight = range_value;
       this.weight_text.setText(this.hop.weight.format({
         suffix: 'oz',
