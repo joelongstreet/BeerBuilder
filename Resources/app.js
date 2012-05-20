@@ -18,14 +18,18 @@ Ti.include('vendor/hash.js');
 /*** Class Includes ***/
 Ti.include('lib/utilities.js');
 Ti.include('lib/modal_picker.js');
-Ti.include('lib/stats.js');
-Ti.include('lib/character.js');
-Ti.include('lib/recipe_base.js');
-Ti.include('lib/grains.js');
-Ti.include('lib/hops.js');
-Ti.include('lib/yeasts.js');
-Ti.include('lib/fermentation.js');
-Ti.include('lib/delivery.js');
+
+	//Recipe
+	Ti.include('lib/recipe/stats.js');
+	Ti.include('lib/recipe/character.js');
+	Ti.include('lib/recipe/setup.js');
+	Ti.include('lib/recipe/grains.js');
+	Ti.include('lib/recipe/hops.js');
+	Ti.include('lib/recipe/fermentation.js');
+	Ti.include('lib/recipe/delivery.js');
+	Ti.include('lib/recipe/_recipe.js');
+
+Ti.include('lib/menu.js');
 /*** ---------- ***/
 
 

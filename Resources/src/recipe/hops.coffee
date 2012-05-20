@@ -1,10 +1,9 @@
-class BB.Hops
+class BB.RecipeHops
 
 	constructor : ->
 
 		@window			= Ti.UI.createWindow
 			title 		: 'Hops'
-			navBarHidden: true
 
 		@table 			= Ti.UI.createTableView
 			height 		: BB.HEIGHT*.65
@@ -21,7 +20,7 @@ class BB.Hops
 
 		@window.add @table
 		@window.add button
-		@window.add BB.views.stats
+		@window.add BB.recipe.views.stats
 
 		@create_row()
 
@@ -95,7 +94,7 @@ class BB.Hops
 		@table.appendRow row
 
 		@hop = new Hop BB.HOPS[0], @percent_text
-		BB.ingredients.hops.push @hop
+		BB.recipe.ingredients.hops.push @hop
 
 	update_hop_time : (range_value) =>
 		@hop.time = range_value

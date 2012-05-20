@@ -1,4 +1,4 @@
-class BB.Character
+class BB.RecipeCharacter
 
 	constructor : ->
 		@grains 	= @build_text_view 'Grain Character'
@@ -6,6 +6,9 @@ class BB.Character
 		@yeasts 	= @build_text_view 'Yeast Character'
 
 		return [@grains, @hops, @yeasts]
+
+	build_screen : ->
+		return 1
 
 
 	update_item : (items, type) =>

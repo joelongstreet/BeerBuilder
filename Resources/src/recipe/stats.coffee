@@ -1,4 +1,4 @@
-class BB.Stats
+class BB.RecipeStats
 
 	constructor : ->
 		@is_prototype 	= false

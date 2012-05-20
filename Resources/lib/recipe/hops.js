@@ -2,9 +2,9 @@
   var Hop,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  BB.Hops = (function() {
+  BB.RecipeHops = (function() {
 
-    function Hops() {
+    function RecipeHops() {
       this.update_hop = __bind(this.update_hop, this);
       this.update_hop_weight = __bind(this.update_hop_weight, this);
       this.update_hop_time = __bind(this.update_hop_time, this);
@@ -12,8 +12,7 @@
       var button, item, _i, _len, _ref,
         _this = this;
       this.window = Ti.UI.createWindow({
-        title: 'Hops',
-        navBarHidden: true
+        title: 'Hops'
       });
       this.table = Ti.UI.createTableView({
         height: BB.HEIGHT * .65,
@@ -31,7 +30,7 @@
       });
       this.window.add(this.table);
       this.window.add(button);
-      this.window.add(BB.views.stats);
+      this.window.add(BB.recipe.views.stats);
       this.create_row();
       this.row_data = [];
       _ref = BB.HOPS;
@@ -42,7 +41,7 @@
       return this.window;
     }
 
-    Hops.prototype.create_row = function() {
+    RecipeHops.prototype.create_row = function() {
       var row,
         _this = this;
       row = Ti.UI.createTableViewRow();
@@ -107,10 +106,10 @@
       row.add(this.time_text);
       this.table.appendRow(row);
       this.hop = new Hop(BB.HOPS[0], this.percent_text);
-      return BB.ingredients.hops.push(this.hop);
+      return BB.recipe.ingredients.hops.push(this.hop);
     };
 
-    Hops.prototype.update_hop_time = function(range_value) {
+    RecipeHops.prototype.update_hop_time = function(range_value) {
       this.hop.time = range_value;
       this.time_text.setText(this.hop.time.format({
         suffix: 'min',
@@ -119,7 +118,7 @@
       return BB.stats.calculate_bitterness();
     };
 
-    Hops.prototype.update_hop_weight = function(range_value) {
+    RecipeHops.prototype.update_hop_weight = function(range_value) {
       this.hop.weight = range_value;
       this.weight_text.setText(this.hop.weight.format({
         suffix: 'oz',
@@ -128,13 +127,13 @@
       return BB.stats.calculate_bitterness();
     };
 
-    Hops.prototype.update_hop = function(row_selected) {
+    RecipeHops.prototype.update_hop = function(row_selected) {
       this.hop_text.setText(BB.HOPS[row_selected].name);
       this.hop.properties = BB.HOPS[row_selected];
       return BB.stats.calculate_bitterness();
     };
 
-    return Hops;
+    return RecipeHops;
 
   })();
 

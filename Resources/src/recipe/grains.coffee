@@ -1,10 +1,9 @@
-class BB.Grains
+class BB.RecipeGrains
 
 	constructor : ->
 
 		@window			= Ti.UI.createWindow
 			title 		: 'Grains'
-			navBarHidden: true
 
 		@table 			= Ti.UI.createTableView
 			height 		: BB.HEIGHT*.65
@@ -22,7 +21,7 @@ class BB.Grains
 
 		@window.add @table
 		@window.add button
-		@window.add BB.views.stats
+		@window.add BB.recipe.views.stats
 
 		@row_data 	= []
 		for item in BB.GRAINS
@@ -79,7 +78,7 @@ class BB.Grains
 		@table.appendRow row
 
 		@grain = new Grain BB.GRAINS[0], @percent_text
-		BB.ingredients.grains.push @grain
+		BB.recipe.ingredients.grains.push @grain
 
 	update_grain_weight : (range_value) =>
 		@grain.weight = range_value

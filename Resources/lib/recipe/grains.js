@@ -2,17 +2,16 @@
   var Grain,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  BB.Grains = (function() {
+  BB.RecipeGrains = (function() {
 
-    function Grains() {
+    function RecipeGrains() {
       this.update_grain = __bind(this.update_grain, this);
       this.update_grain_weight = __bind(this.update_grain_weight, this);
       this.create_row = __bind(this.create_row, this);
       var button, item, _i, _len, _ref,
         _this = this;
       this.window = Ti.UI.createWindow({
-        title: 'Grains',
-        navBarHidden: true
+        title: 'Grains'
       });
       this.table = Ti.UI.createTableView({
         height: BB.HEIGHT * .65,
@@ -30,7 +29,7 @@
       });
       this.window.add(this.table);
       this.window.add(button);
-      this.window.add(BB.views.stats);
+      this.window.add(BB.recipe.views.stats);
       this.row_data = [];
       _ref = BB.GRAINS;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -41,7 +40,7 @@
       return this.window;
     }
 
-    Grains.prototype.create_row = function() {
+    RecipeGrains.prototype.create_row = function() {
       var row,
         _this = this;
       row = Ti.UI.createTableViewRow();
@@ -89,10 +88,10 @@
       row.add(this.weight_text);
       this.table.appendRow(row);
       this.grain = new Grain(BB.GRAINS[0], this.percent_text);
-      return BB.ingredients.grains.push(this.grain);
+      return BB.recipe.ingredients.grains.push(this.grain);
     };
 
-    Grains.prototype.update_grain_weight = function(range_value) {
+    RecipeGrains.prototype.update_grain_weight = function(range_value) {
       this.grain.weight = range_value;
       this.weight_text.setText(this.grain.weight.format({
         suffix: 'lbs',
@@ -101,13 +100,13 @@
       return BB.stats.calculate_gravity();
     };
 
-    Grains.prototype.update_grain = function(row_selected) {
+    RecipeGrains.prototype.update_grain = function(row_selected) {
       this.grain_text.setText(BB.GRAINS[row_selected].name);
       this.grain.properties = BB.GRAINS[row_selected];
       return BB.stats.calculate_gravity();
     };
 
-    return Grains;
+    return RecipeGrains;
 
   })();
 

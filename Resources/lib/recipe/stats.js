@@ -1,9 +1,9 @@
 (function() {
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  BB.Stats = (function() {
+  BB.RecipeStats = (function() {
 
-    function Stats() {
+    function RecipeStats() {
       this.compare_to_bjcp = __bind(this.compare_to_bjcp, this);
       this.calculate_gu_bu = __bind(this.calculate_gu_bu, this);
       this.calculate_bitterness = __bind(this.calculate_bitterness, this);
@@ -23,7 +23,7 @@
       this.hop_weight = 0;
     }
 
-    Stats.prototype.build_screen = function() {
+    RecipeStats.prototype.build_screen = function() {
       var wrapper;
       wrapper = Ti.UI.createView({
         backgroundColor: '#000',
@@ -91,7 +91,7 @@
       return wrapper;
     };
 
-    Stats.prototype.calculate_gravity = function() {
+    RecipeStats.prototype.calculate_gravity = function() {
       var grain, grain_gravity_units, grain_mcu, gu_average, lovibond_avg, proportion, _i, _j, _len, _len2, _ref, _ref2;
       this.gravity_units = 0;
       this.srm = 0;
@@ -136,7 +136,7 @@
       return this.calculate_gu_bu();
     };
 
-    Stats.prototype.calculate_color = function() {
+    RecipeStats.prototype.calculate_color = function() {
       var srm_rgb;
       this.srm = this.srm / this.volume;
       this.srm = 1.4922 * (Math.pow(this.srm, .6859));
@@ -153,7 +153,7 @@
       }));
     };
 
-    Stats.prototype.calculate_bitterness = function() {
+    RecipeStats.prototype.calculate_bitterness = function() {
       var aa, aau, hop, ibu_text, proportion, utilization, _i, _j, _len, _len2, _ref, _ref2;
       this.hop_weight = 0;
       _ref = BB.ingredients.hops;
@@ -180,7 +180,7 @@
       return this.calculate_gu_bu();
     };
 
-    Stats.prototype.calculate_gu_bu = function() {
+    RecipeStats.prototype.calculate_gu_bu = function() {
       if (this.ibu === 0) this.ibu = 1;
       this.gubu = Math.round(this.fgu / this.ibu * 1000) / 1000;
       this.gubu_text.setText(this.gubu.format({
@@ -190,11 +190,11 @@
       if (this.is_prototype) return this.compare_to_bjcp();
     };
 
-    Stats.prototype.compare_to_bjcp = function() {
+    RecipeStats.prototype.compare_to_bjcp = function() {
       return false;
     };
 
-    return Stats;
+    return RecipeStats;
 
   })();
 

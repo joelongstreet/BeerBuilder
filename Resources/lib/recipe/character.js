@@ -1,16 +1,20 @@
 (function() {
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  BB.Character = (function() {
+  BB.RecipeCharacter = (function() {
 
-    function Character() {
+    function RecipeCharacter() {
       this.update_item = __bind(this.update_item, this);      this.grains = this.build_text_view('Grain Character');
       this.hops = this.build_text_view('Hop Character');
       this.yeasts = this.build_text_view('Yeast Character');
       return [this.grains, this.hops, this.yeasts];
     }
 
-    Character.prototype.update_item = function(items, type) {
+    RecipeCharacter.prototype.build_screen = function() {
+      return 1;
+    };
+
+    RecipeCharacter.prototype.update_item = function(items, type) {
       var item, item_text, _i, _len;
       item_text = '';
       for (_i = 0, _len = items.length; _i < _len; _i++) {
@@ -27,7 +31,7 @@
       }
     };
 
-    Character.prototype.build_text_view = function(label_text) {
+    RecipeCharacter.prototype.build_text_view = function(label_text) {
       var content, label, view,
         _this = this;
       view = Ti.UI.createView({
@@ -58,7 +62,7 @@
       return view;
     };
 
-    return Character;
+    return RecipeCharacter;
 
   })();
 
