@@ -1,4 +1,4 @@
-BB.PROTOTYPES = [
+PROTOTYPES = [
 	{
 		"name" : "Lite American Lager",
 		"parent_style" : "Light Lager",

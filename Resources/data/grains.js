@@ -1,4 +1,4 @@
-BB.GRAINS = [
+GRAINS = [
 	{
 		"name" : "Acidulated (Sauer) Malt", 
 		"lovibond_hi" : 2.8, 

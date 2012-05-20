@@ -1,4 +1,4 @@
-BB.HOPS = [
+HOPS = [
 	{
 		"name" : "Admiral (U.K.)", 
 		"aa_lo" : 13.5, 

@@ -9,7 +9,7 @@
       this.update_hop_weight = __bind(this.update_hop_weight, this);
       this.update_hop_time = __bind(this.update_hop_time, this);
       this.create_row = __bind(this.create_row, this);
-      var button, item, _i, _len, _ref,
+      var button, item, _i, _len,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Hops'
@@ -33,9 +33,8 @@
       this.window.add(BB.recipe.views.stats);
       this.create_row();
       this.row_data = [];
-      _ref = BB.HOPS;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        item = _ref[_i];
+      for (_i = 0, _len = HOPS.length; _i < _len; _i++) {
+        item = HOPS[_i];
         this.row_data.push(item.name);
       }
       return this.window;
@@ -70,7 +69,7 @@
         top: BB.PADDING_H,
         left: BB.PADDING_W,
         width: BB.PADDED_W,
-        text: BB.HOPS[0].name
+        text: HOPS[0].name
       });
       row.addEventListener('click', function(e) {
         var modal;
@@ -105,7 +104,7 @@
       row.add(this.weight_text);
       row.add(this.time_text);
       this.table.appendRow(row);
-      this.hop = new Hop(BB.HOPS[0], this.percent_text);
+      this.hop = new Hop(HOPS[0], this.percent_text);
       return BB.recipe.ingredients.hops.push(this.hop);
     };
 
@@ -128,8 +127,8 @@
     };
 
     RecipeHops.prototype.update_hop = function(row_selected) {
-      this.hop_text.setText(BB.HOPS[row_selected].name);
-      this.hop.properties = BB.HOPS[row_selected];
+      this.hop_text.setText(HOPS[row_selected].name);
+      this.hop.properties = HOPS[row_selected];
       return BB.stats.calculate_bitterness();
     };
 

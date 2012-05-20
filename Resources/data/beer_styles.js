@@ -1,4 +1,4 @@
-BB.BEERSTYLES = [
+BEERSTYLES = [
 	{
 		"name" : "Lite American Lager",
 		"parent_style" : "Light Lager",

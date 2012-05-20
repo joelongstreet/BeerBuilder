@@ -24,7 +24,7 @@ class BB.RecipeGrains
 		@window.add BB.recipe.views.stats
 
 		@row_data 	= []
-		for item in BB.GRAINS
+		for item in GRAINS
 			@row_data.push item.name
 
 		@create_row()
@@ -52,7 +52,7 @@ class BB.RecipeGrains
 		@grain_text 	= Ti.UI.createLabel
 			top 		: BB.PADDING_H
 			left 		: BB.PADDING_W
-			text 		: BB.GRAINS[0].name
+			text 		: GRAINS[0].name
 
 		row.addEventListener 'click', (e) =>
 
@@ -77,7 +77,7 @@ class BB.RecipeGrains
 
 		@table.appendRow row
 
-		@grain = new Grain BB.GRAINS[0], @percent_text
+		@grain = new Grain GRAINS[0], @percent_text
 		BB.recipe.ingredients.grains.push @grain
 
 	update_grain_weight : (range_value) =>
@@ -88,8 +88,8 @@ class BB.RecipeGrains
 		BB.stats.calculate_gravity()
 
 	update_grain : (row_selected) =>
-		@grain_text.setText BB.GRAINS[row_selected].name
-		@grain.properties = BB.GRAINS[row_selected]
+		@grain_text.setText GRAINS[row_selected].name
+		@grain.properties = GRAINS[row_selected]
 		BB.stats.calculate_gravity()
 
 

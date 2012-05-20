@@ -25,7 +25,7 @@ class BB.RecipeHops
 		@create_row()
 
 		@row_data 	= []
-		for item in BB.HOPS
+		for item in HOPS
 			@row_data.push item.name
 
 		return @window
@@ -59,7 +59,7 @@ class BB.RecipeHops
 			top 		: BB.PADDING_H
 			left 		: BB.PADDING_W
 			width 		: BB.PADDED_W
-			text 		: BB.HOPS[0].name
+			text 		: HOPS[0].name
 
 		row.addEventListener 'click', (e) =>
 
@@ -93,7 +93,7 @@ class BB.RecipeHops
 
 		@table.appendRow row
 
-		@hop = new Hop BB.HOPS[0], @percent_text
+		@hop = new Hop HOPS[0], @percent_text
 		BB.recipe.ingredients.hops.push @hop
 
 	update_hop_time : (range_value) =>
@@ -111,8 +111,8 @@ class BB.RecipeHops
 		BB.stats.calculate_bitterness()
 
 	update_hop : (row_selected) =>
-		@hop_text.setText BB.HOPS[row_selected].name
-		@hop.properties = BB.HOPS[row_selected]
+		@hop_text.setText HOPS[row_selected].name
+		@hop.properties = HOPS[row_selected]
 
 		BB.stats.calculate_bitterness()
 

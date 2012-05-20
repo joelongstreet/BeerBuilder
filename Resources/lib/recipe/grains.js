@@ -8,7 +8,7 @@
       this.update_grain = __bind(this.update_grain, this);
       this.update_grain_weight = __bind(this.update_grain_weight, this);
       this.create_row = __bind(this.create_row, this);
-      var button, item, _i, _len, _ref,
+      var button, item, _i, _len,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Grains'
@@ -31,9 +31,8 @@
       this.window.add(button);
       this.window.add(BB.recipe.views.stats);
       this.row_data = [];
-      _ref = BB.GRAINS;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        item = _ref[_i];
+      for (_i = 0, _len = GRAINS.length; _i < _len; _i++) {
+        item = GRAINS[_i];
         this.row_data.push(item.name);
       }
       this.create_row();
@@ -61,7 +60,7 @@
       this.grain_text = Ti.UI.createLabel({
         top: BB.PADDING_H,
         left: BB.PADDING_W,
-        text: BB.GRAINS[0].name
+        text: GRAINS[0].name
       });
       row.addEventListener('click', function(e) {
         var modal;
@@ -87,7 +86,7 @@
       row.add(this.percent_text);
       row.add(this.weight_text);
       this.table.appendRow(row);
-      this.grain = new Grain(BB.GRAINS[0], this.percent_text);
+      this.grain = new Grain(GRAINS[0], this.percent_text);
       return BB.recipe.ingredients.grains.push(this.grain);
     };
 
@@ -101,8 +100,8 @@
     };
 
     RecipeGrains.prototype.update_grain = function(row_selected) {
-      this.grain_text.setText(BB.GRAINS[row_selected].name);
-      this.grain.properties = BB.GRAINS[row_selected];
+      this.grain_text.setText(GRAINS[row_selected].name);
+      this.grain.properties = GRAINS[row_selected];
       return BB.stats.calculate_gravity();
     };
 
