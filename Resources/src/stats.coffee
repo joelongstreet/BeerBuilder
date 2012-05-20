@@ -21,7 +21,7 @@ class BB.Stats
 		wrapper 			= Ti.UI.createView
 			backgroundColor	: '#000'
 			opacity			: 0.7
-			height 			: BB.HEIGHT*.1
+			height 			: BB.HEIGHT*.2
 			width 			: BB.WIDTH
 			top 			: 0
 
@@ -176,7 +176,7 @@ class BB.Stats
 		if @ibu == 0 then @ibu = 1
 		#else @fgu = 1000 * @fgu - 1
 		@gubu = Math.round(@fgu/@ibu*1000)/1000
-		@gubu_text.setText @gubu.format({decimals:1000, prefix : 'GUBU: '})
+		@gubu_text.setText @gubu.format({decimals:100, prefix : 'GUBU: '})
 
 		if @is_prototype then @compare_to_bjcp()
 
