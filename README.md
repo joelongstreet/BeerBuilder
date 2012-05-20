@@ -12,7 +12,9 @@ Features and project status are tracked on a [public Trello board](https://trell
 ## Code
 
 ### Modal Picker
-Use the modal picker to generate a screen for editing ingredients. The modal consumes the lower 85% of the screen and accepts two data types - picker and range.
+Use the modal picker to generate a screen for editing ingredients. The modal consumes the lower 80% of the screen and accepts two data types - picker and range.
+
+	```coffeescript
 	[
 		{
 			type 		: picker, date-picker, range
@@ -26,3 +28,4 @@ Use the modal picker to generate a screen for editing ingredients. The modal con
 		},
 		...
 	]
+	```
