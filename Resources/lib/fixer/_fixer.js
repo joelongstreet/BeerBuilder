@@ -27,8 +27,8 @@
         text: 'Temperature: 100° Fahrenheit'
       });
       temp_s.addEventListener('change', function(e) {
-        _this.calculate();
         _this.temperature = e.value;
+        _this.calculate();
         return temp_l.setText(e.value.format({
           prefix: 'Temperature: ',
           suffix: '° Fahrenheit',
@@ -36,12 +36,12 @@
         }));
       });
       gravity_s = Ti.UI.createSlider({
-        min: 1,
-        max: 1.2,
+        min: 0,
+        max: 200,
         width: BB.WIDTH - BB.PADDING_W * 2,
         left: BB.PADDING_W,
         top: BB.HEIGHT * .275,
-        value: 1.075
+        value: 75
       });
       gravity_l = Ti.UI.createLabel({
         top: BB.HEIGHT * .225,
@@ -49,20 +49,20 @@
         text: 'Current Gravity: 1.075'
       });
       gravity_s.addEventListener('change', function(e) {
+        _this.current = parseFloat('1.' + Math.round(e.value * 100) / 100);
         _this.calculate();
-        _this.current = e.value;
-        return gravity_l.setText(e.value.format({
+        return gravity_l.setText(_this.current.format({
           prefix: 'Current Gravity: ',
-          decimals: 1
+          decimals: 1000
         }));
       });
       target_s = Ti.UI.createSlider({
-        min: 1,
-        max: 1.2,
+        min: 0,
+        max: 200,
         width: BB.WIDTH - BB.PADDING_W * 2,
         left: BB.PADDING_W,
         top: BB.HEIGHT * .425,
-        value: 1.050
+        value: 50
       });
       target_l = Ti.UI.createLabel({
         top: BB.HEIGHT * .375,
@@ -70,11 +70,11 @@
         text: 'Target Gravity: 1.050'
       });
       target_s.addEventListener('change', function(e) {
+        _this.target = parseFloat('1.' + Math.round(e.value * 100) / 100);
         _this.calculate();
-        _this.target = e.value;
-        return target_l.setText(e.value.format({
+        return target_l.setText(_this.target.format({
           prefix: 'Target Gravity: ',
-          decimals: 1
+          decimals: 1000
         }));
       });
       volume_s = Ti.UI.createSlider({
@@ -91,8 +91,8 @@
         text: 'Volume: 5 Gallons'
       });
       volume_s.addEventListener('change', function(e) {
-        _this.calculate();
         _this.volume = e.value;
+        _this.calculate();
         return volume_l.setText(e.value.format({
           prefix: 'Volume: ',
           suffix: ' Gallons',
@@ -121,7 +121,6 @@
     }
 
     FixerWindow.prototype.calculate = function() {
-      Ti.API.info(this.temperature);
       return this.result.setText('poo');
     };
 

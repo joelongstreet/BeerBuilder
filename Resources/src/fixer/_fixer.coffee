@@ -22,48 +22,48 @@ class BB.FixerWindow
 			right 		: BB.PADDING_W
 			text 		: 'Temperature: 100° Fahrenheit'
 		temp_s.addEventListener 'change', (e) =>
-			@calculate()
 			@temperature = e.value
+			@calculate()
 			temp_l.setText e.value.format
 				prefix 		: 'Temperature: '
 				suffix 		: '° Fahrenheit'
 				decimals 	: 1
 
 		gravity_s		= Ti.UI.createSlider
-			min 		: 1
-			max 		: 1.2
+			min 		: 0
+			max 		: 200
 			width 		: BB.WIDTH - BB.PADDING_W*2
 			left 		: BB.PADDING_W
 			top 		: BB.HEIGHT*.275
-			value 		: 1.075
+			value 		: 75
 		gravity_l		= Ti.UI.createLabel
 			top 		: BB.HEIGHT*.225
 			right 		: BB.PADDING_W
 			text 		: 'Current Gravity: 1.075'
 		gravity_s.addEventListener 'change', (e) =>
+			@current = parseFloat('1.' + Math.round(e.value*100)/100)
 			@calculate()
-			@current = e.value
-			gravity_l.setText e.value.format
+			gravity_l.setText @current.format
 				prefix 		: 'Current Gravity: '
-				decimals 	: 1
+				decimals 	: 1000
 
 		target_s		= Ti.UI.createSlider
-			min 		: 1
-			max 		: 1.2
+			min 		: 0
+			max 		: 200
 			width 		: BB.WIDTH - BB.PADDING_W*2
 			left 		: BB.PADDING_W
 			top 		: BB.HEIGHT*.425
-			value 		: 1.050
+			value 		: 50
 		target_l		= Ti.UI.createLabel
 			top 		: BB.HEIGHT*.375
 			right 		: BB.PADDING_W
 			text 		: 'Target Gravity: 1.050'
 		target_s.addEventListener 'change', (e) =>
+			@target = parseFloat('1.' + Math.round(e.value*100)/100)
 			@calculate()
-			@target = e.value
-			target_l.setText e.value.format
+			target_l.setText @target.format
 				prefix 		: 'Target Gravity: '
-				decimals 	: 1
+				decimals 	: 1000
 
 		volume_s		= Ti.UI.createSlider
 			min 		: 0
@@ -77,8 +77,8 @@ class BB.FixerWindow
 			right 		: BB.PADDING_W
 			text 		: 'Volume: 5 Gallons'
 		volume_s.addEventListener 'change', (e) =>
-			@calculate()
 			@volume = e.value
+			@calculate()
 			volume_l.setText e.value.format
 				prefix 		: 'Volume: '
 				suffix 		: ' Gallons'
@@ -104,8 +104,6 @@ class BB.FixerWindow
 		return window
 
 	calculate : ->
-		Ti.API.info @temperature
-
 		@result.setText('poo')
 
 BB.fixer  				=
