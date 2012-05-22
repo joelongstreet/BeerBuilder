@@ -20,30 +20,43 @@ BB.recipe.views 		=
 
 
 ## Build Recipe Tabs ##
-BB.recipe.tabs 	=
-	setup				: Ti.UI.createTab
+BB.recipe.tabs 	= [
+	Ti.UI.createTab(
 		window 			: new BB.RecipeSetup()
 		title 			: 'Setup'
-	grains				: Ti.UI.createTab
+	),
+	Ti.UI.createTab(
 		window 			: new BB.RecipeGrains()
 		title 			: 'Grains'
-	hops				: Ti.UI.createTab
+	),
+	Ti.UI.createTab(
 		window 			: new BB.RecipeHops()
 		title 			: 'Hops'
-	fermentations		: Ti.UI.createTab
+	),
+	Ti.UI.createTab(
 		window 			: new BB.RecipeFermentation()
 		title 			: 'Fermentation'
-	delivery			: Ti.UI.createTab
+	),
+	Ti.UI.createTab(
 		window 			: new BB.RecipeDelivery()
 		title 			: 'Delivery'
+	)
+]
 ## -------------------- ##
 
 
 ## Build Recipe Tab Group ##
 BB.recipe.tab_group		= Ti.UI.createTabGroup()
-BB.recipe.tab_group.addTab 	BB.recipe.tabs.setup
-BB.recipe.tab_group.addTab 	BB.recipe.tabs.grains
-BB.recipe.tab_group.addTab 	BB.recipe.tabs.hops
-BB.recipe.tab_group.addTab 	BB.recipe.tabs.fermentations
-BB.recipe.tab_group.addTab 	BB.recipe.tabs.delivery
+BB.recipe.tab_group.addTab 	BB.recipe.tabs[0]
+BB.recipe.tab_group.addTab 	BB.recipe.tabs[1]
+BB.recipe.tab_group.addTab 	BB.recipe.tabs[2]
+BB.recipe.tab_group.addTab 	BB.recipe.tabs[3]
+BB.recipe.tab_group.addTab 	BB.recipe.tabs[4]
+## -------------------- ##
+
+
+## Add in Shared View ##
+for tab in BB.recipe.tabs
+	tab.addEventListener 'focus', ->
+		@window.add BB.recipe.views.stats
 ## -------------------- ##

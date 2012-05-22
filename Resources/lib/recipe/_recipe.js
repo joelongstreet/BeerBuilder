@@ -1,4 +1,5 @@
 (function() {
+  var tab, _i, _len, _ref;
 
   BB.recipe = {
     icon: '/img/builder.png',
@@ -19,39 +20,43 @@
     stats: BB.recipe.stats.build_screen()
   };
 
-  BB.recipe.tabs = {
-    setup: Ti.UI.createTab({
+  BB.recipe.tabs = [
+    Ti.UI.createTab({
       window: new BB.RecipeSetup(),
       title: 'Setup'
-    }),
-    grains: Ti.UI.createTab({
+    }), Ti.UI.createTab({
       window: new BB.RecipeGrains(),
       title: 'Grains'
-    }),
-    hops: Ti.UI.createTab({
+    }), Ti.UI.createTab({
       window: new BB.RecipeHops(),
       title: 'Hops'
-    }),
-    fermentations: Ti.UI.createTab({
+    }), Ti.UI.createTab({
       window: new BB.RecipeFermentation(),
       title: 'Fermentation'
-    }),
-    delivery: Ti.UI.createTab({
+    }), Ti.UI.createTab({
       window: new BB.RecipeDelivery(),
       title: 'Delivery'
     })
-  };
+  ];
 
   BB.recipe.tab_group = Ti.UI.createTabGroup();
 
-  BB.recipe.tab_group.addTab(BB.recipe.tabs.setup);
+  BB.recipe.tab_group.addTab(BB.recipe.tabs[0]);
 
-  BB.recipe.tab_group.addTab(BB.recipe.tabs.grains);
+  BB.recipe.tab_group.addTab(BB.recipe.tabs[1]);
 
-  BB.recipe.tab_group.addTab(BB.recipe.tabs.hops);
+  BB.recipe.tab_group.addTab(BB.recipe.tabs[2]);
 
-  BB.recipe.tab_group.addTab(BB.recipe.tabs.fermentations);
+  BB.recipe.tab_group.addTab(BB.recipe.tabs[3]);
 
-  BB.recipe.tab_group.addTab(BB.recipe.tabs.delivery);
+  BB.recipe.tab_group.addTab(BB.recipe.tabs[4]);
+
+  _ref = BB.recipe.tabs;
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    tab = _ref[_i];
+    tab.addEventListener('focus', function() {
+      return this.window.add(BB.recipe.views.stats);
+    });
+  }
 
 }).call(this);

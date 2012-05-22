@@ -38,7 +38,6 @@
       });
       this.window.add(this.table);
       this.window.add(button);
-      this.window.add(BB.recipe.views.stats);
       this.create_row();
       this.row_data = [];
       for (_i = 0, _len = HOPS.length; _i < _len; _i++) {

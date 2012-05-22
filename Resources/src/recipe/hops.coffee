@@ -27,7 +27,6 @@ class BB.RecipeHops
 
 		@window.add @table
 		@window.add button
-		@window.add BB.recipe.views.stats
 
 		@create_row()
 

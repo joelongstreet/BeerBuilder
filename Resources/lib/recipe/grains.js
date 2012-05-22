@@ -37,7 +37,6 @@
       });
       this.window.add(this.table);
       this.window.add(button);
-      this.window.add(BB.recipe.views.stats);
       this.row_data = [];
       for (_i = 0, _len = GRAINS.length; _i < _len; _i++) {
         item = GRAINS[_i];

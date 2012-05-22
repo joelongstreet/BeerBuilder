@@ -15,7 +15,6 @@
         BB.recipe.tab_group.close();
         return BB.menu.open();
       });
-      this.window.add(BB.recipe.views.stats);
       return this.window;
     }
 

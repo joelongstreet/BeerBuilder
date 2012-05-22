@@ -5,8 +5,7 @@
     function RecipeFermentation() {
       var close;
       this.window = Ti.UI.createWindow({
-        title: 'Fermentation',
-        navBarHidden: true
+        title: 'Fermentation'
       });
       close = Ti.UI.createButton({
         title: 'close'
@@ -16,7 +15,6 @@
         BB.recipe.tab_group.close();
         return BB.menu.open();
       });
-      this.window.add(BB.recipe.views.stats);
       return this.window;
     }
 

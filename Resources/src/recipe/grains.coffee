@@ -28,7 +28,6 @@ class BB.RecipeGrains
 
 		@window.add @table
 		@window.add button
-		@window.add BB.recipe.views.stats
 
 		@row_data 	= []
 		for item in GRAINS

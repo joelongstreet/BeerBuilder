@@ -11,6 +11,4 @@ class BB.RecipeDelivery
 			BB.recipe.tab_group.close()
 			BB.menu.open()
 
-		@window.add BB.recipe.views.stats
-
 		return @window
