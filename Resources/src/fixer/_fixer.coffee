@@ -11,6 +11,13 @@ class BB.FixerWindow
 			backgroundColor : 'white'
 			tabBarHidden : true
 
+		close = Ti.UI.createButton
+			title : 'close'
+		window.rightNavButton = close
+		close.addEventListener 'click', ->
+			BB.fixer.tab_group.close()
+			BB.menu.open()
+
 		temp_s			= Ti.UI.createSlider
 			min 		: 32
 			max 		: 212
@@ -85,7 +92,7 @@ class BB.FixerWindow
 			volume_l.setText e.value.format
 				prefix 		: 'Final Volume: '
 				suffix 		: ' Gallons'
-				decimals 	: 1
+				decimals 	: 10
 
 		@result 		= Ti.UI.createLabel
 			width 		: BB.WIDTH - BB.PADDING_W/2

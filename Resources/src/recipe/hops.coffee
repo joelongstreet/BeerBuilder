@@ -5,6 +5,13 @@ class BB.RecipeHops
 		@window			= Ti.UI.createWindow
 			title 		: 'Hops'
 
+		close = Ti.UI.createButton
+			title : 'close'
+		@window.rightNavButton = close
+		close.addEventListener 'click', ->
+			BB.recipe.tab_group.close()
+			BB.menu.open()
+
 		@table 			= Ti.UI.createTableView
 			height 		: BB.HEIGHT*.65
 			width 		: BB.WIDTH
@@ -101,20 +108,20 @@ class BB.RecipeHops
 		@time_text.setText @hop.time.format
 			suffix 		: 'min'
 			decimals 	: 1
-		BB.stats.calculate_bitterness()
+		BB.recipe.stats.calculate_bitterness()
 
 	update_hop_weight : (range_value) =>
 		@hop.weight = range_value
 		@weight_text.setText @hop.weight.format
 			suffix 		: 'oz'
 			decimals 	: 100
-		BB.stats.calculate_bitterness()
+		BB.recipe.stats.calculate_bitterness()
 
 	update_hop : (row_selected) =>
 		@hop_text.setText HOPS[row_selected].name
 		@hop.properties = HOPS[row_selected]
 
-		BB.stats.calculate_bitterness()
+		BB.recipe.stats.calculate_bitterness()
 
 
 class Hop

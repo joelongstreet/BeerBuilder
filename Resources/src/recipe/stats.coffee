@@ -92,7 +92,7 @@ class BB.RecipeStats
 		@srm 			= 0
 		@weight 		= 0
 
-		for grain in BB.ingredients.grains
+		for grain in BB.recipe.ingredients.grains
 
 			#Build Gravity Units
 			gu_average = (grain.properties.gu_lo + grain.properties.gu_hi)/2
@@ -110,7 +110,7 @@ class BB.RecipeStats
 			@weight += grain.weight
 
 		#Update the Proportion of the Ingredient Please
-		for grain in BB.ingredients.grains
+		for grain in BB.recipe.ingredients.grains
 			proportion = grain.weight/@weight
 			grain.update_proportion(proportion)
 
@@ -147,7 +147,7 @@ class BB.RecipeStats
 
 		@hop_weight = 0
 
-		for hop in BB.ingredients.hops
+		for hop in BB.recipe.ingredients.hops
 			#This is almost certainly wrong, at least not that accurate i think i need to compare to a table, not a formula .... maybe? uh, what. who farted? 
 			aa = (hop.properties.aa_lo + hop.properties.aa_hi)/2
 			utilization = -1*(.0041 * Math.pow(hop.time, 2)) + (.6261 * hop.time) + 1.5779
@@ -158,7 +158,7 @@ class BB.RecipeStats
 			@hop_weight += hop.weight
 
 		#Update the Proportion of the Ingredient Please
-		for hop in BB.ingredients.hops
+		for hop in BB.recipe.ingredients.hops
 			proportion = hop.weight/@hop_weight
 			hop.update_proportion(proportion)
 

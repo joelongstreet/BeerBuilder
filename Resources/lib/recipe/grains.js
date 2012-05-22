@@ -8,10 +8,18 @@
       this.update_grain = __bind(this.update_grain, this);
       this.update_grain_weight = __bind(this.update_grain_weight, this);
       this.create_row = __bind(this.create_row, this);
-      var button, item, _i, _len,
+      var button, close, item, _i, _len,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Grains'
+      });
+      close = Ti.UI.createButton({
+        title: 'close'
+      });
+      this.window.rightNavButton = close;
+      close.addEventListener('click', function() {
+        BB.recipe.tab_group.close();
+        return BB.menu.open();
       });
       this.table = Ti.UI.createTableView({
         height: BB.HEIGHT * .65,
@@ -96,13 +104,13 @@
         suffix: 'lbs',
         decimals: 10
       }));
-      return BB.stats.calculate_gravity();
+      return BB.recipe.stats.calculate_gravity();
     };
 
     RecipeGrains.prototype.update_grain = function(row_selected) {
       this.grain_text.setText(GRAINS[row_selected].name);
       this.grain.properties = GRAINS[row_selected];
-      return BB.stats.calculate_gravity();
+      return BB.recipe.stats.calculate_gravity();
     };
 
     return RecipeGrains;

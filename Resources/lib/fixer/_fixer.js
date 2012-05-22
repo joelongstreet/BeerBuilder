@@ -3,7 +3,7 @@
   BB.FixerWindow = (function() {
 
     function FixerWindow() {
-      var gravity_l, gravity_s, target_l, target_s, temp_l, temp_s, volume_l, volume_s, window,
+      var close, gravity_l, gravity_s, target_l, target_s, temp_l, temp_s, volume_l, volume_s, window,
         _this = this;
       this.temperature = 100;
       this.volume = 5;
@@ -13,6 +13,14 @@
         title: 'Gravity Fixer',
         backgroundColor: 'white',
         tabBarHidden: true
+      });
+      close = Ti.UI.createButton({
+        title: 'close'
+      });
+      window.rightNavButton = close;
+      close.addEventListener('click', function() {
+        BB.fixer.tab_group.close();
+        return BB.menu.open();
       });
       temp_s = Ti.UI.createSlider({
         min: 32,
@@ -105,7 +113,7 @@
         return volume_l.setText(e.value.format({
           prefix: 'Final Volume: ',
           suffix: ' Gallons',
-          decimals: 1
+          decimals: 10
         }));
       });
       this.result = Ti.UI.createLabel({

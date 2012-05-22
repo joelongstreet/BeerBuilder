@@ -5,6 +5,13 @@ class BB.RecipeGrains
 		@window			= Ti.UI.createWindow
 			title 		: 'Grains'
 
+		close = Ti.UI.createButton
+			title : 'close'
+		@window.rightNavButton = close
+		close.addEventListener 'click', ->
+			BB.recipe.tab_group.close()
+			BB.menu.open()
+
 		@table 			= Ti.UI.createTableView
 			height 		: BB.HEIGHT*.65
 			width 		: BB.WIDTH
@@ -85,12 +92,12 @@ class BB.RecipeGrains
 		@weight_text.setText @grain.weight.format
 			suffix 		: 'lbs'
 			decimals 	: 10
-		BB.stats.calculate_gravity()
+		BB.recipe.stats.calculate_gravity()
 
 	update_grain : (row_selected) =>
 		@grain_text.setText GRAINS[row_selected].name
 		@grain.properties = GRAINS[row_selected]
-		BB.stats.calculate_gravity()
+		BB.recipe.stats.calculate_gravity()
 
 
 class Grain

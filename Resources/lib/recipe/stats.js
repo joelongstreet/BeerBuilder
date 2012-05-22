@@ -96,7 +96,7 @@
       this.gravity_units = 0;
       this.srm = 0;
       this.weight = 0;
-      _ref = BB.ingredients.grains;
+      _ref = BB.recipe.ingredients.grains;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         grain = _ref[_i];
         gu_average = (grain.properties.gu_lo + grain.properties.gu_hi) / 2;
@@ -108,7 +108,7 @@
         this.srm += grain_mcu;
         this.weight += grain.weight;
       }
-      _ref2 = BB.ingredients.grains;
+      _ref2 = BB.recipe.ingredients.grains;
       for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
         grain = _ref2[_j];
         proportion = grain.weight / this.weight;
@@ -156,7 +156,7 @@
     RecipeStats.prototype.calculate_bitterness = function() {
       var aa, aau, hop, ibu_text, proportion, utilization, _i, _j, _len, _len2, _ref, _ref2;
       this.hop_weight = 0;
-      _ref = BB.ingredients.hops;
+      _ref = BB.recipe.ingredients.hops;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         hop = _ref[_i];
         aa = (hop.properties.aa_lo + hop.properties.aa_hi) / 2;
@@ -165,7 +165,7 @@
         this.ibu += aau;
         this.hop_weight += hop.weight;
       }
-      _ref2 = BB.ingredients.hops;
+      _ref2 = BB.recipe.ingredients.hops;
       for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
         hop = _ref2[_j];
         proportion = hop.weight / this.hop_weight;

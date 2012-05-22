@@ -5,6 +5,13 @@ class BB.RecipeSetup
 			title 		: 'Setup'
 			backgroundColor : '#fff'
 
+		close = Ti.UI.createButton
+			title : 'close'
+		@window.rightNavButton = close
+		close.addEventListener 'click', ->
+			BB.recipe.tab_group.close()
+			BB.menu.open()
+
 		title 			= Ti.UI.createTextField
 			hintText 	: 'Your Next Great Beer'
 			top 		: BB.PADDING_H

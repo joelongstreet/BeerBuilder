@@ -9,10 +9,18 @@
       this.update_hop_weight = __bind(this.update_hop_weight, this);
       this.update_hop_time = __bind(this.update_hop_time, this);
       this.create_row = __bind(this.create_row, this);
-      var button, item, _i, _len,
+      var button, close, item, _i, _len,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Hops'
+      });
+      close = Ti.UI.createButton({
+        title: 'close'
+      });
+      this.window.rightNavButton = close;
+      close.addEventListener('click', function() {
+        BB.recipe.tab_group.close();
+        return BB.menu.open();
       });
       this.table = Ti.UI.createTableView({
         height: BB.HEIGHT * .65,
@@ -114,7 +122,7 @@
         suffix: 'min',
         decimals: 1
       }));
-      return BB.stats.calculate_bitterness();
+      return BB.recipe.stats.calculate_bitterness();
     };
 
     RecipeHops.prototype.update_hop_weight = function(range_value) {
@@ -123,13 +131,13 @@
         suffix: 'oz',
         decimals: 100
       }));
-      return BB.stats.calculate_bitterness();
+      return BB.recipe.stats.calculate_bitterness();
     };
 
     RecipeHops.prototype.update_hop = function(row_selected) {
       this.hop_text.setText(HOPS[row_selected].name);
       this.hop.properties = HOPS[row_selected];
-      return BB.stats.calculate_bitterness();
+      return BB.recipe.stats.calculate_bitterness();
     };
 
     return RecipeHops;
