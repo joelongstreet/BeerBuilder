@@ -11,10 +11,11 @@
       this.current = 1.075;
       window = Ti.UI.createWindow({
         title: 'Gravity Fixer',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        tabBarHidden: true
       });
       temp_s = Ti.UI.createSlider({
-        min: 0,
+        min: 32,
         max: 212,
         width: BB.WIDTH - BB.PADDING_W * 2,
         left: BB.PADDING_W,
@@ -27,7 +28,7 @@
         text: 'Temperature: 100° Fahrenheit'
       });
       temp_s.addEventListener('change', function(e) {
-        _this.temperature = e.value;
+        _this.temperature = Math.round(e.value);
         _this.calculate();
         return temp_l.setText(e.value.format({
           prefix: 'Temperature: ',
@@ -41,15 +42,19 @@
         width: BB.WIDTH - BB.PADDING_W * 2,
         left: BB.PADDING_W,
         top: BB.HEIGHT * .275,
-        value: 75
+        value: 50
       });
       gravity_l = Ti.UI.createLabel({
         top: BB.HEIGHT * .225,
         right: BB.PADDING_W,
-        text: 'Current Gravity: 1.075'
+        text: 'Current Gravity: 1.050'
       });
       gravity_s.addEventListener('change', function(e) {
-        _this.current = parseFloat('1.' + Math.round(e.value * 100) / 100);
+        if (e.value < 100) {
+          _this.current = parseFloat('1.0' + Math.round(e.value * 100) / 100);
+        } else {
+          _this.current = parseFloat('1.' + Math.round(e.value * 100) / 100);
+        }
         _this.calculate();
         return gravity_l.setText(_this.current.format({
           prefix: 'Current Gravity: ',
@@ -62,15 +67,19 @@
         width: BB.WIDTH - BB.PADDING_W * 2,
         left: BB.PADDING_W,
         top: BB.HEIGHT * .425,
-        value: 50
+        value: 75
       });
       target_l = Ti.UI.createLabel({
         top: BB.HEIGHT * .375,
         right: BB.PADDING_W,
-        text: 'Target Gravity: 1.050'
+        text: 'Target Gravity: 1.075'
       });
       target_s.addEventListener('change', function(e) {
-        _this.target = parseFloat('1.' + Math.round(e.value * 100) / 100);
+        if (e.value < 100) {
+          _this.target = parseFloat('1.0' + Math.round(e.value * 100) / 100);
+        } else {
+          _this.target = parseFloat('1.' + Math.round(e.value * 100) / 100);
+        }
         _this.calculate();
         return target_l.setText(_this.target.format({
           prefix: 'Target Gravity: ',
@@ -88,13 +97,13 @@
       volume_l = Ti.UI.createLabel({
         top: BB.HEIGHT * .525,
         right: BB.PADDING_W,
-        text: 'Volume: 5 Gallons'
+        text: 'Final Volume: 5 Gallons'
       });
       volume_s.addEventListener('change', function(e) {
         _this.volume = e.value;
         _this.calculate();
         return volume_l.setText(e.value.format({
-          prefix: 'Volume: ',
+          prefix: 'Final Volume: ',
           suffix: ' Gallons',
           decimals: 1
         }));
@@ -121,7 +130,27 @@
     }
 
     FixerWindow.prototype.calculate = function() {
-      return this.result.setText('poo');
+      var corrected_gravity, diff, dme_to_add, gravity_points, hydro_calibration, target_points, water_to_add;
+      hydro_calibration = 60;
+      corrected_gravity = this.current * ((1.00130346 - 0.000134722124 * this.temperature + 0.00000204052596 * Math.pow(this.temperature, 2) - 0.00000000232820948 * Math.pow(this.temperature, 3)) / (1.00130346 - 0.000134722124 * hydro_calibration + 0.00000204052596 * Math.pow(hydro_calibration, 2) - 0.00000000232820948 * Math.pow(hydro_calibration, 3)));
+      gravity_points = 1000 * (corrected_gravity - 1) * this.volume;
+      target_points = 1000 * (this.target - 1) * this.volume;
+      if (corrected_gravity > this.target) {
+        water_to_add = gravity_points / target_points;
+        return this.result.setText(water_to_add.format({
+          prefix: 'Add ',
+          suffix: 'gallons Water',
+          decimals: 100
+        }));
+      } else {
+        diff = target_points - gravity_points;
+        dme_to_add = diff / 45;
+        return this.result.setText(dme_to_add.format({
+          prefix: 'Add ',
+          suffix: 'lbs DME',
+          decimals: 10
+        }));
+      }
     };
 
     return FixerWindow;
