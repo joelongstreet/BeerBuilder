@@ -9,12 +9,6 @@
 
   BB.temp_tabs.addTab(BB.temp_tab);
 
-  BB.temp = {
-    icon: '/img/fixer.png',
-    title: 'Fixer',
-    tab_group: BB.temp_tabs
-  };
-
   BB.temp2 = {
     icon: '/img/efficiency.png',
     title: 'Efficiency',
@@ -39,7 +33,7 @@
     tab_group: BB.temp_tabs
   };
 
-  BB.menu = new BB.Menu([BB.recipe, BB.temp, BB.temp2, BB.temp3, BB.temp4, BB.temp5]);
+  BB.menu = new BB.Menu([BB.recipe, BB.fixer, BB.temp2, BB.temp3, BB.temp4, BB.temp5]);
 
   BB.menu.open();
 
