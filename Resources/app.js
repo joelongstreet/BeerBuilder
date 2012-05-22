@@ -30,6 +30,9 @@ Ti.include('lib/modal_picker.js');
 	Ti.include('lib/recipe/delivery.js');
 	Ti.include('lib/recipe/_recipe.js');
 
+	//Fixer
+	Ti.include('lib/fixer/_fixer.js');
+
 Ti.include('lib/menu.js');
 /*** ---------- ***/
 
