@@ -8,16 +8,16 @@
       width: BB.WIDTH
     });
     overlay = Ti.UI.createView({
-      backgroundColor: 'green',
+      backgroundColor: 'black',
       opacity: 0.7,
-      height: BB.HEIGHT * .8,
-      top: BB.HEIGHT * .2,
+      height: BB.HEIGHT * .6,
+      top: BB.HEIGHT * .3,
       width: BB.WIDTH
     });
     done = Ti.UI.createButton({
       title: 'X',
       height: BB.HEIGHT * .07,
-      bottom: BB.HEIGHT * .7,
+      bottom: BB.HEIGHT * .6,
       width: 50,
       right: 10,
       style: 1
@@ -50,13 +50,19 @@
             }));
           }
           picker.add(rows);
-          if (item.value) picker.value = item.picker_value;
         }
         picker.callback = item.callback;
         picker.addEventListener('change', function(e) {
           return this.callback(e.rowIndex);
         });
         win.add(picker);
+        /*
+        			setTimeout (->
+        				if item.value
+        					Ti.API.info 'should select'
+        					picker.setSelectedRow(0, 5, true)
+        			), 500
+        */
       } else if (item.type === 'range') {
         slider = Ti.UI.createSlider({
           bottom: BB.HEIGHT * .5 + BB.HEIGHT * .1 * _i,

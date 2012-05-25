@@ -38,11 +38,7 @@
       temp_s.addEventListener('change', function(e) {
         _this.temperature = Math.round(e.value);
         _this.calculate();
-        return temp_l.setText(e.value.format({
-          prefix: 'Temperature: ',
-          suffix: '° Fahrenheit',
-          decimals: 1
-        }));
+        return temp_l.setText("Temperature: " + (e.value.toFixed(0)) + " ° Fahrenheit");
       });
       gravity_s = Ti.UI.createSlider({
         min: 0,
@@ -64,10 +60,7 @@
           _this.current = parseFloat('1.' + Math.round(e.value * 100) / 100);
         }
         _this.calculate();
-        return gravity_l.setText(_this.current.format({
-          prefix: 'Current Gravity: ',
-          decimals: 1000
-        }));
+        return gravity_l.setText("Current Gravity: " + (_this.current.toFixed(3)));
       });
       target_s = Ti.UI.createSlider({
         min: 0,
@@ -89,10 +82,7 @@
           _this.target = parseFloat('1.' + Math.round(e.value * 100) / 100);
         }
         _this.calculate();
-        return target_l.setText(_this.target.format({
-          prefix: 'Target Gravity: ',
-          decimals: 1000
-        }));
+        return target_l.setText("Target Gravity: " + (_this.target.toFixed(3)));
       });
       volume_s = Ti.UI.createSlider({
         min: 0,
@@ -110,11 +100,7 @@
       volume_s.addEventListener('change', function(e) {
         _this.volume = e.value;
         _this.calculate();
-        return volume_l.setText(e.value.format({
-          prefix: 'Final Volume: ',
-          suffix: ' Gallons',
-          decimals: 10
-        }));
+        return volume_l.setText("Final Volume: " + (e.value.toFixed(1)) + " Gallons");
       });
       this.result = Ti.UI.createLabel({
         width: BB.WIDTH - BB.PADDING_W / 2,
@@ -145,19 +131,11 @@
       target_points = 1000 * (this.target - 1) * this.volume;
       if (corrected_gravity > this.target) {
         water_to_add = gravity_points / target_points;
-        return this.result.setText(water_to_add.format({
-          prefix: 'Add ',
-          suffix: 'gallons Water',
-          decimals: 100
-        }));
+        return this.result.setText("Add " + (water_to_add.toFixed(2)) + " gallons of water");
       } else {
         diff = target_points - gravity_points;
         dme_to_add = diff / 45;
-        return this.result.setText(dme_to_add.format({
-          prefix: 'Add ',
-          suffix: 'lbs DME',
-          decimals: 10
-        }));
+        return this.result.setText("Add " + (dme_to_add.toFixed(2)) + " lbs DME");
       }
     };
 

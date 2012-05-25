@@ -27,60 +27,65 @@
       var wrapper;
       wrapper = Ti.UI.createView({
         backgroundColor: '#000',
-        opacity: 0.7,
         height: BB.HEIGHT * .2,
         width: BB.WIDTH,
         top: 0
       });
       this.og_text = Ti.UI.createLabel({
-        width: BB.WIDTH,
+        width: BB.WIDTH * .25,
         text: 'OG : 0',
         left: BB.PADDING_W,
         top: BB.PADDING_H,
         color: '#ffffff',
-        height: BB.HEIGHT * .05
+        height: BB.HEIGHT * .05,
+        font: BB.TYPO.H6
       });
       this.fg_text = Ti.UI.createLabel({
-        width: BB.WIDTH,
+        width: BB.WIDTH * .25,
         text: 'FG : 0',
         left: BB.PADDING_W,
         bottom: BB.PADDING_H,
         color: '#ffffff',
-        height: BB.HEIGHT * .05
+        height: BB.HEIGHT * .05,
+        font: BB.TYPO.H6
       });
       this.gubu_text = Ti.UI.createLabel({
-        width: BB.WIDTH,
+        width: BB.WIDTH * .25,
         text: 'GUBU : 0',
         left: BB.PADDED_W * .425,
         top: BB.PADDING_H,
         color: '#ffffff',
-        height: BB.HEIGHT * .05
+        height: BB.HEIGHT * .05,
+        font: BB.TYPO.H6
       });
       this.ibu_text = Ti.UI.createLabel({
-        width: BB.WIDTH,
+        width: BB.WIDTH * .25,
         text: 'IBU\'S : 0',
         left: BB.PADDED_W * .425,
         bottom: BB.PADDING_H,
         color: '#ffffff',
-        height: BB.HEIGHT * .05
+        height: BB.HEIGHT * .05,
+        font: BB.TYPO.H6
       });
       this.abv_text = Ti.UI.createLabel({
-        width: BB.WIDTH,
+        width: BB.WIDTH * .25,
         text: 'ABV : 0',
-        right: BB.PADDING_W,
-        top: 0,
-        color: '#ffffff',
-        textAlign: 'right',
-        height: BB.HEIGHT * .05
-      });
-      this.srm_text = Ti.UI.createLabel({
-        width: BB.WIDTH,
-        text: 'SRM : 0',
         right: BB.PADDING_W,
         top: BB.PADDING_H,
         color: '#ffffff',
         textAlign: 'right',
-        height: BB.HEIGHT * .05
+        height: BB.HEIGHT * .05,
+        font: BB.TYPO.H6
+      });
+      this.srm_text = Ti.UI.createLabel({
+        width: BB.WIDTH * .25,
+        text: 'SRM : 0',
+        right: BB.PADDING_W,
+        bottom: BB.PADDING_H,
+        color: '#ffffff',
+        textAlign: 'right',
+        height: BB.HEIGHT * .05,
+        font: BB.TYPO.H6
       });
       wrapper.add(this.og_text);
       wrapper.add(this.fg_text);
@@ -120,18 +125,9 @@
       this.fg = 1 + this.fgu / 1000;
       this.fg = 1 + (this.og - this.fg);
       this.abv = 131 * (this.og - this.fg);
-      this.og_text.setText(this.og.format({
-        decimals: 10000,
-        prefix: 'OG: '
-      }));
-      this.fg_text.setText(this.fg.format({
-        decimals: 10000,
-        prefix: 'FG: '
-      }));
-      this.abv_text.setText(this.abv.format({
-        decimals: 100,
-        prefix: 'ABV: '
-      }));
+      this.og_text.setText("OG: " + (this.og.toFixed(3)));
+      this.fg_text.setText("FG: " + (this.fg.toFixed(3)));
+      this.abv_text.setText("ABV: " + (this.abv.toFixed(1)));
       this.calculate_color();
       return this.calculate_gu_bu();
     };
@@ -147,14 +143,11 @@
         this.srm_rgb = BB.utilities.srm_lookup.getItem(this.srm);
         if (this.srm_rgb === void 0) srm_rgb = '255,255,255';
       }
-      return this.srm_text.setText(this.srm.format({
-        prefix: 'SRM: ',
-        decimals: 10
-      }));
+      return this.srm_text.setText("SRM: " + (this.srm.toFixed(1)));
     };
 
     RecipeStats.prototype.calculate_bitterness = function() {
-      var aa, aau, hop, ibu_text, proportion, utilization, _i, _j, _len, _len2, _ref, _ref2;
+      var aa, aau, hop, proportion, utilization, _i, _j, _len, _len2, _ref, _ref2;
       this.hop_weight = 0;
       _ref = BB.recipe.ingredients.hops;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -172,21 +165,14 @@
         hop.update_proportion(proportion);
       }
       this.ibu = Math.round(this.ibu / this.final_volume);
-      ibu_text = this.ibu.format({
-        prefix: 'IBU\'s: ',
-        decimals: 1
-      });
-      this.ibu_text.setText(ibu_text);
+      this.ibu_text.setText("IBU\'s: " + (this.ibu.toFixed(1)));
       return this.calculate_gu_bu();
     };
 
     RecipeStats.prototype.calculate_gu_bu = function() {
       if (this.ibu === 0) this.ibu = 1;
       this.gubu = Math.round(this.fgu / this.ibu * 1000) / 1000;
-      this.gubu_text.setText(this.gubu.format({
-        decimals: 100,
-        prefix: 'GUBU: '
-      }));
+      this.gubu_text.setText("GUBU: " + (this.gubu.toFixed(2)));
       if (this.is_prototype) return this.compare_to_bjcp();
     };
 

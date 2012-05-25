@@ -32,10 +32,7 @@ class BB.FixerWindow
 		temp_s.addEventListener 'change', (e) =>
 			@temperature = Math.round(e.value)
 			@calculate()
-			temp_l.setText e.value.format
-				prefix 		: 'Temperature: '
-				suffix 		: '° Fahrenheit'
-				decimals 	: 1
+			temp_l.setText "Temperature: #{e.value.toFixed(0)} ° Fahrenheit"
 
 		gravity_s		= Ti.UI.createSlider
 			min 		: 0
@@ -52,9 +49,7 @@ class BB.FixerWindow
 			if e.value < 100 then @current = parseFloat('1.0' + Math.round(e.value*100)/100)
 			else @current = parseFloat('1.' + Math.round(e.value*100)/100)
 			@calculate()
-			gravity_l.setText @current.format
-				prefix 		: 'Current Gravity: '
-				decimals 	: 1000
+			gravity_l.setText "Current Gravity: #{@current.toFixed(3)}"
 
 		target_s		= Ti.UI.createSlider
 			min 		: 0
@@ -71,9 +66,7 @@ class BB.FixerWindow
 			if e.value < 100 then @target = parseFloat('1.0' + Math.round(e.value*100)/100)
 			else @target = parseFloat('1.' + Math.round(e.value*100)/100)
 			@calculate()
-			target_l.setText @target.format
-				prefix 		: 'Target Gravity: '
-				decimals 	: 1000
+			target_l.setText "Target Gravity: #{@target.toFixed(3)}"
 
 		volume_s		= Ti.UI.createSlider
 			min 		: 0
@@ -89,10 +82,7 @@ class BB.FixerWindow
 		volume_s.addEventListener 'change', (e) =>
 			@volume = e.value
 			@calculate()
-			volume_l.setText e.value.format
-				prefix 		: 'Final Volume: '
-				suffix 		: ' Gallons'
-				decimals 	: 10
+			volume_l.setText "Final Volume: #{e.value.toFixed(1)} Gallons"
 
 		@result 		= Ti.UI.createLabel
 			width 		: BB.WIDTH - BB.PADDING_W/2
@@ -121,17 +111,11 @@ class BB.FixerWindow
 
 		if corrected_gravity > @target
 			water_to_add = gravity_points/target_points
-			@result.setText water_to_add.format
-				prefix 		: 'Add '
-				suffix 		: 'gallons Water'
-				decimals	: 100
+			@result.setText "Add #{water_to_add.toFixed(2)} gallons of water"
 		else
 			diff = target_points - gravity_points
 			dme_to_add = diff/45
-			@result.setText dme_to_add.format
-				prefix 		: 'Add '
-				suffix 		: 'lbs DME'
-				decimals	: 10
+			@result.setText "Add #{dme_to_add.toFixed(2)} lbs DME"
 
 BB.fixer  				=
 	icon 				: '/img/fixer.png'

@@ -39,13 +39,10 @@ class BB.RecipeSetup
 			right 		: BB.PADDING_W
 			text 		: 'Efficiency: 75%'
 		efficiency_s.addEventListener 'change', (e) ->
-			#BB.recipe.stats.efficiency = e.value
-			#BB.recipe.stats.calculate_gravity()
-			#BB.recipe.stats.calculate_bitterness()
-			efficiency_l.setText e.value.format
-				prefix 		: 'Efficiency: '
-				suffix 		: '%'
-				decimals 	: 1
+			BB.recipe.stats.efficiency = e.value/100
+			BB.recipe.stats.calculate_gravity()
+			BB.recipe.stats.calculate_bitterness()
+			efficiency_l.setText "Efficiency: #{e.value.toFixed(0)}%"
 
 		volume_s		= Ti.UI.createSlider
 			min 		: 0
@@ -59,13 +56,10 @@ class BB.RecipeSetup
 			right 		: BB.PADDING_W
 			text 		: 'Volume: 5 Gallons'
 		volume_s.addEventListener 'change', (e) ->
-			#BB.recipe.stats.volume = e.value
-			#BB.recipe.stats.calculate_gravity()
-			#BB.recipe.stats.calculate_bitterness()
-			volume_l.setText e.value.format
-				prefix 		: 'Volume: '
-				suffix 		: ' Gallons'
-				decimals 	: 1
+			BB.recipe.stats.volume = e.value
+			BB.recipe.stats.calculate_gravity()
+			BB.recipe.stats.calculate_bitterness()
+			volume_l.setText "Volume: #{e.value.toFixed(1)} Gallons"
 
 		@window.add title
 		@window.add date

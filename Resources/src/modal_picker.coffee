@@ -6,16 +6,16 @@ BB.utilities.modal_picker = (items) ->
 		width 			: BB.WIDTH
 
 	overlay 			= Ti.UI.createView
-		backgroundColor	: 'green'
+		backgroundColor	: 'black'
 		opacity			: 0.7
-		height 			: BB.HEIGHT*.8
-		top 			: BB.HEIGHT*.2
+		height 			: BB.HEIGHT*.6
+		top 			: BB.HEIGHT*.3
 		width 			: BB.WIDTH
 	 
 	done 				=  Ti.UI.createButton
 		title			:'X'
 		height			: BB.HEIGHT*.07
-		bottom 			: BB.HEIGHT*.7
+		bottom 			: BB.HEIGHT*.6
 		width			: 50
 		right			: 10
 		style 			: 1
@@ -48,14 +48,20 @@ BB.utilities.modal_picker = (items) ->
 					rows.push Ti.UI.createPickerRow({ title : row })
 				picker.add rows
 
-				if item.value then picker.value = item.picker_value
-
 			#THIS IS SUPER FUCKING CONFUSING
 			picker.callback = item.callback
 			picker.addEventListener 'change', (e) ->
 				@callback(e.rowIndex)
 
 			win.add picker
+
+			###
+			setTimeout (->
+				if item.value
+					Ti.API.info 'should select'
+					picker.setSelectedRow(0, 5, true)
+			), 500
+			###
 
 		else if item.type == 'range'
 

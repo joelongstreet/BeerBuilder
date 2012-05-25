@@ -26,7 +26,11 @@
         height: BB.HEIGHT * .65,
         width: BB.WIDTH,
         rowHeight: BB.HEIGHT * .1,
-        top: BB.HEIGHT * .2
+        top: BB.HEIGHT * .2,
+        editable: true
+      });
+      this.table.addEventListener('delete', function() {
+        return BB.recipe.stats.calculate_bitterness();
       });
       button = Ti.UI.createButton({
         right: BB.PADDING_W,
@@ -117,19 +121,13 @@
 
     RecipeHops.prototype.update_hop_time = function(range_value) {
       this.hop.time = range_value;
-      this.time_text.setText(this.hop.time.format({
-        suffix: 'min',
-        decimals: 1
-      }));
+      this.time_text.setText("" + (this.hop.time.toFixed(0)) + " min");
       return BB.recipe.stats.calculate_bitterness();
     };
 
     RecipeHops.prototype.update_hop_weight = function(range_value) {
       this.hop.weight = range_value;
-      this.weight_text.setText(this.hop.weight.format({
-        suffix: 'oz',
-        decimals: 100
-      }));
+      this.weight_text.setText("" + (this.hop.weight.toFixed(1)) + " oz");
       return BB.recipe.stats.calculate_bitterness();
     };
 

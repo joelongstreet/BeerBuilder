@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+provisioning_profiles/development/0EC733AF-96BE-4FA4-9456-8A47E75342E6/appid=*
+provisioning_profiles/development/0EC733AF-96BE-4FA4-9456-8A47E75342E6/filepath=/Users/joelongstreet/Library/MobileDevice/Provisioning Profiles/0EC733AF-96BE-4FA4-9456-8A47E75342E6.mobileprovision
+provisioning_profiles/development/0EC733AF-96BE-4FA4-9456-8A47E75342E6/name=AdHoc Distribution
+provisioning_profiles/development/0EC733AF-96BE-4FA4-9456-8A47E75342E6/uuid=0EC733AF-96BE-4FA4-9456-8A47E75342E6
+provisioning_profiles/development/2FE78D3E-831F-4C28-BF73-924E39C4EAAF/appid=com.inconcert.ampd
+provisioning_profiles/development/2FE78D3E-831F-4C28-BF73-924E39C4EAAF/filepath=/Users/joelongstreet/Library/MobileDevice/Provisioning Profiles/2FE78D3E-831F-4C28-BF73-924E39C4EAAF.mobileprovision
+provisioning_profiles/development/2FE78D3E-831F-4C28-BF73-924E39C4EAAF/name=Ampd Development
+provisioning_profiles/development/2FE78D3E-831F-4C28-BF73-924E39C4EAAF/uuid=2FE78D3E-831F-4C28-BF73-924E39C4EAAF
+provisioning_profiles/development/B81961BE-679E-4246-AAD9-B8754A65DBFE/appid=*
+provisioning_profiles/development/B81961BE-679E-4246-AAD9-B8754A65DBFE/filepath=/Users/joelongstreet/Library/MobileDevice/Provisioning Profiles/embedded.mobileprovision
+provisioning_profiles/development/B81961BE-679E-4246-AAD9-B8754A65DBFE/name=AdHoc Development
+provisioning_profiles/development/B81961BE-679E-4246-AAD9-B8754A65DBFE/uuid=B81961BE-679E-4246-AAD9-B8754A65DBFE

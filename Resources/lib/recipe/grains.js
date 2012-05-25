@@ -25,7 +25,11 @@
         height: BB.HEIGHT * .65,
         width: BB.WIDTH,
         rowHeight: BB.HEIGHT * .1,
-        top: BB.HEIGHT * .2
+        top: BB.HEIGHT * .2,
+        editable: true
+      });
+      this.table.addEventListener('delete', function() {
+        return BB.recipe.stats.calculate_gravity();
       });
       button = Ti.UI.createButton({
         right: BB.PADDING_W,
@@ -99,10 +103,7 @@
 
     RecipeGrains.prototype.update_grain_weight = function(range_value) {
       this.grain.weight = range_value;
-      this.weight_text.setText(this.grain.weight.format({
-        suffix: 'lbs',
-        decimals: 10
-      }));
+      this.weight_text.setText("" + (this.grain.weight.toFixed(1)) + " lbs");
       return BB.recipe.stats.calculate_gravity();
     };
 

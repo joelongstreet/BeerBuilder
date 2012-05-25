@@ -47,11 +47,10 @@
         text: 'Efficiency: 75%'
       });
       efficiency_s.addEventListener('change', function(e) {
-        return efficiency_l.setText(e.value.format({
-          prefix: 'Efficiency: ',
-          suffix: '%',
-          decimals: 1
-        }));
+        BB.recipe.stats.efficiency = e.value / 100;
+        BB.recipe.stats.calculate_gravity();
+        BB.recipe.stats.calculate_bitterness();
+        return efficiency_l.setText("Efficiency: " + (e.value.toFixed(0)) + "%");
       });
       volume_s = Ti.UI.createSlider({
         min: 0,
@@ -67,11 +66,10 @@
         text: 'Volume: 5 Gallons'
       });
       volume_s.addEventListener('change', function(e) {
-        return volume_l.setText(e.value.format({
-          prefix: 'Volume: ',
-          suffix: ' Gallons',
-          decimals: 1
-        }));
+        BB.recipe.stats.volume = e.value;
+        BB.recipe.stats.calculate_gravity();
+        BB.recipe.stats.calculate_bitterness();
+        return volume_l.setText("Volume: " + (e.value.toFixed(1)) + " Gallons");
       });
       this.window.add(title);
       this.window.add(date);

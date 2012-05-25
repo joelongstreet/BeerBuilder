@@ -1,79 +1,84 @@
 class BB.RecipeStats
 
 	constructor : ->
-		@is_prototype 	= false
-		@og 			= 0
-		@ogu 			= 0
-		@fg 			= 0
-		@fgu 			= 0
-		@gubu			= 0
-		@ibu 			= 0
-		@abv			= 0
-		@srm 			= 0
-		@efficiency 	= .75
-		@volume 		= 5
-		@final_volume 	= 5
-		@attenuation	= 75
-		@hop_weight 	= 0
+		@is_prototype 		= false
+		@og 				= 0
+		@ogu 				= 0
+		@fg 				= 0
+		@fgu 				= 0
+		@gubu				= 0
+		@ibu 				= 0
+		@abv				= 0
+		@srm 				= 0
+		@efficiency 		= .75
+		@volume 			= 5
+		@final_volume 		= 5
+		@attenuation		= 75
+		@hop_weight 		= 0
 
 	build_screen : ->
 
 		wrapper 			= Ti.UI.createView
 			backgroundColor	: '#000'
-			opacity			: 0.7
 			height 			: BB.HEIGHT*.2
 			width 			: BB.WIDTH
 			top 			: 0
 
 		@og_text 			= Ti.UI.createLabel
-			width 			: BB.WIDTH
+			width 			: BB.WIDTH*.25
 			text 			: 'OG : 0'
 			left 			: BB.PADDING_W
 			top 			: BB.PADDING_H
 			color 			: '#ffffff'
 			height 			: BB.HEIGHT*.05
+			font 			: BB.TYPO.H6
 
 		@fg_text 			= Ti.UI.createLabel
-			width 			: BB.WIDTH
+			width 			: BB.WIDTH*.25
 			text 			: 'FG : 0'
 			left 			: BB.PADDING_W
 			bottom 			: BB.PADDING_H
 			color 			: '#ffffff'
 			height 			: BB.HEIGHT*.05
+			font 			: BB.TYPO.H6
 
 		@gubu_text 			= Ti.UI.createLabel
-			width 			: BB.WIDTH
+			width 			: BB.WIDTH*.25
 			text 			: 'GUBU : 0'
 			left 			: BB.PADDED_W*.425
 			top 			: BB.PADDING_H
 			color 			: '#ffffff'
 			height 			: BB.HEIGHT*.05
+			font 			: BB.TYPO.H6
 
 		@ibu_text 			= Ti.UI.createLabel
-			width 			: BB.WIDTH
+			width 			: BB.WIDTH*.25
 			text 			: 'IBU\'S : 0'
 			left 			: BB.PADDED_W*.425
 			bottom 			: BB.PADDING_H
 			color 			: '#ffffff'
 			height 			: BB.HEIGHT*.05
+			font 			: BB.TYPO.H6
 
 		@abv_text 			= Ti.UI.createLabel
-			width 			: BB.WIDTH
+			width 			: BB.WIDTH*.25
 			text 			: 'ABV : 0'
 			right 			: BB.PADDING_W
-			top 			: 0
+			top 			: BB.PADDING_H
 			color 			: '#ffffff'
 			textAlign		: 'right'
 			height 			: BB.HEIGHT*.05
+			font 			: BB.TYPO.H6
 
 		@srm_text 			= Ti.UI.createLabel
-			width 			: BB.WIDTH
+			width 			: BB.WIDTH*.25
 			text 			: 'SRM : 0'
 			right 			: BB.PADDING_W
-			top				: BB.PADDING_H
+			bottom 			: BB.PADDING_H
 			color 			: '#ffffff'
 			textAlign		: 'right'
 			height 			: BB.HEIGHT*.05
+			font 			: BB.TYPO.H6
 
 		wrapper.add @og_text
 		wrapper.add @fg_text
@@ -121,9 +126,9 @@ class BB.RecipeStats
 		@fg 		= 1 + (@og - @fg)
 		@abv 		= 131*(@og - @fg)
 
-		@og_text.setText @og.format({decimals:10000, prefix : 'OG: '})
-		@fg_text.setText @fg.format({decimals:10000, prefix : 'FG: '})
-		@abv_text.setText @abv.format({decimals:100, prefix : 'ABV: '})
+		@og_text.setText "OG: #{@og.toFixed(3)}"
+		@fg_text.setText "FG: #{@fg.toFixed(3)}"
+		@abv_text.setText "ABV: #{@abv.toFixed(1)}"
 
 		@calculate_color()
 		@calculate_gu_bu()
@@ -140,7 +145,7 @@ class BB.RecipeStats
 			if @srm_rgb == undefined
 				srm_rgb = '255,255,255'
 
-		@srm_text.setText @srm.format({prefix : 'SRM: ', decimals : 10 })
+		@srm_text.setText "SRM: #{@srm.toFixed(1)}"
 
 
 	calculate_bitterness : =>
@@ -164,11 +169,7 @@ class BB.RecipeStats
 
 		@ibu = Math.round @ibu/@final_volume
 
-		ibu_text = @ibu.format
-			prefix 		: 'IBU\'s: '
-			decimals 	: 1
-
-		@ibu_text.setText ibu_text
+		@ibu_text.setText "IBU\'s: #{@ibu.toFixed(1)}"
 		@calculate_gu_bu()
 
 
@@ -176,7 +177,7 @@ class BB.RecipeStats
 		if @ibu == 0 then @ibu = 1
 		#else @fgu = 1000 * @fgu - 1
 		@gubu = Math.round(@fgu/@ibu*1000)/1000
-		@gubu_text.setText @gubu.format({decimals:100, prefix : 'GUBU: '})
+		@gubu_text.setText "GUBU: #{@gubu.toFixed(2)}"
 
 		if @is_prototype then @compare_to_bjcp()
 

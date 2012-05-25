@@ -17,6 +17,9 @@ class BB.RecipeGrains
 			width 		: BB.WIDTH
 			rowHeight 	: BB.HEIGHT*.1
 			top 		: BB.HEIGHT*.2
+			editable 	: true
+		@table.addEventListener 'delete', ->
+			BB.recipe.stats.calculate_gravity()
 
 		button 			= Ti.UI.createButton
 			right 		: BB.PADDING_W
@@ -88,9 +91,7 @@ class BB.RecipeGrains
 
 	update_grain_weight : (range_value) =>
 		@grain.weight = range_value
-		@weight_text.setText @grain.weight.format
-			suffix 		: 'lbs'
-			decimals 	: 10
+		@weight_text.setText "#{@grain.weight.toFixed(1)} lbs"
 		BB.recipe.stats.calculate_gravity()
 
 	update_grain : (row_selected) =>

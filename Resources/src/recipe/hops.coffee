@@ -17,12 +17,14 @@ class BB.RecipeHops
 			width 		: BB.WIDTH
 			rowHeight 	: BB.HEIGHT*.1
 			top 		: BB.HEIGHT*.2
+			editable 	: true
+		@table.addEventListener 'delete', ->
+			BB.recipe.stats.calculate_bitterness()
 
 		button 			= Ti.UI.createButton
 			right 		: BB.PADDING_W
 			bottom 		: BB.PADDING_H
 			title 		: 'Create New Hop'
-
 		button.addEventListener 'click', => @create_row()
 
 		@window.add @table
@@ -104,16 +106,12 @@ class BB.RecipeHops
 
 	update_hop_time : (range_value) =>
 		@hop.time = range_value
-		@time_text.setText @hop.time.format
-			suffix 		: 'min'
-			decimals 	: 1
+		@time_text.setText "#{@hop.time.toFixed(0)} min"
 		BB.recipe.stats.calculate_bitterness()
 
 	update_hop_weight : (range_value) =>
 		@hop.weight = range_value
-		@weight_text.setText @hop.weight.format
-			suffix 		: 'oz'
-			decimals 	: 100
+		@weight_text.setText "#{@hop.weight.toFixed(1)} oz"
 		BB.recipe.stats.calculate_bitterness()
 
 	update_hop : (row_selected) =>
