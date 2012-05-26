@@ -18,7 +18,8 @@ Ti.include('vendor/hash.js');
 
 /*** Class Includes ***/
 Ti.include('lib/utilities.js');
-Ti.include('lib/modal_picker.js');
+Ti.include('lib/ModalPicker.js');
+Ti.include('lib/recipe/IngredientPicker.js');
 
 	//Recipe
 	Ti.include('lib/recipe/stats.js');

@@ -39,4 +39,22 @@
     }
   };
 
+  BB.BG = {
+    RED: {
+      type: 'linear',
+      colors: ['#BA0000', '#470000'],
+      startPoint: {
+        x: 0,
+        y: 0
+      },
+      endPoint: {
+        x: 2,
+        y: 50
+      },
+      backFillStart: false,
+      borderWidth: 1,
+      borderColor: '#BA0000'
+    }
+  };
+
 }).call(this);
