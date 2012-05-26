@@ -14,7 +14,7 @@
       var picker, row, rows, _i, _len;
       if (row_data == null) row_data = [];
       if (picker_value == null) picker_value = 0;
-      if (callback == null) callback = function() {};
+      if (callback == null) callback = '';
       picker = Ti.UI.createPicker({
         type: Ti.UI.PICKER_TYPE_PLAIN,
         height: BB.HEIGHT * .5,
@@ -38,50 +38,36 @@
       }), 250);
     };
 
-    IngredientModal.prototype.add_weight_slider = function(units, decimals, slider_value, min, max, callback) {
-      var weight_label, weight_slider;
+    IngredientModal.prototype.add_slider = function(units, decimals, slider_value, min, max, callback, position) {
+      var label, slider;
       if (units == null) units = 'lbs';
       if (decimals == null) decimals = 1;
       if (slider_value == null) slider_value = 0;
       if (min == null) min = 0;
       if (max == null) max = 10;
-      if (callback == null) callback = function() {};
-      weight_label = Ti.UI.createLabel({
+      if (callback == null) callback = '';
+      if (position == null) position = BB.HEIGHT * .5;
+      label = Ti.UI.createLabel({
+        bottom: position,
         right: BB.PADDING_W,
-        bottom: BB.HEIGHT * .5,
         color: 'white',
         textAlign: 'right',
         text: "" + slider_value + " " + units
       });
-      weight_slider = Ti.UI.createSlider({
-        bottom: BB.HEIGHT * .5,
+      slider = Ti.UI.createSlider({
+        bottom: position,
         left: BB.PADDING_W,
         width: BB.WIDTH * .7,
         min: min,
         max: max,
         value: slider_value
       });
-      weight_slider.addEventListener('change', function(e) {
-        weight_label.setText("" + (e.value.toFixed(decimals)) + " " + units);
+      slider.addEventListener('change', function(e) {
+        label.setText("" + (e.value.toFixed(decimals)) + " " + units);
         return callback(e.value);
       });
-      this.window.add(weight_label);
-      return this.window.add(weight_slider);
-    };
-
-    IngredientModal.prototype.add_time_slider = function() {
-      var time_slider;
-      time_slider = Ti.UI.createSlider({
-        bottom: BB.HEIGHT * .6,
-        left: BB.PADDING_W,
-        width: BB.WIDTH * .7,
-        min: item.min,
-        max: item.max
-      });
-      time_slider.addEventListener('change', function(e) {
-        return this.callback(e.value);
-      });
-      return this.window.add(time_slider);
+      this.window.add(label);
+      return this.window.add(slider);
     };
 
     return IngredientModal;

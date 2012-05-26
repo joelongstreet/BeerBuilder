@@ -53,10 +53,11 @@ class BB.RecipeGrains
 
 
 
+
 class Grain
 	
 
-	constructor : (properties, percent_text) ->
+	constructor : ->
 		@properties 	= GRAINS[0]
 		@weight 		= 0
 
@@ -94,7 +95,7 @@ class Grain
 
 
 
-	update_proportion : (proportion) ->
+	update_proportion : (proportion) =>
 		if proportion == 1 then proportion = '100%'
 		else proportion = 100 * Math.round(proportion*100)/100 + '%'
 		@percent_text.setText proportion
@@ -124,5 +125,5 @@ class Grain
 
 		modal = new BB.IngredientModal()
 		modal.add_picker(row_data, selected_grain, @update_grain)
-		modal.add_weight_slider('lbs', 1, @weight, 0, 10, @update_weight)
+		modal.add_slider('lbs', 1, @weight, 0, 10, @update_weight)
 		modal.open_window()

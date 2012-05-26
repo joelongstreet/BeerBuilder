@@ -5,11 +5,8 @@
   BB.RecipeHops = (function() {
 
     function RecipeHops() {
-      this.update_hop = __bind(this.update_hop, this);
-      this.update_hop_weight = __bind(this.update_hop_weight, this);
-      this.update_hop_time = __bind(this.update_hop_time, this);
       this.create_row = __bind(this.create_row, this);
-      var button, close, item, _i, _len,
+      var button, close,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Hops'
@@ -43,18 +40,42 @@
       this.window.add(this.table);
       this.window.add(button);
       this.create_row();
-      this.row_data = [];
-      for (_i = 0, _len = HOPS.length; _i < _len; _i++) {
-        item = HOPS[_i];
-        this.row_data.push(item.name);
-      }
       return this.window;
     }
 
     RecipeHops.prototype.create_row = function() {
-      var row,
+      var hop, row,
         _this = this;
+      hop = new Hop();
+      BB.recipe.ingredients.hops.push(hop);
+      row = hop.build_row();
+      row.addEventListener('click', function(e) {
+        return row.hop.make_modal();
+      });
+      return this.table.appendRow(row);
+    };
+
+    return RecipeHops;
+
+  })();
+
+  Hop = (function() {
+
+    function Hop() {
+      this.make_modal = __bind(this.make_modal, this);
+      this.update_weight = __bind(this.update_weight, this);
+      this.update_time = __bind(this.update_time, this);
+      this.update_hop = __bind(this.update_hop, this);
+      this.update_proportion = __bind(this.update_proportion, this);
+      this.build_row = __bind(this.build_row, this);      this.properties = HOPS[0];
+      this.weight = 0;
+      this.time = 0;
+    }
+
+    Hop.prototype.build_row = function() {
+      var row;
       row = Ti.UI.createTableViewRow();
+      row.hop = this;
       this.percent_text = Ti.UI.createLabel({
         right: BB.PADDING_W,
         top: BB.PADDING_H,
@@ -82,73 +103,12 @@
         width: BB.PADDED_W,
         text: HOPS[0].name
       });
-      row.addEventListener('click', function(e) {
-        var modal;
-        modal = new BB.utilities.modal_picker([
-          {
-            type: 'picker',
-            data: _this.row_data,
-            value: _this.hop_text.getText(),
-            callback: _this.update_hop
-          }, {
-            type: 'range',
-            label: 'Weight',
-            min: 0,
-            max: 3,
-            value: _this.weight_text.getText(),
-            callback: _this.update_hop_weight
-          }, {
-            type: 'range',
-            label: 'Time',
-            min: 0,
-            max: 90,
-            value: _this.time_text.getText(),
-            callback: _this.update_hop_time
-          }
-        ]);
-        return modal.open({
-          animated: true
-        });
-      });
       row.add(this.hop_text);
       row.add(this.percent_text);
       row.add(this.weight_text);
       row.add(this.time_text);
-      this.table.appendRow(row);
-      this.hop = new Hop(HOPS[0], this.percent_text);
-      return BB.recipe.ingredients.hops.push(this.hop);
+      return row;
     };
-
-    RecipeHops.prototype.update_hop_time = function(range_value) {
-      this.hop.time = range_value;
-      this.time_text.setText("" + (this.hop.time.toFixed(0)) + " min");
-      return BB.recipe.stats.calculate_bitterness();
-    };
-
-    RecipeHops.prototype.update_hop_weight = function(range_value) {
-      this.hop.weight = range_value;
-      this.weight_text.setText("" + (this.hop.weight.toFixed(1)) + " oz");
-      return BB.recipe.stats.calculate_bitterness();
-    };
-
-    RecipeHops.prototype.update_hop = function(row_selected) {
-      this.hop_text.setText(HOPS[row_selected].name);
-      this.hop.properties = HOPS[row_selected];
-      return BB.recipe.stats.calculate_bitterness();
-    };
-
-    return RecipeHops;
-
-  })();
-
-  Hop = (function() {
-
-    function Hop(properties, percent_text) {
-      this.properties = properties;
-      this.percent_text = percent_text;
-      this.weight = 0;
-      this.time = 0;
-    }
 
     Hop.prototype.update_proportion = function(proportion) {
       if (proportion === 1) {
@@ -157,6 +117,39 @@
         proportion = 100 * Math.round(proportion * 100) / 100 + '%';
       }
       return this.percent_text.setText(proportion);
+    };
+
+    Hop.prototype.update_hop = function(row_selected) {
+      this.hop_text.setText(HOPS[row_selected].name);
+      this.properties = HOPS[row_selected];
+      return BB.recipe.stats.calculate_bitterness();
+    };
+
+    Hop.prototype.update_time = function(range_value) {
+      this.time = range_value;
+      this.time_text.setText("" + (this.time.toFixed(0)) + " min");
+      return BB.recipe.stats.calculate_bitterness();
+    };
+
+    Hop.prototype.update_weight = function(range_value) {
+      this.weight = range_value;
+      this.weight_text.setText("" + (this.weight.toFixed(1)) + " oz");
+      return BB.recipe.stats.calculate_bitterness();
+    };
+
+    Hop.prototype.make_modal = function() {
+      var item, modal, row_data, selected_hop, _i, _len;
+      row_data = [];
+      for (_i = 0, _len = HOPS.length; _i < _len; _i++) {
+        item = HOPS[_i];
+        if (item.name === this.hop_text.getText()) selected_hop = _i;
+        row_data.push(item.name);
+      }
+      modal = new BB.IngredientModal();
+      modal.add_picker(row_data, selected_hop, this.update_hop);
+      modal.add_slider('oz', 2, this.weight, 0, 3, this.update_weight);
+      modal.add_slider('min', 0, this.time, 0, 90, this.update_time, BB.HEIGHT * .6);
+      return modal.open_window();
     };
 
     return Hop;
