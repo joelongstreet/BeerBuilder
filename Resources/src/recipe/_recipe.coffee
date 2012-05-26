@@ -1,6 +1,7 @@
 BB.recipe 				= 
 	icon 				: '/img/builder.png'
 	title 				: 'Builder'
+	tab_group			: Ti.UI.createTabGroup()
 
 ## Build Recipe Classes ##
 BB.recipe.stats 		= new BB.RecipeStats()
@@ -46,7 +47,6 @@ BB.recipe.tabs 	= [
 
 
 ## Build Recipe Tab Group ##
-BB.recipe.tab_group		= Ti.UI.createTabGroup()
 BB.recipe.tab_group.addTab 	BB.recipe.tabs[0]
 BB.recipe.tab_group.addTab 	BB.recipe.tabs[1]
 BB.recipe.tab_group.addTab 	BB.recipe.tabs[2]

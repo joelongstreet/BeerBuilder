@@ -3,7 +3,7 @@
   BB.FixerWindow = (function() {
 
     function FixerWindow() {
-      var close, gravity_l, gravity_s, target_l, target_s, temp_l, temp_s, volume_l, volume_s, window,
+      var gravity_l, gravity_s, target_l, target_s, temp_l, temp_s, volume_l, volume_s, window,
         _this = this;
       this.temperature = 100;
       this.volume = 5;
@@ -14,14 +14,7 @@
         backgroundColor: 'white',
         tabBarHidden: true
       });
-      close = Ti.UI.createButton({
-        title: 'close'
-      });
-      window.rightNavButton = close;
-      close.addEventListener('click', function() {
-        BB.fixer.tab_group.close();
-        return BB.menu.open();
-      });
+      window.rightNavButton = new BB.CloseWindow(BB.fixer.tab_group);
       temp_s = Ti.UI.createSlider({
         min: 32,
         max: 212,
@@ -145,7 +138,8 @@
 
   BB.fixer = {
     icon: '/img/fixer.png',
-    title: 'Fixer'
+    title: 'Fixer',
+    tab_group: Ti.UI.createTabGroup()
   };
 
   BB.fixer.tabs = {
@@ -153,8 +147,6 @@
       window: new BB.FixerWindow()
     })
   };
-
-  BB.fixer.tab_group = Ti.UI.createTabGroup();
 
   BB.fixer.tab_group.addTab(BB.fixer.tabs["default"]);
 

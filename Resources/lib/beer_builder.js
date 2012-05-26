@@ -1,39 +1,46 @@
 (function() {
+  var temp2, temp3, temp4, temp5, temp_tab, temp_tabs, temp_window;
 
-  BB.temp_tab = Ti.UI.createTab({
-    window: Ti.UI.createWindow(),
+  temp_tabs = Ti.UI.createTabGroup();
+
+  temp_window = Ti.UI.createWindow({
+    title: 'Temp'
+  });
+
+  temp_window.rightNavButton = new BB.CloseWindow(temp_tabs);
+
+  temp_tab = Ti.UI.createTab({
+    window: temp_window,
     title: 'Test'
   });
 
-  BB.temp_tabs = Ti.UI.createTabGroup();
+  temp_tabs.addTab(temp_tab);
 
-  BB.temp_tabs.addTab(BB.temp_tab);
-
-  BB.temp2 = {
+  temp2 = {
     icon: '/img/efficiency.png',
     title: 'Efficiency',
-    tab_group: BB.temp_tabs
+    tab_group: temp_tabs
   };
 
-  BB.temp3 = {
+  temp3 = {
     icon: '/img/abv.png',
     title: 'ABV',
-    tab_group: BB.temp_tabs
+    tab_group: temp_tabs
   };
 
-  BB.temp4 = {
+  temp4 = {
     icon: '/img/me.png',
     title: 'My Recipes',
-    tab_group: BB.temp_tabs
+    tab_group: temp_tabs
   };
 
-  BB.temp5 = {
+  temp5 = {
     icon: '/img/discover.png',
     title: 'Discover',
-    tab_group: BB.temp_tabs
+    tab_group: temp_tabs
   };
 
-  BB.menu = new BB.Menu([BB.recipe, BB.fixer, BB.temp2, BB.temp3, BB.temp4, BB.temp5]);
+  BB.menu = new BB.Menu([BB.recipe, BB.fixer, temp2, temp3, temp4, temp5]);
 
   BB.menu.open();
 

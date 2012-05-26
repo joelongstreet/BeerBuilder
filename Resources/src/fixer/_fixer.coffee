@@ -10,13 +10,7 @@ class BB.FixerWindow
 			title 		: 'Gravity Fixer'
 			backgroundColor : 'white'
 			tabBarHidden : true
-
-		close = Ti.UI.createButton
-			title : 'close'
-		window.rightNavButton = close
-		close.addEventListener 'click', ->
-			BB.fixer.tab_group.close()
-			BB.menu.open()
+		window.rightNavButton = new BB.CloseWindow(BB.fixer.tab_group)
 
 		temp_s			= Ti.UI.createSlider
 			min 		: 32
@@ -120,10 +114,10 @@ class BB.FixerWindow
 BB.fixer  				=
 	icon 				: '/img/fixer.png'
 	title 				: 'Fixer'
+	tab_group			: Ti.UI.createTabGroup()
 
 BB.fixer.tabs 	=
 	default				: Ti.UI.createTab
 		window 			: new BB.FixerWindow()
 
-BB.fixer.tab_group 		= Ti.UI.createTabGroup()
 BB.fixer.tab_group.addTab BB.fixer.tabs.default

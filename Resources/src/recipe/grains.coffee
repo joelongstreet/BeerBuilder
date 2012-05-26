@@ -5,13 +5,7 @@ class BB.RecipeGrains
 
 		@window			= Ti.UI.createWindow
 			title 		: 'Grains'
-
-		close = Ti.UI.createButton
-			title : 'close'
-		@window.rightNavButton = close
-		close.addEventListener 'click', ->
-			BB.recipe.tab_group.close()
-			BB.menu.open()
+		@window.rightNavButton = new BB.CloseWindow(BB.recipe.tab_group)
 
 		@table 			= Ti.UI.createTableView
 			height 		: BB.HEIGHT*.65

@@ -6,19 +6,12 @@
 
     function RecipeGrains() {
       this.create_row = __bind(this.create_row, this);
-      var button, close,
+      var button,
         _this = this;
       this.window = Ti.UI.createWindow({
         title: 'Grains'
       });
-      close = Ti.UI.createButton({
-        title: 'close'
-      });
-      this.window.rightNavButton = close;
-      close.addEventListener('click', function() {
-        BB.recipe.tab_group.close();
-        return BB.menu.open();
-      });
+      this.window.rightNavButton = new BB.CloseWindow(BB.recipe.tab_group);
       this.table = Ti.UI.createTableView({
         height: BB.HEIGHT * .65,
         width: BB.WIDTH,

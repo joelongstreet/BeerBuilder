@@ -57,6 +57,6 @@ class BB.Menu
 		view.add image
 
 		view.addEventListener 'click', ->
-			item.tab_group.open()
+			item.tab_group.open(transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT)
 
 		return view

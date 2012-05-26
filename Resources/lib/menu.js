@@ -66,7 +66,9 @@
       view.add(label);
       view.add(image);
       view.addEventListener('click', function() {
-        return item.tab_group.open();
+        return item.tab_group.open({
+          transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
+        });
       });
       return view;
     };

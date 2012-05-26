@@ -3,7 +3,8 @@
 
   BB.recipe = {
     icon: '/img/builder.png',
-    title: 'Builder'
+    title: 'Builder',
+    tab_group: Ti.UI.createTabGroup()
   };
 
   BB.recipe.stats = new BB.RecipeStats();
@@ -38,8 +39,6 @@
       title: 'Delivery'
     })
   ];
-
-  BB.recipe.tab_group = Ti.UI.createTabGroup();
 
   BB.recipe.tab_group.addTab(BB.recipe.tabs[0]);
 

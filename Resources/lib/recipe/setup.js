@@ -3,19 +3,12 @@
   BB.RecipeSetup = (function() {
 
     function RecipeSetup() {
-      var close, date, efficiency_l, efficiency_s, title, volume_l, volume_s;
+      var date, efficiency_l, efficiency_s, title, volume_l, volume_s;
       this.window = Ti.UI.createWindow({
         title: 'Setup',
         backgroundColor: '#fff'
       });
-      close = Ti.UI.createButton({
-        title: 'close'
-      });
-      this.window.rightNavButton = close;
-      close.addEventListener('click', function() {
-        BB.recipe.tab_group.close();
-        return BB.menu.open();
-      });
+      this.window.rightNavButton = new BB.CloseWindow(BB.recipe.tab_group);
       title = Ti.UI.createTextField({
         hintText: 'Your Next Great Beer',
         top: BB.PADDING_H,
