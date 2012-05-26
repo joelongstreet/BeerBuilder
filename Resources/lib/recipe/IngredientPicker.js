@@ -10,8 +10,11 @@
       IngredientModal.__super__.constructor.apply(this, arguments);
     }
 
-    IngredientModal.prototype.add_picker = function(row_data) {
+    IngredientModal.prototype.add_picker = function(row_data, picker_value, callback) {
       var picker, row, rows, _i, _len;
+      if (row_data == null) row_data = [];
+      if (picker_value == null) picker_value = 0;
+      if (callback == null) callback = function() {};
       picker = Ti.UI.createPicker({
         type: Ti.UI.PICKER_TYPE_PLAIN,
         height: BB.HEIGHT * .5,
@@ -27,18 +30,22 @@
       }
       picker.add(rows);
       picker.addEventListener('change', function(e) {
-        return Ti.API.info('picker change');
+        return callback(e.rowIndex);
       });
-      return this.window.add(picker);
+      this.window.add(picker);
+      return setTimeout((function() {
+        return picker.setSelectedRow(0, picker_value, true);
+      }), 250);
     };
 
-    IngredientModal.prototype.add_weight_slider = function(units, decimals, slider_value, min, max) {
+    IngredientModal.prototype.add_weight_slider = function(units, decimals, slider_value, min, max, callback) {
       var weight_label, weight_slider;
       if (units == null) units = 'lbs';
       if (decimals == null) decimals = 1;
       if (slider_value == null) slider_value = 0;
       if (min == null) min = 0;
       if (max == null) max = 10;
+      if (callback == null) callback = function() {};
       weight_label = Ti.UI.createLabel({
         right: BB.PADDING_W,
         bottom: BB.HEIGHT * .5,
@@ -55,7 +62,8 @@
         value: slider_value
       });
       weight_slider.addEventListener('change', function(e) {
-        return weight_label.setText("" + (e.value.toFixed(decimals)) + " " + units);
+        weight_label.setText("" + (e.value.toFixed(decimals)) + " " + units);
+        return callback(e.value);
       });
       this.window.add(weight_label);
       return this.window.add(weight_slider);

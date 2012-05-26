@@ -1,5 +1,6 @@
 class BB.RecipeGrains
 
+
 	constructor : ->
 
 		@window			= Ti.UI.createWindow
@@ -37,7 +38,10 @@ class BB.RecipeGrains
 
 		return @window
 
+
+
 	create_row : =>
+
 		grain = new Grain()
 		BB.recipe.ingredients.grains.push grain
 
@@ -48,11 +52,14 @@ class BB.RecipeGrains
 		@table.appendRow row
 
 
+
 class Grain
 	
+
 	constructor : (properties, percent_text) ->
 		@properties 	= GRAINS[0]
 		@weight 		= 0
+
 
 
 	build_row 	: ->
@@ -86,10 +93,12 @@ class Grain
 		return row
 
 
+
 	update_proportion : (proportion) ->
 		if proportion == 1 then proportion = '100%'
 		else proportion = 100 * Math.round(proportion*100)/100 + '%'
 		@percent_text.setText proportion
+
 
 
 	update_weight : (range_value) =>
@@ -98,18 +107,22 @@ class Grain
 		BB.recipe.stats.calculate_gravity()
 
 
+
 	update_grain : (row_selected) =>
 		@grain_text.setText GRAINS[row_selected].name
 		@properties = GRAINS[row_selected]
 		BB.recipe.stats.calculate_gravity()
 
 
-	make_modal : ->
+
+	make_modal : =>
 		row_data = []
 		for item in GRAINS
+			if item.name == @grain_text.getText()
+				selected_grain = _i
 			row_data.push item.name
 
 		modal = new BB.IngredientModal()
-		modal.add_picker(row_data)
-		modal.add_weight_slider('lbs', 1, @weight, 0, 10)
+		modal.add_picker(row_data, selected_grain, @update_grain)
+		modal.add_weight_slider('lbs', 1, @weight, 0, 10, @update_weight)
 		modal.open_window()

@@ -1,7 +1,7 @@
 class BB.IngredientModal extends BB.ModalPicker
  
 
-    add_picker : (row_data) ->
+    add_picker : (row_data = [], picker_value = 0, callback = ->) ->
 
         picker              = Ti.UI.createPicker
             type            : Ti.UI.PICKER_TYPE_PLAIN
@@ -15,13 +15,18 @@ class BB.IngredientModal extends BB.ModalPicker
         picker.add rows
 
         picker.addEventListener 'change', (e) ->
-            Ti.API.info 'picker change'
+            callback e.rowIndex
 
         @window.add picker
 
+        #HACK - this is an appcelerator bug I can't avoid
+        setTimeout (->
+            picker.setSelectedRow 0, picker_value, true
+        ), 250
 
 
-    add_weight_slider : (units = 'lbs', decimals = 1, slider_value = 0, min = 0, max = 10) ->
+
+    add_weight_slider : (units = 'lbs', decimals = 1, slider_value = 0, min = 0, max = 10, callback = ->) ->
 
         weight_label        = Ti.UI.createLabel
             right           : BB.PADDING_W
@@ -40,6 +45,7 @@ class BB.IngredientModal extends BB.ModalPicker
 
         weight_slider.addEventListener 'change', (e) ->
             weight_label.setText "#{e.value.toFixed(decimals)} #{units}"
+            callback(e.value)
 
         @window.add weight_label
         @window.add weight_slider

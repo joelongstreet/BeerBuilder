@@ -60,6 +60,7 @@
   Grain = (function() {
 
     function Grain(properties, percent_text) {
+      this.make_modal = __bind(this.make_modal, this);
       this.update_grain = __bind(this.update_grain, this);
       this.update_weight = __bind(this.update_weight, this);      this.properties = GRAINS[0];
       this.weight = 0;
@@ -116,15 +117,16 @@
     };
 
     Grain.prototype.make_modal = function() {
-      var item, modal, row_data, _i, _len;
+      var item, modal, row_data, selected_grain, _i, _len;
       row_data = [];
       for (_i = 0, _len = GRAINS.length; _i < _len; _i++) {
         item = GRAINS[_i];
+        if (item.name === this.grain_text.getText()) selected_grain = _i;
         row_data.push(item.name);
       }
       modal = new BB.IngredientModal();
-      modal.add_picker(row_data);
-      modal.add_weight_slider('lbs', 1, this.weight, 0, 10);
+      modal.add_picker(row_data, selected_grain, this.update_grain);
+      modal.add_weight_slider('lbs', 1, this.weight, 0, 10, this.update_weight);
       return modal.open_window();
     };
 
