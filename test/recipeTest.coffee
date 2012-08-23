@@ -28,6 +28,12 @@ describe 'Recipe', ->
         recipe.remove_grain 0
         recipe.grains.length.should.equal 0
 
+    it 'should allow ingredients to be deleted by their object definition', ->
+        grain = new Grain({ name : 'American Crystal Malt 80L', gravity_units : 34, lovibond : 80, traits : []})
+        recipe.add_grain grain
+        recipe.remove_grain grain
+        recipe.grains.length.should.equal 0
+
     it 'should be able to be prepopulated by a variety of ingredients', ->
         anchor_steam = new Recipe
             grains : [
@@ -141,6 +147,7 @@ describe 'Hop', ->
         hop3.get_proportion().should.equal '22%'
 
 
+
 describe 'Yeast', ->
 
     yeast = null
@@ -155,4 +162,3 @@ describe 'Yeast', ->
 
     it 'should effect a recipe\'s final gravity', ->
         yeast.recipe.get_final_gravity().should.not.equal 1.0141
-

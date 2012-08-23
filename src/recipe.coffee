@@ -2,6 +2,14 @@ class exports.Recipe
     
     constructor : (ingredients) ->
 
+        {Step} = require './interface/step'
+
+        @steps      = 
+            setup   : new Step 'setup'
+            grains  : new Step 'grains'
+            hops    : new Step 'hops'
+            yeasts  : new Step 'yeasts'
+
         @grains     = []
         @hops       = []
         @yeasts     = []
@@ -108,20 +116,29 @@ class exports.Recipe
     add_grain : (ingredient) ->
         ingredient.recipe = @
         @grains.push ingredient
+        @steps.grains.add_ingredient ingredient
 
     add_hop : (ingredient) ->
         ingredient.recipe = @
         @hops.push ingredient
+        @steps.hops.add_ingredient ingredient
 
     add_yeast : (ingredient) ->
         ingredient.recipe = @
         @yeasts.push ingredient
+        @steps.yeasts.add_ingredient ingredient
 
-    remove_grain : (ingredient) ->
-        @grains.splice ingredient, 1
+    remove_grain : (index) ->
+        if typeof index == 'object'
+            index = @grains.indexOf index
+        @grains.splice index, 1
 
-    remove_hop : (ingredient) ->
-        @hops.splice ingredient, 1
+    remove_hop : (index) ->
+        if typeof index == 'object'
+            index = @hops.indexOf index
+        @hops.splice index, 1
 
-    remove_yeast : (ingredient) ->
-        @yeasts.splice ingredient, 1
+    remove_yeast : (index) ->
+        if typeof index == 'object'
+            index = @yeasts.indexOf index
+        @hops.splice index, 1
