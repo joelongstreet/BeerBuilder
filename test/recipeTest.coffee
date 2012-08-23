@@ -4,6 +4,7 @@ chai.should()
 {Recipe}    = require '../src/recipe'
 {Grain}     = require '../src/grain'
 {Hop}       = require '../src/hop'
+{Yeast}     = require '../src/yeast'
 
 recipe      = null
 
@@ -29,6 +30,21 @@ describe 'Recipe', ->
     it 'should allow ingredients to be deleted by index', ->
         recipe.remove_grain 0
         recipe.grains.length.should.equal 0
+
+    it 'should be able to be prepopulated by a variety of ingredients', ->
+        anchor_steam = new Recipe
+            grains : [
+                new Grain({ name : 'American Crystal Malt 80L', gravity_units : 34, lovibond : 80, traits : []}, .875)
+                new Grain({ name : 'American 2 Row', gravity_units : 37.5, lovibond : 6.5, traits : []}, 9.25),
+            ]
+            hops : [
+                new Hop({name : 'Northern Brewer', aa : 8}, 1.2, 60)
+                new Hop({name : 'Northern Brewer', aa : 8}, .5, 14)
+                new Hop({name : 'Northern Brewer', aa : 8}, .5, 1)
+            ]
+
+        anchor_steam.get_original_gravity().should.equal 1.0565
+        anchor_steam.get_ibu().should.equal 42.09
 
 
 
@@ -64,7 +80,7 @@ describe 'Grain', ->
         recipe.get_grain_weight().should.equal 10.125
 
     it 'knows how to calculate a porportion', ->
-        grain1.get_proportion().should.equal '9%'
+        grain1.get_proportion().should.equal '8%'
         grain2.get_proportion().should.equal '91%'
 
     it 'changing a grain\'s weight should update the gravity units', ->
@@ -78,6 +94,9 @@ describe 'Grain', ->
 
     it 'changing a grain\'s weight should update the abv', ->
         recipe.get_abv().should.equal 5.55
+
+    it 'changing a grain\'s weight should update the srm', ->
+        recipe.get_srm().should.equal 17
 
 
 
@@ -103,9 +122,11 @@ describe 'Hop', ->
         
         recipe.add_hop hop1
         recipe.add_hop hop2
+        recipe.add_hop hop3
 
         hop1.recipe.should.equal recipe
         hop2.recipe.should.equal recipe
+        hop3.recipe.should.equal recipe
 
     it 'changing a hop\'s weight or time should update the ibus', ->
         hop1.weight = 1.2
@@ -115,9 +136,26 @@ describe 'Hop', ->
         hop2.time   = 14
         hop3.time   = 1
 
-        recipe.get_ibu().should.equal 40.78
+        recipe.get_ibu().should.equal 42.09
 
     it 'knows how to calculate a porportion', ->
-        hop1.get_proportion().should.equal '71%'
-        hop2.get_proportion().should.equal '29%'
-        hop3.get_proportion().should.equal '91%'
+        hop1.get_proportion().should.equal '54%'
+        hop2.get_proportion().should.equal '22%'
+        hop3.get_proportion().should.equal '22%'
+
+
+describe 'Yeast', ->
+
+    yeast = null
+
+    it 'should throw errors if no options are passed', ->
+        (-> yeast = new Yeast()).should.throw "Yeast properites are required"
+
+    it 'should be able to belong to a recipe', ->
+        yeast = new Yeast
+            name        : 'Something'
+            attenuation : .7
+        
+        recipe.add_yeast yeast
+
+        yeast.recipe.should.equal recipe

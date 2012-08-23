@@ -1,13 +1,28 @@
 class exports.Recipe
     
-    constructor : ->
-        @efficiency     = .75
-        @volume         = 5
-        @attenuation    = .75
+    constructor : (ingredients) ->
 
-        @grains         = []
-        @hops           = []
-        @yeasts         = []
+        @grains     = []
+        @hops       = []
+        @yeasts     = []
+
+        @efficiency = .75
+        @volume     = 5
+
+        if !ingredients then ingredients = {}
+        
+        if ingredients.grains
+            for grain in ingredients.grains
+                @add_grain grain
+
+        if ingredients.hops
+            for hop in ingredients.hops
+                @add_hop hop
+
+        if ingredients.yeasts
+            for yeast in ingredients.yeasts
+                @add_yeast yeast
+
 
     get_efficiency : (new_efficiency) ->
         @efficiency = new_efficiency
@@ -18,6 +33,16 @@ class exports.Recipe
             total_weight += grain.weight
 
         return total_weight
+
+    get_attenuation : ->
+        if @yeasts.length
+            attenuation = 0
+            for yeast in @yeasts
+                attenuation += yeast.attenuation
+            attenuation/@yeast.length
+            return parseFloat(attenuation.toFixed 2)
+        else
+            return .75
 
     get_gravity_units : ->
         gravity_units = 0
@@ -33,9 +58,11 @@ class exports.Recipe
         og_units = @get_gravity_units()/@volume
         og = 1 + og_units/1000
         og = parseFloat(og.toFixed 4)
+        
+        og
 
     get_final_gravity : ->
-        fg_units = @get_gravity_units()*@attenuation/@volume
+        fg_units = @get_gravity_units()*@get_attenuation()/@volume
         fg = 1 + (@get_original_gravity() - (1 + fg_units/1000))
         fg = parseFloat(fg.toFixed 4)
         return fg

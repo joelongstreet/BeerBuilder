@@ -1,6 +1,6 @@
 class exports.Grain
 
-    constructor : (options) ->
+    constructor : (options, @weight = 0) ->
 
         if !options
             throw "Grain properites are required"
@@ -12,7 +12,6 @@ class exports.Grain
                 @is_extract = options.is_extract
 
         @recipe     = null
-        @weight     = 0
         @proportion = 0
 
     update_weight : (new_weight) ->
@@ -20,5 +19,4 @@ class exports.Grain
 
     get_proportion : ->
         proportion = @weight/@recipe.get_grain_weight()
-        proportion = proportion.toFixed(2)
-        proportion*100 + '%'
+        proportion = parseInt(proportion*100) + '%'

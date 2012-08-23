@@ -1,16 +1,13 @@
 class exports.Hop
     
-    constructor : (options) ->
+    constructor : (options, @weight = 0, @time = 0) ->
 
         if !options
             throw "Hop properites are required"
-
         else
             @aa = options.aa
 
-        @recipe     = null
-        @weight     = 0
-        @time       = 0
+        @recipe = null
 
     update_weight : (new_weight) ->
         @weight = new_weight
@@ -20,5 +17,4 @@ class exports.Hop
 
     get_proportion : ->
         proportion = @weight/@recipe.get_hop_weight()
-        proportion = proportion.toFixed(2)
-        proportion = proportion*100 + '%'
+        proportion = parseInt(proportion*100) + '%'
