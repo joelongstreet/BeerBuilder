@@ -1,4 +1,4 @@
-{Ti} = require './ti'
+{Ti} = require '../../TitaniumMocha/Ti'
 
 class exports.Ingredient
 

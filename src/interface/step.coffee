@@ -1,4 +1,4 @@
-{Ti} = require './ti'
+{Ti} = require '../../TitaniumMocha/Ti'
 #db = Ti.Database.install '../ingredients.sqlite','ingredients'
 
 class Step
