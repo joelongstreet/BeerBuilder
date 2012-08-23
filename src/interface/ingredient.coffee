@@ -1,0 +1,3 @@
+class exports.Ingredient
+    
+    constructor : ->

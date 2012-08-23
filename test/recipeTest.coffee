@@ -5,6 +5,7 @@ chai.should()
 {Grain}     = require '../src/grain'
 {Hop}       = require '../src/hop'
 {Yeast}     = require '../src/yeast'
+#{Interface} = require '../src/interface'
 
 recipe      = null
 
@@ -19,11 +20,7 @@ describe 'Recipe', ->
         recipe.yeasts.length.should.equal 0
 
     it 'should allow ingredients to be added', ->
-        grain = new Grain
-            name            : 'American Crystal Malt 80L'
-            gravity_units   : 34
-            lovibond        : 80
-            traits          : []
+        grain = new Grain({ name : 'American Crystal Malt 80L', gravity_units : 34, lovibond : 80, traits : []})
         recipe.add_grain grain
         recipe.grains.length.should.equal 1
 
@@ -96,7 +93,7 @@ describe 'Grain', ->
         recipe.get_abv().should.equal 5.55
 
     it 'changing a grain\'s weight should update the srm', ->
-        recipe.get_srm().should.equal 17
+        recipe.get_srm().should.equal 14
 
 
 
@@ -152,10 +149,10 @@ describe 'Yeast', ->
         (-> yeast = new Yeast()).should.throw "Yeast properites are required"
 
     it 'should be able to belong to a recipe', ->
-        yeast = new Yeast
-            name        : 'Something'
-            attenuation : .7
-        
+        yeast = new Yeast({ name : 'Low Attenuating Yeast', attenuation : .8 })
         recipe.add_yeast yeast
-
         yeast.recipe.should.equal recipe
+
+    it 'should effect a recipe\'s final gravity', ->
+        yeast.recipe.get_final_gravity().should.not.equal 1.0141
+

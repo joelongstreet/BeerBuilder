@@ -39,7 +39,7 @@ class exports.Recipe
             attenuation = 0
             for yeast in @yeasts
                 attenuation += yeast.attenuation
-            attenuation/@yeast.length
+            attenuation/@yeasts.length
             return parseFloat(attenuation.toFixed 2)
         else
             return .75
@@ -58,8 +58,6 @@ class exports.Recipe
         og_units = @get_gravity_units()/@volume
         og = 1 + og_units/1000
         og = parseFloat(og.toFixed 4)
-        
-        og
 
     get_final_gravity : ->
         fg_units = @get_gravity_units()*@get_attenuation()/@volume
@@ -68,13 +66,12 @@ class exports.Recipe
         return fg
 
     get_srm : ->
-        color_units = 0
+        mcu = 0
         for grain in @grains
-            grain_srm = grain.weight * grain.lovibond
-            color_units += grain_srm
+            mcu += grain.weight * grain.lovibond / @volume
 
-        srm = color_units/@volume
-        srm = 1.4922*(Math.pow(srm, .6859))
+        srm = 1.4922*(Math.pow(mcu, .6859))
+        Math.round srm
 
     get_color : ->
         rgb = srm_lookup.getItem @get_srm()
@@ -118,7 +115,7 @@ class exports.Recipe
 
     add_yeast : (ingredient) ->
         ingredient.recipe = @
-        @hops.push ingredient
+        @yeasts.push ingredient
 
     remove_grain : (ingredient) ->
         @grains.splice ingredient, 1
