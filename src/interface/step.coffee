@@ -31,6 +31,7 @@ class Step
 
         row.addEventListener 'click', ->
             ingredient = require('./Ingredient')
+            return 3
 
         row.addEventListener 'delete', =>
             @remove()

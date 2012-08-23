@@ -1,23 +1,24 @@
-###
 chai = require 'chai'
 chai.should()
 
-{IngredientPicker}   = require '../src/interface/ingredientPicker'
+{Recipe}    = require '../src/recipe'
+{Grain}     = require '../src/grain'
+{Hop}       = require '../src/hop'
+{Yeast}     = require '../src/yeast'
+{Step}      = require '../src/interface/Step'
 
-describe 'Ingredient', ->
-    it 'should '
+recipe      = null
 
-describe 'Picker', ->
+describe 'Steps', ->
     
-    it 'should throw errors if no data is found', ->
-        (-> picker = new IngredientPicker()).should.throw "Data is required to make a picker"
+    recipe = new Recipe()
 
-    it 'should trigger a function when called', ->
+    it 'a table should accept new rows', ->
+        grain = new Grain({ name : 'American Crystal Malt 80L', gravity_units : 34, lovibond : 80, traits : []}, .875)
+        recipe.add_grain grain
+        recipe.steps.grains.table.data.length.should.equal 1
 
-        false
-
-
-describe 'Table', -> 
-    it 'should do something...'
-
-###
+    it 'clicking a row, should trigger the ingredient window', ->
+        recipe.steps.grains.table.data.length.should.equal 1
+        recipe.steps.grains.table.data[0].trigger_click().should.equal 3
+        

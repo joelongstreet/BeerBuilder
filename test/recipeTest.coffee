@@ -5,7 +5,6 @@ chai.should()
 {Grain}     = require '../src/grain'
 {Hop}       = require '../src/hop'
 {Yeast}     = require '../src/yeast'
-#{Interface} = require '../src/interface'
 
 recipe      = null
 
@@ -14,7 +13,7 @@ recipe      = null
 describe 'Recipe', ->
 
     it 'should begin with no ingredients', ->
-        recipe = new Recipe
+        recipe = new Recipe()
         recipe.grains.length.should.equal 0
         recipe.hops.length.should.equal 0
         recipe.yeasts.length.should.equal 0
