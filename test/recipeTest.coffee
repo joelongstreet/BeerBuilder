@@ -48,6 +48,13 @@ describe 'Recipe', ->
         anchor_steam.get_original_gravity().should.equal 1.0565
         anchor_steam.get_ibu().should.equal 42.09
 
+    ###
+    it 'should accept a prototype as a style guideline', ->
+
+    it 'should change min and max values for measures when the recipe type changes', ->
+        recipe.grains.length.should.equal 'a billion'
+    ###
+
 
 
 describe 'Grain', ->
@@ -85,21 +92,23 @@ describe 'Grain', ->
         grain1.get_proportion().should.equal '8%'
         grain2.get_proportion().should.equal '91%'
 
-    it 'changing a grain\'s weight should update the gravity units', ->
+    it 'should update the gravity units when a grain\'s weight has changed', ->
         recipe.get_gravity_units().should.equal 282.5
 
-    it 'changing a grain\'s weight should update the original gravity', ->
+    it 'should update the original gravity when a grain\'s weight has changed', ->
         recipe.get_original_gravity().should.equal 1.0565
 
-    it 'changing a grain\'s weight should update the final gravity', ->
+    it 'should update the final gravity when a grain\'s weight has changed', ->
         recipe.get_final_gravity().should.equal 1.0141
 
-    it 'changing a grain\'s weight should update the abv', ->
+    it 'should update the abv when a grain\'s weight has changed', ->
         recipe.get_abv().should.equal 5.55
 
-    it 'changing a grain\'s weight should update the srm', ->
+    it 'should update the srm when a grain\'s weight has changed', ->
         recipe.get_srm().should.equal 14
 
+    it 'should update the hex color when a grain\'s weight has changed', ->
+        recipe.get_hex().should.equal '#C35900'
 
 
 describe 'Hop', ->

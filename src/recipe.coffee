@@ -2,13 +2,25 @@ class exports.Recipe
     
     constructor : (ingredients) ->
 
-        {Step} = require './interface/step'
+        {Step}      = require './interface/step'
+        {Measure}   = require './interface/measure'
+
+        {srm_lookup} = require './srm_lookup'
+        @srm_lookup  = srm_lookup
 
         @steps      = 
             setup   : new Step 'setup'
             grains  : new Step 'grains'
             hops    : new Step 'hops'
             yeasts  : new Step 'yeasts'
+
+        @measures   =
+            og      : new Measure 'Original Gravity'
+            fg      : new Measure 'Final Gravity'
+            ibu     : new Measure 'IBU\'s'
+            gubu    : new Measure 'GU/BU'
+            abv     : new Measure 'ABV'
+            srm     : new Measure 'SRM'
 
         @grains     = []
         @hops       = []
@@ -81,12 +93,10 @@ class exports.Recipe
         srm = 1.4922*(Math.pow(mcu, .6859))
         Math.round srm
 
-    get_color : ->
-        rgb = srm_lookup.getItem @get_srm()
-
-        if rgb == undefined
-            rgb = '255,255,255'
-        return rgb
+    get_hex : ->
+        hex = @srm_lookup[@get_srm()]
+        if hex == undefined then hex = '#000000'
+        return hex
 
     get_gu_bu : ->
         gubu = Math.round(@get_final_gravity()/@get_ibu()*1000)/1000
