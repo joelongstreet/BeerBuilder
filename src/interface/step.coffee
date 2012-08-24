@@ -1,11 +1,10 @@
 {Ti} = require '../../TitaniumMocha/Ti'
+{IngredientDetail} = require('./IngredientDetail')
 #db = Ti.Database.install '../ingredients.sqlite','ingredients'
 
 class Step
 
     constructor : (@type) ->
-
-        @current_ingredient = null
 
         @window     = Ti.UI.createWindow()
         @table      = Ti.UI.createTableView()
@@ -17,6 +16,7 @@ class Step
         if @type is 'hops' then @data_source = db.execute('SELECT * FROM grains')
         if @type is 'yeasts' then @data_source = db.execute('SELECT * FROM grains')
         ###
+        @data_source = []
 
         @window.add label
         @window.add @table
@@ -29,8 +29,8 @@ class Step
             object  : ingredient
 
         row.addEventListener 'click', =>
-            @current_ingredient = require('./Ingredient')
-            return 3
+            detail = new IngredientDetail ingredient, @data_source, @type
+            detail.open_me()
 
         row.addEventListener 'delete', ->
             @remove_ingredient()

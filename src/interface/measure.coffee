@@ -20,6 +20,9 @@ class Measure
         graph.add line, @max_dot, @min_dot, @pos_dot
         @view.add graph, title, @label
 
+    update : (new_prop) ->
+        
+
     update_min : (new_pos) ->
         @min_dot.setLeft new_pos
 

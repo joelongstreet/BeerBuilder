@@ -16,6 +16,14 @@ class exports.Grain
 
     update_weight : (new_weight) ->
         @weight = new_weight
+        @recipe.measures.og.update @recipe.get_og
+        @recipe.measures.fg.update @recipe.get_fg
+        @recipe.measures.abv.update @recipe.get_abv
+        @recipe.measures.srm.update @recipe.get_srm
+        @recipe.measures.gubu.update @recipe.get_gu_bu
+
+    update_self : (new_self) ->
+        return false
 
     get_proportion : ->
         proportion = @weight/@recipe.get_grain_weight()

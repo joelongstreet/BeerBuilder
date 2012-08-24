@@ -6,7 +6,7 @@ chai.should()
 {Hop}           = require '../src/hop'
 {Yeast}         = require '../src/yeast'
 {Step}          = require '../src/interface/Step'
-{Ingredient}    = require '../src/interface/Ingredient'
+{IngredientDetail} = require '../src/interface/IngredientDetail'
 
 recipe      = null
 
@@ -21,10 +21,10 @@ describe 'Steps', ->
         recipe.add_grain grain
         recipe.steps.grains.table.data.length.should.equal 1
 
-    ###
     it 'should trigger the ingredient window when a table row is clicked', ->
-        recipe.steps.grains.table.data[0].trigger_click().should.equal 'false'
+        recipe.steps.grains.table.data[0].trigger_click().should.equal 'window opened'
 
+    ###
     it 'should remove an ingredient from the recipe when table row is removed', ->
         recipe.steps.grains.table.data[0].trigger_remove()
         recipe.grains.should.equal 0
@@ -35,14 +35,6 @@ describe 'Steps', ->
     ###
 
 
-###
-describe 'Ingredient', ->
+describe 'Ingredient Detail', ->
     
-    it 'should update it\'s respective recipe when changed', ->
-        recipe.steps.current_ingredient.update_weight(5)
-        recipe.grains[1].weight.should.equal 5
-
-    it 'should update other visual elements', ->
-        recipe.steps.current_ingredient.update_weight(5)
-        recipe.props.original_gravity.should.qual 10
-###
+    
