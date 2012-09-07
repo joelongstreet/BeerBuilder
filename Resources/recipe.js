@@ -1,9 +1,12 @@
 (function() {
+  var RecipeInterface;
+
+  RecipeInterface = require('./interface/recipe').RecipeInterface;
 
   exports.Recipe = (function() {
 
     function Recipe(ingredients) {
-      var Measure, Step, grain, grains, hop, hops, setup, srm_lookup, yeast, yeasts, _i, _j, _k, _len, _len2, _len3, _ref, _ref2, _ref3;
+      var Measure, Step, grain, grains, hop, hops, recipe_interface, setup, srm_lookup, yeast, yeasts, _i, _j, _k, _len, _len2, _len3, _ref, _ref2, _ref3;
       Step = require('./interface/step').Step;
       Measure = require('./interface/measure').Measure;
       srm_lookup = require('./srm_lookup').srm_lookup;
@@ -44,7 +47,7 @@
           this.add_yeast(yeast);
         }
       }
-      this.build_ui();
+      recipe_interface = new RecipeInterface(this.steps);
     }
 
     Recipe.prototype.get_efficiency = function(new_efficiency) {
@@ -222,7 +225,6 @@
         return wrap_pos = _this.wrap.getLeft();
       });
       this.window.addEventListener('touchmove', function(e) {
-        console.log("wrap position : " + wrap_pos);
         return _this.wrap.setLeft(-1 * (start_pos - e.x - wrap_pos));
       });
       return this.window.open();

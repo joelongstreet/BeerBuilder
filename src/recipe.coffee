@@ -1,3 +1,5 @@
+{RecipeInterface} = require './interface/recipe'
+
 class exports.Recipe
     
     constructor : (ingredients) ->
@@ -44,7 +46,7 @@ class exports.Recipe
             for yeast in ingredients.yeasts
                 @add_yeast yeast
 
-        @build_ui()
+        recipe_interface = new RecipeInterface @steps
 
     get_efficiency : (new_efficiency) ->
         @efficiency = new_efficiency
@@ -180,7 +182,6 @@ class exports.Recipe
             wrap_pos    = @wrap.getLeft()
 
         @window.addEventListener 'touchmove', (e) =>
-            console.log "wrap position : #{wrap_pos}"
             @wrap.setLeft(-1*(start_pos - e.x - wrap_pos))
 
         @window.open()
