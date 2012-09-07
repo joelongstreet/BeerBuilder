@@ -8,11 +8,12 @@ class exports.Recipe
         {srm_lookup} = require './srm_lookup'
         @srm_lookup  = srm_lookup
 
-        @steps      = 
-            setup   : new Step 'setup'
-            grains  : new Step 'grains'
-            hops    : new Step 'hops'
-            yeasts  : new Step 'yeasts'
+        @steps      = [
+            setup   = new Step 'setup'
+            grains  = new Step 'grains'
+            hops    = new Step 'hops'
+            yeasts  = new Step 'yeasts'
+        ]
 
         @measures   =
             og      : new Measure 'Original Gravity'
@@ -43,6 +44,7 @@ class exports.Recipe
             for yeast in ingredients.yeasts
                 @add_yeast yeast
 
+        @build_ui()
 
     get_efficiency : (new_efficiency) ->
         @efficiency = new_efficiency
@@ -126,17 +128,17 @@ class exports.Recipe
     add_grain : (ingredient) ->
         ingredient.recipe = @
         @grains.push ingredient
-        @steps.grains.add_ingredient ingredient
+        @steps['grains'].add_ingredient ingredient
 
     add_hop : (ingredient) ->
         ingredient.recipe = @
         @hops.push ingredient
-        @steps.hops.add_ingredient ingredient
+        @steps['hops'].add_ingredient ingredient
 
     add_yeast : (ingredient) ->
         ingredient.recipe = @
         @yeasts.push ingredient
-        @steps.yeasts.add_ingredient ingredient
+        @steps['yeasts'].add_ingredient ingredient
 
     remove_grain : (index) ->
         if typeof index == 'object'
@@ -152,3 +154,33 @@ class exports.Recipe
         if typeof index == 'object'
             index = @yeasts.indexOf index
         @hops.splice index, 1
+
+    build_ui : ->
+        @window = Ti.UI.createWindow
+            width       : '100%'
+            height      : '100%'
+        @wrap   = Ti.UI.createView
+            width       : 100 * @steps.length + '%'
+            height      : '100%'
+            left        : 0
+            touchEnabled: false
+
+        for step in @steps
+            step.set_position _i
+            @wrap.add step.view
+
+        @window.add @wrap
+
+        start_pos   = 0
+        current_pos = 0
+        wrap_pos    = 0
+
+        @window.addEventListener 'touchstart', (e) =>
+            start_pos   = e.x
+            wrap_pos    = @wrap.getLeft()
+
+        @window.addEventListener 'touchmove', (e) =>
+            console.log "wrap position : #{wrap_pos}"
+            @wrap.setLeft(-1*(start_pos - e.x - wrap_pos))
+
+        @window.open()

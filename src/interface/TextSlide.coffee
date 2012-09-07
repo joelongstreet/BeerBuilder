@@ -1,5 +1,3 @@
-{Ti} = require '../../TitaniumMocha/Ti'
-
 class exports.TextSlide
     
     constructor : (top, left) ->

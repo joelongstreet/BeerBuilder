@@ -1,1 +1,2 @@
-//Nothing here yet
+var Recipe = require('./recipe').Recipe;
+var recipe = new Recipe()

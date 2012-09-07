@@ -15,6 +15,7 @@ recipe      = null
 describe 'Steps', ->
     
     recipe = new Recipe()
+    grain = null
 
     it 'should accept new rows for the table', ->
         grain = new Grain({ name : 'American Crystal Malt 80L', gravity_units : 34, lovibond : 80, traits : []}, .875)
@@ -24,11 +25,11 @@ describe 'Steps', ->
     it 'should trigger the ingredient window when a table row is clicked', ->
         recipe.steps.grains.table.data[0].trigger_click().should.equal 'window opened'
 
-    ###
     it 'should remove an ingredient from the recipe when table row is removed', ->
-        recipe.steps.grains.table.data[0].trigger_remove()
-        recipe.grains.should.equal 0
+        recipe.steps.grains.remove_ingredient grain
+        recipe.grains.length.should.equal 0
 
+    ###
     it 'should add ingredients to the recipe when asked by the UI', ->
         recipe.steps.grains.drag_table()
         recipe.grains.should.equal 1

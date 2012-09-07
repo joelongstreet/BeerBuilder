@@ -9,7 +9,7 @@ To run tests, you'll need to have node and npm installed. Install mocha globally
 ## Compiling
 
 ### CoffeeScript
-Beer Builder is written in [CoffeeScript](http://coffeescript.org). To compile written coffeescript, ensure you are in the root of the project and run the following command: `coffee -c -w -o Resources/lib/ src/`. This will compile coffeescript source files, to build the actual project you'll need Titanium Studio SDK and XCode installed.
+Beer Builder is written in [CoffeeScript](http://coffeescript.org). To compile written coffeescript, ensure you are in the root of the project and run the following command: `coffee -c -w -o Resources/ src/`. This will compile coffeescript source files, to build the actual project you'll need Titanium Studio SDK and XCode installed.
 
 ### Titanium
 This project is compiled using [Appcelerator's Titanium Studio](http://www.appcelerator.com/). Appcelerator is a fickle beast and strange things can happen if you're using alternate versions of the SDK. For the best results use Titanium SDK 2.0.1.GA2. This application does not yet rely on any third party tools so I'll probably upgrade as new versions of Titanium are released.

@@ -1,5 +1,4 @@
-{Ti}        = require '../../TitaniumMocha/Ti'
-{TextSlide} = require './TextSlide'
+{TextSlide} = require './interface/TextSlide'
 
 class exports.IngredientDetail
 
