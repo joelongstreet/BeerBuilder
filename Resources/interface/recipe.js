@@ -1,9 +1,12 @@
 (function() {
+  var Bubbles;
+
+  Bubbles = require('./interface/bubble/bubbles').Bubbles;
 
   exports.RecipeInterface = (function() {
 
     function RecipeInterface(steps) {
-      var start_pos, step, wrap_pos, _i, _len, _ref,
+      var bubbles, start_pos, step, wrap_pos, _i, _len, _ref,
         _this = this;
       this.steps = steps;
       this.window = Ti.UI.createWindow({
@@ -35,6 +38,7 @@
       this.window.addEventListener('touchend', function(e) {
         return _this.snap_to_point();
       });
+      bubbles = new Bubbles(this.window);
       this.window.open();
     }
 

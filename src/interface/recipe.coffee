@@ -1,3 +1,5 @@
+{Bubbles} = require('./interface/bubble/bubbles')
+
 class exports.RecipeInterface
     
     constructor : (@steps) ->
@@ -29,6 +31,8 @@ class exports.RecipeInterface
 
         @window.addEventListener 'touchend', (e) =>
             @snap_to_point()
+
+        bubbles = new Bubbles(@window)
 
         @window.open()
 
