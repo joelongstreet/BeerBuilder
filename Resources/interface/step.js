@@ -16,10 +16,19 @@
       this.table = Ti.UI.createTableView({
         bottom: 0,
         height: 150,
-        backgroundColor: 'grey'
+        bottom: 0,
+        backgroundColor: 'transparent'
       });
       label = Ti.UI.createLabel({
-        title: type.substr(0, 1).toUpperCase() + type.substr(1)
+        top: 25,
+        left: 0,
+        width: Ti.Platform.displayCaps.platformWidth,
+        textAlign: 'center',
+        color: 'white',
+        font: {
+          fontSize: 48
+        },
+        text: type.substr(0, 1).toUpperCase() + type.substr(1)
       });
       /*
               if @type is 'grains' then @data_source = db.execute('SELECT * FROM grains')
@@ -61,17 +70,6 @@
     Step.prototype.drag_table = function() {};
 
     Step.prototype.set_position = function(position) {
-      if (position === 0) {
-        this.view.setBackgroundColor('purple');
-      } else if (position === 1) {
-        this.view.setBackgroundColor('green');
-      } else if (position === 2) {
-        this.view.setBackgroundColor('blue');
-      } else if (position === 3) {
-        this.view.setBackgroundColor('yellow');
-      } else if (position === 4) {
-        this.view.setBackgroundColor('red');
-      }
       return this.view.setLeft(position * Ti.Platform.displayCaps.platformWidth);
     };
 

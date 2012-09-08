@@ -11,7 +11,8 @@
       this.steps = steps;
       this.window = Ti.UI.createWindow({
         width: '100%',
-        height: '100%'
+        height: '100%',
+        backgroundColor: '#f99208'
       });
       this.wrap = Ti.UI.createView({
         width: 100 * this.steps.length + '%',

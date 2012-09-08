@@ -5,15 +5,22 @@ class Step
 
     constructor : (@type) ->
         @view       = Ti.UI.createView
-            top     : 0
-            width   : '100%'
-            height  : '100%'
+            top         : 0
+            width       : '100%'
+            height      : '100%'
         @table      = Ti.UI.createTableView
-            bottom  : 0
-            height  : 150
-            backgroundColor : 'grey'
+            bottom      : 0
+            height      : 150
+            bottom      : 0
+            backgroundColor  : 'transparent'
         label       = Ti.UI.createLabel
-            title   : type.substr(0, 1).toUpperCase() + type.substr(1)
+            top         : 25
+            left        : 0
+            width       : Ti.Platform.displayCaps.platformWidth
+            textAlign   : 'center'
+            color       : 'white'
+            font        : { fontSize : 48 }
+            text        : type.substr(0, 1).toUpperCase() + type.substr(1)
 
         ###
         if @type is 'grains' then @data_source = db.execute('SELECT * FROM grains')
@@ -50,17 +57,6 @@ class Step
     drag_table : ->
 
     set_position : (position) ->
-        if position is 0
-            @view.setBackgroundColor 'purple'
-        else if position is 1
-            @view.setBackgroundColor 'green'
-        else if position is 2
-            @view.setBackgroundColor 'blue'
-        else if position is 3
-            @view.setBackgroundColor 'yellow'
-        else if position is 4
-            @view.setBackgroundColor 'red'
-
         @view.setLeft position * Ti.Platform.displayCaps.platformWidth
 
     open : ->

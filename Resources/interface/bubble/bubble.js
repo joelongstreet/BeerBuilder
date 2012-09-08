@@ -12,7 +12,7 @@
         height: 10,
         bottom: -5,
         left: left_pos,
-        backgroundColor: 'blue',
+        backgroundColor: 'rgba(255,255,255,.4)',
         borderRadius: 10
       });
       animation = Ti.UI.createAnimation({
