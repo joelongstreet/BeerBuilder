@@ -3,7 +3,7 @@
   exports.RecipeInterface = (function() {
 
     function RecipeInterface(steps) {
-      var current_pos, start_pos, step, wrap_pos, _i, _len, _ref,
+      var start_pos, step, wrap_pos, _i, _len, _ref,
         _this = this;
       this.steps = steps;
       this.window = Ti.UI.createWindow({
@@ -24,7 +24,6 @@
       }
       this.window.add(this.wrap);
       start_pos = 0;
-      current_pos = 0;
       wrap_pos = 0;
       this.window.addEventListener('touchstart', function(e) {
         start_pos = e.x;
@@ -33,8 +32,33 @@
       this.window.addEventListener('touchmove', function(e) {
         return _this.wrap.setLeft(-1 * (start_pos - e.x - wrap_pos));
       });
+      this.window.addEventListener('touchend', function(e) {
+        return _this.snap_to_point();
+      });
       this.window.open();
     }
+
+    RecipeInterface.prototype.snap_to_point = function(current_x) {
+      var animation, left_pos, new_left, width,
+        _this = this;
+      width = Ti.Platform.displayCaps.platformWidth;
+      left_pos = Math.round(this.wrap.getLeft() / width) * width;
+      if (left_pos <= 0 && left_pos > (-1 * this.steps.length * width)) {
+        new_left = left_pos;
+      } else if (left_pos === width) {
+        new_left = 0;
+      } else {
+        new_left = -1 * ((this.steps.length - 1) * width);
+      }
+      animation = Ti.UI.createAnimation({
+        left: new_left,
+        duration: 250
+      });
+      animation.addEventListener('complete', function() {
+        return _this.wrap.setLeft(new_left);
+      });
+      return this.wrap.animate(animation);
+    };
 
     return RecipeInterface;
 

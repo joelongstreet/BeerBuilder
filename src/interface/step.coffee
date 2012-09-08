@@ -51,7 +51,7 @@ class Step
 
     set_position : (position) ->
         if position is 0
-            @view.setBackgroundColor 'red'
+            @view.setBackgroundColor 'purple'
         else if position is 1
             @view.setBackgroundColor 'green'
         else if position is 2
@@ -59,7 +59,7 @@ class Step
         else if position is 3
             @view.setBackgroundColor 'yellow'
         else if position is 4
-            @view.setBackgroundColor 'orange'
+            @view.setBackgroundColor 'red'
 
         @view.setLeft position * Ti.Platform.displayCaps.platformWidth
 

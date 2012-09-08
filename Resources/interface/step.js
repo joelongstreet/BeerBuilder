@@ -62,7 +62,7 @@
 
     Step.prototype.set_position = function(position) {
       if (position === 0) {
-        this.view.setBackgroundColor('red');
+        this.view.setBackgroundColor('purple');
       } else if (position === 1) {
         this.view.setBackgroundColor('green');
       } else if (position === 2) {
@@ -70,7 +70,7 @@
       } else if (position === 3) {
         this.view.setBackgroundColor('yellow');
       } else if (position === 4) {
-        this.view.setBackgroundColor('orange');
+        this.view.setBackgroundColor('red');
       }
       return this.view.setLeft(position * Ti.Platform.displayCaps.platformWidth);
     };
