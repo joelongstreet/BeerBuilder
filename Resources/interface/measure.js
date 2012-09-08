@@ -6,7 +6,8 @@
       var label_key, line;
       this.view = Ti.UI.createView({
         width: Ti.Platform.displayCaps.platformWidth * .9,
-        height: 40
+        height: 40,
+        top: 30
       });
       label_key = Ti.UI.createLabel({
         bottom: 0,
