@@ -8,11 +8,14 @@ class Step
             top         : 0
             width       : '100%'
             height      : '100%'
+
         @table      = Ti.UI.createTableView
             bottom      : 0
             height      : 150
             bottom      : 0
+            seperatorColor : 'transparent'
             backgroundColor  : 'transparent'
+
         label       = Ti.UI.createLabel
             top         : 25
             left        : 0

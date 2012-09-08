@@ -1,29 +1,11 @@
-{RecipeInterface} = require './interface/recipe'
+{RecipeInterface}   = require './interface/recipe'
+{srm_lookup}        = require './srm_lookup'
 
 class exports.Recipe
     
     constructor : (ingredients) ->
-
-        {Step}      = require './interface/step'
-        {Measure}   = require './interface/measure'
-
-        {srm_lookup} = require './srm_lookup'
-        @srm_lookup  = srm_lookup
-
-        @steps      = [
-            setup   = new Step 'setup'
-            grains  = new Step 'grains'
-            hops    = new Step 'hops'
-            yeasts  = new Step 'yeasts'
-        ]
-
-        @measures   =
-            og      : new Measure 'Original Gravity'
-            fg      : new Measure 'Final Gravity'
-            ibu     : new Measure 'IBU\'s'
-            gubu    : new Measure 'GU/BU'
-            abv     : new Measure 'ABV'
-            srm     : new Measure 'SRM'
+        @interface  = new RecipeInterface()
+        @srm_lookup = srm_lookup
 
         @grains     = []
         @hops       = []
@@ -45,8 +27,6 @@ class exports.Recipe
         if ingredients.yeasts
             for yeast in ingredients.yeasts
                 @add_yeast yeast
-
-        recipe_interface = new RecipeInterface @steps
 
     get_efficiency : (new_efficiency) ->
         @efficiency = new_efficiency
@@ -130,17 +110,17 @@ class exports.Recipe
     add_grain : (ingredient) ->
         ingredient.recipe = @
         @grains.push ingredient
-        @steps['grains'].add_ingredient ingredient
+        @interface.steps['grains'].add_ingredient ingredient
 
     add_hop : (ingredient) ->
         ingredient.recipe = @
         @hops.push ingredient
-        @steps['hops'].add_ingredient ingredient
+        @interface.steps['hops'].add_ingredient ingredient
 
     add_yeast : (ingredient) ->
         ingredient.recipe = @
         @yeasts.push ingredient
-        @steps['yeasts'].add_ingredient ingredient
+        @interface.steps['yeasts'].add_ingredient ingredient
 
     remove_grain : (index) ->
         if typeof index == 'object'

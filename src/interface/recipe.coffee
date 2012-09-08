@@ -1,14 +1,39 @@
-{Bubbles} = require('./interface/bubble/bubbles')
+{Bubbles}   = require('./interface/bubble/bubbles')
+{Step}      = require './interface/step'
+{Measure}   = require './interface/measure'
 
 class exports.RecipeInterface
     
-    constructor : (@steps) ->
+    constructor : ->
     
-        @window = Ti.UI.createWindow
+        @window     = Ti.UI.createWindow
             width       : '100%'
             height      : '100%'
             backgroundColor : '#f99208'
-        @wrap   = Ti.UI.createView
+
+        @steps      = [
+            setup   = new Step 'setup'
+            grains  = new Step 'grains'
+            hops    = new Step 'hops'
+            yeasts  = new Step 'yeasts'
+        ]
+
+        @measures   = [
+            og      = new Measure 'Original Gravity'
+            #fg      = new Measure 'Final Gravity'
+            #ibu     = new Measure 'IBU\'s'
+            #gubu    = new Measure 'GU/BU'
+            #abv     = new Measure 'ABV'
+            #srm     = new Measure 'SRM'
+        ]
+
+        @page_wrap      = Ti.UI.createView
+            width       : 100 * @steps.length + '%'
+            height      : '100%'
+            left        : 0
+            touchEnabled: false
+
+        @measure_wrap   = Ti.UI.createView
             width       : 100 * @steps.length + '%'
             height      : '100%'
             left        : 0
@@ -16,32 +41,35 @@ class exports.RecipeInterface
 
         for step in @steps
             step.set_position _i
-            @wrap.add step.view
+            @page_wrap.add step.view
+        for measure in @measures
+            measure.set_position _j
+            @measure_wrap.add measure.view
 
-        @window.add @wrap
+        @window.add @page_wrap, @measure_wrap
 
         start_pos   = 0
         wrap_pos    = 0
 
         @window.addEventListener 'touchstart', (e) =>
             start_pos   = e.x
-            wrap_pos    = @wrap.getLeft()
+            wrap_pos    = @page_wrap.getLeft()
 
         @window.addEventListener 'touchmove', (e) =>
-            @wrap.setLeft(-1*(start_pos - e.x - wrap_pos))
+            @page_wrap.setLeft(-1*(start_pos - e.x - wrap_pos))
 
         @window.addEventListener 'touchend', (e) =>
             @snap_to_point()
 
-        bubbles = new Bubbles(@window)
+        bubbles = new Bubbles @window
 
         @window.open()
 
 
-    snap_to_point : (current_x) ->
+    snap_to_point : ->
 
         width       = Ti.Platform.displayCaps.platformWidth
-        left_pos    = Math.round(@wrap.getLeft()/width)*width
+        left_pos    = Math.round(@page_wrap.getLeft()/width)*width
 
         if left_pos <= 0 && left_pos > (-1*@steps.length*width)
             new_left = left_pos
@@ -55,6 +83,6 @@ class exports.RecipeInterface
             duration    : 250
 
         animation.addEventListener 'complete', =>
-            @wrap.setLeft new_left
+            @page_wrap.setLeft new_left
 
-        @wrap.animate animation
+        @page_wrap.animate animation

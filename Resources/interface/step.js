@@ -17,6 +17,7 @@
         bottom: 0,
         height: 150,
         bottom: 0,
+        seperatorColor: 'transparent',
         backgroundColor: 'transparent'
       });
       label = Ti.UI.createLabel({

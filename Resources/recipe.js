@@ -1,25 +1,16 @@
 (function() {
-  var RecipeInterface;
+  var RecipeInterface, srm_lookup;
 
   RecipeInterface = require('./interface/recipe').RecipeInterface;
+
+  srm_lookup = require('./srm_lookup').srm_lookup;
 
   exports.Recipe = (function() {
 
     function Recipe(ingredients) {
-      var Measure, Step, grain, grains, hop, hops, recipe_interface, setup, srm_lookup, yeast, yeasts, _i, _j, _k, _len, _len2, _len3, _ref, _ref2, _ref3;
-      Step = require('./interface/step').Step;
-      Measure = require('./interface/measure').Measure;
-      srm_lookup = require('./srm_lookup').srm_lookup;
+      var grain, hop, yeast, _i, _j, _k, _len, _len2, _len3, _ref, _ref2, _ref3;
+      this.interface = new RecipeInterface();
       this.srm_lookup = srm_lookup;
-      this.steps = [setup = new Step('setup'), grains = new Step('grains'), hops = new Step('hops'), yeasts = new Step('yeasts')];
-      this.measures = {
-        og: new Measure('Original Gravity'),
-        fg: new Measure('Final Gravity'),
-        ibu: new Measure('IBU\'s'),
-        gubu: new Measure('GU/BU'),
-        abv: new Measure('ABV'),
-        srm: new Measure('SRM')
-      };
       this.grains = [];
       this.hops = [];
       this.yeasts = [];
@@ -47,7 +38,6 @@
           this.add_yeast(yeast);
         }
       }
-      recipe_interface = new RecipeInterface(this.steps);
     }
 
     Recipe.prototype.get_efficiency = function(new_efficiency) {
@@ -167,19 +157,19 @@
     Recipe.prototype.add_grain = function(ingredient) {
       ingredient.recipe = this;
       this.grains.push(ingredient);
-      return this.steps['grains'].add_ingredient(ingredient);
+      return this.interface.steps['grains'].add_ingredient(ingredient);
     };
 
     Recipe.prototype.add_hop = function(ingredient) {
       ingredient.recipe = this;
       this.hops.push(ingredient);
-      return this.steps['hops'].add_ingredient(ingredient);
+      return this.interface.steps['hops'].add_ingredient(ingredient);
     };
 
     Recipe.prototype.add_yeast = function(ingredient) {
       ingredient.recipe = this;
       this.yeasts.push(ingredient);
-      return this.steps['yeasts'].add_ingredient(ingredient);
+      return this.interface.steps['yeasts'].add_ingredient(ingredient);
     };
 
     Recipe.prototype.remove_grain = function(index) {

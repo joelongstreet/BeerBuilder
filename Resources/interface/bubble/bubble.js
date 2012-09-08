@@ -3,17 +3,18 @@
   exports.Bubble = (function() {
 
     function Bubble(window) {
-      var animation, left_pos, new_left, view,
+      var animation, left_pos, new_left, size, view,
         _this = this;
       left_pos = this.rando(Ti.Platform.displayCaps.platformWidth, 0);
-      new_left = this.rando(left_pos + 10, left_pos - 10);
+      new_left = this.rando(left_pos + 10, left_pos - 20);
+      size = this.rando(25, 5);
       view = Ti.UI.createView({
-        width: 10,
-        height: 10,
-        bottom: -5,
+        width: size,
+        height: size,
+        bottom: -1 * size,
         left: left_pos,
         backgroundColor: 'rgba(255,255,255,.4)',
-        borderRadius: 10
+        borderRadius: size * .5
       });
       animation = Ti.UI.createAnimation({
         bottom: Ti.Platform.displayCaps.platformHeight,
